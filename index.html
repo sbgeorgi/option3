@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wanderlust - Discover Your Next Adventure</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary: #FF5A5F;
@@ -21,6 +21,7 @@
       --gradient-2: linear-gradient(135deg, #00A699 0%, #00CEC9 100%);
       --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
       --radius: 12px;
+      --money-green: #8FBC8F; /* Define money green color */
     }
 
     * {
@@ -364,7 +365,7 @@
       font-size: 0.9rem;
     }
 
-    /* App Showcase */
+    /* App Showcase Section */
     .app-showcase {
       padding: 80px 0;
       background: var(--white);
@@ -385,7 +386,7 @@
       height: 450px;
       margin: 0 auto;
     }
-
+    /* Card stacking styles (for 4 cards) */
     .card {
       position: absolute;
       width: 100%;
@@ -395,28 +396,94 @@
       background-position: center;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, opacity 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Overlay gradient for readability */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+      z-index: 1;
+    }
+    .card-content {
+      position: relative;
+      z-index: 2;
+      padding: 16px;
+    }
+    .card-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    .card-rating {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      /* justify-content: space-between; Removed justify-content */
+      gap: 8px; /* Add some gap between items */
+    }
+    .card-rating .stars {
+      color: gold; /* Gold color for stars */
+      text-align: left; /* Left align stars - already default but for clarity */
+    }
+    .card-rating .rating-value {
+      /* No container needed, directly style rating value */
+      /* background-color: transparent; Transparent background - Removed container*/
+      /* border: 1px solid rgba(255, 255, 255, 0.5); Semi-transparent border - Removed container */
+      /* border-radius: 5px; Rounded corners - Removed container */
+      /* padding: 2px 8px; Padding around rating value - Removed container */
+      text-align: center; /* Center align text inside container - Removed container, not needed anymore */
+      margin-right: 8px; /* Add some space after the rating value */
+    }
+    .card-rating .price {
+      color: var(--money-green); /* Green color for dollar signs - using money-green variable */
+      text-align: right; /* Right align dollar signs - already default but for clarity */
+      margin-left: auto; /* Push price to the right */
     }
 
+    .card-details {
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    /* Stacking transforms & z-index assignments */
     .card-1 {
-      background-image: url('https://source.unsplash.com/300x450/?mountain');
       transform: translateZ(0px) translateX(0) rotate(0deg);
-      z-index: 5;
-    }
-
-    .card-2 {
-      background-image: url('https://source.unsplash.com/300x450/?beach');
-      transform: translateZ(-20px) translateX(-10px) rotate(-5deg);
       z-index: 4;
+    }
+    .card-2 {
+      transform: translateZ(-20px) translateX(-10px) rotate(-5deg);
+      z-index: 3;
       opacity: 0.9;
     }
-
     .card-3 {
-      background-image: url('https://source.unsplash.com/300x450/?city');
       transform: translateZ(-40px) translateX(-20px) rotate(-10deg);
-      z-index: 3;
+      z-index: 2;
       opacity: 0.8;
     }
-
+    .card-4 {
+      transform: translateZ(-60px) translateX(-30px) rotate(-15deg);
+      z-index: 1;
+      opacity: 0.7;
+    }
+    /* Swipe Animation Classes */
+    .swipe-out-left {
+      transform: translateX(-1000px) rotate(-30deg);
+      opacity: 0;
+    }
+    .swipe-out-right {
+      transform: translateX(1000px) rotate(30deg);
+      opacity: 0;
+    }
+    /* Swipe Actions */
     .swipe-actions {
       display: flex;
       justify-content: center;
@@ -460,12 +527,12 @@
       max-width: 800px;
       margin: 0 auto;
       position: relative;
-      display: flex; /* Enable flexbox for horizontal slider */
-      overflow-x: auto; /* Enable horizontal scrolling if needed */
-      gap: 20px; /* Spacing between testimonials */
-      padding-bottom: 20px; /* Space for scrollbar if visible */
-      scroll-snap-type: x mandatory; /* Enable snapping for smooth scrolling */
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding-bottom: 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
 
     .testimonial {
@@ -475,10 +542,10 @@
       box-shadow: var(--shadow);
       text-align: center;
       margin: 20px;
-      flex: 0 0 auto; /* Prevent shrinking and allow setting width */
-      width: 100%; /* Default width, adjust in media queries for responsiveness */
-      max-width: 600px; /* Maximum width of each testimonial */
-      scroll-snap-align: start; /* Snap to the start of each testimonial */
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 600px;
+      scroll-snap-align: start;
     }
 
     .testimonial-text {
@@ -707,12 +774,12 @@
       }
 
       .testimonial-slider {
-        scroll-snap-type: none; /* Disable snapping on smaller screens */
-        overflow-x: scroll; /* Revert to regular scroll for smaller screens */
+        scroll-snap-type: none;
+        overflow-x: scroll;
       }
 
       .testimonial {
-        max-width: 80%; /* Adjust testimonial width for smaller screens */
+        max-width: 80%;
       }
     }
 
@@ -752,7 +819,7 @@
       }
 
       .testimonial {
-        max-width: 95%; /* Further adjust testimonial width for mobile */
+        max-width: 95%;
         margin-left: auto;
         margin-right: auto;
       }
@@ -880,16 +947,16 @@
         </div>
       </div>
       <div class="hero-image animate__animated animate__fadeInRight">
-        <img src="https://source.unsplash.com/400x800/?phone,travel" alt="Wanderlust App" class="device-mockup">
+        <img src="https://source.unsplash.com/400x800/?phone,travel" alt="Wanderlust App" class="device-mockup" />
         <div class="floating-card card-1">
-          <img src="https://source.unsplash.com/60x60/?eiffel-tower" alt="Paris">
+          <img src="https://source.unsplash.com/60x60/?eiffel-tower" alt="Paris" />
           <div class="floating-card-text">
             <h4>Eiffel Tower</h4>
             <p>Paris, France</p>
           </div>
         </div>
         <div class="floating-card card-2">
-          <img src="https://source.unsplash.com/60x60/?bali" alt="Bali">
+          <img src="https://source.unsplash.com/60x60/?bali" alt="Bali" />
           <div class="floating-card-text">
             <h4>Ubud Retreat</h4>
             <p>Bali, Indonesia</p>
@@ -956,7 +1023,6 @@
     <div class="container">
       <h2 class="section-title">How It Works</h2>
       <p class="section-subtitle">Getting started with Wanderlust is simple</p>
-
       <div class="steps">
         <div class="step animate__animated animate__fadeInUp">
           <div class="step-number">1</div>
@@ -982,16 +1048,57 @@
     </div>
   </section>
 
-  <!-- App Showcase -->
+  <!-- App Showcase Section -->
   <section class="app-showcase" id="app-showcase">
     <div class="container">
       <h2 class="section-title">App Showcase</h2>
       <p class="section-subtitle">Experience the swipe-based discovery and trip planning</p>
       <div class="swipe-demo">
         <div class="card-stack">
-          <div class="card card-1"></div>
-          <div class="card card-2"></div>
-          <div class="card card-3"></div>
+          <!-- Card #1: Tourist Attraction -->
+          <div class="card card-1" style="background-image: url('vegas.jpg'); border: 3px solid #F59342;">
+            <div class="card-content">
+              <div class="card-title">Welcome to Fabulous Las Vegas Sign</div>
+              <div class="card-rating">
+                <span class="stars">★★★★<span style="opacity: 0.5;">★</span></span>
+                <span class="rating-value">4.6</span>
+                <span class="price"></span>
+              </div>
+            </div>
+          </div>
+          <!-- Card #2: Accommodation -->
+          <div class="card card-2" style="background-image: url('bellagio.jpg'); border: 3px solid #42f587;">
+            <div class="card-content">
+              <div class="card-title">Bellagio Hotel & Casino</div>
+              <div class="card-rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-value">4.7</span>
+                <span class="price">$$$$</span>
+              </div>
+            </div>
+          </div>
+          <!-- Card #3: Restaurant -->
+          <div class="card card-3" style="background-image: url('hardrock.jpg'); border: 3px solid #FF66A1;">
+            <div class="card-content">
+              <div class="card-title">Hard Rock Cafe - Las Vegas</div>
+              <div class="card-rating">
+                <span class="stars">★★★<span style="opacity: 0.5;">★★</span></span>
+                <span class="rating-value">4.4</span>
+                <span class="price">$$</span>
+              </div>
+            </div>
+          </div>
+          <!-- Card #4: Bar -->
+          <div class="card card-4" style="background-image: url('goldentiki.jpg'); border: 3px solid #4287f5;">
+            <div class="card-content">
+              <div class="card-title">Golden Tiki Bar</div>
+              <div class="card-rating">
+                <span class="stars">★★★★<span style="opacity: 0.5;">★</span></span>
+                <span class="rating-value">4.6</span>
+                <span class="price">$$</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="swipe-actions">
           <div class="swipe-button swipe-left"><i class="fas fa-times"></i></div>
@@ -1109,6 +1216,7 @@
   </footer>
 
   <script>
+    // Mobile Menu functionality
     document.addEventListener('DOMContentLoaded', () => {
       const mobileMenuButton = document.getElementById('mobileMenuButton');
       const closeMenuButton = document.getElementById('closeMenu');
@@ -1129,6 +1237,52 @@
         mobileMenu.classList.remove('active');
         overlay.classList.remove('active');
       });
+    });
+
+    // Swipe functionality for App Showcase cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const swipeLeftBtn = document.querySelector('.swipe-left');
+      const swipeRightBtn = document.querySelector('.swipe-right');
+      const cardStack = document.querySelector('.card-stack');
+
+      // Helper: update card classes based on new order
+      function updateCardClasses() {
+        const cards = cardStack.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+          card.className = 'card';
+          if (index === 0) {
+            card.classList.add('card-1');
+          } else if (index === 1) {
+            card.classList.add('card-2');
+          } else if (index === 2) {
+            card.classList.add('card-3');
+          } else if (index === 3) {
+            card.classList.add('card-4');
+          }
+        });
+      }
+
+      function swipeCard(direction) {
+        const cards = cardStack.querySelectorAll('.card');
+        if (!cards.length) return;
+        const topCard = cards[0];
+        // Add animation class based on direction
+        if (direction === 'left') {
+          topCard.classList.add('swipe-out-left');
+        } else {
+          topCard.classList.add('swipe-out-right');
+        }
+        // When transition ends, move card to bottom and update classes
+        topCard.addEventListener('transitionend', function handler() {
+          topCard.classList.remove('swipe-out-left', 'swipe-out-right');
+          cardStack.appendChild(topCard);
+          updateCardClasses();
+          topCard.removeEventListener('transitionend', handler);
+        });
+      }
+
+      swipeLeftBtn.addEventListener('click', () => swipeCard('left'));
+      swipeRightBtn.addEventListener('click', () => swipeCard('right'));
     });
   </script>
 </body>
