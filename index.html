@@ -3,60 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wanderlust - Discover Your Next Adventure</title>
+  <title>NomadSwipe - Discover Your Next Adventure</title>
+  
+  <!-- External Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    /*
+    ==========================================================================
+    UI/UX Design & Front-End Development by an Elite-Level Professional
+    ==========================================================================
+    Project: NomadSwipe - Web Page Transformation (Revision 1)
+    Principles: Elegance, Readability, Performance, Accessibility
+    ==========================================================================
+    */
+
+    /* ---------------------------------- */
+    /*          1. ROOT & GLOBALS         */
+    /* ---------------------------------- */
     :root {
-      --primary: #FF5A5F;
-      --secondary: #00A699;
-      --accent: #FC642D;
-      --dark: #484848;
-      --light: #F7F7F7;
-      --white: #FFFFFF;
-      --gradient-1: linear-gradient(135deg, #FF5A5F 0%, #FC642D 100%);
-      --gradient-2: linear-gradient(135deg, #00A699 0%, #00CEC9 100%);
-      --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-      --radius: 12px;
-      --money-green: #8FBC8F; /* Define money green color */
+      /* Color Palette */
+      --color-primary: #EE6C4D;
+      --color-secondary: #293241;
+      --color-accent: #E0FBFC;
+      --color-background: #F8F7F4;
+      --color-surface: #FFFFFF;
+      --color-text: #293241;
+      --color-text-muted: #6D727B;
+      --color-white: #FFFFFF;
+      --color-border: #E0E0E0;
+      
+      --gradient-primary: linear-gradient(135deg, #EE6C4D 0%, #E63946 100%);
+      --gradient-subtle: linear-gradient(135deg, #E0FBFC 0%, #CADEF5 100%);
+
+      /* Typography */
+      --font-heading: 'Lora', serif;
+      --font-body: 'Inter', sans-serif;
+      
+      /* Spacing Scale (Rhythmic & Consistent) */
+      --space-xxs: 0.25rem;  /* 4px */
+      --space-xs:  0.5rem;   /* 8px */
+      --space-s:   0.75rem;  /* 12px */
+      --space-m:   1rem;     /* 16px */
+      --space-l:   1.5rem;   /* 24px */
+      --space-xl:  2.5rem;   /* 40px */
+      --space-xxl: 4rem;     /* 64px */
+      --space-xxxl: 6rem;    /* 96px */
+
+      /* Other Properties */
+      --border-radius-s: 8px;
+      --border-radius-m: 16px;
+      --border-radius-l: 24px;
+      --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --transition-fast: 200ms ease-in-out;
+      --transition-medium: 400ms ease-in-out;
     }
 
-    * {
+    /* Base Reset & Smooth Behavior */
+    *,
+    *::before,
+    *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--dark);
-      background-color: var(--light);
-      overflow-x: hidden;
+      font-family: var(--font-body);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
+    
+    /* Accessibility: Focus Visible */
+    :focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--border-radius-s);
     }
-
+    
+    /* Container */
     .container {
       width: 100%;
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      margin-inline: auto;
+      padding-inline: var(--space-l);
+    }
+    
+    /* Section Padding */
+    section {
+      padding-block: var(--space-xxxl);
     }
 
-    /* Header Styles */
+    @media (max-width: 768px) {
+      section {
+        padding-block: var(--space-xxl);
+      }
+    }
+
+    /* Headings & Text */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-text);
+    }
+
+    .section-title {
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: var(--space-m);
+    }
+    
+    .section-subtitle {
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      text-align: center;
+      color: var(--color-text-muted);
+      max-width: 65ch;
+      margin-inline: auto;
+      margin-bottom: var(--space-xxl);
+    }
+    
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------------------------- */
+    /*            2. HEADER               */
+    /* ---------------------------------- */
     header {
-      background-color: var(--white);
       position: fixed;
       width: 100%;
+      top: 0;
+      left: 0;
       z-index: 1000;
-      padding: 16px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding-block: var(--space-m);
+      background-color: hsl(0 0% 100% / 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid hsl(0 0% 0% / 0.05);
+      transition: background-color var(--transition-medium);
     }
 
     .header-container {
@@ -68,254 +174,281 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: var(--space-xs);
+      font-family: var(--font-heading);
       font-weight: 700;
-      font-size: 24px;
-      color: var(--primary);
+      font-size: 1.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    .logo i {
+      color: var(--color-primary);
+      font-size: 1.2em;
+    }
+    .logo:hover {
+      text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: var(--space-xl);
     }
 
     .nav-link {
       font-weight: 500;
-      transition: color 0.3s ease;
+      color: var(--color-text);
+      text-decoration: none;
+      position: relative;
+      padding-block: var(--space-xs);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform var(--transition-fast);
     }
 
-    .nav-link:hover {
-      color: var(--primary);
+    .nav-link:hover::after, .nav-link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
     }
-
+    
     .cta-button {
-      background: var(--gradient-1);
-      color: var(--white);
-      border: none;
-      padding: 12px 24px;
-      border-radius: var(--radius);
+      font-family: var(--font-body);
       font-weight: 600;
+      font-size: 1rem;
+      background: var(--gradient-primary);
+      color: var(--color-white);
+      border: none;
+      padding: var(--space-s) var(--space-l);
+      border-radius: var(--border-radius-m);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: var(--shadow-sm);
     }
 
     .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
     .mobile-menu-button {
       display: none;
       background: none;
       border: none;
-      font-size: 24px;
-      color: var(--dark);
+      font-size: 1.75rem;
+      color: var(--color-text);
       cursor: pointer;
+      z-index: 1002;
     }
 
-    /* Hero Section */
+    /* ---------------------------------- */
+    /*            3. HERO SECTION         */
+    /* ---------------------------------- */
     .hero {
-      padding-top: 120px;
-      padding-bottom: 80px;
-      position: relative;
+      padding-top: calc(var(--space-xxxl) * 2);
       overflow: hidden;
     }
 
     .hero-content {
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 40px;
-    }
-
-    .hero-text {
-      flex: 1;
+      gap: var(--space-xxxl);
     }
 
     .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 24px;
-      line-height: 1.2;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: var(--space-l);
     }
 
     .hero-subtitle {
-      font-size: 1.2rem;
-      margin-bottom: 32px;
-      color: #666;
-      line-height: 1.6;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      margin-bottom: var(--space-xl);
+      max-width: 50ch;
+      color: var(--color-text-muted);
     }
 
     .app-store-buttons {
       display: flex;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: var(--space-m);
+      flex-wrap: wrap;
     }
 
     .app-store-button {
       display: flex;
       align-items: center;
-      gap: 8px;
-      background-color: var(--dark);
-      color: var(--white);
-      padding: 12px 20px;
-      border-radius: var(--radius);
-      transition: transform 0.3s ease;
+      gap: var(--space-s);
+      background-color: var(--color-secondary);
+      color: var(--color-white);
+      padding: var(--space-s) var(--space-l);
+      border-radius: var(--border-radius-s);
+      text-decoration: none;
+      transition: transform var(--transition-fast), background-color var(--transition-fast);
     }
 
     .app-store-button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      background-color: #3d4a5e;
     }
 
     .app-store-button i {
-      font-size: 24px;
+      font-size: 1.75rem;
     }
 
     .app-store-text {
       display: flex;
       flex-direction: column;
+      text-align: left;
     }
 
     .app-store-text small {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
+      opacity: 0.8;
+      text-transform: uppercase;
     }
 
     .app-store-text strong {
       font-size: 1rem;
+      font-weight: 600;
     }
-
+    
     .hero-image {
-      flex: 1;
       position: relative;
+      perspective: 1500px;
     }
 
     .device-mockup {
       width: 100%;
-      max-width: 400px;
-      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.15));
-      transform: perspective(1000px) rotateY(-15deg);
-      transition: transform 0.5s ease;
+      max-width: 380px;
+      margin-inline: auto;
+      border-radius: var(--border-radius-l);
+      box-shadow: var(--shadow-lg);
+      transform: rotateY(-10deg) rotateX(5deg);
+      transition: transform var(--transition-medium);
+      border: 8px solid var(--color-secondary);
+      overflow: hidden;
     }
-
-    .device-mockup:hover {
-      transform: perspective(1000px) rotateY(0deg);
+    
+    .hero-image:hover .device-mockup {
+      transform: rotateY(0) rotateX(0);
     }
-
+    
     .floating-card {
       position: absolute;
-      background-color: var(--white);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
+      background-color: var(--color-surface);
+      border-radius: var(--border-radius-m);
+      padding: var(--space-s);
+      box-shadow: var(--shadow-md);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: var(--space-s);
       width: 220px;
-      z-index: 2;
+      animation: float 8s ease-in-out infinite;
     }
 
     .floating-card.card-1 {
-      top: 25%;
-      left: -50px;
-      animation: float 6s ease-in-out infinite;
+      top: 20%;
+      left: -40px;
+      animation-delay: 0s;
     }
 
     .floating-card.card-2 {
-      bottom: 25%;
-      right: -30px;
-      animation: float 8s ease-in-out infinite 1s;
+      bottom: 20%;
+      right: -20px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     .floating-card img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
+      width: 50px;
+      height: 50px;
+      border-radius: var(--border-radius-s);
       object-fit: cover;
     }
 
     .floating-card-text h4 {
+      font-family: var(--font-body);
       font-size: 1rem;
-      margin-bottom: 4px;
+      font-weight: 600;
+      margin-bottom: var(--space-xxs);
     }
-
     .floating-card-text p {
-      font-size: 0.8rem;
-      color: #666;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
     }
 
-    /* Features Section */
+    /* ---------------------------------- */
+    /*          4. FEATURES SECTION       */
+    /* ---------------------------------- */
     .features {
-      padding: 80px 0;
-      background-color: var(--white);
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.1rem;
-      color: #666;
-      max-width: 600px;
-      margin: 0 auto 60px;
+      background-color: var(--color-accent);
     }
 
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
+      gap: var(--space-xl);
     }
 
     .feature-card {
-      background-color: var(--light);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: var(--color-surface);
+      border-radius: var(--border-radius-m);
+      padding: var(--space-xl);
+      transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+      border: 1px solid var(--color-border);
     }
 
     .feature-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow);
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
     }
 
     .feature-icon {
       width: 64px;
       height: 64px;
-      background: var(--gradient-2);
+      background: var(--gradient-primary);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      color: var(--white);
-      font-size: 28px;
+      display: grid;
+      place-items: center;
+      margin-bottom: var(--space-l);
+      color: var(--color-white);
+      font-size: 1.75rem;
+      box-shadow: var(--shadow-md);
     }
 
     .feature-title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 16px;
+      font-size: 1.375rem;
+      margin-bottom: var(--space-s);
     }
 
     .feature-description {
-      color: #666;
-      line-height: 1.6;
+      color: var(--color-text-muted);
+      line-height: 1.7;
     }
-
-    /* How It Works Section */
+    
+    /* ---------------------------------- */
+    /*        5. HOW IT WORKS SECTION     */
+    /* ---------------------------------- */
     .how-it-works {
-      padding: 80px 0;
-      background-color: var(--light);
+        background-color: var(--color-background);
     }
-
+    
     .steps {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-l);
       position: relative;
     }
 
@@ -323,10 +456,10 @@
       content: '';
       position: absolute;
       top: 40px;
-      left: 0;
-      right: 0;
+      left: 12.5%;
+      right: 12.5%;
       height: 2px;
-      background: var(--gradient-1);
+      background: repeating-linear-gradient(90deg, var(--color-primary), var(--color-primary) 6px, transparent 6px, transparent 12px);
       z-index: 0;
     }
 
@@ -335,49 +468,48 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 22%;
       position: relative;
       z-index: 1;
     }
-
+    
     .step-number {
       width: 80px;
       height: 80px;
-      background: var(--gradient-1);
+      background: var(--color-surface);
+      border: 3px solid var(--color-primary);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 1.5rem;
+      display: grid;
+      place-items: center;
+      color: var(--color-primary);
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 24px;
+      font-family: var(--font-heading);
+      margin-bottom: var(--space-l);
+      box-shadow: var(--shadow-md);
     }
 
     .step-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 12px;
+      font-size: 1.25rem;
+      margin-bottom: var(--space-xs);
     }
 
     .step-description {
-      color: #666;
+      color: var(--color-text-muted);
       font-size: 0.9rem;
     }
 
-    /* App Showcase Section */
+    /* ---------------------------------- */
+    /*       6. APP SHOWCASE SECTION      */
+    /* ---------------------------------- */
     .app-showcase {
-      padding: 80px 0;
-      background: var(--white);
-      position: relative;
+      background-color: var(--color-surface);
       overflow: hidden;
     }
 
     .swipe-demo {
-      position: relative;
+      perspective: 1000px;
       max-width: 400px;
       margin: 0 auto;
-      perspective: 1000px;
     }
 
     .card-stack {
@@ -385,506 +517,376 @@
       width: 300px;
       height: 450px;
       margin: 0 auto;
+      transform-style: preserve-3d;
     }
-    /* Card stacking styles (for 4 cards) */
+    
     .card {
       position: absolute;
       width: 100%;
       height: 100%;
-      border-radius: 16px;
+      border-radius: var(--border-radius-l);
       background-size: cover;
       background-position: center;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition-medium), opacity var(--transition-medium);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
+      color: var(--color-white);
+      backface-visibility: hidden;
     }
-    /* Overlay gradient for readability */
+
     .card::before {
       content: "";
       position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
       z-index: 1;
     }
+    
     .card-content {
       position: relative;
       z-index: 2;
-      padding: 16px;
+      padding: var(--space-l);
     }
+
     .card-title {
-      font-size: 22px;
+      font-family: var(--font-body);
+      font-size: 1.5rem;
       font-weight: bold;
-      margin-bottom: 8px;
+      color: var(--color-white);
+      margin-bottom: var(--space-xs);
     }
+
     .card-rating {
-      font-size: 16px;
+      font-size: 1rem;
       font-weight: 600;
       display: flex;
       align-items: center;
-      /* justify-content: space-between; Removed justify-content */
-      gap: 8px; /* Add some gap between items */
-    }
-    .card-rating .stars {
-      color: gold; /* Gold color for stars */
-      text-align: left; /* Left align stars - already default but for clarity */
-    }
-    .card-rating .rating-value {
-      /* No container needed, directly style rating value */
-      /* background-color: transparent; Transparent background - Removed container*/
-      /* border: 1px solid rgba(255, 255, 255, 0.5); Semi-transparent border - Removed container */
-      /* border-radius: 5px; Rounded corners - Removed container */
-      /* padding: 2px 8px; Padding around rating value - Removed container */
-      text-align: center; /* Center align text inside container - Removed container, not needed anymore */
-      margin-right: 8px; /* Add some space after the rating value */
-    }
-    .card-rating .price {
-      color: var(--money-green); /* Green color for dollar signs - using money-green variable */
-      text-align: right; /* Right align dollar signs - already default but for clarity */
-      margin-left: auto; /* Push price to the right */
+      gap: var(--space-xs);
     }
 
-    .card-details {
-      font-size: 14px;
-      margin-top: 4px;
-    }
-    /* Stacking transforms & z-index assignments */
-    .card-1 {
-      transform: translateZ(0px) translateX(0) rotate(0deg);
-      z-index: 4;
-    }
-    .card-2 {
-      transform: translateZ(-20px) translateX(-10px) rotate(-5deg);
-      z-index: 3;
-      opacity: 0.9;
-    }
-    .card-3 {
-      transform: translateZ(-40px) translateX(-20px) rotate(-10deg);
-      z-index: 2;
-      opacity: 0.8;
-    }
-    .card-4 {
-      transform: translateZ(-60px) translateX(-30px) rotate(-15deg);
-      z-index: 1;
-      opacity: 0.7;
-    }
-    /* Swipe Animation Classes */
-    .swipe-out-left {
-      transform: translateX(-1000px) rotate(-30deg);
-      opacity: 0;
-    }
-    .swipe-out-right {
-      transform: translateX(1000px) rotate(30deg);
-      opacity: 0;
-    }
-    /* Swipe Actions */
+    .card-rating .stars { color: #FFD700; }
+    .card-rating .price { margin-left: auto; color: #a1ffb1; }
+    
+    /* Reverting to original stack style as requested */
+    .card-1 { transform: translateZ(0px) translateX(0) rotate(0deg); z-index: 4; }
+    .card-2 { transform: translateZ(-20px) translateX(-10px) rotate(-5deg); z-index: 3; opacity: 0.9; }
+    .card-3 { transform: translateZ(-40px) translateX(-20px) rotate(-10deg); z-index: 2; opacity: 0.8; }
+    .card-4 { transform: translateZ(-60px) translateX(-30px) rotate(-15deg); z-index: 1; opacity: 0.7; }
+
+    /* Reverting to original swipe animation as requested */
+    .swipe-out-left { transform: translateX(-1000px) rotate(-30deg); opacity: 0; }
+    .swipe-out-right { transform: translateX(1000px) rotate(30deg); opacity: 0; }
+
     .swipe-actions {
       display: flex;
       justify-content: center;
-      gap: 24px;
-      margin-top: 40px;
+      gap: var(--space-l);
+      margin-top: var(--space-xl);
     }
 
     .swipe-button {
-      width: 60px;
-      height: 60px;
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 1.75rem;
       cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     }
-
-    .swipe-left {
-      background-color: #ff4757;
-      color: var(--white);
-    }
-
-    .swipe-right {
-      background-color: var(--secondary);
-      color: var(--white);
-    }
-
-    .swipe-button:hover {
-      transform: scale(1.1);
-    }
-
-    /* Testimonials Section */
+    .swipe-button:hover { transform: scale(1.1); box-shadow: var(--shadow-lg); }
+    .swipe-left { color: #E63946; }
+    .swipe-right { color: #34A853; }
+    
+    /* ---------------------------------- */
+    /*        7. TESTIMONIALS SECTION     */
+    /* ---------------------------------- */
     .testimonials {
-      padding: 80px 0;
-      background-color: var(--light);
+      background-color: var(--color-accent);
     }
 
     .testimonial-slider {
-      max-width: 800px;
-      margin: 0 auto;
-      position: relative;
       display: flex;
       overflow-x: auto;
-      gap: 20px;
-      padding-bottom: 20px;
       scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      gap: var(--space-xl);
+      padding-bottom: var(--space-l); /* for scrollbar */
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
     }
+    .testimonial-slider::-webkit-scrollbar { display: none; }
 
     .testimonial {
-      background-color: var(--white);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow);
+      flex: 0 0 100%;
+      max-width: 720px;
+      margin-inline: auto;
+      scroll-snap-align: center;
+      background-color: var(--color-surface);
+      border-radius: var(--border-radius-m);
+      padding: var(--space-xxl);
+      box-shadow: var(--shadow-md);
       text-align: center;
-      margin: 20px;
-      flex: 0 0 auto;
-      width: 100%;
-      max-width: 600px;
-      scroll-snap-align: start;
     }
-
+    
     .testimonial-text {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 24px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
       font-style: italic;
-      color: #555;
+      line-height: 1.5;
+      margin-bottom: var(--space-xl);
+      color: var(--color-text);
     }
+    
+    .testimonial-text::before { content: '“'; }
+    .testimonial-text::after { content: '”'; }
 
     .testimonial-author {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
     .testimonial-avatar {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 12px;
+      margin-bottom: var(--space-m);
+      border: 3px solid var(--color-primary);
     }
+    .testimonial-name { font-weight: 600; font-size: 1.1rem; }
+    .testimonial-role { font-size: 0.9rem; color: var(--color-text-muted); }
 
-    .testimonial-name {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .testimonial-role {
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    /* CTA Section */
+    /* ---------------------------------- */
+    /*            8. CTA SECTION          */
+    /* ---------------------------------- */
     .cta {
-      padding: 80px 0;
-      background: var(--gradient-1);
-      color: var(--white);
+      background: var(--gradient-primary);
+      color: var(--color-white);
       text-align: center;
     }
-
-    .cta-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
+    .cta .section-title, .cta .section-subtitle {
+      color: var(--color-white);
     }
-
-    .cta-subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    .cta .section-subtitle { opacity: 0.9; }
 
     .cta-buttons {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: var(--space-l);
+      flex-wrap: wrap;
     }
 
     .cta-app-button {
-      background-color: var(--white);
-      color: var(--primary);
-      padding: 16px 32px;
-      border-radius: var(--radius);
+      background-color: var(--color-surface);
+      color: var(--color-primary);
+      padding: var(--space-m) var(--space-xl);
+      border-radius: var(--border-radius-m);
       font-weight: 600;
+      font-size: 1.1rem;
       display: flex;
       align-items: center;
-      gap: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      gap: var(--space-s);
+      text-decoration: none;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     }
-
+    
     .cta-app-button:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
     }
+    .cta-app-button i { font-size: 1.5rem; }
 
-    .cta-app-button i {
-      font-size: 24px;
-    }
-
-    /* Footer */
+    /* ---------------------------------- */
+    /*            9. FOOTER               */
+    /* ---------------------------------- */
     footer {
-      background-color: var(--dark);
-      color: var(--white);
-      padding: 60px 0 20px;
+      background-color: var(--color-secondary);
+      color: var(--color-accent);
+      padding-top: var(--space-xxxl);
+      padding-bottom: var(--space-xl);
     }
-
+    
     .footer-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: var(--space-xxl);
+      margin-bottom: var(--space-xxl);
     }
 
-    .footer-logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .footer-column:first-child .footer-logo {
+      color: var(--color-white);
     }
+    .footer-description { margin-block: var(--space-m) var(--space-l); line-height: 1.7; opacity: 0.8; }
 
-    .footer-description {
-      margin-bottom: 24px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 16px;
-    }
-
+    .social-links { display: flex; gap: var(--space-m); }
     .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s ease;
+      color: var(--color-accent);
+      font-size: 1.25rem;
+      transition: color var(--transition-fast), transform var(--transition-fast);
     }
-
-    .social-link:hover {
-      background-color: var(--primary);
-    }
+    .social-link:hover { color: var(--color-primary); transform: translateY(-3px); }
 
     .footer-title {
-      font-size: 1.1rem;
+      font-family: var(--font-body);
       font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 1.125rem;
+      margin-bottom: var(--space-l);
+      color: var(--color-white);
     }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
+    .footer-links { display: flex; flex-direction: column; gap: var(--space-s); }
     .footer-link {
-      color: rgba(255, 255, 255, 0.8);
-      transition: color 0.3s ease;
+      color: var(--color-accent);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity var(--transition-fast), color var(--transition-fast);
     }
-
-    .footer-link:hover {
-      color: var(--primary);
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: rgba(255, 255, 255, 0.8);
-    }
+    .footer-link:hover { opacity: 1; color: var(--color-primary); text-decoration: none; }
+    
+    .contact-info { display: flex; flex-direction: column; gap: var(--space-m); }
+    .contact-item { display: flex; gap: var(--space-s); align-items: flex-start; opacity: 0.8; }
+    .contact-item i { margin-top: 4px; color: var(--color-primary); }
 
     .copyright {
       text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.6);
+      padding-top: var(--space-xl);
+      border-top: 1px solid hsl(220 13% 25%);
+      color: var(--color-text-muted);
       font-size: 0.9rem;
     }
 
-    /* Animations */
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-15px);
-      }
-    }
-
-    /* Responsive Styles */
+    /* ---------------------------------- */
+    /*        10. RESPONSIVE & MOBILE     */
+    /* ---------------------------------- */
+    
+    /* Tablet & Smaller Desktops */
     @media (max-width: 992px) {
       .hero-content {
-        flex-direction: column;
-      }
-
-      .hero-text {
-        order: 1;
+        grid-template-columns: 1fr;
         text-align: center;
       }
-
-      .hero-image {
-        order: 0;
-        margin-bottom: 40px;
-      }
-
-      .app-store-buttons {
-        justify-content: center;
-      }
-
-      .floating-card.card-1 {
-        top: 10%;
-        left: 5%;
-      }
-
-      .floating-card.card-2 {
-        bottom: 10%;
-        right: 5%;
-      }
-
+      .hero-text { order: 2; }
+      .hero-image { order: 1; }
+      .hero-subtitle { margin-inline: auto; }
+      .app-store-buttons { justify-content: center; }
+      
+      .floating-card.card-1 { left: 10px; }
+      .floating-card.card-2 { right: 10px; }
+      
       .steps {
-        flex-direction: column;
-        gap: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xl);
       }
-
-      .steps::before {
-        display: none;
+      .steps::before { display: none; }
+      
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
       }
-
-      .step {
-        width: 100%;
-      }
-
-      .testimonial-slider {
-        scroll-snap-type: none;
-        overflow-x: scroll;
-      }
-
-      .testimonial {
-        max-width: 80%;
-      }
+      .footer-column:first-child { grid-column: 1 / -1; }
     }
-
+    
+    /* Mobile Devices */
     @media (max-width: 768px) {
-      .nav-links, .cta-button.desktop {
-        display: none;
-      }
-
-      .mobile-menu-button {
-        display: block;
-      }
-
-      .hero-title {
-        font-size: 2.5rem;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .floating-card {
-        width: 180px;
-      }
-
-      .floating-card img {
-        width: 50px;
-        height: 50px;
-      }
-
-      .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .testimonial {
-        max-width: 95%;
-        margin-left: auto;
-        margin-right: auto;
-      }
+      .nav-links, .cta-button.desktop { display: none; }
+      .mobile-menu-button { display: block; }
+      
+      .floating-card { display: none; } /* Hide floating cards on small screens for clarity */
+      
+      .steps { grid-template-columns: 1fr; }
+      
+      .footer-container { grid-template-columns: 1fr; }
+      
+      .testimonial-slider { scroll-snap-type: none; }
+      .testimonial { padding: var(--space-xl) var(--space-l); }
     }
 
-    /* Mobile Menu */
+    /* ---------------------------------- */
+    /*           11. MOBILE MENU          */
+    /* ---------------------------------- */
     .mobile-menu {
       position: fixed;
       top: 0;
       right: -100%;
-      width: 280px;
+      width: min(80vw, 320px);
       height: 100vh;
-      background-color: var(--white);
+      background-color: var(--color-surface);
       z-index: 1001;
-      padding: 24px;
-      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-      transition: right 0.3s ease;
+      padding: var(--space-xxxl) var(--space-xl);
+      box-shadow: var(--shadow-lg);
+      transition: right var(--transition-medium);
+      display: flex;
+      flex-direction: column;
     }
 
-    .mobile-menu.active {
-      right: 0;
-    }
+    .mobile-menu.active { right: 0; }
 
     .close-menu {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: var(--space-l);
+      right: var(--space-l);
       background: none;
       border: none;
-      font-size: 24px;
-      color: var(--dark);
+      font-size: 2rem;
+      color: var(--color-text);
       cursor: pointer;
     }
-
+    
     .mobile-nav-links {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      margin-top: 60px;
+      gap: var(--space-m);
+      margin-top: var(--space-xl);
     }
-
+    
     .mobile-nav-link {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 500;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      color: var(--color-text);
+      text-decoration: none;
+      padding: var(--space-s);
+      border-radius: var(--border-radius-s);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+    .mobile-nav-link:hover {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+    }
+    
+    .mobile-menu .cta-button {
+      margin-top: var(--space-xl);
+      width: 100%;
+      text-align: center;
+      padding-block: var(--space-m);
     }
 
     .overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 1000;
+      inset: 0;
+      background-color: rgb(0 0 0 / 0.5);
+      z-index: 999;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity var(--transition-medium), visibility var(--transition-medium);
     }
 
     .overlay.active {
       opacity: 1;
       visibility: visible;
     }
+    .logo-img {
+  height: 6.25rem; /* Adjust size as needed */
+  width: auto;
+  border-radius: 50%; /* This is the new line that makes the image a perfect circle */
+  object-fit: cover;    /* Ensures the image fills the circle without distortion */
+}
+
+
   </style>
 </head>
 <body>
@@ -892,9 +894,9 @@
   <header>
     <div class="container header-container">
       <a href="#" class="logo">
-        <i class="fas fa-route"></i>
-        Wanderlust
-      </a>
+  <img src="static/adaptive-icon.png" alt="NomadSwipe Logo" class="logo-img">
+  NomadSwipe
+</a>
       <nav class="nav-links">
         <a href="#features" class="nav-link">Features</a>
         <a href="#how-it-works" class="nav-link">How It Works</a>
@@ -928,35 +930,35 @@
     <div class="container hero-content">
       <div class="hero-text animate__animated animate__fadeInLeft">
         <h1 class="hero-title">Discover Your Next Adventure With a Swipe</h1>
-        <p class="hero-subtitle">Wanderlust makes travel planning simple and fun. Swipe through personalized recommendations, plan multi-destination trips, and share your adventures with friends.</p>
+        <p class="hero-subtitle">NomadSwipe makes travel planning simple and fun. Swipe through personalized recommendations, plan multi-destination trips, and share your adventures with friends.</p>
         <div class="app-store-buttons">
           <a href="#" class="app-store-button">
             <i class="fab fa-apple"></i>
             <div class="app-store-text">
-              <small>Download on the</small>
+              <small>Get it At</small>
               <strong>App Store</strong>
             </div>
           </a>
           <a href="#" class="app-store-button">
             <i class="fab fa-google-play"></i>
             <div class="app-store-text">
-              <small>GET IT ON</small>
+              <small>Get it At</small>
               <strong>Google Play</strong>
             </div>
           </a>
         </div>
       </div>
       <div class="hero-image animate__animated animate__fadeInRight">
-        <img src="https://source.unsplash.com/400x800/?phone,travel" alt="Wanderlust App" class="device-mockup" />
+        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="NomadSwipe App on a phone screen showing a map of Tokyo" class="device-mockup" />
         <div class="floating-card card-1">
-          <img src="https://source.unsplash.com/60x60/?eiffel-tower" alt="Paris" />
+          <img src="static/eiffel.jpg" alt="Paris" />
           <div class="floating-card-text">
             <h4>Eiffel Tower</h4>
             <p>Paris, France</p>
           </div>
         </div>
         <div class="floating-card card-2">
-          <img src="https://source.unsplash.com/60x60/?bali" alt="Bali" />
+          <img src="static/ubud.jpg" alt="Bali" />
           <div class="floating-card-text">
             <h4>Ubud Retreat</h4>
             <p>Bali, Indonesia</p>
@@ -969,48 +971,36 @@
   <!-- Features Section -->
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title">Why Choose Wanderlust</h2>
-      <p class="section-subtitle">Discover what makes our travel app different from the rest</p>
+      <h2 class="section-title">Why Choose NomadSwipe</h2>
+      <p class="section-subtitle">Discover what makes our travel app different from the rest. We focus on intuitive design, powerful features, and a community of passionate explorers.</p>
       <div class="features-grid">
         <div class="feature-card animate__animated animate__fadeInUp">
-          <div class="feature-icon">
-            <i class="fas fa-hand-pointer"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-hand-pointer"></i></div>
           <h3 class="feature-title">Swipe to Discover</h3>
           <p class="feature-description">Find your next destination, restaurant, or attraction with a simple swipe. Our intuitive interface makes discovering new places fun and easy.</p>
         </div>
         <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <div class="feature-icon">
-            <i class="fas fa-globe-americas"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
           <h3 class="feature-title">Multi-Destination Planning</h3>
           <p class="feature-description">Plan complex trips across multiple countries and cities with our smart trip planner. Organize your itinerary with ease.</p>
         </div>
         <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <div class="feature-icon">
-            <i class="fas fa-users"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-users"></i></div>
           <h3 class="feature-title">Collaborative Trips</h3>
           <p class="feature-description">Plan your journey together with friends and family. Share ideas, vote on activities, and create the perfect itinerary as a team.</p>
         </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-          <div class="feature-icon">
-            <i class="fas fa-filter"></i>
-          </div>
+        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="feature-icon"><i class="fas fa-filter"></i></div>
           <h3 class="feature-title">Advanced Filters</h3>
           <p class="feature-description">Find exactly what you're looking for with comprehensive filters for budget, activities, accessibility, and more.</p>
         </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
-          <div class="feature-icon">
-            <i class="fas fa-star"></i>
-          </div>
+        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div class="feature-icon"><i class="fas fa-star"></i></div>
           <h3 class="feature-title">Authentic Reviews</h3>
           <p class="feature-description">Make informed decisions with our detailed rating system and authentic reviews from fellow travelers.</p>
         </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 1s;">
-          <div class="feature-icon">
-            <i class="fas fa-share-alt"></i>
-          </div>
+        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+          <div class="feature-icon"><i class="fas fa-share-alt"></i></div>
           <h3 class="feature-title">Trip Sharing</h3>
           <p class="feature-description">Share your adventures with friends or get inspired by other travelers' journeys with our social sharing features.</p>
         </div>
@@ -1021,25 +1011,25 @@
   <!-- How It Works Section -->
   <section class="how-it-works" id="how-it-works">
     <div class="container">
-      <h2 class="section-title">How It Works</h2>
-      <p class="section-subtitle">Getting started with Wanderlust is simple</p>
+      <h2 class="section-title">How It Works in 4 Easy Steps</h2>
+      <p class="section-subtitle">Getting started with NomadSwipe is as simple as it gets. Go from download to discovery in just a few minutes.</p>
       <div class="steps">
         <div class="step animate__animated animate__fadeInUp">
           <div class="step-number">1</div>
           <h3 class="step-title">Download</h3>
           <p class="step-description">Get the app from App Store or Google Play</p>
         </div>
-        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
           <div class="step-number">2</div>
           <h3 class="step-title">Set Preferences</h3>
           <p class="step-description">Tell us what you like in a destination</p>
         </div>
-        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
           <div class="step-number">3</div>
           <h3 class="step-title">Swipe & Save</h3>
           <p class="step-description">Discover places and save your favorites</p>
         </div>
-        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.9s;">
+        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
           <div class="step-number">4</div>
           <h3 class="step-title">Plan & Go</h3>
           <p class="step-description">Create your itinerary and start exploring</p>
@@ -1055,49 +1045,17 @@
       <p class="section-subtitle">Experience the swipe-based discovery and trip planning</p>
       <div class="swipe-demo">
         <div class="card-stack">
-          <!-- Card #1: Tourist Attraction -->
-          <div class="card card-1" style="background-image: url('vegas.jpg'); border: 3px solid #F59342;">
-            <div class="card-content">
-              <div class="card-title">Welcome to Fabulous Las Vegas Sign</div>
-              <div class="card-rating">
-                <span class="stars">★★★★<span style="opacity: 0.5;">★</span></span>
-                <span class="rating-value">4.6</span>
-                <span class="price"></span>
-              </div>
-            </div>
+          <div class="card card-1" style="background-image: url('static/vegas.jpg'); border: 3px solid #F59342;">
+            <div class="card-content"><div class="card-title">Welcome to Fabulous Las Vegas Sign</div><div class="card-rating"><span class="stars">★★★★<span style="opacity: 0.5;">★</span></span><span class="rating-value">4.6</span></div></div>
           </div>
-          <!-- Card #2: Accommodation -->
-          <div class="card card-2" style="background-image: url('bellagio.jpg'); border: 3px solid #42f587;">
-            <div class="card-content">
-              <div class="card-title">Bellagio Hotel & Casino</div>
-              <div class="card-rating">
-                <span class="stars">★★★★★</span>
-                <span class="rating-value">4.7</span>
-                <span class="price">$$$$</span>
-              </div>
-            </div>
+          <div class="card card-2" style="background-image: url('static/bellagio.jpg'); border: 3px solid #42f587;">
+            <div class="card-content"><div class="card-title">Bellagio Hotel & Casino</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rating-value">4.7</span><span class="price">$$$$</span></div></div>
           </div>
-          <!-- Card #3: Restaurant -->
-          <div class="card card-3" style="background-image: url('hardrock.jpg'); border: 3px solid #FF66A1;">
-            <div class="card-content">
-              <div class="card-title">Hard Rock Cafe - Las Vegas</div>
-              <div class="card-rating">
-                <span class="stars">★★★<span style="opacity: 0.5;">★★</span></span>
-                <span class="rating-value">4.4</span>
-                <span class="price">$$</span>
-              </div>
-            </div>
+          <div class="card card-3" style="background-image: url('static/hardrock.jpg'); border: 3px solid #FF66A1;">
+            <div class="card-content"><div class="card-title">Hard Rock Cafe</div><div class="card-rating"><span class="stars">★★★★<span style="opacity: 0.5;">★</span></span><span class="rating-value">4.4</span><span class="price">$$</span></div></div>
           </div>
-          <!-- Card #4: Bar -->
-          <div class="card card-4" style="background-image: url('goldentiki.jpg'); border: 3px solid #4287f5;">
-            <div class="card-content">
-              <div class="card-title">Golden Tiki Bar</div>
-              <div class="card-rating">
-                <span class="stars">★★★★<span style="opacity: 0.5;">★</span></span>
-                <span class="rating-value">4.6</span>
-                <span class="price">$$</span>
-              </div>
-            </div>
+          <div class="card card-4" style="background-image: url('static/goldentiki.jpg'); border: 3px solid #4287f5;">
+            <div class="card-content"><div class="card-title">The Golden Tiki</div><div class="card-rating"><span class="stars">★★★★<span style="opacity: 0.5;">★</span></span><span class="rating-value">4.6</span><span class="price">$$</span></div></div>
           </div>
         </div>
         <div class="swipe-actions">
@@ -1112,28 +1070,28 @@
   <section class="testimonials" id="testimonials">
     <div class="container">
       <h2 class="section-title">What Travelers Say</h2>
-      <p class="section-subtitle">Real stories from Wanderlust users</p>
+      <p class="section-subtitle">Real stories from our global community of NomadSwipe users.</p>
       <div class="testimonial-slider">
-        <div class="testimonial animate__animated animate__fadeInUp">
-          <p class="testimonial-text">"Wanderlust has completely changed the way I plan trips. It's so intuitive and fun to use! I've discovered places I never would have found otherwise."</p>
+        <div class="testimonial">
+          <p class="testimonial-text">NomadSwipe has completely changed the way I plan trips. It's so intuitive and fun to use! I've discovered places I never would have found otherwise.</p>
           <div class="testimonial-author">
-            <img src="https://source.unsplash.com/64x64/?woman,traveler" alt="Avatar 1" class="testimonial-avatar">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=128&q=80" alt="Avatar 1" class="testimonial-avatar">
             <strong class="testimonial-name">Jane Doe</strong>
             <span class="testimonial-role">Solo Adventurer</span>
           </div>
         </div>
-        <div class="testimonial animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <p class="testimonial-text">"Planning group trips used to be a nightmare, but Wanderlust's collaborative feature is a game-changer. Everyone gets a say, and it's actually enjoyable now!"</p>
+        <div class="testimonial">
+          <p class="testimonial-text">Planning group trips used to be a nightmare, but NomadSwipe's collaborative feature is a game-changer. Everyone gets a say, and it's actually enjoyable now!</p>
           <div class="testimonial-author">
-            <img src="https://source.unsplash.com/64x64/?man,traveler" alt="Avatar 2" class="testimonial-avatar">
+            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=128&q=80" alt="Avatar 2" class="testimonial-avatar">
             <strong class="testimonial-name">John Smith</strong>
             <span class="testimonial-role">Family Trip Planner</span>
           </div>
         </div>
-        <div class="testimonial animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <p class="testimonial-text">"The filters are incredibly detailed. I can narrow down my search to exactly what I want, whether it's budget-friendly restaurants or wheelchair-accessible attractions. Love it!"</p>
+        <div class="testimonial">
+          <p class="testimonial-text">The filters are incredibly detailed. I can narrow down my search to exactly what I want, whether it's budget-friendly restaurants or accessible attractions. Love it!</p>
           <div class="testimonial-author">
-            <img src="https://source.unsplash.com/64x64/?woman,smiling" alt="Avatar 3" class="testimonial-avatar">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="Avatar 3" class="testimonial-avatar">
             <strong class="testimonial-name">Emily White</strong>
             <span class="testimonial-role">Accessible Travel Enthusiast</span>
           </div>
@@ -1146,7 +1104,7 @@
   <section class="cta" id="download">
     <div class="container">
       <h2 class="cta-title">Ready to Start Your Adventure?</h2>
-      <p class="cta-subtitle">Download Wanderlust today and begin exploring the world</p>
+      <p class="cta-subtitle">Download NomadSwipe today and begin exploring the world one swipe at a time. Your next great story is waiting to be written.</p>
       <div class="cta-buttons">
         <a href="#" class="cta-app-button">
           <i class="fab fa-apple"></i>
@@ -1162,56 +1120,58 @@
 
   <!-- Footer -->
   <footer>
-    <div class="container footer-container">
-      <div class="footer-column">
-        <a href="#" class="footer-logo">
-          <i class="fas fa-route"></i>
-          Wanderlust
-        </a>
-        <p class="footer-description">Discover the world with Wanderlust. Your personalized travel companion.</p>
-        <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h4 class="footer-title">Company</h4>
-        <div class="footer-links">
-          <a href="#" class="footer-link">About Us</a>
-          <a href="#" class="footer-link">Careers</a>
-          <a href="#" class="footer-link">Press</a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h4 class="footer-title">Help</h4>
-        <div class="footer-links">
-          <a href="#" class="footer-link">FAQ</a>
-          <a href="#" class="footer-link">Support</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-          <a href="#" class="footer-link">Privacy Policy</a>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h4 class="footer-title">Contact</h4>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>123 Main Street, City, Country</span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <span>+1 555-123-4567</span>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>info@wanderlustapp.com</span>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <a href="#" class="footer-logo">
+            <i class="fas fa-route"></i>
+            NomadSwipe
+          </a>
+          <p class="footer-description">Discover the world with NomadSwipe. Your personalized travel companion for creating unforgettable journeys.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Company</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Press</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Help</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">FAQ</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+<a href="privacypolicy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Contact</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-globe"></i>
+              <span>www.nomadswipe.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>contact@nomadswipe.com</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="copyright">
-      © 2023 Wanderlust. All Rights Reserved.
+      <div class="copyright">
+        © 2024 NomadSwipe. Crafted with passion. All Rights Reserved.
+      </div>
     </div>
   </footer>
 
@@ -1222,20 +1182,26 @@
       const closeMenuButton = document.getElementById('closeMenu');
       const mobileMenu = document.getElementById('mobileMenu');
       const overlay = document.getElementById('overlay');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-menu .cta-button');
 
-      mobileMenuButton.addEventListener('click', () => {
+      function openMenu() {
         mobileMenu.classList.add('active');
         overlay.classList.add('active');
-      });
+        document.body.style.overflow = 'hidden';
+      }
 
-      closeMenuButton.addEventListener('click', () => {
+      function closeMenu() {
         mobileMenu.classList.remove('active');
         overlay.classList.remove('active');
-      });
+        document.body.style.overflow = '';
+      }
 
-      overlay.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        overlay.classList.remove('active');
+      mobileMenuButton.addEventListener('click', openMenu);
+      closeMenuButton.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+      
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
       });
     });
 
@@ -1245,40 +1211,39 @@
       const swipeRightBtn = document.querySelector('.swipe-right');
       const cardStack = document.querySelector('.card-stack');
 
-      // Helper: update card classes based on new order
+      if (!swipeLeftBtn || !swipeRightBtn || !cardStack) return;
+
       function updateCardClasses() {
         const cards = cardStack.querySelectorAll('.card');
         cards.forEach((card, index) => {
+          // Temporarily store inline style
+          const inlineStyle = card.getAttribute('style');
+          
+          // Reset className
           card.className = 'card';
-          if (index === 0) {
-            card.classList.add('card-1');
-          } else if (index === 1) {
-            card.classList.add('card-2');
-          } else if (index === 2) {
-            card.classList.add('card-3');
-          } else if (index === 3) {
-            card.classList.add('card-4');
+          
+          // Add back the positional class
+          card.classList.add(`card-${index + 1}`);
+
+          // Restore inline style
+          if (inlineStyle) {
+            card.setAttribute('style', inlineStyle);
           }
         });
       }
 
       function swipeCard(direction) {
-        const cards = cardStack.querySelectorAll('.card');
-        if (!cards.length) return;
-        const topCard = cards[0];
-        // Add animation class based on direction
-        if (direction === 'left') {
-          topCard.classList.add('swipe-out-left');
-        } else {
-          topCard.classList.add('swipe-out-right');
-        }
-        // When transition ends, move card to bottom and update classes
+        const topCard = cardStack.querySelector('.card-1');
+        if (!topCard) return;
+
+        topCard.classList.add(direction === 'left' ? 'swipe-out-left' : 'swipe-out-right');
+
         topCard.addEventListener('transitionend', function handler() {
+          topCard.removeEventListener('transitionend', handler);
           topCard.classList.remove('swipe-out-left', 'swipe-out-right');
           cardStack.appendChild(topCard);
           updateCardClasses();
-          topCard.removeEventListener('transitionend', handler);
-        });
+        }, { once: true });
       }
 
       swipeLeftBtn.addEventListener('click', () => swipeCard('left'));

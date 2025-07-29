@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - NomadSwipe</title>
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /*
+    ==========================================================================
+    Styling from index.html - Applied to Privacy Policy
+    ==========================================================================
+    */
+
+    /* ---------------------------------- */
+    /*          1. ROOT & GLOBALS         */
+    /* ---------------------------------- */
+    :root {
+      /* Color Palette */
+      --color-primary: #EE6C4D;
+      --color-secondary: #293241;
+      --color-accent: #E0FBFC;
+      --color-background: #F8F7F4;
+      --color-surface: #FFFFFF;
+      --color-text: #293241;
+      --color-text-muted: #6D727B;
+      --color-white: #FFFFFF;
+      --color-border: #E0E0E0;
+      
+      --gradient-primary: linear-gradient(135deg, #EE6C4D 0%, #E63946 100%);
+      --gradient-subtle: linear-gradient(135deg, #E0FBFC 0%, #CADEF5 100%);
+
+      /* Typography */
+      --font-heading: 'Lora', serif;
+      --font-body: 'Inter', sans-serif;
+      
+      /* Spacing Scale (Rhythmic & Consistent) */
+      --space-xxs: 0.25rem;  /* 4px */
+      --space-xs:  0.5rem;   /* 8px */
+      --space-s:   0.75rem;  /* 12px */
+      --space-m:   1rem;     /* 16px */
+      --space-l:   1.5rem;   /* 24px */
+      --space-xl:  2.5rem;   /* 40px */
+      --space-xxl: 4rem;     /* 64px */
+      --space-xxxl: 6rem;    /* 96px */
+
+      /* Other Properties */
+      --border-radius-s: 8px;
+      --border-radius-m: 16px;
+      --border-radius-l: 24px;
+      --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --transition-fast: 200ms ease-in-out;
+      --transition-medium: 400ms ease-in-out;
+    }
+
+    /* Base Reset & Smooth Behavior */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Accessibility: Focus Visible */
+    :focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--border-radius-s);
+    }
+    
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: var(--space-l);
+    }
+    
+    /* Section Padding */
+    section {
+      padding-block: var(--space-xxxl);
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding-block: var(--space-xxl);
+      }
+    }
+
+    /* Headings & Text */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-text);
+    }
+    
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------------------------- */
+    /*            2. HEADER               */
+    /* ---------------------------------- */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding-block: var(--space-m);
+      background-color: hsl(0 0% 100% / 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid hsl(0 0% 0% / 0.05);
+      transition: background-color var(--transition-medium);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    .logo i {
+      color: var(--color-primary);
+      font-size: 1.2em;
+    }
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-xl);
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      position: relative;
+      padding-block: var(--space-xs);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform var(--transition-fast);
+    }
+
+    .nav-link:hover::after, .nav-link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    .cta-button {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      background: var(--gradient-primary);
+      color: var(--color-white);
+      border: none;
+      padding: var(--space-s) var(--space-l);
+      border-radius: var(--border-radius-m);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      color: var(--color-text);
+      cursor: pointer;
+      z-index: 1002;
+    }
+    
+    /* ---------------------------------- */
+    /*           9. FOOTER                */
+    /* ---------------------------------- */
+    footer {
+      background-color: var(--color-secondary);
+      color: var(--color-accent);
+      padding-top: var(--space-xxxl);
+      padding-bottom: var(--space-xl);
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: var(--space-xxl);
+      margin-bottom: var(--space-xxl);
+    }
+
+    .footer-column:first-child .footer-logo {
+      color: var(--color-white);
+    }
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--space-m);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        color: var(--color-white);
+        text-decoration: none;
+    }
+    .footer-description { margin-block: var(--space-m) var(--space-l); line-height: 1.7; opacity: 0.8; }
+
+    .social-links { display: flex; gap: var(--space-m); }
+    .social-link {
+      color: var(--color-accent);
+      font-size: 1.25rem;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+    .social-link:hover { color: var(--color-primary); transform: translateY(-3px); text-decoration: none;}
+
+    .footer-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: var(--space-l);
+      color: var(--color-white);
+    }
+    .footer-links { display: flex; flex-direction: column; gap: var(--space-s); }
+    .footer-link {
+      color: var(--color-accent);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity var(--transition-fast), color var(--transition-fast);
+    }
+    .footer-link:hover { opacity: 1; color: var(--color-primary); text-decoration: none; }
+    
+    .contact-info { display: flex; flex-direction: column; gap: var(--space-m); }
+    .contact-item { display: flex; gap: var(--space-s); align-items: flex-start; opacity: 0.8; }
+    .contact-item i { margin-top: 4px; color: var(--color-primary); }
+
+    .copyright {
+      text-align: center;
+      padding-top: var(--space-xl);
+      border-top: 1px solid hsl(220 13% 25%);
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+    
+    /* ---------------------------------- */
+    /*        10. RESPONSIVE & MOBILE     */
+    /* ---------------------------------- */
+    @media (max-width: 992px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-column:first-child { grid-column: 1 / -1; }
+    }
+    
+    /* Mobile Devices */
+    @media (max-width: 768px) {
+      .nav-links, .cta-button.desktop { display: none; }
+      .mobile-menu-button { display: block; }
+      .footer-container { grid-template-columns: 1fr; }
+    }
+    
+    /* ---------------------------------- */
+    /*           11. MOBILE MENU          */
+    /* ---------------------------------- */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(80vw, 320px);
+      height: 100vh;
+      background-color: var(--color-surface);
+      z-index: 1001;
+      padding: var(--space-xxxl) var(--space-xl);
+      box-shadow: var(--shadow-lg);
+      transition: right var(--transition-medium);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu.active { right: 0; }
+
+    .close-menu {
+      position: absolute;
+      top: var(--space-l);
+      right: var(--space-l);
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+    
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+      margin-top: var(--space-xl);
+    }
+    
+    .mobile-nav-link {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      padding: var(--space-s);
+      border-radius: var(--border-radius-s);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+    .mobile-nav-link:hover {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+    
+    .mobile-menu .cta-button {
+      margin-top: var(--space-xl);
+      width: 100%;
+      text-align: center;
+      padding-block: var(--space-m);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgb(0 0 0 / 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-medium), visibility var(--transition-medium);
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* --- [Custom Styles for Privacy Policy Page] --- */
+    .policy-page {
+      padding-top: calc(var(--space-xxxl) + 60px); /* Space for fixed header */
+      padding-bottom: var(--space-xxxl);
+      background-color: var(--color-surface);
+    }
+    .policy-content {
+      max-width: 800px;
+      margin-inline: auto;
+    }
+    .policy-content h1 {
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      text-align: center;
+      margin-bottom: var(--space-m);
+    }
+    .policy-content .last-updated {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-xxl);
+    }
+    .policy-content h2 {
+      font-size: 1.8rem;
+      margin-top: var(--space-xl);
+      margin-bottom: var(--space-m);
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: var(--space-xs);
+    }
+    .policy-content h3 {
+      font-size: 1.3rem;
+      margin-top: var(--space-l);
+      margin-bottom: var(--space-s);
+      color: var(--color-secondary);
+    }
+    .policy-content p, .policy-content li {
+      margin-bottom: var(--space-m);
+      color: var(--color-text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .policy-content ul {
+      list-style-position: outside;
+      padding-left: var(--space-l);
+      margin-bottom: var(--space-m);
+    }
+     .policy-content ul li::marker {
+      color: var(--color-primary);
+    }
+    .policy-content a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+    .policy-content a:hover {
+      color: var(--color-secondary);
+    }
+    .policy-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: var(--space-xl) 0;
+        font-size: 0.9em;
+        font-family: var(--font-body);
+        box-shadow: var(--shadow-sm);
+        border-radius: var(--border-radius-s);
+        overflow: hidden;
+    }
+    .policy-content thead tr {
+        background-color: var(--color-secondary);
+        color: var(--color-white);
+        text-align: left;
+        font-weight: 600;
+    }
+    .policy-content th, .policy-content td {
+        padding: var(--space-s) var(--space-m);
+    }
+    .policy-content tbody tr {
+        border-bottom: 1px solid var(--color-border);
+    }
+    .policy-content tbody tr:nth-of-type(even) {
+        background-color: var(--color-accent);
+    }
+     .policy-content tbody tr:last-of-type {
+        border-bottom: none;
+    }
+    .toc-link {
+        font-weight: 500;
+        text-decoration: none;
+        display: block;
+        padding: var(--space-xxs) 0;
+        color: var(--color-text);
+        transition: color var(--transition-fast), padding-left var(--transition-fast);
+    }
+    .toc-link:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+        padding-left: var(--space-xs);
+    }
+    
+    @media (max-width: 768px) {
+      .policy-content h1 { font-size: 2rem; }
+      .policy-content h2 { font-size: 1.5rem; }
+      .policy-content h3 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-route"></i>
+        NomadSwipe
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+        <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+        <a href="index.html#download" class="nav-link">Download</a>
+      </nav>
+      <a href="index.html#download" class="cta-button desktop">Get Started</a>
+      <button class="mobile-menu-button" id="mobileMenuButton">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="overlay" id="overlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-nav-links">
+      <a href="index.html#features" class="mobile-nav-link">Features</a>
+      <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+      <a href="index.html#testimonials" class="mobile-nav-link">Testimonials</a>
+      <a href="index.html#download" class="mobile-nav-link">Download</a>
+      <a href="index.html#download" class="cta-button">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Section -->
+  <section class="policy-page">
+    <div class="container">
+      <div class="policy-content">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last updated July 28, 2025</p>
+
+        <p>This Privacy Notice for NomadSwipe ("we," "us," or "our"), describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:</p>
+        <ul>
+            <li>Download and use our mobile application (NomadSwipe), or any other application of ours that links to this Privacy Notice</li>
+            <li>Use NomadSwipe. NomadSwipe is a cutting-edge travel discovery app that lets you explore the world through dynamic, swipe-based cards tailored to your interests and location. Whether you're a cultural explorer, nature lover, or thrill-seeker, NomadSwipe intelligently curates nearby attractions and must-visit destinations using real-time GPS, intelligent filtering, and category-based personalization. Instantly swipe to like or skip, save favorites, and view them on a sleek, interactive map. With smooth animations, offline caching, and AI-powered content—NomadSwipe transforms how modern travelers discover where to go next. Your journey starts with a swipe.</li>
+            <li>Engage with us in other related ways, including any sales, marketing, or events</li>
+        </ul>
+        <p><strong>Questions or concerns?</strong> Reading this Privacy Notice will help you understand your privacy rights and choices. We are responsible for making decisions about how your personal information is processed. If you do not agree with our policies and practices, please do not use our Services. If you still have any questions or concerns, please contact us at <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
+        
+        <h2 id="summary">SUMMARY OF KEY POINTS</h2>
+        <p><em>This summary provides key points from our Privacy Notice, but you can find out more details about any of these topics by using our table of contents below to find the section you are looking for.</em></p>
+        <ul>
+            <li><strong>What personal information do we process?</strong> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us and the Services, the choices you make, and the products and features you use.</li>
+            <li><strong>Do we process any sensitive personal information?</strong> We do not process sensitive personal information.</li>
+            <li><strong>Do we collect any information from third parties?</strong> We do not collect any information from third parties.</li>
+            <li><strong>How do we process your information?</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</li>
+            <li><strong>In what situations and with which parties do we share personal information?</strong> We may share information in specific situations and with specific third parties.</li>
+            <li><strong>How do we keep your information safe?</strong> We have adequate organizational and technical processes and procedures in place to protect your personal information. However, no electronic transmission over the internet can be guaranteed to be 100% secure.</li>
+            <li><strong>What are your rights?</strong> Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information.</li>
+            <li><strong>How do you exercise your rights?</strong> The easiest way to exercise your rights is by contacting us. We will consider and act upon any request in accordance with applicable data protection laws.</li>
+        </ul>
+
+        <h2 id="toc">TABLE OF CONTENTS</h2>
+        <a href="#infocollect" class="toc-link">1. WHAT INFORMATION DO WE COLLECT?</a>
+        <a href="#infoprocess" class="toc-link">2. HOW DO WE PROCESS YOUR INFORMATION?</a>
+        <a href="#legalbases" class="toc-link">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?</a>
+        <a href="#infoshare" class="toc-link">4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</a>
+        <a href="#cookies" class="toc-link">5. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</a>
+        <a href="#inforetain" class="toc-link">6. HOW LONG DO WE KEEP YOUR INFORMATION?</a>
+        <a href="#infosafe" class="toc-link">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</a>
+        <a href="#infominors" class="toc-link">8. DO WE COLLECT INFORMATION FROM MINORS?</a>
+        <a href="#privacyrights" class="toc-link">9. WHAT ARE YOUR PRIVACY RIGHTS?</a>
+        <a href="#dnt" class="toc-link">10. CONTROLS FOR DO-NOT-TRACK FEATURES</a>
+        <a href="#usrights" class="toc-link">11. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</a>
+        <a href="#otherregions" class="toc-link">12. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?</a>
+        <a href="#updates" class="toc-link">13. DO WE MAKE UPDATES TO THIS NOTICE?</a>
+        <a href="#contact" class="toc-link">14. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</a>
+        <a href="#review" class="toc-link">15. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</a>
+
+        <h2 id="infocollect">1. WHAT INFORMATION DO WE COLLECT?</h2>
+        <h3>Personal information you disclose to us</h3>
+        <p><strong><em>In Short:</em></strong><em> We collect personal information that you provide to us.</em></p>
+        <p>We collect personal information that you voluntarily provide to us when you register on the Services, express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.</p>
+        <p><strong>Personal Information Provided by You.</strong> The personal information we collect may include:</p>
+        <ul>
+            <li>names</li>
+            <li>email addresses</li>
+            <li>usernames</li>
+            <li>passwords</li>
+        </ul>
+        <p><strong>Sensitive Information.</strong> We do not process sensitive information.</p>
+        <p><strong>Payment Data.</strong> We may collect data necessary to process your payment if you choose to make purchases. All payment data is handled by Google Play. You can find their privacy notice here: <a href="https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice" target="_blank" rel="noopener noreferrer">https://payments.google.com/payments/apis-secure/get_legal_document?ldo=0&ldt=privacynotice</a>.</p>
+        <p><strong>Application Data.</strong> If you use our application(s), we may also collect the following information if you provide access or permission:</p>
+        <ul>
+            <li><strong>Geolocation Information.</strong> We may request access or permission to track location-based information from your mobile device to provide location-based services. You may change our access or permissions in your device's settings.</li>
+            <li><strong>Mobile Device Data.</strong> We automatically collect device information (such as your mobile device ID, model, and manufacturer), operating system, IP address, and other technical data. This information is primarily needed for security, operations, and internal analytics.</li>
+        </ul>
+        <p>All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes.</p>
+        <h3>Information automatically collected</h3>
+        <p><strong><em>In Short:</em></strong><em> Some information — such as your IP address and/or browser and device characteristics — is collected automatically when you visit our Services.</em></p>
+        <p>We automatically collect certain information when you visit, use, or navigate the Services. This information does not reveal your specific identity but may include device and usage information. The information we collect includes:</p>
+        <ul>
+            <li><strong>Log and Usage Data.</strong> This includes service-related, diagnostic, usage, and performance information our servers automatically collect.</li>
+            <li><strong>Location Data.</strong> We collect location data such as information about your device's location, which can be either precise or imprecise. You can opt out by disabling your Location setting on your device.</li>
+        </ul>
+        
+        <h2 id="infoprocess">2. HOW DO WE PROCESS YOUR INFORMATION?</h2>
+        <p><strong><em>In Short:</em></strong><em> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</em></p>
+        <p>We process your personal information for a variety of reasons, including:</p>
+        <ul>
+            <li>To facilitate account creation and authentication and otherwise manage user accounts.</li>
+            <li>To save or protect an individual's vital interest, such as to prevent harm.</li>
+        </ul>
+
+        <h2 id="legalbases">3. WHAT LEGAL BASES DO WE RELY ON TO PROCESS YOUR INFORMATION?</h2>
+        <p><strong><em>In Short:</em></strong><em> We only process your personal information when we believe it is necessary and we have a valid legal reason to do so under applicable law.</em></p>
+        <p>If you are located in the EU, UK, or Canada, specific regulations like GDPR apply. We may rely on the following legal bases to process your personal information: Consent, Legal Obligations, and Vital Interests.</p>
+        
+        <h2 id="infoshare">4. WHEN AND WITH WHOM DO WE SHARE YOUR PERSONAL INFORMATION?</h2>
+        <p><strong><em>In Short:</em></strong><em> We may share information in specific situations described in this section and/or with the following third parties.</em></p>
+        <ul>
+            <li><strong>Business Transfers.</strong> We may share or transfer your information in connection with any merger, sale of company assets, financing, or acquisition.</li>
+            <li><strong>When we use Google Maps Platform APIs.</strong> We may share your information with certain Google Maps Platform APIs. We obtain and store your location on your device ("cache") for twelve (12) months.</li>
+        </ul>
+
+        <h2 id="cookies">5. DO WE USE COOKIES AND OTHER TRACKING TECHNOLOGIES?</h2>
+        <p><strong><em>In Short:</em></strong><em> We may use cookies and other tracking technologies to collect and store your information, including for analytics and advertising purposes.</em></p>
+        <p><strong>Google Analytics:</strong> We may share your information with Google Analytics to track and analyze the use of the Services. To opt out of being tracked by Google Analytics, visit <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">https://tools.google.com/dlpage/gaoptout</a>.</p>
+
+        <h2 id="inforetain">6. HOW LONG DO WE KEEP YOUR INFORMATION?</h2>
+        <p><strong><em>In Short:</em></strong><em> We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.</em></p>
+        <p>We will only keep your personal information for as long as it is necessary, generally for the period of time in which users have an account with us. When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize it.</p>
+        
+        <h2 id="infosafe">7. HOW DO WE KEEP YOUR INFORMATION SAFE?</h2>
+        <p><strong><em>In Short:</em></strong><em> We aim to protect your personal information through a system of organizational and technical security measures.</em></p>
+        <p>We have implemented appropriate security measures to protect any personal information we process. However, no electronic transmission over the Internet can be guaranteed to be 100% secure.</p>
+        
+        <h2 id="infominors">8. DO WE COLLECT INFORMATION FROM MINORS?</h2>
+        <p><strong><em>In Short:</em></strong><em> We do not knowingly collect data from or market to children under 18 years of age.</em></p>
+        <p>By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to their use of the Services.</p>
+
+        <h2 id="privacyrights">9. WHAT ARE YOUR PRIVACY RIGHTS?</h2>
+        <p><strong><em>In Short:</em></strong><em> In some regions, such as the EEA, UK, Switzerland, and Canada, you have rights that allow you greater access to and control over your personal information.</em></p>
+        <p>You may review, change, or terminate your account at any time. To do so, log in to your account settings and update your user account. If you have questions or comments about your privacy rights, you may email us at <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
+
+        <h2 id="dnt">10. CONTROLS FOR DO-NOT-TRACK FEATURES</h2>
+        <p>Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature. At this stage, no uniform technology standard for recognizing and implementing Dnt signals has been finalized. As such, we do not currently respond to DNT browser signals.</p>
+
+        <h2 id="usrights">11. DO UNITED STATES RESIDENTS HAVE SPECIFIC PRIVACY RIGHTS?</h2>
+        <p><strong><em>In Short:</em></strong><em> If you are a resident of certain states, you are granted specific rights regarding access to your personal information.</em></p>
+        <h3>Categories of Personal Information We Collect</h3>
+        <p>The table below shows the categories of personal information we have collected in the past twelve (12) months.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Examples</th>
+                    <th>Collected</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A. Identifiers</td>
+                    <td>Contact details, such as real name, alias, postal address, telephone or mobile contact number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>B. Personal information (Cal. Civ. Code)</td>
+                    <td>Name, contact information, education, employment, employment history, and financial information</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>C. Protected classification characteristics</td>
+                    <td>Gender, age, date of birth, race and ethnicity, national origin, marital status, etc.</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>D. Commercial information</td>
+                    <td>Transaction information, purchase history, financial details, and payment information</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>E. Biometric information</td>
+                    <td>Fingerprints and voiceprints</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>F. Internet or other similar network activity</td>
+                    <td>Browsing history, search history, online behavior, interest data, and interactions with our and other websites, applications, systems, and advertisements</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>G. Geolocation data</td>
+                    <td>Device location</td>
+                    <td>YES</td>
+                </tr>
+                <tr>
+                    <td>H. Sensory data</td>
+                    <td>Images and audio, video or call recordings</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>I. Professional or employment-related information</td>
+                    <td>Business contact details, job title, work history, etc.</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>J. Education Information</td>
+                    <td>Student records and directory information</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>K. Inferences drawn from other personal information</td>
+                    <td>Profile reflecting a person's preferences, characteristics, psychological trends, etc.</td>
+                    <td>NO</td>
+                </tr>
+                <tr>
+                    <td>L. Sensitive personal Information</td>
+                    <td></td>
+                    <td>NO</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>We will use and retain the collected personal information as needed to provide the Services or for: Category B (1 year), Category F (1 year), Category G (1 year).</p>
+        <p>For more details on your rights, how to exercise them, and our data practices, please contact us at <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
+
+        <h2 id="otherregions">12. DO OTHER REGIONS HAVE SPECIFIC PRIVACY RIGHTS?</h2>
+        <p><strong><em>In Short:</em></strong><em> You may have additional rights based on the country you reside in, such as Australia, New Zealand, and the Republic of South Africa.</em></p>
+
+        <h2 id="updates">13. DO WE MAKE UPDATES TO THIS NOTICE?</h2>
+        <p><strong><em>In Short:</em></strong><em> Yes, we will update this notice as necessary to stay compliant with relevant laws.</em></p>
+
+        <h2 id="contact">14. HOW CAN YOU CONTACT US ABOUT THIS NOTICE?</h2>
+        <p>If you have questions or comments about this notice, you may email us at <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a> or contact us by post at:</p>
+        <p>NomadSwipe<br>
+        [Your Street Address]<br>
+        [Your City, State, ZIP Code]<br>
+        United States</p>
+        
+        <h2 id="review">15. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?</h2>
+        <p>You have the right to request access to the personal information we collect from you, change that information, or delete it. To request to review, update, or delete your personal information, please submit a request by contacting us at our support email or by emailing <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <a href="index.html" class="footer-logo">
+            <i class="fas fa-route"></i>
+            NomadSwipe
+          </a>
+          <p class="footer-description">Discover the world with NomadSwipe. Your personalized travel companion for creating unforgettable journeys.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Company</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Press</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Help</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">FAQ</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="privacypolicy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Contact</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-globe"></i>
+              <span>www.nomadswipe.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>contact@nomadswipe.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2024 NomadSwipe. Crafted with passion. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuButton = document.getElementById('mobileMenuButton');
+      const closeMenuButton = document.getElementById('closeMenu');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-menu .cta-button');
+
+      function openMenu() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      mobileMenuButton.addEventListener('click', openMenu);
+      closeMenuButton.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+      
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+           // We add a small timeout to allow the browser to navigate
+           // before closing the menu, especially for hash links.
+          setTimeout(closeMenu, 100);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
