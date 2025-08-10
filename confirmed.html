@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Confirmed - NomadSwipe</title>
+
+  <!-- External Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /*
+    ==========================================================================
+    Styling from index.html - Applied to all pages for consistency
+    ==========================================================================
+    */
+
+    /* ---------------------------------- */
+    /*          1. ROOT & GLOBALS         */
+    /* ---------------------------------- */
+    :root {
+      /* Color Palette */
+      --color-primary: #EE6C4D;
+      --color-secondary: #293241;
+      --color-accent: #E0FBFC;
+      --color-background: #F8F7F4;
+      --color-surface: #FFFFFF;
+      --color-text: #293241;
+      --color-text-muted: #6D727B;
+      --color-white: #FFFFFF;
+      
+      --gradient-primary: linear-gradient(135deg, #EE6C4D 0%, #E63946 100%);
+      --gradient-subtle: linear-gradient(135deg, #E0FBFC 0%, #CADEF5 100%);
+
+      /* Typography */
+      --font-heading: 'Lora', serif;
+      --font-body: 'Inter', sans-serif;
+      
+      /* Spacing Scale (Rhythmic & Consistent) */
+      --space-xxs: 0.25rem;  /* 4px */
+      --space-xs:  0.5rem;   /* 8px */
+      --space-s:   0.75rem;  /* 12px */
+      --space-m:   1rem;     /* 16px */
+      --space-l:   1.5rem;   /* 24px */
+      --space-xl:  2.5rem;   /* 40px */
+      --space-xxl: 4rem;     /* 64px */
+      --space-xxxl: 6rem;    /* 96px */
+
+      /* Other Properties */
+      --border-radius-s: 8px;
+      --border-radius-m: 16px;
+      --border-radius-l: 24px;
+      --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --transition-fast: 200ms ease-in-out;
+      --transition-medium: 400ms ease-in-out;
+    }
+
+    /* Base Reset & Smooth Behavior */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Accessibility: Focus Visible */
+    :focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 3px;
+      border-radius: var(--border-radius-s);
+    }
+    
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: var(--space-l);
+    }
+    
+    /* Section Padding */
+    section {
+      padding-block: var(--space-xxxl);
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding-block: var(--space-xxl);
+      }
+    }
+
+    /* Headings & Text */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--color-text);
+    }
+    
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------------------------------- */
+    /*            2. HEADER               */
+    /* ---------------------------------- */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      padding-block: var(--space-m);
+      background-color: hsl(0 0% 100% / 0.5);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid hsl(0 0% 0% / 0.05);
+      transition: background-color var(--transition-medium);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    .logo i {
+      color: var(--color-primary);
+      font-size: 1.2em;
+    }
+    .logo:hover {
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-xl);
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      position: relative;
+      padding-block: var(--space-xs);
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform var(--transition-fast);
+    }
+
+    .nav-link:hover::after, .nav-link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+    
+    .cta-button {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      background: var(--gradient-primary);
+      color: var(--color-white);
+      border: none;
+      padding: var(--space-s) var(--space-l);
+      border-radius: var(--border-radius-m);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none; /* Ensure buttons that are links don't get underlined */
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+    }
+
+    .mobile-menu-button {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.75rem;
+      color: var(--color-text);
+      cursor: pointer;
+      z-index: 1002;
+    }
+    
+    /* ---------------------------------- */
+    /*           9. FOOTER                */
+    /* ---------------------------------- */
+    footer {
+      background-color: var(--color-secondary);
+      color: var(--color-accent);
+      padding-top: var(--space-xxxl);
+      padding-bottom: var(--space-xl);
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: var(--space-xxl);
+      margin-bottom: var(--space-xxl);
+    }
+
+    .footer-column:first-child .footer-logo {
+      color: var(--color-white);
+    }
+    .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: var(--space-m);
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+        color: var(--color-white);
+        text-decoration: none;
+    }
+    .footer-description { margin-block: var(--space-m) var(--space-l); line-height: 1.7; opacity: 0.8; }
+
+    .social-links { display: flex; gap: var(--space-m); }
+    .social-link {
+      color: var(--color-accent);
+      font-size: 1.25rem;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+    .social-link:hover { color: var(--color-primary); transform: translateY(-3px); text-decoration: none;}
+
+    .footer-title {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: var(--space-l);
+      color: var(--color-white);
+    }
+    .footer-links { display: flex; flex-direction: column; gap: var(--space-s); }
+    .footer-link {
+      color: var(--color-accent);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity var(--transition-fast), color var(--transition-fast);
+    }
+    .footer-link:hover { opacity: 1; color: var(--color-primary); text-decoration: none; }
+    
+    .contact-info { display: flex; flex-direction: column; gap: var(--space-m); }
+    .contact-item { display: flex; gap: var(--space-s); align-items: flex-start; opacity: 0.8; }
+    .contact-item i { margin-top: 4px; color: var(--color-primary); }
+
+    .copyright {
+      text-align: center;
+      padding-top: var(--space-xl);
+      border-top: 1px solid hsl(220 13% 25%);
+      color: var(--color-text-muted);
+      font-size: 0.9rem;
+    }
+    
+    /* ---------------------------------- */
+    /*        10. RESPONSIVE & MOBILE     */
+    /* ---------------------------------- */
+    @media (max-width: 992px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-column:first-child { grid-column: 1 / -1; }
+    }
+    
+    /* Mobile Devices */
+    @media (max-width: 768px) {
+      .nav-links, .cta-button.desktop { display: none; }
+      .mobile-menu-button { display: block; }
+      .footer-container { grid-template-columns: 1fr; }
+    }
+    
+    /* ---------------------------------- */
+    /*           11. MOBILE MENU          */
+    /* ---------------------------------- */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(80vw, 320px);
+      height: 100vh;
+      background-color: var(--color-surface);
+      z-index: 1001;
+      padding: var(--space-xxxl) var(--space-xl);
+      box-shadow: var(--shadow-lg);
+      transition: right var(--transition-medium);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-menu.active { right: 0; }
+
+    .close-menu {
+      position: absolute;
+      top: var(--space-l);
+      right: var(--space-l);
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: var(--color-text);
+      cursor: pointer;
+    }
+    
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-m);
+      margin-top: var(--space-xl);
+    }
+    
+    .mobile-nav-link {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      padding: var(--space-s);
+      border-radius: var(--border-radius-s);
+      transition: background-color var(--transition-fast), color var(--transition-fast);
+    }
+    .mobile-nav-link:hover {
+        background-color: var(--color-accent);
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+    
+    .mobile-menu .cta-button {
+      margin-top: var(--space-xl);
+      width: 100%;
+      text-align: center;
+      padding-block: var(--space-m);
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgb(0 0 0 / 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-medium), visibility var(--transition-medium);
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* --- [Custom Styles for Confirmation Page] --- */
+    .confirmation-page {
+      padding-top: calc(var(--space-xxxl) + 60px); /* Space for fixed header */
+      padding-bottom: var(--space-xxxl);
+      background-color: var(--color-surface);
+      min-height: calc(100vh - 200px); /* Ensure it takes up vertical space */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .confirmation-box {
+      max-width: 600px;
+      text-align: center;
+      padding: var(--space-xxl);
+      background-color: var(--color-white);
+      border-radius: var(--border-radius-l);
+      box-shadow: var(--shadow-lg);
+    }
+    .confirmation-box h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      margin-bottom: var(--space-s);
+    }
+    .success-icon {
+        font-size: 4rem;
+        color: var(--color-primary);
+        margin-bottom: var(--space-l);
+    }
+    .welcome-message {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-xl);
+      line-height: 1.7;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-route"></i>
+        NomadSwipe
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#features" class="nav-link">Features</a>
+        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
+        <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+        <a href="index.html#download" class="nav-link">Download</a>
+      </nav>
+      <a href="index.html#download" class="cta-button desktop">Get Started</a>
+      <button class="mobile-menu-button" id="mobileMenuButton">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="overlay" id="overlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="mobile-nav-links">
+      <a href="index.html#features" class="mobile-nav-link">Features</a>
+      <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
+      <a href="index.html#testimonials" class="mobile-nav-link">Testimonials</a>
+      <a href="index.html#download" class="mobile-nav-link">Download</a>
+      <a href="index.html#download" class="cta-button">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Confirmation Section -->
+  <section class="confirmation-page">
+    <div class="container">
+      <div class="confirmation-box animate__animated animate__fadeInUp">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1>Account Confirmed!</h1>
+        <p class="welcome-message">
+            Your account is now active. <strong>Please return to the NomadSwipe app on your phone to log in!</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <a href="index.html" class="footer-logo">
+            <i class="fas fa-route"></i>
+            NomadSwipe
+          </a>
+          <p class="footer-description">Discover the world with NomadSwipe. Your personalized travel companion for creating unforgettable journeys.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Company</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Press</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Help</h4>
+          <div class="footer-links">
+            <a href="#" class="footer-link">FAQ</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="privacypolicy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Contact</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-globe"></i>
+              <span>www.nomadswipe.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>contact@nomadswipe.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2024 NomadSwipe. Crafted with passion. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Mobile Menu functionality ---
+      const mobileMenuButton = document.getElementById('mobileMenuButton');
+      const closeMenuButton = document.getElementById('closeMenu');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const overlay = document.getElementById('overlay');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-menu .cta-button');
+
+      function openMenu() {
+        mobileMenu.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      mobileMenuButton.addEventListener('click', openMenu);
+      closeMenuButton.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+      
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          setTimeout(closeMenu, 100);
+        });
+      });
+
+      // NO SUPABASE CLIENT OR KEYS ARE NEEDED HERE.
+      // This page is purely informational.
+    });
+  </script>
+</body>
+</html>
