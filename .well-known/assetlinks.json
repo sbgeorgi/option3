@@ -3,7 +3,9 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.gchertkov.SwipeNomad",
-    "sha256_cert_fingerprints":
-    ["CE:FD:48:C2:5E:E4:06:60:AD:A8:A2:6D:10:13:12:39:7E:7F:E9:06:8D:37:D3:F5:2C:67:62:FA:39:EE:9C:55"]
+    "sha256_cert_fingerprints": [
+      "CE:FD:48:C2:5E:E4:06:60:AD:A8:A2:6D:10:13:12:39:7E:7F:E9:06:8D:37:D3:F5:2C:67:62:FA:39:EE:9C:55",
+      "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
+    ]
   }
 }]
