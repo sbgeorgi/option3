@@ -2,2285 +2,1005 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NomadSwipe - Discover Your Next Adventure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>NomadSwipe — Ditch the spreadsheets. Swipe your trip.</title>
+  <meta name="description" content="Tell us what you love, swipe through highly personalized recommendations, and watch your itinerary build itself on an interactive map." />
+  <meta name="theme-color" content="#050810" />
+  <meta property="og:title" content="NomadSwipe — Plan trips without the group chat drama" />
+  <meta property="og:description" content="Advanced recommendation engine meets swipe-first discovery. Build the perfect trip with your friends." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
   
-  <!-- External Libraries -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /*
-    ==========================================================================
-    2025-LEVEL UI/UX DESIGN & FRONT-END DEVELOPMENT
-    ==========================================================================
-    Project: NomadSwipe - Next-Generation Visual Experience
-    Principles: Immersive, Dynamic, Responsive, Accessible
-    ==========================================================================
-    */
-
-    /* ---------------------------------- */
-    /*          1. ROOT & GLOBALS         */
-    /* ---------------------------------- */
+    /* ════════════════════════════════════════════════════════════
+       DESIGN TOKENS & RESET (2026 App Accurate)
+    ════════════════════════════════════════════════════════════ */
     :root {
-      /* 2025 Color Palette - Vibrant & Harmonious */
-      --color-primary: #FF6B6B;
-      --color-secondary: #4ECDC4;
-      --color-accent: #FFE66D;
-      --color-background: #0A0E27;
-      --color-surface: rgba(255, 255, 255, 0.05);
-      --color-surface-light: rgba(255, 255, 255, 0.1);
-      --color-text: #FFFFFF;
-      --color-text-muted: rgba(255, 255, 255, 0.7);
-      --color-white: #FFFFFF;
-      --color-border: rgba(255, 255, 255, 0.1);
+      /* App Core Colors */
+      --bg-base: #050810;
+      --bg-surface: #0F172A;
+      --bg-surface-raised: #1E293B;
       
-      /* Advanced Gradients */
-      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-      --gradient-hero: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(30, 39, 73, 0.8) 100%);
+      --primary: #818CF8;
+      --primary-strong: #4F46E5;
       
-      /* Typography */
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --font-accent: 'Lora', serif;
+      /* Category Colors from React Native App */
+      --cat-food: #F59E0B;
+      --cat-attraction: #8B5CF6;
+      --cat-lodging: #06B6D4;
+      --cat-bar: #EC4899;
       
-      /* Spacing Scale - Enhanced for 2025 */
-      --space-xxs: 0.25rem;
-      --space-xs: 0.5rem;
-      --space-s: 0.75rem;
-      --space-m: 1rem;
-      --space-l: 1.5rem;
-      --space-xl: 2.5rem;
-      --space-xxl: 4rem;
-      --space-xxxl: 6rem;
-      --space-xxxxl: 8rem;
-
-      /* Border Radius - More Organic */
-      --border-radius-s: 12px;
-      --border-radius-m: 20px;
-      --border-radius-l: 32px;
-      --border-radius-full: 9999px;
+      --danger: #F43F5E;
+      --success: #10B981;
+      --star: #FBBF24;
       
-      /* Enhanced Shadows - Deeper & Softer */
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-      --shadow-glow: 0 0 40px rgba(79, 172, 254, 0.5);
-      --shadow-neon: 0 0 30px rgba(255, 107, 107, 0.6);
+      /* Text Colors */
+      --text-main: #F8FAFC;
+      --text-soft: #CBD5E1;
+      --text-muted: #64748B;
+      --text-dark: #475569;
       
-      /* Animations */
-      --transition-fast: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-medium: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 800ms cubic-bezier(0.4, 0, 0.2, 1);
+      /* UI Elements */
+      --border: rgba(30, 41, 59, 0.8);
+      --border-light: rgba(129, 140, 248, 0.3);
       
-      /* Effects */
-      --glass-blur: 20px;
-      --parallax-speed: 0.5;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      
+      --header-height: 80px;
+      --container: 1140px;
+      --transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Base Reset & Enhanced Behavior */
-    *,
-    *::before,
-    *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; color-scheme: dark; }
     body {
-      font-family: var(--font-body);
-      background-color: var(--color-background);
-      color: var(--color-text);
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
       line-height: 1.6;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-      position: relative;
+      -webkit-tap-highlight-color: transparent; /* Removes blue tap highlight on mobile */
     }
+    img { max-width: 100%; display: block; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { border: none; background: none; font: inherit; cursor: pointer; }
+    ul { list-style: none; }
+    section[id] { scroll-margin-top: 100px; }
+    ::selection { background: rgba(129, 140, 248, 0.3); color: #fff; }
 
-    /* Animated Background */
-    body::before {
-      content: '';
-      position: absolute; /* MODIFIED: was 'fixed', now scrolls with page */
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(79, 172, 254, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
-      z-index: -1;
-      animation: backgroundShift 20s ease-in-out infinite;
-    }
-
-    @keyframes backgroundShift {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      33% { transform: translate(-10px, -10px) scale(1.05); }
-      66% { transform: translate(10px, -5px) scale(0.95); }
-    }
-
-    /* Enhanced Focus States */
-    :focus-visible {
-      outline: 3px solid var(--color-secondary);
-      outline-offset: 3px;
-      border-radius: var(--border-radius-s);
-      animation: focusPulse 2s infinite;
-    }
-
-    @keyframes focusPulse {
-      0%, 100% { outline-color: var(--color-secondary); }
-      50% { outline-color: var(--color-accent); }
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 1400px;
-      margin-inline: auto;
-      padding-inline: var(--space-l);
-    }
+    /* ════════════════════════════════════════════════════════════
+       GLOBAL UTILITIES
+    ════════════════════════════════════════════════════════════ */
+    .container { width: min(var(--container), 100% - 2.5rem); margin: 0 auto; }
+    .section { padding: clamp(4rem, 8vw, 8rem) 0; position: relative; z-index: 2; }
     
-    /* Section Padding */
-    section {
-      padding-block: var(--space-xxxxl);
-      position: relative;
-      overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding-block: var(--space-xxxl);
-      }
-    }
-
-    /* Enhanced Headings & Text */
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      line-height: 1.1;
-      color: var(--color-text);
-      position: relative;
-    }
-
-    h1::after, h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: var(--gradient-accent);
-      border-radius: 2px;
-    }
-
-    .section-title {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      text-align: center;
-      margin-bottom: var(--space-m);
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+    .text-gradient {
+      background: linear-gradient(135deg, var(--primary) 0%, #A5B4FC 50%, var(--cat-attraction) 100%);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: titleGlow 3s ease-in-out infinite;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
     }
 
-    @keyframes titleGlow {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.2); }
-    }
-    
-    .section-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      text-align: center;
-      color: var(--color-text-muted);
-      max-width: 65ch;
-      margin-inline: auto;
-      margin-bottom: var(--space-xxl);
-      font-family: var(--font-body);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-    }
-    
-    a {
-      color: var(--color-secondary);
-      text-decoration: none;
-      position: relative;
-      transition: all var(--transition-fast);
-    }
-
-    a::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-accent);
-      transition: width var(--transition-fast);
-    }
-
-    a:hover::after {
-      width: 100%;
-    }
-
-    /* ---------------------------------- */
-    /*            2. HEADER               */
-    /* ---------------------------------- */
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      padding-block: var(--space-s);
-      background: var(--gradient-glass);
-      backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-      border-bottom: 1px solid var(--color-border);
-      transition: all var(--transition-medium);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    header.scrolled {
-      background: rgba(10, 14, 39, 0.95);
-      padding-block: var(--space-xs);
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
+    .section-kicker {
+      display: inline-flex;
       align-items: center;
-      position: relative;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: var(--space-xs);
-      font-family: var(--font-heading);
+      gap: 0.6rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      background: rgba(129, 140, 248, 0.1);
+      border: 1px solid rgba(129, 140, 248, 0.2);
+      color: var(--primary);
+      font-size: 0.85rem;
       font-weight: 800;
-      font-size: 1.75rem;
-      color: var(--color-text);
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-accent);
-      transition: left var(--transition-fast);
-      z-index: -1;
-    }
-
-    .logo:hover::before {
-      left: 0;
-    }
-
-    .logo i {
-      color: var(--color-accent);
-      font-size: 1.5em;
-      background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .logo:hover {
-      color: var(--color-white);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: var(--space-xl);
-      align-items: center;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      color: var(--color-text-muted);
-      text-decoration: none;
-      position: relative;
-      padding-block: var(--space-xs);
-      transition: all var(--transition-fast);
-    }
-    
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gradient-accent);
-      transform: scaleX(0);
-      transform-origin: bottom right;
-      transition: transform var(--transition-fast);
-    }
-
-    .nav-link:hover::after, .nav-link:focus-visible::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-    
-    .nav-link:hover {
-      color: var(--color-white);
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-    
-    .cta-button {
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 1rem;
-      background: var(--gradient-primary);
-      color: var(--color-white);
-      border: none;
-      padding: var(--space-s) var(--space-l);
-      border-radius: var(--border-radius-full);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left var(--transition-slow);
-    }
-
-    .cta-button:hover::before {
-      left: 100%;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: var(--shadow-neon);
-    }
-
-    .mobile-menu-button {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.75rem;
-      color: var(--color-text);
-      cursor: pointer;
-      z-index: 1002;
-      position: relative;
-      transition: all var(--transition-fast);
-    }
-
-    .mobile-menu-button:hover {
-      transform: rotate(90deg);
-      color: var(--color-secondary);
-    }
-
-    /* ---------------------------------- */
-    /*            3. HERO SECTION         */
-    /* ---------------------------------- */
-    .hero {
-      padding-top: calc(var(--space-xxxxl) * 2);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(79, 172, 254, 0.1) 0%, transparent 70%);
-      animation: heroOrbit 30s linear infinite;
-    }
-
-    @keyframes heroOrbit {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: var(--space-xxxxl);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-title {
-      font-size: clamp(3rem, 10vw, 6rem);
-      margin-bottom: var(--space-l);
-      background: linear-gradient(135deg, #fff 0%, #4ECDC4 50%, #FF6B6B 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: titleFloat 6s ease-in-out infinite;
-    }
-
-    @keyframes titleFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.125rem, 3vw, 1.5rem);
-      margin-bottom: var(--space-xl);
-      max-width: 50ch;
-      color: var(--color-text-muted);
-      font-weight: 300;
       letter-spacing: 0.05em;
-    }
-
-    .app-store-buttons {
-      display: flex;
-      gap: var(--space-m);
-      flex-wrap: wrap;
-    }
-
-    .app-store-button {
-      display: flex;
-      align-items: center;
-      gap: var(--space-s);
-      background: var(--gradient-glass);
-      color: var(--color-white);
-      padding: var(--space-s) var(--space-l);
-      border-radius: var(--border-radius-m);
-      text-decoration: none;
-      transition: all var(--transition-fast);
-      border: 1px solid var(--color-border);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-store-button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: all var(--transition-fast);
-    }
-
-    .app-store-button:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .app-store-button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: var(--shadow-glow);
-      border-color: var(--color-secondary);
-    }
-
-    .app-store-button i {
-      font-size: 1.75rem;
-      background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .app-store-text {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-
-    .app-store-text small {
-      font-size: 0.75rem;
-      opacity: 0.8;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .app-store-text strong {
-      font-size: 1.125rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 1.2rem;
     }
     
-    .hero-image {
-      position: relative;
-      perspective: 2000px;
-      transform-style: preserve-3d;
-    }
-
-    .device-mockup {
-      width: 100%;
-      max-width: 420px;
-      margin-inline: auto;
-      border-radius: var(--border-radius-l);
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-      transform: rotateY(-15deg) rotateX(8deg) translateZ(50px);
-      transition: all var(--transition-medium);
-      border: 8px solid rgba(255, 255, 255, 0.1);
-      overflow: hidden;
-      position: relative;
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      text-wrap: balance;
     }
     
-    .device-mockup::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: var(--gradient-accent);
-      border-radius: var(--border-radius-l);
-      opacity: 0;
-      z-index: -1;
-      transition: opacity var(--transition-fast);
-      filter: blur(10px);
+    .section-copy {
+      margin-top: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      color: var(--text-soft);
+      max-width: 60ch;
+      text-wrap: pretty;
+      line-height: 1.7;
+    }
+
+    /* Ambient Backgrounds */
+    .bg-noise {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; z-index: 0; }
+    
+    /* Scroll Reveal */
+    [data-reveal] {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ════════════════════════════════════════════════════════════
+       PRELOADER & BUTTONS
+    ════════════════════════════════════════════════════════════ */
+    .preloader {
+      position: fixed; inset: 0; z-index: 99999; background: var(--bg-base);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .preloader.hidden { opacity: 0; visibility: hidden; }
+    .preloader-brand { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 10px; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(0.98); } 50% { opacity: 1; transform: scale(1); } }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.9rem 1.6rem; border-radius: var(--radius-md); font-weight: 800;
+      transition: all var(--transition); white-space: nowrap; font-size: 0.95rem;
     }
     
-    .hero-image:hover .device-mockup::before {
-      opacity: 0.5;
+    .btn-primary { 
+      background: var(--primary); color: #050810; 
+      box-shadow: 0 10px 25px rgba(129, 140, 248, 0.25); 
     }
     
-    .hero-image:hover .device-mockup {
-      transform: rotateY(0) rotateX(0) translateZ(0);
-      box-shadow: 
-        0 35px 60px -15px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
+    .store-btn {
+      position: relative; display: inline-flex; align-items: center; gap: 1rem;
+      padding: 0.9rem 1.4rem; border-radius: var(--radius-sm);
+      background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border);
+      color: var(--text-main); backdrop-filter: blur(12px); transition: all var(--transition);
     }
+    .store-btn.disabled { opacity: 0.5; pointer-events: none; }
+    .store-btn i { font-size: 1.8rem; color: var(--text-soft); }
+    .store-btn span { display: flex; flex-direction: column; line-height: 1.2; text-align: left;}
+    .store-btn small { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .store-btn strong { font-size: 1.1rem; font-weight: 800; }
     
-    .floating-card {
-      position: absolute;
-      background: var(--gradient-glass);
-      backdrop-filter: blur(10px);
-      border-radius: var(--border-radius-m);
-      padding: var(--space-s);
-      box-shadow: var(--shadow-md);
-      display: flex;
-      align-items: center;
-      gap: var(--space-s);
-      width: 220px;
-      animation: float 8s ease-in-out infinite;
-      border: 1px solid var(--color-border);
-      transition: all var(--transition-fast);
+    .coming-soon-badge {
+      position: absolute; top: -10px; right: -10px;
+      background: var(--bg-surface-raised); color: var(--text-soft); border: 1px solid var(--border);
+      font-size: 0.65rem; padding: 4px 10px; border-radius: 12px;
+      font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;
     }
 
-    .floating-card:hover {
-      transform: scale(1.05) translateY(-10px);
-      box-shadow: var(--shadow-glow);
-      border-color: var(--color-secondary);
+    @media (hover: hover) {
+      .btn:hover { transform: translateY(-2px); }
+      .btn-primary:hover { box-shadow: 0 15px 35px rgba(129, 140, 248, 0.35); background: #A5B4FC; }
+      .store-btn:not(.disabled):hover { background: var(--bg-surface-raised); border-color: var(--border-light); transform: translateY(-3px); }
     }
 
-    .floating-card.card-1 {
-      top: 20%;
-      left: -40px;
-      animation-delay: 0s;
+    /* ════════════════════════════════════════════════════════════
+       HEADER & NAV
+    ════════════════════════════════════════════════════════════ */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all var(--transition); }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: var(--header-height); margin: 1rem auto; padding: 0 1.5rem;
+      background: rgba(5, 8, 16, 0.6); backdrop-filter: blur(24px);
+      border: 1px solid var(--border); border-radius: 999px;
+      width: min(var(--container), 100% - 2.5rem); transition: all var(--transition);
     }
-
-    .floating-card.card-2 {
-      bottom: 20%;
-      right: -20px;
-      animation-delay: 2s;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      25% { transform: translateY(-20px) rotate(2deg); }
-      50% { transform: translateY(-10px) rotate(-2deg); }
-      75% { transform: translateY(-30px) rotate(1deg); }
-    }
-
-    .floating-card img {
-      width: 50px;
-      height: 50px;
-      border-radius: var(--border-radius-s);
-      object-fit: cover;
-      border: 2px solid var(--color-border);
-    }
-
-    .floating-card-text h4 {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: var(--space-xxs);
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .floating-card-text p {
-      font-size: 0.875rem;
-      color: var(--color-text-muted);
-    }
-
-    /* ---------------------------------- */
-    /*          4. FEATURES SECTION       */
-    /* ---------------------------------- */
-    .features {
-      background: radial-gradient(ellipse at center, rgba(30, 39, 73, 0.3) 0%, rgba(10, 14, 39, 0.8) 100%);
-      position: relative;
-    }
-
-    .features::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 10px,
-          rgba(255, 255, 255, 0.02) 10px,
-          rgba(255, 255, 255, 0.02) 20px
-        );
-      pointer-events: none;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: var(--space-xl);
-      position: relative;
-      z-index: 1;
-    }
-
-    .feature-card {
-      background: var(--gradient-glass);
-      backdrop-filter: blur(10px);
-      border-radius: var(--border-radius-m);
-      padding: var(--space-xl);
-      transition: all var(--transition-medium);
-      border: 1px solid var(--color-border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at top right, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-    }
-
-    .feature-card:hover::before {
-      opacity: 1;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-15px) scale(1.02);
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 80px rgba(79, 172, 254, 0.3);
-      border-color: var(--color-secondary);
-    }
-
-    .feature-icon {
-      width: 80px;
-      height: 80px;
-      background: var(--gradient-primary);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      margin-bottom: var(--space-l);
-      color: var(--color-white);
-      font-size: 2rem;
-      box-shadow: 
-        0 10px 25px -5px rgba(102, 126, 234, 0.5),
-        inset 0 0 20px rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-icon::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-      transform: rotate(45deg);
-      transition: all var(--transition-slow);
-    }
-
-    .feature-card:hover .feature-icon::after {
-      animation: iconShine 1s ease-in-out;
-    }
-
-    @keyframes iconShine {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
-
-    .feature-title {
-      font-size: 1.5rem;
-      margin-bottom: var(--space-s);
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .feature-description {
-      color: var(--color-text-muted);
-      line-height: 1.8;
-      font-weight: 300;
-    }
+    .header.scrolled .header-inner { margin: 0.5rem auto; background: rgba(5, 8, 16, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
     
-    /* ---------------------------------- */
-    /*        5. HOW IT WORKS SECTION     */
-    /* ---------------------------------- */
-    .how-it-works {
-        background: linear-gradient(180deg, rgba(10, 14, 39, 1) 0%, rgba(30, 39, 73, 1) 100%);
-        position: relative;
-    }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.02em; }
+    .logo-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--bg-surface-raised); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--primary); }
     
-    .how-it-works::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
+    .nav-desktop { display: flex; gap: 2rem; align-items: center; }
+    .nav-desktop a { font-weight: 600; color: var(--text-muted); transition: color 0.2s; font-size: 0.95rem; }
+    .nav-desktop a:hover, .nav-desktop a.active { color: var(--text-main); }
     
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--space-l);
-      position: relative;
-      z-index: 1;
-    }
-
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 50px; /* Adjusted for better alignment with circles */
-      left: 12.5%;
-      right: 12.5%;
-      height: 3px;
-      background: repeating-linear-gradient(90deg, 
-        var(--color-secondary), 
-        var(--color-secondary) 10px, 
-        transparent 10px, 
-        transparent 20px);
-      z-index: 0; /* FIXED: ensures line is behind steps */
-      opacity: 0.5;
-    }
-
-    .step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      z-index: 1; /* FIXED: ensures step is on top of line */
-      transition: all var(--transition-fast);
-    }
+    .hamburger { display: none; font-size: 1.2rem; color: var(--text-main); width: 44px; height: 44px; border-radius: 50%; background: var(--bg-surface); align-items: center; justify-content: center; border: 1px solid var(--border); }
     
-    .step:hover {
-      transform: translateY(-10px);
+    /* MOBILE NAV OVERLAY - Z-index updated to sit above the header */
+    .mobile-overlay {
+      position: fixed; inset: 0; z-index: 2000; background: rgba(5, 8, 16, 0.98); backdrop-filter: blur(20px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+      opacity: 0; visibility: hidden; transition: all 0.3s;
     }
+    .mobile-overlay.active { opacity: 1; visibility: visible; }
+    .mobile-overlay a { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text-main); transform: translateY(20px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mobile-overlay.active a { transform: translateY(0); opacity: 1; }
+    .mobile-overlay.active a:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-overlay.active a:nth-child(2) { transition-delay: 0.1s; }
+    .mobile-overlay.active a:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-overlay.active a:nth-child(4) { transition-delay: 0.2s; }
+    .close-nav { position: absolute; top: 1.5rem; right: 1.5rem; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-surface); border: 1px solid var(--border); font-size: 1.5rem; color: var(--text-main); display: flex; justify-content: center; align-items: center;}
+
+    /* ════════════════════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════════════════════ */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; padding-bottom: 60px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+    .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; margin-bottom: 1.5rem; }
+    .hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
     
-    .step-number {
-      width: 100px;
-      height: 100px;
-      background: var(--gradient-glass);
-      backdrop-filter: blur(10px);
-      border: 3px solid var(--color-secondary);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--color-secondary);
-      font-size: 2.5rem;
-      font-weight: 700;
-      font-family: var(--font-heading);
-      margin-bottom: var(--space-l);
-      box-shadow: 
-        0 10px 30px -5px rgba(79, 172, 254, 0.5),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
+    /* Phone Mockup */
+    .hero-visual { display: flex; justify-content: center; position: relative; }
+    .phone-wrapper { position: relative; display: flex; justify-content: center; align-items: center; }
+    
+    .phone-mockup {
+      width: 300px; height: 620px; background: #000; border-radius: 48px; padding: 14px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 30px 60px rgba(0,0,0,0.8), 0 0 120px rgba(129, 140, 248, 0.15);
+      animation: float 7s ease-in-out infinite; z-index: 2; position: relative;
+    }
+    .phone-screen { width: 100%; height: 100%; border-radius: 36px; overflow: hidden; background: var(--bg-base); position: relative; }
+    .phone-screen img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+    
+    @keyframes float { 0%, 100% { transform: translateY(0) rotate(1deg); } 50% { transform: translateY(-15px) rotate(-1deg); } }
+
+    /* App-like floating badges */
+    .floating-note {
+      position: absolute; display: flex; gap: 0.8rem; align-items: center;
+      padding: 0.8rem 1.2rem; border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5); backdrop-filter: blur(16px);
+      z-index: 3; animation: drift 8s ease-in-out infinite;
+    }
+    .floating-note .emoji-box {
+      width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0; background: var(--bg-surface-raised);
+    }
+    .floating-note strong { display: block; font-size: 0.9rem; color: var(--text-main); }
+    
+    .note-1 { top: 20%; left: -30%; animation-delay: 0s; }
+    .note-2 { bottom: 25%; right: -25%; animation-delay: -4s; }
+    @keyframes drift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+    /* ════════════════════════════════════════════════════════════
+       ENGINE & PREFERENCES (The "Brain")
+    ════════════════════════════════════════════════════════════ */
+    .engine-section { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .engine-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
+    
+    /* Mocking the React Native Preference UI */
+    .pref-mockup {
+      background: var(--bg-base); border: 1px solid var(--border);
+      border-radius: var(--radius-xl); padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .pref-header { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .pref-sub { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    
+    .pref-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .pref-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: rgba(30, 41, 59, 0.4); padding: 1rem;
+      border-radius: var(--radius-md); border: 1px solid var(--border);
+    }
+    .pref-rank { width: 28px; height: 28px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.85rem; color: #000; flex-shrink: 0;}
+    .pref-label { font-weight: 700; flex: 1; }
+    .pref-sub-tags { display: flex; gap: 0.5rem; margin-top: 0.4rem; flex-wrap: wrap;}
+    .pref-tag { font-size: 0.7rem; padding: 2px 8px; background: rgba(0,0,0,0.3); border-radius: 8px; color: var(--text-soft); }
+    
+    .feed-bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; margin-top: 2rem; gap: 2px;}
+    .feed-seg { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 800; color: #000; }
+
+    /* ════════════════════════════════════════════════════════════
+       CAPABILITIES (The Core Flow)
+    ════════════════════════════════════════════════════════════ */
+    .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .flow-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; transition: var(--transition); }
+    .flow-icon { width: 56px; height: 56px; border-radius: 28px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem; }
+    .flow-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 800; }
+    .flow-card p { color: var(--text-soft); font-size: 1rem; line-height: 1.6; }
+
+    @media (hover: hover) {
+      .flow-card:hover { background: var(--bg-surface-raised); border-color: var(--border-light); transform: translateY(-4px); }
     }
 
-    .step-number::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: radial-gradient(circle, rgba(79, 172, 254, 0.3) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      transition: all var(--transition-fast);
-    }
-
-    .step:hover .step-number::before {
-      width: 150%;
-      height: 150%;
-    }
-
-    .step-title {
-      font-size: 1.375rem;
-      margin-bottom: var(--space-xs);
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .step-description {
-      color: var(--color-text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    /* ---------------------------------- */
-    /*       6. APP SHOWCASE SECTION      */
-    /* ---------------------------------- */
-    .app-showcase {
-      background: var(--color-background);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-showcase::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 30% 40%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(79, 172, 254, 0.1) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    .swipe-demo {
-      perspective: 1200px;
-      max-width: 450px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .card-stack {
-      position: relative;
-      width: 340px;
-      height: 500px;
-      margin: 0 auto;
-      transform-style: preserve-3d;
-    }
+    /* ════════════════════════════════════════════════════════════
+       INTERACTIVE APP SHOWCASE
+    ════════════════════════════════════════════════════════════ */
+    .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .showcase-points { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .point { display: flex; gap: 1.2rem; background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+    .point-icon { width: 44px; height: 44px; border-radius: 22px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+    .point strong { display: block; font-size: 1.1rem; margin-bottom: 0.3rem; font-weight: 800; }
+    .point span { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+    
+    .demo-shell { background: var(--bg-surface); padding: 3.5rem 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .demo-shell::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(129, 140, 248, 0.08) 0%, transparent 50%); pointer-events: none; }
+    
+    /* Authentic App Swiper CSS - Mirrored from React Native */
+    .swipe-demo { position: relative; width: 100%; max-width: 360px; margin: 0 auto; user-select: none; }
+    .card-stack { position: relative; width: 100%; aspect-ratio: 0.68; margin: 0 auto; }
     
     .card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: var(--border-radius-l);
-      background-size: cover;
-      background-position: center;
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 100px rgba(0, 0, 0, 0.3);
-      transition: transform var(--transition-medium), opacity var(--transition-medium);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      color: var(--color-white);
-      backface-visibility: hidden;
-      border: 3px solid transparent;
-      background-clip: padding-box;
+      position: absolute; width: 100%; height: 100%;
+      background-color: #0B0F1A; border-radius: 32px;
+      box-shadow: 0 16px 28px rgba(0,0,0,0.4);
+      display: flex; flex-direction: column; overflow: hidden;
+      cursor: grab; transform-origin: center center;
+      will-change: transform, opacity; border: 1px solid rgba(255,255,255,0.05);
+      touch-action: none; /* Crucial for native mobile swiping feel */
     }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 70%);
-      z-index: 1;
-    }
-
-    .card::after {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      background: var(--gradient-primary);
-      border-radius: var(--border-radius-l);
-      opacity: 0;
-      z-index: -1;
-      transition: opacity var(--transition-fast);
-      filter: blur(10px);
-    }
+    .card:active { cursor: grabbing; }
     
-    .card:hover::after {
-      opacity: 0.5;
+    .card-inner {
+      flex: 1; border-radius: 32px; overflow: hidden;
+      background-color: #111827; position: relative;
+      display: flex; flex-direction: column; justify-content: flex-end;
     }
+    .card-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; }
     
-    .card-content {
-      position: relative;
-      z-index: 2;
-      padding: var(--space-xl);
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-    }
-
-    .card-title {
-      font-family: var(--font-body);
-      font-size: 1.75rem;
-      font-weight: bold;
-      color: var(--color-white);
-      margin-bottom: var(--space-xs);
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .card-rating {
-      font-size: 1.125rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: var(--space-s);
-    }
-
-    .card-rating .stars { 
-      color: #FFD700; 
-      filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
-    }
-    .card-rating .price { 
-      margin-left: auto; 
-      color: #4ECDC4;
-      font-weight: 700;
-    }
-    
-    .card-1 { 
-      transform: translateZ(0px) translateX(0) rotate(0deg); 
-      z-index: 4;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
-    }
-    .card-2 { 
-      transform: translateZ(-25px) translateX(-15px) rotate(-5deg); 
-      z-index: 3; 
-      opacity: 0.9;
-      filter: blur(1px);
-    }
-    .card-3 { 
-      transform: translateZ(-50px) translateX(-30px) rotate(-10deg); 
-      z-index: 2; 
-      opacity: 0.8;
-      filter: blur(2px);
-    }
-    .card-4 { 
-      transform: translateZ(-75px) translateX(-45px) rotate(-15deg); 
-      z-index: 1; 
-      opacity: 0.7;
-      filter: blur(3px);
-    }
-
-    .swipe-out-left { 
-      transform: translateX(-1200px) rotate(-45deg) scale(0.8); 
-      opacity: 0;
-      filter: blur(10px);
-    }
-    .swipe-out-right { 
-      transform: translateX(1200px) rotate(45deg) scale(0.8); 
-      opacity: 0;
-      filter: blur(10px);
-    }
-
-    .swipe-actions {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-l);
-      margin-top: var(--space-xl);
-      position: relative;
-      z-index: 10;
-    }
-
-    .swipe-button {
-      width: 80px;
-      height: 80px;
-      border: 2px solid var(--color-border);
-      background: var(--gradient-glass);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
-      cursor: pointer;
-      box-shadow: 
-        0 10px 25px -5px rgba(0, 0, 0, 0.3),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: all var(--transition-fast);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .swipe-button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: all var(--transition-fast);
-    }
-
-    .swipe-button:hover::before {
-      width: 100px;
-      height: 100px;
-    }
-
-    .swipe-button:hover { 
-      transform: scale(1.15) rotate(10deg); 
-      box-shadow: 
-        0 15px 35px -5px rgba(0, 0, 0, 0.4),
-        0 0 40px rgba(79, 172, 254, 0.4);
-    }
-    .swipe-left { 
-      color: #FF6B6B;
-      border-color: rgba(255, 107, 107, 0.3);
-    }
-    .swipe-left:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 40px rgba(255, 107, 107, 0.6);
-    }
-    .swipe-right { 
-      color: #4ECDC4;
-      border-color: rgba(79, 172, 254, 0.3);
-    }
-    .swipe-right:hover {
-      border-color: var(--color-secondary);
-      box-shadow: 0 0 40px rgba(79, 172, 254, 0.6);
-    }
-    
-    /* ---------------------------------- */
-    /*        7. TESTIMONIALS SECTION     */
-    /* ---------------------------------- */
-    .testimonials {
-      background: linear-gradient(135deg, rgba(30, 39, 73, 0.9) 0%, rgba(10, 14, 39, 0.95) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .testimonials .container {
-      position: relative; /* ADDED: For positioning controls */
-    }
-
-    .testimonials::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 2px,
-          rgba(255, 255, 255, 0.02) 2px,
-          rgba(255, 255, 255, 0.02) 4px
-        );
+    .card-overlay {
+      position: relative; z-index: 1; padding: 20px 22px 24px;
+      background: linear-gradient(to top, rgba(8,10,18,0.95) 0%, rgba(8,10,18,0.78) 60%, transparent 100%);
       pointer-events: none;
     }
+    .card-row-sp { display: flex; justify-content: space-between; align-items: center; }
+    .card-pill { padding: 6px 12px; border-radius: 10px; color: #FFF; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; }
+    .card-dist { padding: 6px 12px; border-radius: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); color: #E2E8F0; font-size: 12px; font-weight: 700; }
+    .card-title { font-size: clamp(22px, 5vw, 26px); font-weight: 900; color: #FFFFFF; margin: 10px 0 6px; letter-spacing: -0.3px; line-height: 1.1; }
+    .card-rating-row { display: flex; align-items: center; gap: 6px; }
+    .card-rate-t { font-size: 14.5px; font-weight: 800; color: var(--star); }
 
-    .testimonial-slider {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: var(--space-xl);
-      padding-bottom: var(--space-l);
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
+    .indicator {
+      position: absolute; top: 12%; padding: 10px 16px;
+      border: 3px solid; border-radius: 14px; background-color: rgba(10,12,20,0.85);
+      font-size: 28px; font-weight: 900; letter-spacing: 2px; color: #FFFFFF;
+      z-index: 100; opacity: 0; pointer-events: none;
     }
-    .testimonial-slider::-webkit-scrollbar { display: none; }
-
-    .testimonial {
-      flex: 0 0 100%;
-      max-width: 800px;
-      margin-inline: auto;
-      scroll-snap-align: center;
-      background: var(--gradient-glass);
-      backdrop-filter: blur(20px);
-      border-radius: var(--border-radius-l);
-      padding: var(--space-xxxl);
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        inset 0 0 30px rgba(255, 255, 255, 0.05);
-      text-align: center;
-      border: 1px solid var(--color-border);
-      position: relative;
-      overflow: hidden;
-      transition: all var(--transition-medium);
-    }
-
-    .testimonial:hover {
-      transform: scale(1.02);
-      box-shadow: 
-        0 35px 70px -15px rgba(0, 0, 0, 0.6),
-        0 0 100px rgba(79, 172, 254, 0.3);
-    }
-
-    .testimonial::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
-      animation: testimonialGlow 10s ease-in-out infinite;
-    }
-
-    @keyframes testimonialGlow {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(30px, -30px) scale(1.1); }
-    }
+    .indicator.like { right: 24px; border-color: var(--success); transform: rotate(12deg); }
+    .indicator.nope { left: 24px; border-color: var(--danger); transform: rotate(-12deg); }
     
-    .testimonial-text {
-      font-family: var(--font-accent);
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-style: italic;
-      line-height: 1.6;
-      margin-bottom: var(--space-xl);
-      color: var(--color-text);
-      position: relative;
-      z-index: 1;
-    }
+    .card.animating-out { transition: transform 0.25s ease-out, opacity 0.25s ease-out; pointer-events: none; }
+    .card.animating-back { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
     
-    .testimonial-text::before { 
-      content: '“'; 
-      font-size: 4rem;
-      color: var(--color-secondary);
-      opacity: 0.3;
-      position: absolute;
-      top: -20px;
-      left: -20px;
+    .swipe-actions { display: flex; justify-content: center; gap: 30px; margin-top: 26px; }
+    .swipe-btn {
+      width: 70px; height: 70px; border-radius: 24px; background-color: rgba(255,255,255,0.96);
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3); border: 1px solid; transition: transform 0.2s;
     }
-    .testimonial-text::after { 
-      content: '”'; 
-      font-size: 4rem;
-      color: var(--color-secondary);
-      opacity: 0.3;
-      position: absolute;
-      bottom: -40px;
-      right: -20px;
+    .btn-nope { border-color: rgba(244,63,94,0.25); color: var(--danger); font-size: 36px; }
+    .btn-like { border-color: rgba(16,185,129,0.25); color: var(--success); font-size: 28px; }
+
+    @media (hover: hover) {
+      .swipe-btn:hover { transform: scale(1.08); }
     }
 
-    .testimonial-author {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: var(--space-m);
-      border: 4px solid var(--color-secondary);
-      box-shadow: 
-        0 10px 30px -5px rgba(79, 172, 254, 0.5),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-      transition: all var(--transition-fast);
-    }
-
-    .testimonial:hover .testimonial-avatar {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 
-        0 15px 40px -5px rgba(79, 172, 254, 0.7),
-        inset 0 0 30px rgba(255, 255, 255, 0.2);
-    }
-
-    .testimonial-name { 
-      font-weight: 700; 
-      font-size: 1.25rem;
-      background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: var(--space-xs);
-    }
-    .testimonial-role { 
-      font-size: 1rem; 
-      color: var(--color-text-muted);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-
-    /* ADDED: Testimonial Controls */
-    .testimonial-controls {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      position: absolute;
-      top: 50%;
-      left: -60px;
-      right: -60px;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .testimonial-btn {
-      background: var(--gradient-glass);
-      border: 1px solid var(--color-border);
-      color: var(--color-white);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all var(--transition-fast);
-      pointer-events: all;
-    }
-    .testimonial-btn:hover {
-      background: var(--gradient-primary);
-      transform: scale(1.1);
-      box-shadow: var(--shadow-glow);
-    }
-    @media (min-width: 992px) {
-      .testimonial-controls {
-        display: flex;
-      }
-    }
-    @media (max-width: 1550px) { /* Adjust button positions on smaller desktops */
-        .testimonial-controls {
-            left: -20px;
-            right: -20px;
-        }
-    }
-
-
-    /* ---------------------------------- */
-    /*            8. CTA SECTION          */
-    /* ---------------------------------- */
-    .cta {
-      background: var(--gradient-primary);
-      color: var(--color-white);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-      animation: ctaBackground 15s ease-in-out infinite;
-    }
-
-    @keyframes ctaBackground {
-      0%, 100% { transform: translate(0, 0); }
-      33% { transform: translate(-20px, -20px); }
-      66% { transform: translate(20px, -10px); }
-    }
-
-    .cta .section-title {
-      color: var(--color-white);
-      position: relative;
-      z-index: 1;
-    }
-    .cta .section-subtitle { 
-      color: var(--color-white);
-      opacity: 0.9; 
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      margin-bottom: var(--space-xxxl); /* MODIFIED: Increased spacing from --space-xxl */
-    }
-
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      gap: var(--space-l);
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-app-button {
-      background: var(--gradient-glass);
-      color: var(--color-white);
-      padding: var(--space-m) var(--space-xl);
-      border-radius: var(--border-radius-full);
-      font-weight: 700;
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: var(--space-s);
-      text-decoration: none;
-      box-shadow: 
-        0 15px 35px -5px rgba(0, 0, 0, 0.3),
-        inset 0 0 30px rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      transition: all var(--transition-fast);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-app-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left var(--transition-slow);
-    }
-
-    .cta-app-button:hover::before {
-      left: 100%;
-    }
+    /* ════════════════════════════════════════════════════════════
+       COMPARISON
+    ════════════════════════════════════════════════════════════ */
+    .compare-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: stretch; margin-top: 3rem; }
+    .compare-card { background: var(--bg-surface); padding: 3rem 2.5rem; border-radius: var(--radius-xl); border: 1px solid var(--border); }
+    .compare-card.old { border-color: rgba(244, 63, 94, 0.2); background: linear-gradient(180deg, var(--bg-surface), rgba(244, 63, 94, 0.03)); }
+    .compare-card.new { border-color: rgba(16, 185, 129, 0.2); background: linear-gradient(180deg, var(--bg-surface), rgba(16, 185, 129, 0.05)); }
+    .compare-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .old h3 { color: var(--text-main); } .new h3 { color: var(--text-main); }
+    .old h3 i { color: var(--danger); } .new h3 i { color: var(--success); }
     
-    .cta-app-button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 
-        0 25px 50px -5px rgba(0, 0, 0, 0.4),
-        0 0 60px rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.4);
-    }
-    .cta-app-button i { 
-      font-size: 1.75rem;
-      background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .compare-list li { display: flex; gap: 12px; margin-bottom: 1.2rem; color: var(--text-soft); font-size: 1.05rem; line-height: 1.5; }
+    .vs-circle { width: 50px; height: 50px; border-radius: 25px; background: var(--bg-surface-raised); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 900; color: var(--text-muted); align-self: center; font-size: 0.9rem; }
+
+    /* ════════════════════════════════════════════════════════════
+       TESTIMONIALS
+    ════════════════════════════════════════════════════════════ */
+    .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .test-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; transition: transform 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+    .test-text { font-size: 1.05rem; color: var(--text-main); margin-bottom: 1.5rem; font-weight: 400; line-height: 1.6; font-style: italic; }
+    .user { display: flex; align-items: center; gap: 12px; }
+    .user-avatar { width: 36px; height: 36px; border-radius: 18px; background: var(--bg-surface-raised); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; color: var(--primary); flex-shrink: 0;}
+    .user-info strong { display: block; font-size: 0.95rem; color: var(--text-main); }
+
+    @media (hover: hover) {
+      .test-card:hover { transform: translateY(-4px); border-color: var(--primary); }
     }
 
-    /* ---------------------------------- */
-    /*            9. FOOTER               */
-    /* ---------------------------------- */
-    footer {
-      background: linear-gradient(180deg, rgba(10, 14, 39, 1) 0%, rgba(5, 7, 20, 1) 100%);
-      color: var(--color-text-muted);
-      padding-top: var(--space-xxxxl);
-      padding-bottom: var(--space-xl);
-      position: relative;
-      overflow: hidden;
+    /* ════════════════════════════════════════════════════════════
+       CTA & FOOTER
+    ════════════════════════════════════════════════════════════ */
+    .cta-panel { 
+      background: radial-gradient(circle at top right, rgba(129, 140, 248, 0.15), transparent 60%), var(--bg-surface); 
+      border-radius: var(--radius-xl); padding: 5rem 3rem; text-align: center; 
+      border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.6); 
     }
+    .cta-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1rem; letter-spacing: -0.03em; }
+    .cta-panel p { font-size: clamp(1rem, 3vw, 1.2rem); color: var(--text-soft); margin-bottom: 2.5rem; max-width: 500px; margin-inline: auto; line-height: 1.6; }
+    .cta-actions { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
-      animation: footerLine 10s ease-in-out infinite;
-    }
-
-    @keyframes footerLine {
-      0%, 100% { transform: translateX(-100%); }
-      50% { transform: translateX(100%); }
-    }
+    .footer { border-top: 1px solid var(--border); padding: 5rem 0 2rem; margin-top: 6rem; background: var(--bg-base); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-desc { color: var(--text-muted); margin: 1.5rem 0; max-width: 320px; line-height: 1.6; }
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a { width: 44px; height: 44px; border-radius: 12px; background: var(--bg-surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: var(--text-soft); }
+    .footer h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); }
+    .footer ul li { margin-bottom: 0.8rem; }
+    .footer ul a { color: var(--text-muted); transition: color 0.2s; font-size: 0.95rem; }
+    .footer ul a:hover { color: var(--text-main); }
     
-    .footer-container {
-      display: grid;
-      grid-template-columns: 2fr repeat(3, 1fr);
-      gap: var(--space-xxl);
-      margin-bottom: var(--space-xxl);
-      position: relative;
-      z-index: 1;
-    }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.9rem; }
+    .footer-bottom a { transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--text-main); }
 
-    .footer-column:first-child .footer-logo {
-      color: var(--color-white);
-      font-size: 2rem;
-      background: linear-gradient(135deg, #fff 0%, #4ECDC4 50%, #FF6B6B 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      transition: all var(--transition-fast);
-    }
-
-    .footer-column:first-child .footer-logo:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 20px rgba(79, 172, 254, 0.5));
-    }
-
-    .footer-description { 
-      margin-block: var(--space-m) var(--space-l); 
-      line-height: 1.8; 
-      opacity: 0.8;
-      font-weight: 300;
-      letter-spacing: 0.02em;
-    }
-
-    .social-links { 
-      display: flex; 
-      gap: var(--space-m);
-      flex-wrap: wrap;
-    }
-    .social-link {
-      color: var(--color-text-muted);
-      font-size: 1.5rem;
-      transition: all var(--transition-fast);
-      position: relative;
-      overflow: hidden;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--gradient-glass);
-      border-radius: var(--border-radius-full);
-      border: 1px solid var(--color-border);
-    }
-
-    .social-link::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(79, 172, 254, 0.3);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: all var(--transition-fast);
-    }
-
-    .social-link:hover::before {
-      width: 100%;
-      height: 100%;
-    }
-
-    .social-link:hover { 
-      color: var(--color-white); 
-      transform: translateY(-5px) rotate(360deg);
-      box-shadow: 0 10px 30px -5px rgba(79, 172, 254, 0.5);
-      border-color: var(--color-secondary);
-    }
-
-    .footer-title {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 1.25rem;
-      margin-bottom: var(--space-l);
-      color: var(--color-white);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      position: relative;
-    }
-
-    .footer-title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background: var(--gradient-accent);
-      border-radius: 1px;
-    }
-
-    .footer-links { 
-      display: flex; 
-      flex-direction: column; 
-      gap: var(--space-m); 
-    }
-    .footer-link {
-      color: var(--color-text-muted);
-      text-decoration: none;
-      opacity: 0.8;
-      transition: all var(--transition-fast);
-      font-weight: 300;
-      letter-spacing: 0.02em;
-    }
-
-    .footer-link::before {
-      content: '▸';
-      margin-right: var(--space-xs);
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-    }
-
-    .footer-link:hover::before {
-      opacity: 1;
-    }
-
-    .footer-link:hover { 
-      opacity: 1; 
-      color: var(--color-secondary); 
-      transform: translateX(5px);
-      text-decoration: none;
-    }
+    .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; border-radius: 24px; background: var(--bg-surface-raised); border: 1px solid var(--border); color: var(--text-main); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1500; }
+    .scroll-top.visible { opacity: 1; visibility: visible; }
     
-    .contact-info { 
-      display: flex; 
-      flex-direction: column; 
-      gap: var(--space-m); 
-    }
-    .contact-item { 
-      display: flex; 
-      gap: var(--space-s); 
-      align-items: flex-start; 
-      opacity: 0.8;
-      transition: all var(--transition-fast);
+    @media (hover: hover) {
+      .social-links a:hover { background: var(--primary); color: #050810; border-color: var(--primary); transform: translateY(-3px); }
+      .scroll-top:hover { transform: translateY(-5px); border-color: var(--primary); color: var(--primary); }
     }
 
-    .contact-item:hover {
-      opacity: 1;
-      transform: translateX(5px);
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE DESIGN (Flawless Mobile Optimization)
+    ════════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .hero-grid, .engine-grid, .showcase-grid, .compare-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .phone-wrapper { transform: scale(0.9); }
+      .flow-grid, .test-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .vs-circle { display: none; }
     }
 
-    .contact-item i { 
-      margin-top: 4px; 
-      color: var(--color-secondary);
-      font-size: 1.25rem;
-      transition: all var(--transition-fast);
-    }
-
-    .contact-item:hover i {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.5));
-    }
-
-    .copyright {
-      text-align: center;
-      padding-top: var(--space-xl);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--color-text-muted);
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      position: relative;
-    }
-
-    .copyright::before {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
-    }
-
-    /* ---------------------------------- */
-    /*        10. RESPONSIVE & MOBILE     */
-    /* ---------------------------------- */
-    
-    /* Tablet & Smaller Desktops */
-    @media (max-width: 992px) {
-      h1::after, h2::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-text { order: 2; }
-      .hero-image { order: 1; margin-bottom: var(--space-xxl); }
-      .hero-subtitle { margin-inline: auto; }
-      .app-store-buttons { justify-content: center; }
-      
-      .floating-card.card-1 { left: 10px; }
-      .floating-card.card-2 { right: 10px; }
-      
-      .steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-xl);
-      }
-      .steps::before { display: none; }
-      
-      .footer-container {
-        grid-template-columns: 1fr 1fr;
-      }
-      .footer-column:first-child { grid-column: 1 / -1; }
-    }
-    
-    /* Mobile Devices */
     @media (max-width: 768px) {
-      .nav-links, .cta-button.desktop { display: none; }
-      .mobile-menu-button { display: block; }
-      
-      .floating-card { display: none; }
-      
-      .steps { grid-template-columns: 1fr; }
-      
-      .footer-container { grid-template-columns: 1fr; }
-      
-      .testimonial-slider { scroll-snap-type: none; }
-      .testimonial { 
-        padding: var(--space-xl) var(--space-l); 
-      }
-
-      .section-title {
-        font-size: clamp(2rem, 10vw, 3.5rem);
-      }
-
-      .hero-title {
-        font-size: clamp(2.5rem, 12vw, 4.5rem);
-      }
-
-      .card-stack {
-        width: 280px;
-        height: 420px;
-      }
-
-      .swipe-button {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-      }
-    }
-
-    /* ---------------------------------- */
-    /*           11. MOBILE MENU          */
-    /* ---------------------------------- */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: min(85vw, 360px);
-      height: 100vh;
-      background: var(--gradient-glass);
-      backdrop-filter: blur(20px);
-      z-index: 1001;
-      padding: var(--space-xxxxl) var(--space-xl);
-      box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        inset 0 0 30px rgba(255, 255, 255, 0.05);
-      transition: right var(--transition-medium);
-      display: flex;
-      flex-direction: column;
-      border-left: 1px solid var(--color-border);
-    }
-
-    .mobile-menu.active { right: 0; }
-
-    .close-menu {
-      position: absolute;
-      top: var(--space-l);
-      right: var(--space-l);
-      background: none;
-      border: none;
-      font-size: 2.5rem;
-      color: var(--color-text);
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      width: 50px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--gradient-glass);
-      border-radius: 50%;
-      border: 1px solid var(--color-border);
-    }
-
-    .close-menu:hover {
-      transform: rotate(90deg) scale(1.1);
-      color: var(--color-secondary);
-      box-shadow: 0 0 30px rgba(79, 172, 254, 0.5);
+      .nav-desktop { display: none; }
+      .hamburger { display: flex; }
+      .hero { padding-top: 110px; text-align: center; }
+      .hero-actions { justify-content: center; }
+      .floating-note { display: none; } /* Kept hidden on mobile for clean UI */
+      .phone-wrapper { transform: scale(0.85); margin-top: 0px; }
+      .pref-mockup { margin: 0 -1rem; border-radius: 0; border-left: none; border-right: none; }
+      .flow-grid, .test-grid { grid-template-columns: 1fr; }
+      .cta-panel { padding: 3rem 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
     }
     
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-m);
-      margin-top: var(--space-xxl);
-    }
-    
-    .mobile-nav-link {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--color-text);
-      text-decoration: none;
-      padding: var(--space-m);
-      border-radius: var(--border-radius-m);
-      transition: all var(--transition-fast);
-      background: var(--gradient-glass);
-      border: 1px solid var(--color-border);
-      text-align: center;
-    }
-
-    .mobile-nav-link::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: left var(--transition-slow);
-    }
-
-    .mobile-nav-link:hover::before {
-      left: 100%;
-    }
-    
-    .mobile-nav-link:hover {
-        background: var(--gradient-primary);
-        color: var(--color-white);
-        transform: translateX(10px);
-        box-shadow: 
-          0 10px 30px -5px rgba(0, 0, 0, 0.3),
-          0 0 40px rgba(79, 172, 254, 0.3);
-        border-color: var(--color-secondary);
-    }
-    
-    .mobile-menu .cta-button {
-      margin-top: var(--space-xxl);
-      width: 100%;
-      text-align: center;
-      padding-block: var(--space-l);
-      font-size: 1.25rem;
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(5px);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all var(--transition-medium);
-    }
-
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .logo-img {
-      height: 6.25rem;
-      width: auto;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--color-secondary);
-      box-shadow: 0 0 30px rgba(79, 172, 254, 0.5);
-      transition: all var(--transition-fast);
-    }
-
-    .logo:hover .logo-img {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 0 50px rgba(79, 172, 254, 0.8);
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--gradient-primary);
-      border-radius: 5px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--gradient-secondary);
+    @media (max-width: 480px) {
+      .hero { padding-top: 100px; }
+      .phone-mockup { width: 260px; height: 540px; border-radius: 38px; }
+      .phone-wrapper { transform: scale(1); margin-top: 10px; }
+      .cta-actions { flex-direction: column; width: 100%; }
+      .store-btn { width: 100%; justify-content: center; }
+      .swipe-demo { max-width: 300px; }
+      /* Ensure iOS doesn't zoom in on input fields */
+      input[type="email"] { font-size: 16px; }
     }
   </style>
 </head>
 <body>
-  <!-- Scroll Progress Indicator -->
-  <div class="scroll-indicator" id="scrollIndicator"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-brand"><i class="fa-solid fa-route" style="color: var(--primary)"></i> NomadSwipe</div>
+  </div>
+
+  <!-- Background Ambience -->
+  <div class="bg-noise"></div>
+  <div class="orb" style="width: 600px; height: 600px; background: var(--primary-strong); top: -200px; left: -150px;"></div>
+  <div class="orb" style="width: 500px; height: 500px; background: var(--cat-attraction); bottom: 5%; right: -100px;"></div>
 
   <!-- Header -->
-  <header id="header">
-    <div class="container header-container">
+  <header class="header" id="header">
+    <div class="header-inner">
       <a href="#" class="logo">
-        <img src="static/adaptive-icon.png" alt="NomadSwipe Logo" class="logo-img">
-        <span>NomadSwipe</span>
+        <div class="logo-icon"><i class="fa-solid fa-route"></i></div>
+        NomadSwipe
       </a>
-      <nav class="nav-links">
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#testimonials" class="nav-link">Testimonials</a>
-        <a href="#download" class="nav-link">Download</a>
+      <nav class="nav-desktop">
+        <a href="#engine">The Engine</a>
+        <a href="#experience">How it Works</a>
+        <a href="#demo">Live Demo</a>
+        <a href="#download" class="btn btn-primary" style="margin-left: 1rem;">Get the app</a>
       </nav>
-      <button class="cta-button desktop">Get Started</button>
-      <button class="mobile-menu-button" id="mobileMenuButton">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
     </div>
   </header>
 
-  <!-- Mobile Menu -->
-  <div class="overlay" id="overlay"></div>
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="close-menu" id="closeMenu">
-      <i class="fas fa-times"></i>
-    </button>
-    <div class="mobile-nav-links">
-      <a href="#features" class="mobile-nav-link">Features</a>
-      <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
-      <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
-      <a href="#download" class="mobile-nav-link">Download</a>
-      <button class="cta-button">Get Started</button>
-    </div>
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-overlay" id="mobileNav">
+    <button class="close-nav" id="closeNav" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <a href="#engine" class="mob-link">The Engine</a>
+    <a href="#experience" class="mob-link">How it Works</a>
+    <a href="#demo" class="mob-link">Live Demo</a>
+    <a href="#download" class="mob-link" style="color: var(--primary);">Get the app</a>
   </div>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text animate__animated animate__fadeInLeft">
-        <h1 class="hero-title">Discover Your Next Adventure</h1>
-        <p class="hero-subtitle">NomadSwipe makes travel planning simple and fun. Swipe through personalized recommendations, plan multi-destination trips, and share your adventures with friends.</p>
-        <div class="app-store-buttons">
-          <a href="#" class="app-store-button">
-            <i class="fab fa-apple"></i>
-            <div class="app-store-text">
-              <small>Download on the</small>
-              <strong>App Store</strong>
-            </div>
+    <div class="container hero-grid">
+      <div class="hero-content" data-reveal>
+        <div class="section-kicker"><i class="fa-solid fa-bolt"></i> Pesronalized Travel, Fixed</div>
+        <h1 class="hero-title">Your personalized travel feed.<br><span class="text-gradient">Swipe it, Map it, Go.</span></h1>
+        <p class="section-copy">We got tired of 14 open tabs and messy spreadsheets just to plan a weekend away. NomadSwipe learns what you love—down to the exact cuisine—and builds a swipeable deck of spots you’ll actually want to visit.</p>
+        <div class="hero-actions">
+          <a href="#" class="store-btn disabled" aria-disabled="true">
+            <div class="coming-soon-badge">Coming Soon</div>
+            <i class="fa-brands fa-apple"></i>
+            <span><small>iOS App</small><strong>App Store</strong></span>
           </a>
-          <a href="#" class="app-store-button">
-            <i class="fab fa-google-play"></i>
-            <div class="app-store-text">
-              <small>Get it on</small>
-              <strong>Google Play</strong>
-            </div>
+          <!-- REPLACE "YOUR_PLAY_STORE_LINK_HERE" WITH YOUR ACTUAL GOOGLE PLAY URL -->
+          <a href="YOUR_PLAY_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="store-btn">
+            <i class="fa-brands fa-google-play"></i>
+            <span><small>Available Now</small><strong>Google Play</strong></span>
           </a>
         </div>
       </div>
-      <div class="hero-image animate__animated animate__fadeInRight">
-        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="NomadSwipe App on a phone screen showing a map of Tokyo" class="device-mockup" />
-        <div class="floating-card card-1">
-          <img src="static/eiffel.jpg" alt="Paris" />
-          <div class="floating-card-text">
-            <h4>Eiffel Tower</h4>
-            <p>Paris, France</p>
-          </div>
-        </div>
-        <div class="floating-card card-2">
-          <img src="static/ubud.jpg" alt="Bali" />
-          <div class="floating-card-text">
-            <h4>Ubud Retreat</h4>
-            <p>Bali, Indonesia</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <div class="container">
-      <h2 class="section-title">Why Choose NomadSwipe</h2>
-      <p class="section-subtitle">Discover what makes our travel app different from the rest. We focus on intuitive design, powerful features, and a community of passionate explorers.</p>
-      <div class="features-grid">
-        <div class="feature-card animate__animated animate__fadeInUp">
-          <div class="feature-icon"><i class="fas fa-hand-pointer"></i></div>
-          <h3 class="feature-title">Swipe to Discover</h3>
-          <p class="feature-description">Find your next destination, restaurant, or attraction with a simple swipe. Our intuitive interface makes discovering new places fun and easy.</p>
-        </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <div class="feature-icon"><i class="fas fa-globe-americas"></i></div>
-          <h3 class="feature-title">Multi-Destination Planning</h3>
-          <p class="feature-description">Plan complex trips across multiple countries and cities with our smart trip planner. Organize your itinerary with ease.</p>
-        </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <div class="feature-icon"><i class="fas fa-users"></i></div>
-          <h3 class="feature-title">Collaborative Trips</h3>
-          <p class="feature-description">Plan your journey together with friends and family. Share ideas, vote on activities, and create the perfect itinerary as a team.</p>
-        </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <div class="feature-icon"><i class="fas fa-filter"></i></div>
-          <h3 class="feature-title">Advanced Filters</h3>
-          <p class="feature-description">Find exactly what you're looking for with comprehensive filters for budget, activities, accessibility, and more.</p>
-        </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <div class="feature-icon"><i class="fas fa-star"></i></div>
-          <h3 class="feature-title">Authentic Reviews</h3>
-          <p class="feature-description">Make informed decisions with our detailed rating system and authentic reviews from fellow travelers.</p>
-        </div>
-        <div class="feature-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-          <div class="feature-icon"><i class="fas fa-share-alt"></i></div>
-          <h3 class="feature-title">Trip Sharing</h3>
-          <p class="feature-description">Share your adventures with friends or get inspired by other travelers' journeys with our social sharing features.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works Section -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="container">
-      <h2 class="section-title">How It Works in 4 Easy Steps</h2>
-      <p class="section-subtitle">Getting started with NomadSwipe is as simple as it gets. Go from download to discovery in just a few minutes.</p>
-      <div class="steps">
-        <div class="step animate__animated animate__fadeInUp">
-          <div class="step-number">1</div>
-          <h3 class="step-title">Download</h3>
-          <p class="step-description">Get the app from App Store or Google Play</p>
-        </div>
-        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <div class="step-number">2</div>
-          <h3 class="step-title">Set Preferences</h3>
-          <p class="step-description">Tell us what you like in a destination</p>
-        </div>
-        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <div class="step-number">3</div>
-          <h3 class="step-title">Swipe & Save</h3>
-          <p class="step-description">Discover places and save your favorites</p>
-        </div>
-        <div class="step animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-          <div class="step-number">4</div>
-          <h3 class="step-title">Plan & Go</h3>
-          <p class="step-description">Create your itinerary and start exploring</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- App Showcase Section -->
-  <section class="app-showcase" id="app-showcase">
-    <div class="container">
-      <h2 class="section-title">App Showcase</h2>
-      <p class="section-subtitle">Experience the swipe-based discovery and trip planning</p>
-      <div class="swipe-demo">
-        <div class="card-stack">
-          <div class="card card-1" style="background-image: url('static/vegas.jpg'); border: 3px solid #F59342;">
-            <div class="card-content"><div class="card-title">Welcome to Fabulous Las Vegas Sign</div><div class="card-rating"><span class="stars">★★★★<span style="opacity: 0.5;">★</span></span><span class="rating-value">4.6</span></div></div>
-          </div>
-          <div class="card card-2" style="background-image: url('static/bellagio.jpg'); border: 3px solid #42f587;">
-            <div class="card-content"><div class="card-title">Bellagio Hotel & Casino</div><div class="card-rating"><span class="stars">★★★★★</span><span class="rating-value">4.7</span><span class="price">$$$$</span></div></div>
-          </div>
-          <div class="card card-3" style="background-image: url('static/hardrock.jpg'); border: 3px solid #FF66A1;">
-            <div class="card-content"><div class="card-title">Hard Rock Cafe</div><div class="card-rating"><span class="stars">★★★★<span style="opacity: 0.5;">★</span></span><span class="rating-value">4.4</span><span class="price">$$</span></div></div>
-          </div>
-          <div class="card card-4" style="background-image: url('static/goldentiki.jpg'); border: 3px solid #4287f5;">
-            <div class="card-content"><div class="card-title">The Golden Tiki</div><div class="card-rating"><span class="stars">★★★★<span style="opacity: 0.5;">★</span></span><span class="rating-value">4.6</span><span class="price">$$</span></div></div>
-          </div>
-        </div>
-        <div class="swipe-actions">
-          <div class="swipe-button swipe-left"><i class="fas fa-times"></i></div>
-          <div class="swipe-button swipe-right"><i class="fas fa-heart"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials Section -->
-  <section class="testimonials" id="testimonials">
-    <div class="container">
-      <h2 class="section-title">What Travelers Say</h2>
-      <p class="section-subtitle">Real stories from our global community of NomadSwipe users.</p>
       
-      <div class="testimonial-slider" id="testimonialSlider">
-        <div class="testimonial">
-          <p class="testimonial-text">NomadSwipe has completely changed the way I plan trips. It's so intuitive and fun to use! I've discovered places I never would have found otherwise.</p>
-          <div class="testimonial-author">
-            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=128&q=80" alt="Avatar 1" class="testimonial-avatar">
-            <strong class="testimonial-name">Jane Doe</strong>
-            <span class="testimonial-role">Solo Adventurer</span>
+      <div class="hero-visual" data-reveal>
+        <div class="phone-wrapper">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <!-- Using a high-quality travel image representing discovery -->
+              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=600&auto=format&fit=crop" alt="App interface">
+            </div>
+          </div>
+          
+          <div class="floating-note note-1">
+            <div class="emoji-box" style="color: var(--cat-food);"><i class="fa-solid fa-utensils"></i></div>
+            <div>
+              <strong>40% Restaurants</strong>
+            </div>
+          </div>
+          <div class="floating-note note-2">
+            <div class="emoji-box" style="color: var(--primary);"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <strong>Group Sync Active</strong>
+            </div>
           </div>
         </div>
-        <div class="testimonial">
-          <p class="testimonial-text">Planning group trips used to be a nightmare, but NomadSwipe's collaborative feature is a game-changer. Everyone gets a say, and it's actually enjoyable now!</p>
-          <div class="testimonial-author">
-            <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=128&q=80" alt="Avatar 2" class="testimonial-avatar">
-            <strong class="testimonial-name">John Smith</strong>
-            <span class="testimonial-role">Family Trip Planner</span>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="testimonial-text">The filters are incredibly detailed. I can narrow down my search to exactly what I want, whether it's budget-friendly restaurants or accessible attractions. Love it!</p>
-          <div class="testimonial-author">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=128&q=80" alt="Avatar 3" class="testimonial-avatar">
-            <strong class="testimonial-name">Emily White</strong>
-            <span class="testimonial-role">Accessible Travel Enthusiast</span>
-          </div>
-        </div>
-      </div>
-      <!-- ADDED: Testimonial Controls -->
-      <div class="testimonial-controls">
-        <button id="prevTestimonial" class="testimonial-btn" aria-label="Previous testimonial"><i class="fas fa-chevron-left"></i></button>
-        <button id="nextTestimonial" class="testimonial-btn" aria-label="Next testimonial"><i class="fas fa-chevron-right"></i></button>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta" id="download">
+  <!-- Advanced Recommendation Engine -->
+  <section class="section engine-section" id="engine">
+    <div class="container engine-grid">
+      <div class="pref-mockup" data-reveal>
+        <div class="pref-header">PRIORITY ORDER</div>
+        <div class="pref-sub">First = more in your feed</div>
+        
+        <div class="pref-list">
+          <div class="pref-item">
+            <div class="pref-rank" style="background: var(--cat-food);">1</div>
+            <div class="pref-label">Restaurants</div>
+            <div class="pref-sub-tags">
+              <span class="pref-tag">Sushi</span>
+              <span class="pref-tag">Tacos</span>
+              <span class="pref-tag">Cafes</span>
+            </div>
+          </div>
+          <div class="pref-item">
+            <div class="pref-rank" style="background: var(--cat-attraction);">2</div>
+            <div class="pref-label">Attractions</div>
+            <div class="pref-sub-tags">
+              <span class="pref-tag">Museums</span>
+              <span class="pref-tag">Landmarks</span>
+            </div>
+          </div>
+          <div class="pref-item">
+            <div class="pref-rank" style="background: var(--cat-bar);">3</div>
+            <div class="pref-label">Nightlife</div>
+            <div class="pref-sub-tags">
+              <span class="pref-tag">Dive Bars</span>
+              <span class="pref-tag">Rooftop</span>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 2rem; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); letter-spacing: 1px;">YOUR FEED WILL LOOK LIKE:</div>
+        <div class="feed-bar">
+          <div class="feed-seg" style="flex: 0.5; background: var(--cat-food);">50%</div>
+          <div class="feed-seg" style="flex: 0.3; background: var(--cat-attraction);">30%</div>
+          <div class="feed-seg" style="flex: 0.2; background: var(--cat-bar);">20%</div>
+        </div>
+      </div>
+      
+      <div data-reveal>
+        <div class="section-kicker"><i class="fa-solid fa-microchip"></i> Smart Architecture</div>
+        <h2 class="section-title">An engine that actually gets your vibe.</h2>
+        <p class="section-copy">Most travel apps just dump the top 10 tourist traps on you. We built an Advanced Recommendation Engine that puts you in control.</p>
+        <p class="section-copy">Rank your top categories, select your hyper-specific sub-vibes (like <em>Boutique Hotels</em> or <em>Dive Bars</em>), and our algorithm mathematically weights your swipe deck. You only see what you actually care about.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities (Flow) -->
+  <section class="section" id="experience">
     <div class="container">
-      <h2 class="section-title">Ready to Start Your Adventure?</h2>
-      <p class="section-subtitle">Download NomadSwipe today and begin exploring the world one swipe at a time. Your next great story is waiting to be written.</p>
-      <div class="cta-buttons">
-        <a href="#" class="cta-app-button">
-          <i class="fab fa-apple"></i>
-          <span>Download on the App Store</span>
-        </a>
-        <a href="#" class="cta-app-button">
-          <i class="fab fa-google-play"></i>
-          <span>Get it on Google Play</span>
-        </a>
+      <div style="text-align: center; margin-bottom: 3rem;" data-reveal>
+        <div class="section-kicker"><i class="fa-solid fa-layer-group"></i> The NomadSwipe Flow</div>
+        <h2 class="section-title">Discovery without the drag.</h2>
+      </div>
+      
+      <div class="flow-grid">
+        <div class="flow-card" data-reveal>
+          <div class="flow-icon" style="color: var(--primary); border-color: rgba(129, 140, 248, 0.3);"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Swipe Discovery</h3>
+          <p>No endless scrolling. Right to save, left to pass. We compress hours of travel blog reading into a fast, highly-curated visual deck.</p>
+        </div>
+        <div class="flow-card" data-reveal>
+          <div class="flow-icon" style="color: var(--cat-attraction); border-color: rgba(139, 92, 246, 0.3);"><i class="fa-solid fa-map-location-dot"></i></div>
+          <h3>Interactive Routing</h3>
+          <p>Every swipe right automatically plots onto your personal trip map. Instantly see how your saves cluster geographically to plan your days.</p>
+        </div>
+        <div class="flow-card" data-reveal>
+          <div class="flow-icon" style="color: var(--cat-food); border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-user-group"></i></div>
+          <h3>Group Sync</h3>
+          <p>Invite the group chat. Everyone swipes on their own time. The map highlights mutual matches. Group consensus, zero arguments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo -->
+  <section class="section" id="demo">
+    <div class="container showcase-grid">
+      <div data-reveal>
+        <div class="section-kicker"><i class="fa-solid fa-hand-pointer"></i> Live Preview</div>
+        <h2 class="section-title">The core experience.</h2>
+        <p class="section-copy">Try the interactive swipe deck. It's designed to help you decide faster and preserve momentum.</p>
+        
+        <div class="showcase-points">
+          <div class="point">
+            <div class="point-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-heart"></i></div>
+            <div>
+              <strong>Swipe right to save</strong>
+              <span>Keep places that fit your taste and timing. They go straight to your map.</span>
+            </div>
+          </div>
+          <div class="point">
+            <div class="point-icon" style="background: rgba(244, 63, 94, 0.1); color: var(--danger); border: 1px solid rgba(244, 63, 94, 0.2);"><i class="fa-solid fa-xmark"></i></div>
+            <div>
+              <strong>Swipe left to skip</strong>
+              <span>Reject quickly. The algorithm learns from your passes to give you better options.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="demo-shell" data-reveal>
+        <div class="swipe-demo">
+          <div class="card-stack" id="cardStack"></div>
+          <div class="swipe-actions">
+            <button class="swipe-btn btn-nope" id="btnSwipeLeft" aria-label="Skip"><i class="fa-solid fa-xmark"></i></button>
+            <button class="swipe-btn btn-like" id="btnSwipeRight" aria-label="Save"><i class="fa-solid fa-heart"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align: center;" data-reveal>
+        <div class="section-kicker"><i class="fa-solid fa-code-compare"></i> The Alternative</div>
+        <h2 class="section-title">Planning shouldn't be a part-time job.</h2>
+      </div>
+      
+      <div class="compare-grid">
+        <div class="compare-card old" data-reveal>
+          <h3><i class="fa-solid fa-circle-xmark"></i> The Old Way</h3>
+          <ul class="compare-list">
+            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> Group chat goes silent when asked "where to eat?"</li>
+            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> 30 open tabs of SEO-stuffed travel blogs</li>
+            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> Manually copy-pasting addresses into Maps</li>
+            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> A messy spreadsheet nobody actually looks at</li>
+          </ul>
+        </div>
+        
+        <div class="vs-circle" data-reveal>VS</div>
+        
+        <div class="compare-card new" data-reveal>
+          <h3><i class="fa-solid fa-circle-check"></i> NomadSwipe</h3>
+          <ul class="compare-list">
+            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Dial in exactly what you want via preferences</li>
+            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Swipe on highly curated, visual recommendations</li>
+            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Everything auto-plots onto a shared map</li>
+            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Friends vote by swiping. Consensus is easy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="reviews">
+    <div class="container">
+      <div style="text-align: center;" data-reveal>
+        <div class="section-kicker"><i class="fa-solid fa-quote-left"></i> Word on the street</div>
+        <h2 class="section-title">What people are saying</h2>
+      </div>
+      
+      <div class="test-grid">
+        <div class="test-card" data-reveal>
+          <p class="test-text">"my group chat is absolutely useless for planning. this app basically forced them to vote on places by swiping without them even realizing they were planning the trip."</p>
+          <div class="user">
+            <div class="user-avatar">S</div>
+            <div class="user-info"><strong>u/sarah_explores</strong></div>
+          </div>
+        </div>
+        <div class="test-card" data-reveal>
+          <p class="test-text">"the map integration is what makes this a killer app. swiping is fun but seeing them all plotted out when you're actually walking around the city is a lifesaver."</p>
+          <div class="user">
+            <div class="user-avatar">N</div>
+            <div class="user-info"><strong>u/nomad_dev</strong></div>
+          </div>
+        </div>
+        <div class="test-card" data-reveal>
+          <p class="test-text">"I love that I can tell it to give me 70% food recommendations and specifically ask for dive bars and taco spots. It actually listens."</p>
+          <div class="user">
+            <div class="user-avatar">M</div>
+            <div class="user-info"><strong>u/mike_travels99</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="download">
+    <div class="container">
+      <div class="cta-panel" data-reveal>
+        <div class="section-kicker" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--text-main);">
+          <i class="fa-solid fa-download"></i> Ready when you are
+        </div>
+        <h2>Plan less. Experience more.</h2>
+        <p>Grab the app, set your preferences, and build your next trip with zero planning drag.</p>
+        <div class="cta-actions">
+          <a href="#" class="store-btn disabled" aria-disabled="true">
+            <div class="coming-soon-badge">Coming Soon</div>
+            <i class="fa-brands fa-apple"></i>
+            <span><small>iOS App</small><strong>App Store</strong></span>
+          </a>
+          <!-- REPLACE "YOUR_PLAY_STORE_LINK_HERE" WITH YOUR ACTUAL GOOGLE PLAY URL -->
+          <a href="YOUR_PLAY_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="store-btn">
+            <i class="fa-brands fa-google-play"></i>
+            <span><small>Available Now</small><strong>Google Play</strong></span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <div class="footer-container">
-        <div class="footer-column">
-          <a href="#" class="footer-logo">
-            <i class="fas fa-route"></i>
-            NomadSwipe
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
+            <div class="logo-icon"><i class="fa-solid fa-route"></i></div> NomadSwipe
           </a>
-          <p class="footer-description">Discover the world with NomadSwipe. Your personalized travel companion for creating unforgettable journeys.</p>
+          <p class="footer-desc">A modern travel planning experience built to kill the spreadsheet and fix group coordination.</p>
           <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
-        <div class="footer-column">
-          <h4 class="footer-title">Company</h4>
-          <div class="footer-links">
-            <a href="#" class="footer-link">About Us</a>
-            <a href="#" class="footer-link">Careers</a>
-            <a href="#" class="footer-link">Press</a>
-          </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#engine">The Engine</a></li>
+            <li><a href="#experience">How it Works</a></li>
+            <li><a href="#demo">Live Demo</a></li>
+          </ul>
         </div>
-        <div class="footer-column">
-          <h4 class="footer-title">Help</h4>
-          <div class="footer-links">
-            <a href="#" class="footer-link">FAQ</a>
-            <a href="#" class="footer-link">Support</a>
-            <a href="#" class="footer-link">Terms of Service</a>
-            <a href="privacypolicy.html" class="footer-link">Privacy Policy</a>
-          </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Support</a></li>
+            <li><a href="#">Press Kit</a></li>
+          </ul>
         </div>
-        <div class="footer-column">
-          <h4 class="footer-title">Contact</h4>
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-globe"></i>
-              <span>www.nomadswipe.com</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
-              <span>+1 (555) 123-4567</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span>contact@nomadswipe.com</span>
-            </div>
+        <div>
+          <h4>Stay Updated</h4>
+          <p class="footer-desc" style="margin-top: 0; font-size: 0.9rem;">Get curated travel lists and app updates.</p>
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <input type="email" placeholder="Email address" style="flex: 1; padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-main); outline: none;" required>
+            <button type="button" onclick="alert('Subscribed!')" style="padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); background: var(--primary); color: #050810; font-weight: 800;">Join</button>
           </div>
         </div>
       </div>
-      <div class="copyright">
-        © 2024 NomadSwipe. Crafted with passion. All Rights Reserved.
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> NomadSwipe. All rights reserved.</span>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
       </div>
     </div>
   </footer>
 
+  <!-- Scroll Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // --- Mobile Menu functionality ---
-      const mobileMenuButton = document.getElementById('mobileMenuButton');
-      const closeMenuButton = document.getElementById('closeMenu');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const overlay = document.getElementById('overlay');
-      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-menu .cta-button');
-
-      function openMenu() {
-        mobileMenu.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeMenu() {
-        mobileMenu.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      mobileMenuButton.addEventListener('click', openMenu);
-      closeMenuButton.addEventListener('click', closeMenu);
-      overlay.addEventListener('click', closeMenu);
+    document.addEventListener("DOMContentLoaded", () => {
       
-      mobileNavLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-      
-      // --- Swipe functionality for App Showcase cards ---
-      const swipeLeftBtn = document.querySelector('.swipe-left');
-      const swipeRightBtn = document.querySelector('.swipe-right');
-      const cardStack = document.querySelector('.card-stack');
+      // 1. Preloader
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hidden');
+      }, 500);
 
-      if (swipeLeftBtn && swipeRightBtn && cardStack) {
-          function updateCardClasses() {
-            const cards = cardStack.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-              const inlineStyle = card.getAttribute('style');
-              card.className = 'card';
-              card.classList.add(`card-${index + 1}`);
-              if (inlineStyle) {
-                card.setAttribute('style', inlineStyle);
-              }
-            });
-          }
+      // 2. Set Year
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-          function swipeCard(direction) {
-            const topCard = cardStack.querySelector('.card-1');
-            if (!topCard) return;
-
-            topCard.classList.add(direction === 'left' ? 'swipe-out-left' : 'swipe-out-right');
-
-            topCard.addEventListener('transitionend', function handler() {
-              topCard.removeEventListener('transitionend', handler);
-              topCard.classList.remove('swipe-out-left', 'swipe-out-right');
-              cardStack.appendChild(topCard);
-              updateCardClasses();
-            }, { once: true });
-          }
-
-          swipeLeftBtn.addEventListener('click', () => swipeCard('left'));
-          swipeRightBtn.addEventListener('click', () => swipeCard('right'));
-      }
-
-      // --- ADDED: Testimonial slider with buttons ---
-      const testimonialSliderEl = document.getElementById('testimonialSlider');
-      const prevBtn = document.getElementById('prevTestimonial');
-      const nextBtn = document.getElementById('nextTestimonial');
-
-      if (testimonialSliderEl && prevBtn && nextBtn) {
-          const firstTestimonial = testimonialSliderEl.querySelector('.testimonial');
-          if (firstTestimonial) {
-              const scrollAmount = firstTestimonial.offsetWidth + parseInt(getComputedStyle(testimonialSliderEl).gap || 0);
-
-              nextBtn.addEventListener('click', () => {
-                  testimonialSliderEl.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-              });
-
-              prevBtn.addEventListener('click', () => {
-                  testimonialSliderEl.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-              });
-          }
-      }
-
-      // --- Enhanced testimonial slider drag/touch ---
-      if (testimonialSliderEl) {
-          let isDown = false;
-          let startX;
-          let scrollLeft;
-
-          testimonialSliderEl.addEventListener('mousedown', (e) => {
-              isDown = true;
-              testimonialSliderEl.classList.add('active');
-              startX = e.pageX - testimonialSliderEl.offsetLeft;
-              scrollLeft = testimonialSliderEl.scrollLeft;
-          });
-
-          testimonialSliderEl.addEventListener('mouseleave', () => {
-              isDown = false;
-              testimonialSliderEl.classList.remove('active');
-          });
-
-          testimonialSliderEl.addEventListener('mouseup', () => {
-              isDown = false;
-              testimonialSliderEl.classList.remove('active');
-          });
-
-          testimonialSliderEl.addEventListener('mousemove', (e) => {
-              if (!isDown) return;
-              e.preventDefault();
-              const x = e.pageX - testimonialSliderEl.offsetLeft;
-              const walk = (x - startX) * 2; //scroll-fast
-              testimonialSliderEl.scrollLeft = scrollLeft - walk;
-          });
-      }
-      
-      // --- Header scroll effect ---
-      let lastScroll = 0;
+      // 3. Header & Scroll Top
+      const header = document.getElementById('header');
+      const scrollTop = document.getElementById('scrollTop');
       window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        const header = document.getElementById('header');
+        if (window.scrollY > 40) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
         
-        if (header) {
-          if (currentScroll > 100) {
-            header.classList.add('scrolled');
-          } else {
-            header.classList.remove('scrolled');
-          }
-        }
-        
-        lastScroll = currentScroll;
-      });
+        if (window.scrollY > 500) scrollTop.classList.add('visible');
+        else scrollTop.classList.remove('visible');
+      }, { passive: true });
 
-      // --- Scroll progress indicator ---
-      window.addEventListener('scroll', () => {
-        const scrollIndicator = document.getElementById('scrollIndicator');
-        if (scrollIndicator) {
-          const scrollTop = window.pageYOffset;
-          const docHeight = document.body.scrollHeight - window.innerHeight;
-          const scrollPercent = (scrollTop / docHeight) * 100;
-          scrollIndicator.style.transform = `scaleX(${scrollPercent / 100})`;
+      scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // 4. Mobile Nav
+      const hamburger = document.getElementById('hamburger');
+      const closeNav = document.getElementById('closeNav');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobLinks = document.querySelectorAll('.mob-link');
+
+      const toggleNav = (state) => {
+        if(state) {
+          mobileNav.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        } else {
+          mobileNav.classList.remove('active');
+          document.body.style.overflow = '';
         }
-      });
+      }
+
+      hamburger.addEventListener('click', () => toggleNav(true));
+      closeNav.addEventListener('click', () => toggleNav(false));
+      mobLinks.forEach(link => link.addEventListener('click', () => toggleNav(false)));
+
+      // 5. Scroll Reveal
+      const revealElements = document.querySelectorAll('[data-reveal]');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+      
+      revealElements.forEach(el => revealObserver.observe(el));
+
+      // 6. Authentic App Swiper Engine (Mirrors React Native Component)
+      setupSwipeDemo();
     });
+
+    function setupSwipeDemo() {
+      const cardStack = document.getElementById("cardStack");
+      const btnLeft = document.getElementById("btnSwipeLeft");
+      const btnRight = document.getElementById("btnSwipeRight");
+
+      if (!cardStack) return;
+
+      // App Colors
+      const C_FOOD = "#F59E0B";
+      const C_ATTR = "#8B5CF6";
+      const C_LODG = "#06B6D4";
+      const C_BAR  = "#EC4899";
+
+      const CARDS = [
+        { type: "Attraction", title: "Clifftop Lookout", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop", rating: 4.8, dist: "850m", color: C_ATTR },
+        { type: "Hotel", title: "Harborfront Design", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=600&auto=format&fit=crop", rating: 4.7, dist: "1.2km", color: C_LODG },
+        { type: "Restaurant", title: "Chef-Led Ramen", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop", rating: 4.5, dist: "2.3km", color: C_FOOD },
+        { type: "Bar", title: "Skyline Rooftop", img: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=600&auto=format&fit=crop", rating: 4.9, dist: "3.1km", color: C_BAR }
+      ];
+
+      let deck = [...CARDS];
+      let isSwiping = false;
+
+      function renderStack() {
+        cardStack.innerHTML = "";
+        const limit = Math.min(deck.length, 3);
+        
+        for (let i = 0; i < limit; i++) {
+          const data = deck[deck.length - limit + i];
+          const isTop = i === limit - 1;
+          const pos = limit - 1 - i;
+          
+          const el = document.createElement("div");
+          el.className = "card";
+          el.style.zIndex = i + 1;
+          el.style.transform = `scale(${1 - pos * 0.04}) translateY(${pos * 14}px)`;
+          if (!isTop) el.style.pointerEvents = "none";
+          
+          el.innerHTML = `
+            <div class="indicator like">LIKE</div>
+            <div class="indicator nope">NOPE</div>
+            <div class="card-inner">
+              <img class="card-img" src="${data.img}" alt="${data.title}" draggable="false">
+              <div class="card-overlay">
+                <div class="card-row-sp">
+                  <div class="card-pill" style="background-color: ${data.color}">${data.type}</div>
+                  <div class="card-dist">${data.dist}</div>
+                </div>
+                <div class="card-title">${data.title}</div>
+                <div class="card-rating-row">
+                  <i class="fa-solid fa-star" style="color: var(--star); font-size: 14.5px;"></i>
+                  <span class="card-rate-t">${data.rating}</span>
+                </div>
+              </div>
+            </div>
+          `;
+          cardStack.appendChild(el);
+          if (isTop) attachDrag(el);
+        }
+      }
+
+      function attachDrag(el) {
+        let startX = 0, currentX = 0, currentY = 0, dragging = false;
+        const likeInd = el.querySelector(".like"), nopeInd = el.querySelector(".nope");
+        const thresh = cardStack.offsetWidth * 0.25;
+
+        const update = () => {
+          el.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${currentX * 0.04}deg) scale(0.985)`;
+          likeInd.style.opacity = currentX > 10 ? Math.min(1, currentX / 75) : 0;
+          nopeInd.style.opacity = currentX < -10 ? Math.min(1, -currentX / 75) : 0;
+        };
+
+        const reset = () => {
+          el.classList.add("animating-back");
+          el.style.transform = "scale(1) translate(0,0)";
+          likeInd.style.opacity = 0; nopeInd.style.opacity = 0;
+          setTimeout(() => el.classList.remove("animating-back"), 400);
+        };
+
+        const flyOut = (dir) => {
+          if(isSwiping) return;
+          isSwiping = true;
+          el.classList.add("animating-out");
+          el.style.transform = `translate(${dir * 500}px, ${currentY}px) rotate(${dir * 30}deg)`;
+          el.style.opacity = 0;
+          (dir > 0 ? likeInd : nopeInd).style.opacity = 1;
+          
+          setTimeout(() => {
+            deck.unshift(deck.pop());
+            isSwiping = false;
+            renderStack();
+          }, 250);
+        };
+
+        el._fly = flyOut;
+
+        const onDown = e => { if(isSwiping) return; dragging = true; startX = e.clientX || e.touches[0].clientX; };
+        const onMove = e => { if(!dragging) return; currentX = (e.clientX || e.touches[0].clientX) - startX; update(); };
+        const onUp = () => { if(!dragging) return; dragging = false; Math.abs(currentX) > thresh ? flyOut(currentX > 0 ? 1 : -1) : reset(); };
+
+        el.addEventListener("mousedown", onDown); document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
+        el.addEventListener("touchstart", onDown, {passive: true}); document.addEventListener("touchmove", onMove, {passive: true}); document.addEventListener("touchend", onUp);
+      }
+
+      btnLeft.addEventListener("click", () => { const top = cardStack.lastElementChild; if(top && top._fly) top._fly(-1); });
+      btnRight.addEventListener("click", () => { const top = cardStack.lastElementChild; if(top && top._fly) top._fly(1); });
+
+      renderStack();
+    }
   </script>
 </body>
 </html>
