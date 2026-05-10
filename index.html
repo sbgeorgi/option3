@@ -3,14 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>NomadSwipe — Ditch the spreadsheets. Swipe your trip.</title>
-  <meta name="description" content="Tell us what you love, swipe through highly personalized recommendations, and watch your itinerary build itself on an interactive map." />
-  <meta name="theme-color" content="#050810" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>NomadSwipe — The Swipe-Based Travel Planner App</title>
+  <meta name="title" content="NomadSwipe — The Swipe-Based Travel Planner App" />
+  <meta name="description" content="NomadSwipe is the ultimate travel planner app. Ditch the spreadsheets, use our smart recommendation engine, and build your perfect trip itinerary with friends." />
+  <meta name="keywords" content="NomadSwipe, SwipeNomad, Nomad Swipe, travel planner app, group travel itinerary, trip planner, swipe travel app" />
+  <meta name="author" content="NomadSwipe" />
+  <link rel="canonical" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="NomadSwipe — Plan trips without the group chat drama" />
   <meta property="og:description" content="Advanced recommendation engine meets swipe-first discovery. Build the perfect trip with your friends." />
-  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="NomadSwipe — The Modern Travel Planner App" />
+  <meta property="twitter:description" content="Ditch the spreadsheets. Tell us what you love, swipe through personalized recommendations, and watch your itinerary build itself on an interactive map." />
+  <meta property="twitter:image" content="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop" />
+
+  <meta name="theme-color" content="#050810" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
   
+  <!-- Schema.org JSON-LD (Entity Resolution: Maps variations to the master brand invisibly) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "NomadSwipe",
+    "alternateName": ["SwipeNomad", "Nomad Swipe"],
+    "applicationCategory": "TravelApplication",
+    "operatingSystem": "Android",
+    "description": "NomadSwipe is an advanced swipe-based travel planner app. It uses a smart recommendation engine to help groups and solo travelers discover restaurants, attractions, and hotels without using spreadsheets.",
+    "url": "https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "156"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +61,7 @@
 
   <style>
     /* ════════════════════════════════════════════════════════════
-       DESIGN TOKENS & RESET (2026 App Accurate)
+       DESIGN TOKENS & RESET
     ════════════════════════════════════════════════════════════ */
     :root {
       /* App Core Colors */
@@ -72,7 +112,7 @@
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      -webkit-tap-highlight-color: transparent; /* Removes blue tap highlight on mobile */
+      -webkit-tap-highlight-color: transparent;
     }
     img { max-width: 100%; display: block; height: auto; }
     a { color: inherit; text-decoration: none; }
@@ -80,6 +120,12 @@
     ul { list-style: none; }
     section[id] { scroll-margin-top: 100px; }
     ::selection { background: rgba(129, 140, 248, 0.3); color: #fff; }
+
+    /* Accessibility Class - Hides text visually but keeps it for Googlebot/Screen Readers */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
 
     /* ════════════════════════════════════════════════════════════
        GLOBAL UTILITIES
@@ -136,8 +182,7 @@
     }
     .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; z-index: 0; }
     
-    /* Scroll Reveal */
-    [data-reveal] {
+    /* Scroll Reveal */[data-reveal] {
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
@@ -214,7 +259,6 @@
     
     .hamburger { display: none; font-size: 1.2rem; color: var(--text-main); width: 44px; height: 44px; border-radius: 50%; background: var(--bg-surface); align-items: center; justify-content: center; border: 1px solid var(--border); }
     
-    /* MOBILE NAV OVERLAY - Z-index updated to sit above the header */
     .mobile-overlay {
       position: fixed; inset: 0; z-index: 2000; background: rgba(5, 8, 16, 0.98); backdrop-filter: blur(20px);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
@@ -335,7 +379,7 @@
       display: flex; flex-direction: column; overflow: hidden;
       cursor: grab; transform-origin: center center;
       will-change: transform, opacity; border: 1px solid rgba(255,255,255,0.05);
-      touch-action: none; /* Crucial for native mobile swiping feel */
+      touch-action: none;
     }
     .card:active { cursor: grabbing; }
     
@@ -440,13 +484,8 @@
     .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; border-radius: 24px; background: var(--bg-surface-raised); border: 1px solid var(--border); color: var(--text-main); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 1500; }
     .scroll-top.visible { opacity: 1; visibility: visible; }
     
-    @media (hover: hover) {
-      .social-links a:hover { background: var(--primary); color: #050810; border-color: var(--primary); transform: translateY(-3px); }
-      .scroll-top:hover { transform: translateY(-5px); border-color: var(--primary); color: var(--primary); }
-    }
-
     /* ════════════════════════════════════════════════════════════
-       RESPONSIVE DESIGN (Flawless Mobile Optimization)
+       RESPONSIVE DESIGN
     ════════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .hero-grid, .engine-grid, .showcase-grid, .compare-grid { grid-template-columns: 1fr; gap: 4rem; }
@@ -461,7 +500,7 @@
       .hamburger { display: flex; }
       .hero { padding-top: 110px; text-align: center; }
       .hero-actions { justify-content: center; }
-      .floating-note { display: none; } /* Kept hidden on mobile for clean UI */
+      .floating-note { display: none; }
       .phone-wrapper { transform: scale(0.85); margin-top: 0px; }
       .pref-mockup { margin: 0 -1rem; border-radius: 0; border-left: none; border-right: none; }
       .flow-grid, .test-grid { grid-template-columns: 1fr; }
@@ -477,7 +516,6 @@
       .cta-actions { flex-direction: column; width: 100%; }
       .store-btn { width: 100%; justify-content: center; }
       .swipe-demo { max-width: 300px; }
-      /* Ensure iOS doesn't zoom in on input fields */
       input[type="email"] { font-size: 16px; }
     }
   </style>
@@ -490,307 +528,307 @@
   </div>
 
   <!-- Background Ambience -->
-  <div class="bg-noise"></div>
-  <div class="orb" style="width: 600px; height: 600px; background: var(--primary-strong); top: -200px; left: -150px;"></div>
-  <div class="orb" style="width: 500px; height: 500px; background: var(--cat-attraction); bottom: 5%; right: -100px;"></div>
+  <div class="bg-noise" aria-hidden="true"></div>
+  <div class="orb" style="width: 600px; height: 600px; background: var(--primary-strong); top: -200px; left: -150px;" aria-hidden="true"></div>
+  <div class="orb" style="width: 500px; height: 500px; background: var(--cat-attraction); bottom: 5%; right: -100px;" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="header" id="header">
     <div class="header-inner">
-      <a href="#" class="logo">
-        <div class="logo-icon"><i class="fa-solid fa-route"></i></div>
+      <a href="#" class="logo" aria-label="NomadSwipe Home">
+        <div class="logo-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div>
         NomadSwipe
       </a>
       <nav class="nav-desktop">
         <a href="#engine">The Engine</a>
         <a href="#experience">How it Works</a>
         <a href="#demo">Live Demo</a>
-        <a href="#download" class="btn btn-primary" style="margin-left: 1rem;">Get the app</a>
+        <a href="#download" class="btn btn-primary" style="margin-left: 1rem;" aria-label="Get the Nomad Swipe app">Get the app</a>
       </nav>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <button class="hamburger" id="hamburger" aria-label="Open Navigation Menu"><i class="fa-solid fa-bars"></i></button>
     </div>
   </header>
 
   <!-- Mobile Nav Overlay -->
-  <div class="mobile-overlay" id="mobileNav">
-    <button class="close-nav" id="closeNav" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+  <div class="mobile-overlay" id="mobileNav" aria-hidden="true">
+    <button class="close-nav" id="closeNav" aria-label="Close Navigation Menu"><i class="fa-solid fa-xmark"></i></button>
     <a href="#engine" class="mob-link">The Engine</a>
     <a href="#experience" class="mob-link">How it Works</a>
     <a href="#demo" class="mob-link">Live Demo</a>
-    <a href="#download" class="mob-link" style="color: var(--primary);">Get the app</a>
+    <a href="#download" class="mob-link" style="color: var(--primary);" aria-label="Download the SwipeNomad app">Get the app</a>
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content" data-reveal>
-        <div class="section-kicker"><i class="fa-solid fa-bolt"></i> Pesronalized Travel, Fixed</div>
-        <h1 class="hero-title">Your personalized travel feed.<br><span class="text-gradient">Swipe it, Map it, Go.</span></h1>
-        <p class="section-copy">We got tired of 14 open tabs and messy spreadsheets just to plan a weekend away. NomadSwipe learns what you love—down to the exact cuisine—and builds a swipeable deck of spots you’ll actually want to visit.</p>
-        <div class="hero-actions">
-          <a href="#" class="store-btn disabled" aria-disabled="true">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <i class="fa-brands fa-apple"></i>
-            <span><small>iOS App</small><strong>App Store</strong></span>
-          </a>
-          <!-- REPLACE "YOUR_PLAY_STORE_LINK_HERE" WITH YOUR ACTUAL GOOGLE PLAY URL -->
-          <a href="YOUR_PLAY_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="store-btn">
-            <i class="fa-brands fa-google-play"></i>
-            <span><small>Available Now</small><strong>Google Play</strong></span>
-          </a>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content" data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-bolt"></i> Personalized Travel, Fixed</div>
+          <h1 class="hero-title">Your personalized travel feed.<br><span class="text-gradient">Swipe it, Map it, Go.</span></h1>
+          <p class="section-copy">We got tired of 14 open tabs and messy spreadsheets just to plan a weekend away. NomadSwipe learns what you love—down to the exact cuisine—and builds a swipeable deck of spots you’ll actually want to visit.</p>
+          <div class="hero-actions">
+            <a href="#" class="store-btn disabled" aria-disabled="true" title="iOS App Store release coming soon">
+              <div class="coming-soon-badge">Coming Soon</div>
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
+              <span><small>iOS App</small><strong>App Store</strong></span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer" class="store-btn" title="Download the official Nomad Swipe app on Google Play" aria-label="Download NomadSwipe on Google Play">
+              <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+              <span><small>Available Now</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-visual" data-reveal>
+          <div class="phone-wrapper">
+            <div class="phone-mockup">
+              <div class="phone-screen">
+                <!-- Image alt tag optimized with semantic variations invisible to the standard user -->
+                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=600&auto=format&fit=crop" alt="NomadSwipe interactive travel planner app interface, featuring the SwipeNomad discovery engine">
+              </div>
+            </div>
+            
+            <div class="floating-note note-1" aria-hidden="true">
+              <div class="emoji-box" style="color: var(--cat-food);"><i class="fa-solid fa-utensils"></i></div>
+              <div>
+                <strong>40% Restaurants</strong>
+              </div>
+            </div>
+            <div class="floating-note note-2" aria-hidden="true">
+              <div class="emoji-box" style="color: var(--primary);"><i class="fa-solid fa-users"></i></div>
+              <div>
+                <strong>Group Sync Active</strong>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div class="hero-visual" data-reveal>
-        <div class="phone-wrapper">
-          <div class="phone-mockup">
-            <div class="phone-screen">
-              <!-- Using a high-quality travel image representing discovery -->
-              <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=600&auto=format&fit=crop" alt="App interface">
+    </section>
+
+    <!-- Advanced Recommendation Engine -->
+    <section class="section engine-section" id="engine">
+      <div class="container engine-grid">
+        <div class="pref-mockup" data-reveal aria-hidden="true">
+          <div class="pref-header">PRIORITY ORDER</div>
+          <div class="pref-sub">First = more in your feed</div>
+          
+          <div class="pref-list">
+            <div class="pref-item">
+              <div class="pref-rank" style="background: var(--cat-food);">1</div>
+              <div class="pref-label">Restaurants</div>
+              <div class="pref-sub-tags">
+                <span class="pref-tag">Sushi</span>
+                <span class="pref-tag">Tacos</span>
+                <span class="pref-tag">Cafes</span>
+              </div>
+            </div>
+            <div class="pref-item">
+              <div class="pref-rank" style="background: var(--cat-attraction);">2</div>
+              <div class="pref-label">Attractions</div>
+              <div class="pref-sub-tags">
+                <span class="pref-tag">Museums</span>
+                <span class="pref-tag">Landmarks</span>
+              </div>
+            </div>
+            <div class="pref-item">
+              <div class="pref-rank" style="background: var(--cat-bar);">3</div>
+              <div class="pref-label">Nightlife</div>
+              <div class="pref-sub-tags">
+                <span class="pref-tag">Dive Bars</span>
+                <span class="pref-tag">Rooftop</span>
+              </div>
             </div>
           </div>
           
-          <div class="floating-note note-1">
-            <div class="emoji-box" style="color: var(--cat-food);"><i class="fa-solid fa-utensils"></i></div>
-            <div>
-              <strong>40% Restaurants</strong>
-            </div>
-          </div>
-          <div class="floating-note note-2">
-            <div class="emoji-box" style="color: var(--primary);"><i class="fa-solid fa-users"></i></div>
-            <div>
-              <strong>Group Sync Active</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Advanced Recommendation Engine -->
-  <section class="section engine-section" id="engine">
-    <div class="container engine-grid">
-      <div class="pref-mockup" data-reveal>
-        <div class="pref-header">PRIORITY ORDER</div>
-        <div class="pref-sub">First = more in your feed</div>
-        
-        <div class="pref-list">
-          <div class="pref-item">
-            <div class="pref-rank" style="background: var(--cat-food);">1</div>
-            <div class="pref-label">Restaurants</div>
-            <div class="pref-sub-tags">
-              <span class="pref-tag">Sushi</span>
-              <span class="pref-tag">Tacos</span>
-              <span class="pref-tag">Cafes</span>
-            </div>
-          </div>
-          <div class="pref-item">
-            <div class="pref-rank" style="background: var(--cat-attraction);">2</div>
-            <div class="pref-label">Attractions</div>
-            <div class="pref-sub-tags">
-              <span class="pref-tag">Museums</span>
-              <span class="pref-tag">Landmarks</span>
-            </div>
-          </div>
-          <div class="pref-item">
-            <div class="pref-rank" style="background: var(--cat-bar);">3</div>
-            <div class="pref-label">Nightlife</div>
-            <div class="pref-sub-tags">
-              <span class="pref-tag">Dive Bars</span>
-              <span class="pref-tag">Rooftop</span>
-            </div>
+          <div style="margin-top: 2rem; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); letter-spacing: 1px;">YOUR FEED WILL LOOK LIKE:</div>
+          <div class="feed-bar">
+            <div class="feed-seg" style="flex: 0.5; background: var(--cat-food);">50%</div>
+            <div class="feed-seg" style="flex: 0.3; background: var(--cat-attraction);">30%</div>
+            <div class="feed-seg" style="flex: 0.2; background: var(--cat-bar);">20%</div>
           </div>
         </div>
         
-        <div style="margin-top: 2rem; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); letter-spacing: 1px;">YOUR FEED WILL LOOK LIKE:</div>
-        <div class="feed-bar">
-          <div class="feed-seg" style="flex: 0.5; background: var(--cat-food);">50%</div>
-          <div class="feed-seg" style="flex: 0.3; background: var(--cat-attraction);">30%</div>
-          <div class="feed-seg" style="flex: 0.2; background: var(--cat-bar);">20%</div>
+        <div data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-microchip"></i> Smart Architecture</div>
+          <h2 class="section-title">An engine that actually gets your vibe.</h2>
+          <p class="section-copy">Most travel apps just dump the top 10 tourist traps on you. We built an Advanced Recommendation Engine that puts you in control of your vacation planning.</p>
+          <p class="section-copy">Rank your top categories, select your hyper-specific sub-vibes (like <em>Boutique Hotels</em> or <em>Dive Bars</em>), and the NomadSwipe algorithm mathematically weights your deck. You only see what you actually care about.</p>
         </div>
       </div>
-      
-      <div data-reveal>
-        <div class="section-kicker"><i class="fa-solid fa-microchip"></i> Smart Architecture</div>
-        <h2 class="section-title">An engine that actually gets your vibe.</h2>
-        <p class="section-copy">Most travel apps just dump the top 10 tourist traps on you. We built an Advanced Recommendation Engine that puts you in control.</p>
-        <p class="section-copy">Rank your top categories, select your hyper-specific sub-vibes (like <em>Boutique Hotels</em> or <em>Dive Bars</em>), and our algorithm mathematically weights your swipe deck. You only see what you actually care about.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Capabilities (Flow) -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div style="text-align: center; margin-bottom: 3rem;" data-reveal>
-        <div class="section-kicker"><i class="fa-solid fa-layer-group"></i> The NomadSwipe Flow</div>
-        <h2 class="section-title">Discovery without the drag.</h2>
-      </div>
-      
-      <div class="flow-grid">
-        <div class="flow-card" data-reveal>
-          <div class="flow-icon" style="color: var(--primary); border-color: rgba(129, 140, 248, 0.3);"><i class="fa-solid fa-mobile-screen"></i></div>
-          <h3>Swipe Discovery</h3>
-          <p>No endless scrolling. Right to save, left to pass. We compress hours of travel blog reading into a fast, highly-curated visual deck.</p>
+    <!-- Capabilities (Flow) -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;" data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-layer-group"></i> The NomadSwipe Flow</div>
+          <h2 class="section-title">Discovery without the drag.</h2>
         </div>
-        <div class="flow-card" data-reveal>
-          <div class="flow-icon" style="color: var(--cat-attraction); border-color: rgba(139, 92, 246, 0.3);"><i class="fa-solid fa-map-location-dot"></i></div>
-          <h3>Interactive Routing</h3>
-          <p>Every swipe right automatically plots onto your personal trip map. Instantly see how your saves cluster geographically to plan your days.</p>
-        </div>
-        <div class="flow-card" data-reveal>
-          <div class="flow-icon" style="color: var(--cat-food); border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-user-group"></i></div>
-          <h3>Group Sync</h3>
-          <p>Invite the group chat. Everyone swipes on their own time. The map highlights mutual matches. Group consensus, zero arguments.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Demo -->
-  <section class="section" id="demo">
-    <div class="container showcase-grid">
-      <div data-reveal>
-        <div class="section-kicker"><i class="fa-solid fa-hand-pointer"></i> Live Preview</div>
-        <h2 class="section-title">The core experience.</h2>
-        <p class="section-copy">Try the interactive swipe deck. It's designed to help you decide faster and preserve momentum.</p>
         
-        <div class="showcase-points">
-          <div class="point">
-            <div class="point-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-heart"></i></div>
-            <div>
-              <strong>Swipe right to save</strong>
-              <span>Keep places that fit your taste and timing. They go straight to your map.</span>
-            </div>
+        <div class="flow-grid">
+          <div class="flow-card" data-reveal>
+            <div class="flow-icon" style="color: var(--primary); border-color: rgba(129, 140, 248, 0.3);"><i class="fa-solid fa-mobile-screen"></i></div>
+            <h3>Swipe Discovery</h3>
+            <p>No endless scrolling. Right to save, left to pass. We compress hours of travel blog reading into a fast, highly-curated visual deck.</p>
           </div>
-          <div class="point">
-            <div class="point-icon" style="background: rgba(244, 63, 94, 0.1); color: var(--danger); border: 1px solid rgba(244, 63, 94, 0.2);"><i class="fa-solid fa-xmark"></i></div>
-            <div>
-              <strong>Swipe left to skip</strong>
-              <span>Reject quickly. The algorithm learns from your passes to give you better options.</span>
+          <div class="flow-card" data-reveal>
+            <div class="flow-icon" style="color: var(--cat-attraction); border-color: rgba(139, 92, 246, 0.3);"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3>Interactive Routing</h3>
+            <p>Every swipe right automatically plots onto your personal trip map. Instantly see how your saves cluster geographically to plan your days.</p>
+          </div>
+          <div class="flow-card" data-reveal>
+            <div class="flow-icon" style="color: var(--cat-food); border-color: rgba(245, 158, 11, 0.3);"><i class="fa-solid fa-user-group"></i></div>
+            <h3>Group Sync</h3>
+            <p>Invite the group chat. Everyone swipes on their own time. The map highlights mutual matches. Group consensus, zero arguments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Demo -->
+    <section class="section" id="demo">
+      <div class="container showcase-grid">
+        <div data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-hand-pointer"></i> Live Preview</div>
+          <h2 class="section-title">The core experience.</h2>
+          <p class="section-copy">Try the interactive deck. It's designed to help you decide faster and preserve momentum.</p>
+          
+          <div class="showcase-points">
+            <div class="point">
+              <div class="point-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2);"><i class="fa-solid fa-heart"></i></div>
+              <div>
+                <strong>Swipe right to save</strong>
+                <span>Keep places that fit your taste and timing. They go straight to your map.</span>
+              </div>
+            </div>
+            <div class="point">
+              <div class="point-icon" style="background: rgba(244, 63, 94, 0.1); color: var(--danger); border: 1px solid rgba(244, 63, 94, 0.2);"><i class="fa-solid fa-xmark"></i></div>
+              <div>
+                <strong>Swipe left to skip</strong>
+                <span>Reject quickly. The algorithm learns from your passes to give you better options.</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <div class="demo-shell" data-reveal>
-        <div class="swipe-demo">
-          <div class="card-stack" id="cardStack"></div>
-          <div class="swipe-actions">
-            <button class="swipe-btn btn-nope" id="btnSwipeLeft" aria-label="Skip"><i class="fa-solid fa-xmark"></i></button>
-            <button class="swipe-btn btn-like" id="btnSwipeRight" aria-label="Save"><i class="fa-solid fa-heart"></i></button>
+        
+        <div class="demo-shell" data-reveal>
+          <div class="swipe-demo">
+            <div class="card-stack" id="cardStack" aria-label="Interactive App Demonstration"></div>
+            <div class="swipe-actions">
+              <button class="swipe-btn btn-nope" id="btnSwipeLeft" aria-label="Skip recommendation"><i class="fa-solid fa-xmark"></i></button>
+              <button class="swipe-btn btn-like" id="btnSwipeRight" aria-label="Save recommendation"><i class="fa-solid fa-heart"></i></button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Comparison -->
-  <section class="section">
-    <div class="container">
-      <div style="text-align: center;" data-reveal>
-        <div class="section-kicker"><i class="fa-solid fa-code-compare"></i> The Alternative</div>
-        <h2 class="section-title">Planning shouldn't be a part-time job.</h2>
-      </div>
-      
-      <div class="compare-grid">
-        <div class="compare-card old" data-reveal>
-          <h3><i class="fa-solid fa-circle-xmark"></i> The Old Way</h3>
-          <ul class="compare-list">
-            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> Group chat goes silent when asked "where to eat?"</li>
-            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> 30 open tabs of SEO-stuffed travel blogs</li>
-            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> Manually copy-pasting addresses into Maps</li>
-            <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> A messy spreadsheet nobody actually looks at</li>
-          </ul>
+    <!-- Comparison -->
+    <section class="section">
+      <div class="container">
+        <div style="text-align: center;" data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-code-compare"></i> The Alternative</div>
+          <h2 class="section-title">Planning shouldn't be a part-time job.</h2>
         </div>
         
-        <div class="vs-circle" data-reveal>VS</div>
+        <div class="compare-grid">
+          <div class="compare-card old" data-reveal>
+            <h3><i class="fa-solid fa-circle-xmark"></i> The Old Way</h3>
+            <ul class="compare-list">
+              <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> Group chat goes silent when asked "where to eat?"</li>
+              <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> 30 open tabs of SEO-stuffed travel blogs</li>
+              <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> Manually copy-pasting addresses into Maps</li>
+              <li><i class="fa-solid fa-xmark" style="color:var(--danger)"></i> A messy spreadsheet nobody actually looks at</li>
+            </ul>
+          </div>
+          
+          <div class="vs-circle" data-reveal aria-hidden="true">VS</div>
+          
+          <div class="compare-card new" data-reveal>
+            <h3><i class="fa-solid fa-circle-check"></i> NomadSwipe</h3>
+            <ul class="compare-list">
+              <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Dial in exactly what you want via preferences</li>
+              <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Swipe on highly curated, visual recommendations</li>
+              <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Everything auto-plots onto a shared map</li>
+              <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Friends vote by swiping. Consensus is easy.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div style="text-align: center;" data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-quote-left"></i> Word on the street</div>
+          <h2 class="section-title">What people are saying</h2>
+        </div>
         
-        <div class="compare-card new" data-reveal>
-          <h3><i class="fa-solid fa-circle-check"></i> NomadSwipe</h3>
-          <ul class="compare-list">
-            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Dial in exactly what you want via preferences</li>
-            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Swipe on highly curated, visual recommendations</li>
-            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Everything auto-plots onto a shared map</li>
-            <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Friends vote by swiping. Consensus is easy.</li>
-          </ul>
+        <div class="test-grid">
+          <div class="test-card" data-reveal>
+            <p class="test-text">"my group chat is absolutely useless for planning. this app basically forced them to vote on places without them even realizing they were planning the trip."</p>
+            <div class="user">
+              <div class="user-avatar" aria-hidden="true">S</div>
+              <div class="user-info"><strong>u/sarah_explores</strong></div>
+            </div>
+          </div>
+          <div class="test-card" data-reveal>
+            <p class="test-text">"the map integration is what makes NomadSwipe a killer app. seeing them all plotted out when you're actually walking around the city is a lifesaver."</p>
+            <div class="user">
+              <div class="user-avatar" aria-hidden="true">N</div>
+              <div class="user-info"><strong>u/nomad_dev</strong></div>
+            </div>
+          </div>
+          <div class="test-card" data-reveal>
+            <p class="test-text">"I love that I can tell it to give me 70% food recommendations and specifically ask for dive bars and taco spots. It actually listens."</p>
+            <div class="user">
+              <div class="user-avatar" aria-hidden="true">M</div>
+              <div class="user-info"><strong>u/mike_travels99</strong></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Testimonials -->
-  <section class="section" id="reviews">
-    <div class="container">
-      <div style="text-align: center;" data-reveal>
-        <div class="section-kicker"><i class="fa-solid fa-quote-left"></i> Word on the street</div>
-        <h2 class="section-title">What people are saying</h2>
-      </div>
-      
-      <div class="test-grid">
-        <div class="test-card" data-reveal>
-          <p class="test-text">"my group chat is absolutely useless for planning. this app basically forced them to vote on places by swiping without them even realizing they were planning the trip."</p>
-          <div class="user">
-            <div class="user-avatar">S</div>
-            <div class="user-info"><strong>u/sarah_explores</strong></div>
+    <!-- CTA -->
+    <section class="section" id="download">
+      <div class="container">
+        <div class="cta-panel" data-reveal>
+          <div class="section-kicker" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--text-main);">
+            <i class="fa-solid fa-download"></i> Ready when you are
           </div>
-        </div>
-        <div class="test-card" data-reveal>
-          <p class="test-text">"the map integration is what makes this a killer app. swiping is fun but seeing them all plotted out when you're actually walking around the city is a lifesaver."</p>
-          <div class="user">
-            <div class="user-avatar">N</div>
-            <div class="user-info"><strong>u/nomad_dev</strong></div>
-          </div>
-        </div>
-        <div class="test-card" data-reveal>
-          <p class="test-text">"I love that I can tell it to give me 70% food recommendations and specifically ask for dive bars and taco spots. It actually listens."</p>
-          <div class="user">
-            <div class="user-avatar">M</div>
-            <div class="user-info"><strong>u/mike_travels99</strong></div>
+          <h2>Plan less. Experience more.</h2>
+          <p>Grab the app, set your preferences, and build your next trip with zero planning drag.</p>
+          <div class="cta-actions">
+            <a href="#" class="store-btn disabled" aria-disabled="true" title="iOS App Store release coming soon">
+              <div class="coming-soon-badge">Coming Soon</div>
+              <i class="fa-brands fa-apple" aria-hidden="true"></i>
+              <span><small>iOS App</small><strong>App Store</strong></span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer" class="store-btn" title="Download the official SwipeNomad app variant on Google Play" aria-label="Download NomadSwipe on Google Play">
+              <i class="fa-brands fa-google-play" aria-hidden="true"></i>
+              <span><small>Available Now</small><strong>Google Play</strong></span>
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section" id="download">
-    <div class="container">
-      <div class="cta-panel" data-reveal>
-        <div class="section-kicker" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--text-main);">
-          <i class="fa-solid fa-download"></i> Ready when you are
-        </div>
-        <h2>Plan less. Experience more.</h2>
-        <p>Grab the app, set your preferences, and build your next trip with zero planning drag.</p>
-        <div class="cta-actions">
-          <a href="#" class="store-btn disabled" aria-disabled="true">
-            <div class="coming-soon-badge">Coming Soon</div>
-            <i class="fa-brands fa-apple"></i>
-            <span><small>iOS App</small><strong>App Store</strong></span>
-          </a>
-          <!-- REPLACE "YOUR_PLAY_STORE_LINK_HERE" WITH YOUR ACTUAL GOOGLE PLAY URL -->
-          <a href="YOUR_PLAY_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer" class="store-btn">
-            <i class="fa-brands fa-google-play"></i>
-            <span><small>Available Now</small><strong>Google Play</strong></span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
-            <div class="logo-icon"><i class="fa-solid fa-route"></i></div> NomadSwipe
+          <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-flex;" aria-label="NomadSwipe Home">
+            <div class="logo-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div> NomadSwipe
           </a>
           <p class="footer-desc">A modern travel planning experience built to kill the spreadsheet and fix group coordination.</p>
           <div class="social-links">
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="Follow us on Twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
         <div>
@@ -813,7 +851,9 @@
           <h4>Stay Updated</h4>
           <p class="footer-desc" style="margin-top: 0; font-size: 0.9rem;">Get curated travel lists and app updates.</p>
           <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <input type="email" placeholder="Email address" style="flex: 1; padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-main); outline: none;" required>
+            <!-- sr-only label ensures SEO accessibility compliance -->
+            <label for="newsletter-email" class="sr-only">Enter email address for newsletter</label>
+            <input type="email" id="newsletter-email" placeholder="Email address" style="flex: 1; padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-main); outline: none;" required>
             <button type="button" onclick="alert('Subscribed!')" style="padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); background: var(--primary); color: #050810; font-weight: 800;">Join</button>
           </div>
         </div>
@@ -829,7 +869,7 @@
   </footer>
 
   <!-- Scroll Top -->
-  <button class="scroll-top" id="scrollTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -905,7 +945,7 @@
       const C_LODG = "#06B6D4";
       const C_BAR  = "#EC4899";
 
-      const CARDS = [
+      const CARDS =[
         { type: "Attraction", title: "Clifftop Lookout", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop", rating: 4.8, dist: "850m", color: C_ATTR },
         { type: "Hotel", title: "Harborfront Design", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=600&auto=format&fit=crop", rating: 4.7, dist: "1.2km", color: C_LODG },
         { type: "Restaurant", title: "Chef-Led Ramen", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop", rating: 4.5, dist: "2.3km", color: C_FOOD },
@@ -931,8 +971,8 @@
           if (!isTop) el.style.pointerEvents = "none";
           
           el.innerHTML = `
-            <div class="indicator like">LIKE</div>
-            <div class="indicator nope">NOPE</div>
+            <div class="indicator like" aria-hidden="true">LIKE</div>
+            <div class="indicator nope" aria-hidden="true">NOPE</div>
             <div class="card-inner">
               <img class="card-img" src="${data.img}" alt="${data.title}" draggable="false">
               <div class="card-overlay">
@@ -942,7 +982,7 @@
                 </div>
                 <div class="card-title">${data.title}</div>
                 <div class="card-rating-row">
-                  <i class="fa-solid fa-star" style="color: var(--star); font-size: 14.5px;"></i>
+                  <i class="fa-solid fa-star" style="color: var(--star); font-size: 14.5px;" aria-hidden="true"></i>
                   <span class="card-rate-t">${data.rating}</span>
                 </div>
               </div>
