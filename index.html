@@ -2,54 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   <!-- Primary SEO Meta Tags -->
-  <title>NomadSwipe — The Swipe-Based Travel Planner App</title>
-  <meta name="title" content="NomadSwipe — The Swipe-Based Travel Planner App" />
-  <meta name="description" content="NomadSwipe is the ultimate travel planner app. Ditch the spreadsheets, use our smart recommendation engine, and build your perfect trip itinerary with friends." />
-  <meta name="keywords" content="NomadSwipe, SwipeNomad, Nomad Swipe, travel planner app, group travel itinerary, trip planner, swipe travel app" />
+  <title>NomadSwipe | Swipe-Based Travel Planning for Groups</title>
+  <meta name="title" content="NomadSwipe | Swipe-Based Travel Planning for Groups" />
+  <meta name="description" content="NomadSwipe helps travelers and groups plan trips with personalized swipe cards, preference-based recommendations, and an interactive map." />
   <meta name="author" content="NomadSwipe" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://nomadswipe.com/" />
+  <link rel="alternate" href="android-app://com.gchertkov.SwipeNomad/https/nomadswipe.com/" />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="NomadSwipe — Plan trips without the group chat drama" />
-  <meta property="og:description" content="Advanced recommendation engine meets swipe-first discovery. Build the perfect trip with your friends." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:title" content="NomadSwipe | Swipe-Based Travel Planning for Groups" />
+  <meta property="og:description" content="Plan trips with personalized swipe cards, preference-based recommendations, and an interactive map." />
+  <meta property="og:url" content="https://nomadswipe.com/" />
+  <meta property="og:image" content="https://nomadswipe.com/static/bellagio.jpg" />
+  <meta property="og:image:width" content="2100" />
+  <meta property="og:image:height" content="1400" />
+  <meta property="og:site_name" content="NomadSwipe" />
+  <meta property="og:locale" content="en_US" />
+  <!-- TODO: Replace with a dedicated 1200x630 branded social image before launch if possible. -->
   
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:title" content="NomadSwipe — The Modern Travel Planner App" />
-  <meta property="twitter:description" content="Ditch the spreadsheets. Tell us what you love, swipe through personalized recommendations, and watch your itinerary build itself on an interactive map." />
-  <meta property="twitter:image" content="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1200&auto=format&fit=crop" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NomadSwipe | Swipe-Based Travel Planning for Groups" />
+  <meta name="twitter:description" content="Plan trips with personalized swipe cards, preference-based recommendations, and an interactive map." />
+  <meta name="twitter:image" content="https://nomadswipe.com/static/bellagio.jpg" />
 
   <meta name="theme-color" content="#050810" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+  <link rel="icon" type="image/png" href="static/adaptive-icon.png" />
+  <link rel="apple-touch-icon" href="static/adaptive-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preload" as="image" href="static/vegas.jpg" imagesrcset="static/vegas.jpg" />
   
-  <!-- Schema.org JSON-LD (Updated with Freemium Pricing Model) -->
+  <!-- Structured data matches visible content and verified local URLs. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "NomadSwipe",
-    "alternateName": ["SwipeNomad", "Nomad Swipe"],
-    "applicationCategory": "TravelApplication",
-    "operatingSystem": "Android",
-    "description": "NomadSwipe is an advanced swipe-based travel planner app. It uses a smart recommendation engine to help groups and solo travelers discover restaurants, attractions, and hotels without using spreadsheets.",
-    "url": "https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en",
-    "offers": [
+    "@graph": [
       {
-        "@type": "Offer",
-        "name": "Free Base Version",
-        "price": "0",
-        "priceCurrency": "USD"
+        "@type": "Organization",
+        "@id": "https://nomadswipe.com/#organization",
+        "name": "NomadSwipe",
+        "url": "https://nomadswipe.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://nomadswipe.com/static/adaptive-icon.png",
+          "width": 1024,
+          "height": 1024
+        }
       },
       {
-        "@type": "Offer",
-        "name": "Premium Subscription (Monthly)",
-        "price": "4.99",
-        "priceCurrency": "USD"
+        "@type": "WebSite",
+        "@id": "https://nomadswipe.com/#website",
+        "url": "https://nomadswipe.com/",
+        "name": "NomadSwipe",
+        "publisher": {
+          "@id": "https://nomadswipe.com/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://nomadswipe.com/#webpage",
+        "url": "https://nomadswipe.com/",
+        "name": "NomadSwipe | Swipe-Based Travel Planning for Groups",
+        "description": "NomadSwipe helps travelers and groups plan trips with personalized swipe cards, preference-based recommendations, and an interactive map.",
+        "isPartOf": {
+          "@id": "https://nomadswipe.com/#website"
+        },
+        "about": {
+          "@id": "https://nomadswipe.com/#mobile-application"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://nomadswipe.com/static/bellagio.jpg",
+          "width": 2100,
+          "height": 1400
+        }
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://nomadswipe.com/#mobile-application",
+        "name": "NomadSwipe",
+        "alternateName": ["SwipeNomad", "Nomad Swipe"],
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Android",
+        "url": "https://nomadswipe.com/",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en",
+        "description": "NomadSwipe helps travelers and groups plan trips with personalized swipe cards, preference-based recommendations, and an interactive map.",
+        "publisher": {
+          "@id": "https://nomadswipe.com/#organization"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://nomadswipe.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is NomadSwipe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NomadSwipe is a swipe-based travel planning app that helps you discover restaurants, attractions, hotels, and nightlife based on your preferences."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is NomadSwipe for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NomadSwipe is for travelers and groups who want to make trip decisions faster without juggling tabs, spreadsheets, and group chat debates."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is NomadSwipe available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NomadSwipe is available now on Google Play for Android. The page marks the iOS App Store release as coming soon."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the recommendation engine work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You rank categories and choose specific sub-vibes, then NomadSwipe weights your swipe deck toward the places you care about most."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I review NomadSwipe privacy information?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The NomadSwipe Privacy Policy explains what information may be collected, how it is processed, how it may be shared, and how to exercise privacy rights."
+            }
+          }
+        ]
       }
     ]
   }
@@ -107,7 +198,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; color-scheme: dark; }
+    html { scroll-behavior: smooth; color-scheme: dark; overflow-x: hidden; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background-color: var(--bg-base);
@@ -125,16 +216,21 @@
     section[id] { scroll-margin-top: 100px; }
     ::selection { background: rgba(129, 140, 248, 0.3); color: #fff; }
 
-    /* Accessibility Class - Hides text visually but keeps it for Googlebot/Screen Readers */
+    /* Accessibility Class - Hides text visually but keeps it available to assistive technology */
     .sr-only {
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
       overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+    }
+    :focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 4px;
+      border-radius: var(--radius-sm);
     }
 
     /* ════════════════════════════════════════════════════════════
        GLOBAL UTILITIES
     ════════════════════════════════════════════════════════════ */
-    .container { width: min(var(--container), 100% - 2.5rem); margin: 0 auto; }
+    .container { width: min(var(--container), calc(100% - 2.5rem)); margin: 0 auto; }
     .section { padding: clamp(4rem, 8vw, 8rem) 0; position: relative; z-index: 2; }
     
     .text-gradient {
@@ -166,7 +262,7 @@
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       line-height: 1.1;
-      letter-spacing: -0.04em;
+      letter-spacing: 0;
       text-wrap: balance;
     }
     
@@ -184,14 +280,19 @@
       position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.04;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     }
-    .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; z-index: 0; }
+    .orb { position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; z-index: 0; }
     
-    /* Scroll Reveal */[data-reveal] {
+    /* Scroll Reveal */
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-ready [data-reveal] {
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
-    [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
 
     /* ════════════════════════════════════════════════════════════
        PRELOADER & BUTTONS
@@ -199,6 +300,7 @@
     .preloader {
       position: fixed; inset: 0; z-index: 99999; background: var(--bg-base);
       display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
       transition: opacity 0.5s ease, visibility 0.5s ease;
     }
     .preloader.hidden { opacity: 0; visibility: hidden; }
@@ -250,11 +352,11 @@
       height: var(--header-height); margin: 1rem auto; padding: 0 1.5rem;
       background: rgba(5, 8, 16, 0.6); backdrop-filter: blur(24px);
       border: 1px solid var(--border); border-radius: 999px;
-      width: min(var(--container), 100% - 2.5rem); transition: all var(--transition);
+      width: min(var(--container), calc(100% - 2.5rem)); transition: all var(--transition);
     }
     .header.scrolled .header-inner { margin: 0.5rem auto; background: rgba(5, 8, 16, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
     
-    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--text-main); letter-spacing: -0.02em; }
+    .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--text-main); letter-spacing: 0; }
     .logo-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--bg-surface-raised); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--primary); }
     
     .nav-desktop { display: flex; gap: 2rem; align-items: center; }
@@ -402,7 +504,7 @@
     .card-row-sp { display: flex; justify-content: space-between; align-items: center; }
     .card-pill { padding: 6px 12px; border-radius: 10px; color: #FFF; font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; }
     .card-dist { padding: 6px 12px; border-radius: 10px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); color: #E2E8F0; font-size: 12px; font-weight: 700; }
-    .card-title { font-size: clamp(22px, 5vw, 26px); font-weight: 900; color: #FFFFFF; margin: 10px 0 6px; letter-spacing: -0.3px; line-height: 1.1; }
+    .card-title { font-size: clamp(22px, 5vw, 26px); font-weight: 900; color: #FFFFFF; margin: 10px 0 6px; letter-spacing: 0; line-height: 1.1; }
     .card-rating-row { display: flex; align-items: center; gap: 6px; }
     .card-rate-t { font-size: 14.5px; font-weight: 800; color: var(--star); }
 
@@ -446,7 +548,7 @@
     .vs-circle { width: 50px; height: 50px; border-radius: 25px; background: var(--bg-surface-raised); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 900; color: var(--text-muted); align-self: center; font-size: 0.9rem; }
 
     /* ════════════════════════════════════════════════════════════
-       TESTIMONIALS
+       PLANNING SCENARIOS
     ════════════════════════════════════════════════════════════ */
     .test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
     .test-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; transition: transform 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
@@ -456,8 +558,25 @@
     .user-info strong { display: block; font-size: 0.95rem; color: var(--text-main); }
 
     @media (hover: hover) {
-      .test-card:hover { transform: translateY(-4px); border-color: var(--primary); }
+    .test-card:hover { transform: translateY(-4px); border-color: var(--primary); }
     }
+
+    .faq-section { background: linear-gradient(180deg, rgba(15, 23, 42, 0.25), rgba(5, 8, 16, 0)); }
+    .faq-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 4rem; align-items: start; }
+    .faq-list { display: grid; gap: 1rem; }
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+    }
+    .faq-item h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.08rem;
+      line-height: 1.35;
+      margin-bottom: 0.55rem;
+    }
+    .faq-item p { color: var(--text-soft); line-height: 1.65; }
 
     /* ════════════════════════════════════════════════════════════
        CTA & FOOTER
@@ -467,7 +586,7 @@
       border-radius: var(--radius-xl); padding: 5rem 3rem; text-align: center; 
       border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.6); 
     }
-    .cta-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1rem; letter-spacing: -0.03em; }
+    .cta-panel h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1rem; letter-spacing: 0; }
     .cta-panel p { font-size: clamp(1rem, 3vw, 1.2rem); color: var(--text-soft); margin-bottom: 2.5rem; max-width: 500px; margin-inline: auto; line-height: 1.6; }
     .cta-actions { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 
@@ -493,6 +612,7 @@
     ════════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
       .hero-grid, .engine-grid, .showcase-grid, .compare-grid { grid-template-columns: 1fr; gap: 4rem; }
+      .faq-grid { grid-template-columns: 1fr; gap: 2rem; }
       .phone-wrapper { transform: scale(0.9); }
       .flow-grid, .test-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -515,6 +635,11 @@
     
     @media (max-width: 480px) {
       .hero { padding-top: 100px; }
+      .hero-title { font-size: 1.72rem; line-height: 1.16; max-width: 12.5ch; margin-inline: auto; overflow-wrap: break-word; }
+      .hero-title .text-gradient { display: block; }
+      .section-title { font-size: 2rem; }
+      .section-kicker { max-width: 100%; font-size: 0.72rem; padding: 0.45rem 0.8rem; }
+      .section-copy { font-size: 1rem; max-width: 30ch; margin-inline: auto; }
       .phone-mockup { width: 260px; height: 540px; border-radius: 38px; }
       .phone-wrapper { transform: scale(1); margin-top: 10px; }
       .cta-actions { flex-direction: column; width: 100%; }
@@ -522,9 +647,23 @@
       .swipe-demo { max-width: 300px; }
       input[type="email"] { font-size: 16px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
-<body>
+<body id="top">
 
   <!-- Preloader -->
   <div class="preloader" id="preloader">
@@ -539,11 +678,11 @@
   <!-- Header -->
   <header class="header" id="header">
     <div class="header-inner">
-      <a href="#" class="logo" aria-label="NomadSwipe Home">
+      <a href="#top" class="logo" aria-label="NomadSwipe Home">
         <div class="logo-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div>
         NomadSwipe
       </a>
-      <nav class="nav-desktop">
+      <nav class="nav-desktop" aria-label="Primary navigation">
         <a href="#engine">The Engine</a>
         <a href="#experience">How it Works</a>
         <a href="#demo">Live Demo</a>
@@ -554,7 +693,7 @@
   </header>
 
   <!-- Mobile Nav Overlay -->
-  <div class="mobile-overlay" id="mobileNav" aria-hidden="true">
+  <div class="mobile-overlay" id="mobileNav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile navigation">
     <button class="close-nav" id="closeNav" aria-label="Close Navigation Menu"><i class="fa-solid fa-xmark"></i></button>
     <a href="#engine" class="mob-link">The Engine</a>
     <a href="#experience" class="mob-link">How it Works</a>
@@ -571,11 +710,11 @@
           <h1 class="hero-title">Your personalized travel feed.<br><span class="text-gradient">Swipe it, Map it, Go.</span></h1>
           <p class="section-copy">We got tired of 14 open tabs and messy spreadsheets just to plan a weekend away. NomadSwipe learns what you love—down to the exact cuisine—and builds a swipeable deck of spots you’ll actually want to visit.</p>
           <div class="hero-actions">
-            <a href="#" class="store-btn disabled" aria-disabled="true" title="iOS App Store release coming soon">
+            <span class="store-btn disabled" role="link" aria-disabled="true" title="iOS App Store release coming soon">
               <div class="coming-soon-badge">Coming Soon</div>
               <i class="fa-brands fa-apple" aria-hidden="true"></i>
               <span><small>iOS App</small><strong>App Store</strong></span>
-            </a>
+            </span>
             <a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer" class="store-btn" title="Download the official Nomad Swipe app on Google Play" aria-label="Download NomadSwipe on Google Play">
               <i class="fa-brands fa-google-play" aria-hidden="true"></i>
               <span><small>Available Now</small><strong>Google Play</strong></span>
@@ -587,8 +726,7 @@
           <div class="phone-wrapper">
             <div class="phone-mockup">
               <div class="phone-screen">
-                <!-- Image alt tag optimized with semantic variations invisible to the standard user -->
-                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=600&auto=format&fit=crop" alt="NomadSwipe interactive travel planner app interface, featuring the SwipeNomad discovery engine">
+                <img src="static/vegas.jpg" width="790" height="1020" alt="Las Vegas travel photo shown inside the NomadSwipe app preview" decoding="async" fetchpriority="high">
               </div>
             </div>
             
@@ -761,36 +899,69 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Planning Scenarios -->
     <section class="section" id="reviews">
       <div class="container">
         <div style="text-align: center;" data-reveal>
-          <div class="section-kicker"><i class="fa-solid fa-quote-left"></i> Word on the street</div>
-          <h2 class="section-title">What people are saying</h2>
+          <div class="section-kicker"><i class="fa-solid fa-compass"></i> Planning scenarios</div>
+          <h2 class="section-title">Built for the messy middle of trip planning.</h2>
         </div>
         
         <div class="test-grid">
           <div class="test-card" data-reveal>
-            <p class="test-text">"my group chat is absolutely useless for planning. this app basically forced them to vote on places without them even realizing they were planning the trip."</p>
+            <p class="test-text">When the group chat stalls, everyone can keep choosing places on their own time by swiping through the same trip options.</p>
             <div class="user">
-              <div class="user-avatar" aria-hidden="true">S</div>
-              <div class="user-info"><strong>u/sarah_explores</strong></div>
+              <div class="user-avatar" aria-hidden="true"><i class="fa-solid fa-users"></i></div>
+              <div class="user-info"><strong>Group trips</strong></div>
             </div>
           </div>
           <div class="test-card" data-reveal>
-            <p class="test-text">"the map integration is what makes NomadSwipe a killer app. seeing them all plotted out when you're actually walking around the city is a lifesaver."</p>
+            <p class="test-text">Saved spots plot onto a map, so you can see where restaurants, attractions, hotels, and nightlife fit into the day.</p>
             <div class="user">
-              <div class="user-avatar" aria-hidden="true">N</div>
-              <div class="user-info"><strong>u/nomad_dev</strong></div>
+              <div class="user-avatar" aria-hidden="true"><i class="fa-solid fa-map-location-dot"></i></div>
+              <div class="user-info"><strong>Map-first planning</strong></div>
             </div>
           </div>
           <div class="test-card" data-reveal>
-            <p class="test-text">"I love that I can tell it to give me 70% food recommendations and specifically ask for dive bars and taco spots. It actually listens."</p>
+            <p class="test-text">Preference controls let you shape the deck around the categories and sub-vibes you actually care about.</p>
             <div class="user">
-              <div class="user-avatar" aria-hidden="true">M</div>
-              <div class="user-info"><strong>u/mike_travels99</strong></div>
+              <div class="user-avatar" aria-hidden="true"><i class="fa-solid fa-sliders"></i></div>
+              <div class="user-info"><strong>Personalized decks</strong></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+      <div class="container faq-grid">
+        <div data-reveal>
+          <div class="section-kicker"><i class="fa-solid fa-circle-question"></i> Quick answers</div>
+          <h2 class="section-title">NomadSwipe FAQ</h2>
+          <p class="section-copy">Short answers for travelers deciding whether NomadSwipe fits the way they plan.</p>
+        </div>
+        <div class="faq-list" data-reveal>
+          <article class="faq-item">
+            <h3>What is NomadSwipe?</h3>
+            <p>NomadSwipe is a swipe-based travel planning app that helps you discover restaurants, attractions, hotels, and nightlife based on your preferences.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Who is NomadSwipe for?</h3>
+            <p>NomadSwipe is for travelers and groups who want to make trip decisions faster without juggling tabs, spreadsheets, and group chat debates.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Where is NomadSwipe available?</h3>
+            <p>NomadSwipe is available now on Google Play for Android. The page marks the iOS App Store release as coming soon.</p>
+          </article>
+          <article class="faq-item">
+            <h3>How does the recommendation engine work?</h3>
+            <p>You rank categories and choose specific sub-vibes, then NomadSwipe weights your swipe deck toward the places you care about most.</p>
+          </article>
+          <article class="faq-item">
+            <h3>Where can I review NomadSwipe privacy information?</h3>
+            <p>The <a href="privacypolicy.html">NomadSwipe Privacy Policy</a> explains what information may be collected, how it is processed, how it may be shared, and how to exercise privacy rights.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -805,11 +976,11 @@
           <h2>Plan less. Experience more.</h2>
           <p>Grab the app, set your preferences, and build your next trip with zero planning drag.</p>
           <div class="cta-actions">
-            <a href="#" class="store-btn disabled" aria-disabled="true" title="iOS App Store release coming soon">
+            <span class="store-btn disabled" role="link" aria-disabled="true" title="iOS App Store release coming soon">
               <div class="coming-soon-badge">Coming Soon</div>
               <i class="fa-brands fa-apple" aria-hidden="true"></i>
               <span><small>iOS App</small><strong>App Store</strong></span>
-            </a>
+            </span>
             <a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer" class="store-btn" title="Download the official SwipeNomad app variant on Google Play" aria-label="Download NomadSwipe on Google Play">
               <i class="fa-brands fa-google-play" aria-hidden="true"></i>
               <span><small>Available Now</small><strong>Google Play</strong></span>
@@ -825,15 +996,10 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="#" class="logo" style="margin-bottom: 1rem; display: inline-flex;" aria-label="NomadSwipe Home">
+          <a href="#top" class="logo" style="margin-bottom: 1rem; display: inline-flex;" aria-label="NomadSwipe Home">
             <div class="logo-icon" aria-hidden="true"><i class="fa-solid fa-route"></i></div> NomadSwipe
           </a>
           <p class="footer-desc">A modern travel planning experience built to kill the spreadsheet and fix group coordination.</p>
-          <div class="social-links">
-            <a href="#" aria-label="Follow us on Twitter"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" aria-label="Follow us on Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Follow us on TikTok"><i class="fa-brands fa-tiktok"></i></a>
-          </div>
         </div>
         <div>
           <h4>Explore</h4>
@@ -841,32 +1007,26 @@
             <li><a href="#engine">The Engine</a></li>
             <li><a href="#experience">How it Works</a></li>
             <li><a href="#demo">Live Demo</a></li>
+            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
         <div>
-          <h4>Company</h4>
+          <h4>App</h4>
           <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Support</a></li>
-            <li><a href="#">Press Kit</a></li>
+            <li><a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
           </ul>
         </div>
         <div>
-          <h4>Stay Updated</h4>
-          <p class="footer-desc" style="margin-top: 0; font-size: 0.9rem;">Get curated travel lists and app updates.</p>
-          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-            <!-- sr-only label ensures SEO accessibility compliance -->
-            <label for="newsletter-email" class="sr-only">Enter email address for newsletter</label>
-            <input type="email" id="newsletter-email" placeholder="Email address" style="flex: 1; padding: 0.8rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-surface); color: var(--text-main); outline: none;" required>
-            <button type="button" onclick="alert('Subscribed!')" style="padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); background: var(--primary); color: #050810; font-weight: 800;">Join</button>
-          </div>
+          <h4>Privacy</h4>
+          <p class="footer-desc" style="margin-top: 0; font-size: 0.9rem;">Review how NomadSwipe describes collection, processing, sharing, and privacy rights.</p>
+          <a href="privacypolicy.html" class="btn btn-primary">Read privacy policy</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; <span id="year"></span> NomadSwipe. All rights reserved.</span>
         <div style="display: flex; gap: 1.5rem;">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="privacypolicy.html">Privacy Policy</a>
         </div>
       </div>
     </div>
@@ -908,10 +1068,14 @@
       const toggleNav = (state) => {
         if(state) {
           mobileNav.classList.add('active');
+          mobileNav.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
+          closeNav.focus();
         } else {
           mobileNav.classList.remove('active');
+          mobileNav.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
+          hamburger.focus();
         }
       }
 
@@ -921,6 +1085,7 @@
 
       // 5. Scroll Reveal
       const revealElements = document.querySelectorAll('[data-reveal]');
+      document.documentElement.classList.add('reveal-ready');
       const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -950,10 +1115,10 @@
       const C_BAR  = "#EC4899";
 
       const CARDS =[
-        { type: "Attraction", title: "Clifftop Lookout", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop", rating: 4.8, dist: "850m", color: C_ATTR },
-        { type: "Hotel", title: "Harborfront Design", img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=600&auto=format&fit=crop", rating: 4.7, dist: "1.2km", color: C_LODG },
-        { type: "Restaurant", title: "Chef-Led Ramen", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop", rating: 4.5, dist: "2.3km", color: C_FOOD },
-        { type: "Bar", title: "Skyline Rooftop", img: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=600&auto=format&fit=crop", rating: 4.9, dist: "3.1km", color: C_BAR }
+        { type: "Attraction", title: "Bellagio Fountains", img: "static/bellagio.jpg", alt: "Bellagio Fountains travel recommendation card", width: 2100, height: 1400, rating: 4.8, dist: "850m", color: C_ATTR },
+        { type: "Hotel", title: "Hard Rock Stay", img: "static/hardrock.jpg", alt: "Hard Rock hotel travel recommendation card", width: 1523, height: 2031, rating: 4.7, dist: "1.2km", color: C_LODG },
+        { type: "Restaurant", title: "Golden Tiki", img: "static/goldentiki.jpg", alt: "Golden Tiki restaurant and nightlife recommendation card", width: 765, height: 1020, rating: 4.5, dist: "2.3km", color: C_FOOD },
+        { type: "Bar", title: "Las Vegas Strip", img: "static/vegas.jpg", alt: "Las Vegas Strip nightlife recommendation card", width: 790, height: 1020, rating: 4.9, dist: "3.1km", color: C_BAR }
       ];
 
       let deck = [...CARDS];
@@ -978,7 +1143,7 @@
             <div class="indicator like" aria-hidden="true">LIKE</div>
             <div class="indicator nope" aria-hidden="true">NOPE</div>
             <div class="card-inner">
-              <img class="card-img" src="${data.img}" alt="${data.title}" draggable="false">
+              <img class="card-img" src="${data.img}" width="${data.width}" height="${data.height}" alt="${data.alt}" loading="lazy" decoding="async" draggable="false">
               <div class="card-overlay">
                 <div class="card-row-sp">
                   <div class="card-pill" style="background-color: ${data.color}">${data.type}</div>

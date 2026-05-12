@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Account Confirmed - NomadSwipe</title>
+  <meta name="description" content="NomadSwipe account confirmation page for app users returning to the mobile app." />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://nomadswipe.com/confirmed.html" />
+  <meta name="theme-color" content="#293241" />
+  <link rel="icon" type="image/png" href="static/adaptive-icon.png" />
+  <link rel="apple-touch-icon" href="static/adaptive-icon.png" />
 
   <!-- External Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -435,14 +441,14 @@
         <i class="fas fa-route"></i>
         NomadSwipe
       </a>
-      <nav class="nav-links">
-        <a href="index.html#features" class="nav-link">Features</a>
-        <a href="index.html#how-it-works" class="nav-link">How It Works</a>
-        <a href="index.html#testimonials" class="nav-link">Testimonials</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#engine" class="nav-link">The Engine</a>
+        <a href="index.html#experience" class="nav-link">How It Works</a>
+        <a href="index.html#demo" class="nav-link">Live Demo</a>
         <a href="index.html#download" class="nav-link">Download</a>
       </nav>
       <a href="index.html#download" class="cta-button desktop">Get Started</a>
-      <button class="mobile-menu-button" id="mobileMenuButton">
+      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open navigation menu">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -451,19 +457,20 @@
   <!-- Mobile Menu -->
   <div class="overlay" id="overlay"></div>
   <div class="mobile-menu" id="mobileMenu">
-    <button class="close-menu" id="closeMenu">
+    <button class="close-menu" id="closeMenu" aria-label="Close navigation menu">
       <i class="fas fa-times"></i>
     </button>
     <div class="mobile-nav-links">
-      <a href="index.html#features" class="mobile-nav-link">Features</a>
-      <a href="index.html#how-it-works" class="mobile-nav-link">How It Works</a>
-      <a href="index.html#testimonials" class="mobile-nav-link">Testimonials</a>
+      <a href="index.html#engine" class="mobile-nav-link">The Engine</a>
+      <a href="index.html#experience" class="mobile-nav-link">How It Works</a>
+      <a href="index.html#demo" class="mobile-nav-link">Live Demo</a>
       <a href="index.html#download" class="mobile-nav-link">Download</a>
       <a href="index.html#download" class="cta-button">Get Started</a>
     </div>
   </div>
 
   <!-- Confirmation Section -->
+  <main>
   <section class="confirmation-page">
     <div class="container">
       <div class="confirmation-box animate__animated animate__fadeInUp">
@@ -475,6 +482,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -486,27 +494,22 @@
             NomadSwipe
           </a>
           <p class="footer-description">Discover the world with NomadSwipe. Your personalized travel companion for creating unforgettable journeys.</p>
-          <div class="social-links">
-            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
         </div>
         <div class="footer-column">
-          <h4 class="footer-title">Company</h4>
+          <h4 class="footer-title">App</h4>
           <div class="footer-links">
-            <a href="#" class="footer-link">About Us</a>
-            <a href="#" class="footer-link">Careers</a>
-            <a href="#" class="footer-link">Press</a>
-          </div>
-        </div>
-        <div class="footer-column">
-          <h4 class="footer-title">Help</h4>
-          <div class="footer-links">
-            <a href="#" class="footer-link">FAQ</a>
-            <a href="#" class="footer-link">Support</a>
-            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer" class="footer-link">Google Play</a>
             <a href="privacypolicy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="footer-title">Explore</h4>
+          <div class="footer-links">
+            <a href="index.html#engine" class="footer-link">The Engine</a>
+            <a href="index.html#experience" class="footer-link">How It Works</a>
+            <a href="index.html#faq" class="footer-link">FAQ</a>
+            <a href="index.html#download" class="footer-link">Download</a>
           </div>
         </div>
         <div class="footer-column">
@@ -514,15 +517,11 @@
           <div class="contact-info">
             <div class="contact-item">
               <i class="fas fa-globe"></i>
-              <span>www.nomadswipe.com</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
-              <span>+1 (555) 123-4567</span>
+              <a href="https://nomadswipe.com/">nomadswipe.com</a>
             </div>
             <div class="contact-item">
               <i class="fas fa-envelope"></i>
-              <span>contact@nomadswipe.com</span>
+              <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>
             </div>
           </div>
         </div>
