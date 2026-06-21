@@ -31,7 +31,7 @@
   <meta name="twitter:description" content="Plan trips with personalized swipe cards, preference-based recommendations, and an interactive map." />
   <meta name="twitter:image" content="https://nomadswipe.com/static/bellagio.jpg" />
 
-  <meta name="theme-color" content="#050810" />
+  <meta name="theme-color" content="#080A0E" />
   <link rel="icon" type="image/png" href="static/adaptive-icon.png" />
   <link rel="apple-touch-icon" href="static/adaptive-icon.png" />
   <link rel="manifest" href="site.webmanifest" />
@@ -160,32 +160,32 @@
     ════════════════════════════════════════════════════════════ */
     :root {
       /* App Core Colors */
-      --bg-base: #050810;
-      --bg-surface: #0F172A;
-      --bg-surface-raised: #1E293B;
+      --bg-base: #080A0E;
+      --bg-surface: #111418;
+      --bg-surface-raised: #1B2027;
       
-      --primary: #818CF8;
-      --primary-strong: #4F46E5;
+      --primary: #FF5A5F;
+      --primary-strong: #635BFF;
       
       /* Category Colors from React Native App */
-      --cat-food: #F59E0B;
-      --cat-attraction: #8B5CF6;
-      --cat-lodging: #06B6D4;
-      --cat-bar: #EC4899;
+      --cat-food: #F4B740;
+      --cat-attraction: #635BFF;
+      --cat-lodging: #00B8D9;
+      --cat-bar: #D946EF;
       
-      --danger: #F43F5E;
-      --success: #10B981;
-      --star: #FBBF24;
+      --danger: #E5484D;
+      --success: #19A974;
+      --star: #F4B740;
       
       /* Text Colors */
-      --text-main: #F8FAFC;
-      --text-soft: #CBD5E1;
-      --text-muted: #64748B;
-      --text-dark: #475569;
+      --text-main: #FAFAF7;
+      --text-soft: #D7DCE5;
+      --text-muted: #8B95A7;
+      --text-dark: #5E6675;
       
       /* UI Elements */
-      --border: rgba(30, 41, 59, 0.8);
-      --border-light: rgba(129, 140, 248, 0.3);
+      --border: rgba(148, 163, 184, 0.18);
+      --border-light: rgba(255, 90, 95, 0.35);
       
       --radius-sm: 12px;
       --radius-md: 20px;
@@ -234,7 +234,7 @@
     .section { padding: clamp(4rem, 8vw, 8rem) 0; position: relative; z-index: 2; }
     
     .text-gradient {
-      background: linear-gradient(135deg, var(--primary) 0%, #A5B4FC 50%, var(--cat-attraction) 100%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 52%, var(--cat-lodging) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -247,8 +247,8 @@
       gap: 0.6rem;
       padding: 0.5rem 1rem;
       border-radius: 999px;
-      background: rgba(129, 140, 248, 0.1);
-      border: 1px solid rgba(129, 140, 248, 0.2);
+      background: rgba(255, 90, 95, 0.11);
+      border: 1px solid rgba(255, 90, 95, 0.22);
       color: var(--primary);
       font-size: 0.85rem;
       font-weight: 800;
@@ -313,9 +313,9 @@
       transition: all var(--transition); white-space: nowrap; font-size: 0.95rem;
     }
     
-    .btn-primary { 
-      background: var(--primary); color: #050810; 
-      box-shadow: 0 10px 25px rgba(129, 140, 248, 0.25); 
+    .btn-primary {
+      background: var(--primary); color: #080A0E;
+      box-shadow: 0 10px 25px rgba(255, 90, 95, 0.22);
     }
     
     .store-btn {
@@ -339,7 +339,7 @@
 
     @media (hover: hover) {
       .btn:hover { transform: translateY(-2px); }
-      .btn-primary:hover { box-shadow: 0 15px 35px rgba(129, 140, 248, 0.35); background: #A5B4FC; }
+      .btn-primary:hover { box-shadow: 0 15px 35px rgba(255, 90, 95, 0.32); background: #FF7A7E; }
       .store-btn:not(.disabled):hover { background: var(--bg-surface-raised); border-color: var(--border-light); transform: translateY(-3px); }
     }
 
@@ -350,11 +350,11 @@
     .header-inner {
       display: flex; align-items: center; justify-content: space-between;
       height: var(--header-height); margin: 1rem auto; padding: 0 1.5rem;
-      background: rgba(5, 8, 16, 0.6); backdrop-filter: blur(24px);
+      background: rgba(8, 10, 14, 0.72); backdrop-filter: blur(24px);
       border: 1px solid var(--border); border-radius: 999px;
       width: min(var(--container), calc(100% - 2.5rem)); transition: all var(--transition);
     }
-    .header.scrolled .header-inner { margin: 0.5rem auto; background: rgba(5, 8, 16, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+    .header.scrolled .header-inner { margin: 0.5rem auto; background: rgba(8, 10, 14, 0.95); box-shadow: 0 10px 40px rgba(0,0,0,0.45); }
     
     .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--text-main); letter-spacing: 0; }
     .logo-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--bg-surface-raised); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: var(--primary); }
@@ -366,7 +366,7 @@
     .hamburger { display: none; font-size: 1.2rem; color: var(--text-main); width: 44px; height: 44px; border-radius: 50%; background: var(--bg-surface); align-items: center; justify-content: center; border: 1px solid var(--border); }
     
     .mobile-overlay {
-      position: fixed; inset: 0; z-index: 2000; background: rgba(5, 8, 16, 0.98); backdrop-filter: blur(20px);
+      position: fixed; inset: 0; z-index: 2000; background: rgba(8, 10, 14, 0.98); backdrop-filter: blur(20px);
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
       opacity: 0; visibility: hidden; transition: all 0.3s;
     }
@@ -393,7 +393,7 @@
     
     .phone-mockup {
       width: 300px; height: 620px; background: #000; border-radius: 48px; padding: 14px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 30px 60px rgba(0,0,0,0.8), 0 0 120px rgba(129, 140, 248, 0.15);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 30px 60px rgba(0,0,0,0.8), 0 0 120px rgba(255, 90, 95, 0.14);
       animation: float 7s ease-in-out infinite; z-index: 2; position: relative;
     }
     .phone-screen { width: 100%; height: 100%; border-radius: 36px; overflow: hidden; background: var(--bg-base); position: relative; }
@@ -472,7 +472,7 @@
     .point span { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
     
     .demo-shell { background: var(--bg-surface); padding: 3.5rem 2rem; border-radius: var(--radius-xl); border: 1px solid var(--border); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .demo-shell::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(129, 140, 248, 0.08) 0%, transparent 50%); pointer-events: none; }
+    .demo-shell::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 90, 95, 0.08) 0%, transparent 50%); pointer-events: none; }
     
     /* Authentic App Swiper CSS - Mirrored from React Native */
     .swipe-demo { position: relative; width: 100%; max-width: 360px; margin: 0 auto; user-select: none; }
@@ -581,8 +581,8 @@
     /* ════════════════════════════════════════════════════════════
        CTA & FOOTER
     ════════════════════════════════════════════════════════════ */
-    .cta-panel { 
-      background: radial-gradient(circle at top right, rgba(129, 140, 248, 0.15), transparent 60%), var(--bg-surface); 
+    .cta-panel {
+      background: radial-gradient(circle at top right, rgba(255, 90, 95, 0.14), transparent 60%), var(--bg-surface);
       border-radius: var(--radius-xl); padding: 5rem 3rem; text-align: center; 
       border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.6); 
     }
@@ -809,12 +809,12 @@
         
         <div class="flow-grid">
           <div class="flow-card" data-reveal>
-            <div class="flow-icon" style="color: var(--primary); border-color: rgba(129, 140, 248, 0.3);"><i class="fa-solid fa-mobile-screen"></i></div>
+            <div class="flow-icon" style="color: var(--primary); border-color: rgba(255, 90, 95, 0.3);"><i class="fa-solid fa-mobile-screen"></i></div>
             <h3>Swipe Discovery</h3>
             <p>No endless scrolling. Right to save, left to pass. We compress hours of travel blog reading into a fast, highly-curated visual deck.</p>
           </div>
           <div class="flow-card" data-reveal>
-            <div class="flow-icon" style="color: var(--cat-attraction); border-color: rgba(139, 92, 246, 0.3);"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div class="flow-icon" style="color: var(--cat-attraction); border-color: rgba(99, 91, 255, 0.3);"><i class="fa-solid fa-map-location-dot"></i></div>
             <h3>Interactive Routing</h3>
             <p>Every swipe right automatically plots onto your personal trip map. Instantly see how your saves cluster geographically to plan your days.</p>
           </div>
@@ -1014,19 +1014,23 @@
           <h4>App</h4>
           <ul>
             <li><a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&hl=en" target="_blank" rel="noopener noreferrer">Google Play</a></li>
+            <li><a href="support.html">Support</a></li>
             <li><a href="privacypolicy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Use</a></li>
           </ul>
         </div>
         <div>
-          <h4>Privacy</h4>
-          <p class="footer-desc" style="margin-top: 0; font-size: 0.9rem;">Review how NomadSwipe describes collection, processing, sharing, and privacy rights.</p>
-          <a href="privacypolicy.html" class="btn btn-primary">Read privacy policy</a>
+          <h4>Review & Requests</h4>
+          <p class="footer-desc" style="margin-top: 0; font-size: 0.9rem;">Access support, privacy, terms, and account deletion resources for NomadSwipe.</p>
+          <a href="support.html" class="btn btn-primary">Get support</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span>&copy; <span id="year"></span> NomadSwipe. All rights reserved.</span>
         <div style="display: flex; gap: 1.5rem;">
           <a href="privacypolicy.html">Privacy Policy</a>
+          <a href="terms.html">Terms</a>
+          <a href="account-deletion.html">Account deletion</a>
         </div>
       </div>
     </div>
