@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(r){r.classList.add('js');if('animate'in Element.prototype)r.classList.add('wa');var m=matchMedia('(prefers-reduced-motion: reduce)');if(!m.matches&&'animate'in Element.prototype)r.classList.add('motion');if(CSS.supports('animation-timeline: view()')&&!/[?&]sda=0/.test(location.search))r.classList.add('sda')})(document.documentElement)</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>NomadSwipe: Free Trip Planner App &amp; Travel Map for Android</title>
 <meta name="description" content="NomadSwipe is a free trip planner app for Android. Swipe real places in any city, save the ones you like, and see your whole trip on one map.">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -12,7 +13,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="static/icon-192.png">
 <link rel="apple-touch-icon" href="static/icon-180.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preload" as="image" href="static/lisbon-se-tram.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="static/lisbon-se-tram.jpg" imagesrcset="static/w960/lisbon-se-tram.jpg 960w, static/lisbon-se-tram.jpg 1311w" imagesizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NomadSwipe">
 <meta property="og:url" content="https://nomadswipe.com/">
@@ -49,7 +50,7 @@
       "@type": "MobileApplication",
       "@id": "https://nomadswipe.com/#app",
       "name": "NomadSwipe",
-      "description": "A free trip planner app for Android. Swipe real places in any city, save the ones you like, and see your whole trip on one map.",
+      "description": "Swipe through real places in any city, save the ones you like, and see your whole trip on one map.",
       "operatingSystem": "Android",
       "applicationCategory": "TravelApplication",
       "url": "https://nomadswipe.com/",
@@ -67,15 +68,14 @@
       "@type": "FAQPage",
       "@id": "https://nomadswipe.com/#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "Is NomadSwipe free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. NomadSwipe is free to download, and the free plan does not expire. It includes 3 trips, 2 destination searches and 2 custom pins a month, plus a limited number of swipes. Premium removes those limits." } },
+        { "@type": "Question", "name": "Is NomadSwipe free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. NomadSwipe is free to download. The free plan includes 3 trips, 2 destination searches and 2 custom pins a month, plus a limited number of swipes. Premium removes those limits." } },
         { "@type": "Question", "name": "Is NomadSwipe on iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet. NomadSwipe is available for Android phones on Google Play." } },
-        { "@type": "Question", "name": "Does NomadSwipe work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your recent trips, up to 20, are kept on your phone, so their saved places still open without a connection." } },
+        { "@type": "Question", "name": "Does NomadSwipe work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, for trip data. Up to 20 of your recent trips are saved on your phone, so you can open them without a connection." } },
         { "@type": "Question", "name": "Which cities does it work in?", "acceptedAnswer": { "@type": "Answer", "text": "Any city. The cards show real places around you, or around a destination you search, each with its rating, opening hours and distance." } },
-        { "@type": "Question", "name": "Can I plan a trip with friends?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, with Premium. Invite friends to a trip, see who added each place, and talk the plan over in trip chat." } },
         { "@type": "Question", "name": "Can I add places that aren't in the app?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drop a custom pin for anything not on the cards, such as your hotel or a friend's flat. The free plan includes 2 custom pins a month, and Premium has no limit." } },
         { "@type": "Question", "name": "How much does Premium cost?", "acceptedAnswer": { "@type": "Answer", "text": "Premium comes as a monthly plan or a one-time Lifetime purchase. Google Play shows the current price in your currency before you pay, and you can use the free plan for as long as you like first." } },
         { "@type": "Question", "name": "How do I delete my account?", "acceptedAnswer": { "@type": "Answer", "text": "Follow the steps on the account deletion page, or email privacy@nomadswipe.com." } },
-        { "@type": "Question", "name": "How do I get help?", "acceptedAnswer": { "@type": "Answer", "text": "Visit the support page or email privacy@nomadswipe.com. Premium members get priority support." } }
+        { "@type": "Question", "name": "How do I get help?", "acceptedAnswer": { "@type": "Answer", "text": "Visit the support page or email privacy@nomadswipe.com." } }
       ]
     }
   ]
@@ -88,13 +88,27 @@
   --serif:Georgia,"Times New Roman",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --t-s:15px; --t-b:18px; --t-h:clamp(26px,2.4vw,34px); --t-d:clamp(32px,4.4vw,68px); --t-x:clamp(56px,7.5vw,124px);
-  --r:16px; --gut:clamp(16px,4vw,64px); --ease:cubic-bezier(.2,.7,.2,1);
+  --r:16px; --gut:clamp(16px,4vw,64px);
   --stripe:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='8' preserveAspectRatio='none'%3E%3Crect width='28' height='8' fill='%23B82845'/%3E%3C/svg%3E");
+  /* motion tokens (MOTION-SPEC section 2) */
+  --arrive: cubic-bezier(.16,1,.3,1);
+  --leave:  cubic-bezier(.7,0,.84,0);
+  --move:   cubic-bezier(.65,0,.35,1);
+  --ease:   var(--arrive);
+  --d-press: 160ms; --d-ui: 240ms; --d-step: 320ms; --d-fly: 240ms; --d-wipe: 720ms; --d-settle: 1400ms;
+  --d-toast-in: 180ms; --d-toast-hold: 1800ms;
+  --sp-rise:  linear(0, .098 6%, .288 12%, .486 19%, .649 25%, .772 31%, .859 38%, .918 44%, .955 50%, .977 56%, .99 62%, .996 69%, .999 75%, 1);
+  --sp-panel: linear(0, .118 6%, .348 12%, .586 19%, .771 25%, .898 31%, .975 38%, 1.014 44%, 1.027 50%, 1.028 56%, 1.022 62%, 1.015 69%, 1.009 75%, 1.005 81%, 1.002 88%, 1);
+  --sp-snap:  linear(0, .026 6%, .089 12%, .174 19%, .272 25%, .374 31%, .474 38%, .569 44%, .655 50%, .731 56%, .796 62%, .852 69%, .897 75%, .934 81%, .963 88%, .985 94%, 1);
+  --sp-press: linear(0, .385 6%, .964 12%, 1.229 19%, 1.188 25%, 1.045 31%, .954 38%, .946 44%, .979 50%, 1.007 56%, 1.014 62%, 1.008 69%, 1);
+  --sp-release: linear(0, .188 6%, .53 12%, .829 19%, 1.009 25%, 1.085 31%, 1.091 38%, 1.064 44%, 1.032 50%, 1.008 56%, .995 62%, .991 69%, 1);
+  --d-rise: 820ms; --d-panel: 660ms; --d-snap: 224ms; --d-spring-press: 520ms;
+  --slot-scale: .038; --slot-y: 13px; --slot-fade: .08;
   color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--ink);font:400 var(--t-b)/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:clip}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 var(--t-b)/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:clip}
 img{display:block;max-width:100%}
 h1,h2,h3,p,ul,ol,figure{margin:0}
 h1,h2,h3{text-wrap:balance}
@@ -107,67 +121,161 @@ a:hover{text-decoration-thickness:2px}
 .skip{position:absolute;left:12px;top:-60px;z-index:9;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:var(--r)}
 .skip:focus{top:12px}
 
-/* one button shape */
+/* keyframes: every "from" lands on the element's own static state */
+@keyframes rise{from{opacity:var(--o,0);transform:translateY(var(--y,12px))}}
+@keyframes fade{from{opacity:0}}
+@keyframes heroimg{from{transform:scale(1.06)}}
+@keyframes unroll{from{transform:translateX(-56px)}}
+@keyframes h1in{from{transform:translateY(.28em)}}
+@keyframes soon{from{opacity:0;transform:translateX(-24px) scale(.962)}}
+@keyframes lnup{from{transform:translateY(105%)}}
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes pop{from{opacity:0;transform:scale(.9)}}
+@keyframes slotin{from{opacity:0}}
+@keyframes rise0{from{transform:translateY(13px) scale(.962);filter:brightness(.95)}}
+@keyframes rise1{from{transform:translateY(26px) scale(.924);filter:brightness(.9)}}
+@keyframes rise2{from{opacity:0;transform:translateY(39px) scale(.886)}}
+@keyframes dropin{from{opacity:0;transform:translateY(-24px) rotate(-2deg) scale(1.03)}}
+@keyframes print{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+@keyframes wipeX{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@keyframes wipeY{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+@keyframes edgeX{0%{opacity:1;transform:translateX(-100%)}90%{opacity:1}100%{opacity:0;transform:none}}
+@keyframes edgeY{0%{opacity:1;transform:translateY(-100%)}90%{opacity:1}100%{opacity:0;transform:none}}
+@keyframes amt{0%,70%{transform:scale(.96)}100%{transform:none}}
+@keyframes amtF{from{transform:scale(.96)}}
+@keyframes edge{from{translate:0 32px;opacity:0}}
+@keyframes fan1{from{transform:translateY(13px) scale(.962)}to{transform:translateY(19.5px) scale(.962)}}
+@keyframes fan2{from{transform:translateY(26px) scale(.924)}to{transform:translateY(32.5px) scale(.924)}}
+@keyframes push{from{scale:1}to{scale:1.03}}
+@keyframes heroout{to{transform:translateY(-8%);opacity:.55}}
+@keyframes capout{to{transform:translateY(-24px)}}
+@keyframes curtain{from{transform:translateY(-8%)}to{transform:none}}
+
+/* one button shape: app press spring */
 .btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 28px;border-radius:var(--r);
-  background:var(--accent);color:#fff;font:600 var(--t-b)/1.2 var(--sans);text-decoration:none;transition:transform .2s var(--ease)}
-.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--stripe) 0 0/56px 100%;opacity:.55;transform:translateY(100%);transition:transform .25s var(--ease)}
-.btn:hover::after,.btn:focus-visible::after{transform:none}
-.btn:active{transform:scale(.97)}
+  background:var(--accent);color:#fff;font:600 var(--t-b)/1.2 var(--sans);text-decoration:none;transition:transform var(--d-spring-press) var(--sp-release)}
+.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--stripe) 0 0/56px 100%;opacity:.55;transform:translateY(100%);transition:transform 180ms var(--arrive)}
+@media (hover:hover){.btn:hover::after{transform:none}}
+.btn:focus-visible::after{transform:none}
+.btn:active{transform:scale(.985);transition-timing-function:var(--sp-press)}
 .btn.light{background:var(--paper);color:var(--accent-dark)}
 .btn.sm{min-height:44px;padding:0 20px;font-size:var(--t-s)}
+
+/* CTA row + App Store "coming soon" badge (not a link) */
+.acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center}
+.store-soon{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 18px;border-radius:var(--r);border:1.5px solid var(--line);background:transparent;
+  color:var(--ink);opacity:.72;text-align:left;-webkit-user-select:none;user-select:none;transition:transform 160ms var(--arrive)}
+.btn.sm+.store-soon{height:44px}
+.store-soon svg{flex:none;color:var(--ink-2);opacity:.7}
+.store-soon__txt{display:flex;flex-direction:column;line-height:1.15}
+.store-soon small{display:grid;overflow:hidden;overflow:clip;font:500 13px/1.25 var(--sans);white-space:nowrap}
+.store-soon small>span{grid-area:1/1}
+.store-soon small>.alt{opacity:0}
+.motion .store-soon small>.alt{transform:translateY(100%)}
+.store-soon__txt>span{font:600 16px/1.2 var(--sans)}
+.store-soon.up{transform:translateY(-2px)}
+@media (hover:hover){.store-soon:hover{transform:translateY(-2px)}}
+@media (pointer:fine){.store-soon{cursor:not-allowed}}
+.field .store-soon{border-color:rgba(247,246,243,.5);color:rgba(247,246,243,.94)}
+.field .store-soon svg{color:currentColor}
 
 /* split stage */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}
 .read{min-width:0}
 .hero{min-height:calc(100svh - 24px);background:var(--paper);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 var(--gut) 28px}
-.band{align-self:stretch;margin:0 calc(-1 * var(--gut));height:56px;background:var(--paper) var(--stripe) 0 0/56px 100%}
+.band{position:relative;overflow:hidden;align-self:stretch;margin:0 calc(-1 * var(--gut));height:56px;background:var(--paper)}
+.band::before{content:"";position:absolute;top:0;bottom:0;left:0;right:-56px;background:var(--stripe) 0 0/56px 100%}
 .hero-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 0}
 .wm{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font:700 var(--t-h)/1 var(--serif);letter-spacing:-.01em}
 .wm img{width:56px;height:56px;border-radius:var(--r)}
 .hero h1{margin-top:clamp(32px,5svh,56px);font:700 var(--t-d)/1.04 var(--serif);letter-spacing:-.02em}
 .hero .lede{margin-top:24px;max-width:36ch}
-.hero .btn{margin-top:36px}
+.hero .acts{margin-top:36px}
 .hero .note{margin-top:14px;font-size:var(--t-s);color:var(--ink-2)}
-.hero-nav ul{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;font-size:var(--t-s)}
+.hero-nav ul{display:flex;gap:4px 28px;justify-content:center;flex-wrap:wrap;font-size:var(--t-s)}
+.hero-nav a{display:inline-block;padding:12px 0}
 
 .stage{position:sticky;top:12px;align-self:start;height:calc(100svh - 24px);border-radius:var(--r);overflow:hidden;background:var(--ink)}
-.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;animation:drift 28s ease-in-out infinite alternate}
-.scr{position:absolute;right:7%;bottom:7%;height:78%;width:auto;border:8px solid var(--paper);border-radius:var(--r);opacity:0;transform:translateY(20px);transition:opacity 1.2s ease,transform 1.2s var(--ease)}
-.stage .on{opacity:1}
-.scr.on{transform:none}
-.cap{position:absolute;left:20px;top:20px;max-width:240px;padding:12px 16px;border-radius:var(--r);background:var(--paper);font-size:var(--t-s);line-height:1.4}
-.cap b{display:block}
-@keyframes drift{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,-1%)}}
-.paused .ph{animation-play-state:paused}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:hidden}
+.ph.on{visibility:visible}
+.scrs{position:absolute;right:7%;bottom:calc(7% + 26px);height:72%;aspect-ratio:720/1270;z-index:4}
+.scr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;border:8px solid var(--paper);border-radius:var(--r);background:var(--paper);
+  transform-origin:50% 100%;visibility:hidden;opacity:0}
+.scr.s0{visibility:visible;opacity:1;z-index:3}
+.scr.s1{visibility:visible;opacity:1;filter:brightness(.95);transform:translateY(13px) scale(.962);z-index:2}
+.scr.s2{visibility:visible;opacity:1;filter:brightness(.9);transform:translateY(26px) scale(.924);z-index:1}
+.scr[data-s~="go"]{object-fit:contain;object-position:50% 0}
+/* one card dealt first; the stack slots in behind it once it lands (420ms + --d-rise) */
+/* hero: the deck promotes one slot on load (app follow-through), opaque from frame 0; s1/s2 settle 40ms behind */
+.motion:not(.dealt) .scr.s0{animation:rise0 var(--d-rise) var(--sp-rise) 120ms backwards}
+.motion:not(.dealt) .scr.s1{animation:rise1 var(--d-rise) var(--sp-rise) 160ms backwards}
+.motion:not(.dealt) .scr.s2{animation:rise2 var(--d-rise) var(--sp-rise) 200ms backwards}
+.cap{position:absolute;left:20px;top:20px;z-index:5;max-width:240px;padding:12px 16px;border-radius:var(--r);background:var(--paper);font-size:var(--t-s);line-height:1.4}
+.cap b,.cap span{display:block}
+.motion .ph[data-s~="hero"]{animation:heroimg var(--d-settle) var(--arrive) backwards}
 
-/* how it works */
-.how{min-height:100svh;padding:16svh var(--gut);display:flex;flex-direction:column;justify-content:center}
+/* .trip: the stage's own trip surface for the demo (DESK) */
+.trip{display:block;padding:0;overflow:hidden}
+.trip-band{height:26px;background:var(--paper) var(--stripe) 0 0/56px 100%}
+.trip-h{padding:16px 16px 2px;font:700 22px/1.2 var(--serif)}
+.trip ul{display:grid;gap:8px;padding:12px 16px}
+.trip li{display:flex;align-items:center;gap:12px;min-height:56px}
+.trip li i{flex:none;display:grid;place-items:center;width:56px;height:56px;overflow:hidden;border-radius:12px;outline:1.5px dashed var(--line);outline-offset:-1.5px;
+  font:700 22px/1 var(--serif);font-style:normal;color:var(--paper)}
+.trip li.full i{outline:0;background:var(--accent)}
+.trip li:not(.full) i{background:var(--stripe) 0 0/56px 8px no-repeat}
+.trip li:not(.full) b:empty::before{content:"";display:block;width:9em;max-width:100%;height:10px;border-radius:5px;background:var(--line)}
+.trip li:first-child:not(.full) b:empty::before,.trip li.full+li:not(.full) b:empty::before{content:"Swipe right to add";width:auto;height:auto;background:none;color:var(--ink-2);font-weight:500}
+.trip li i img{width:100%;height:100%;object-fit:cover}
+.trip li b{display:block;font:600 15px/1.3 var(--sans)}
+.trip li small{display:block;font-size:13px;line-height:1.3;color:var(--ink-2)}
+.trip-hint{padding:0 16px;font-size:14px;color:var(--ink-2);transition:opacity var(--d-ui) var(--arrive)}
+.trip.has .trip-hint{opacity:0}
+.trip-toast{position:absolute;left:16px;right:16px;bottom:16px;padding:10px 14px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 14px/1.3 var(--sans);text-align:center;opacity:0}
+.flyer{position:fixed;z-index:50;overflow:hidden;border:8px solid var(--paper);border-radius:var(--r);pointer-events:none;transform-origin:0 0;background:var(--accent);color:var(--paper);display:grid;place-items:center;font:700 40px/1 var(--serif)}
+.flyer img{width:100%;height:100%;object-fit:cover}
+
+/* how it works: four in-flow chapters */
+.how{padding:16svh var(--gut)}
 .how h2{font:700 var(--t-d)/1.04 var(--serif);letter-spacing:-.02em;max-width:14ch}
+.how .ln,.faq .ln{display:block;overflow:hidden;overflow:clip;padding-bottom:.12em;margin-bottom:-.12em}
+.how .ln>span,.faq .ln>span{display:inline-block}
 .how .lede{margin-top:24px;max-width:40ch}
-.ctl{margin-top:48px;display:none}
+.ctl{position:relative;margin-top:48px;display:none}
 .js .ctl{display:block}
-.ctl input{-webkit-appearance:none;appearance:none;display:block;width:100%;height:32px;margin:0;background:transparent;cursor:pointer}
-.ctl input::-webkit-slider-runnable-track{height:8px;background:var(--line)}
-.ctl input::-moz-range-track{height:8px;background:var(--line)}
-.ctl input::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;margin-top:-12px;border:0;background:var(--accent);transition:transform .15s var(--ease)}
-.ctl input::-moz-range-thumb{width:32px;height:32px;border:0;border-radius:0;background:var(--accent);transition:transform .15s var(--ease)}
+.ctl::before{content:"";position:absolute;left:0;right:0;top:12px;height:8px;background:var(--line);transform-origin:0 50%}
+.ctl input{position:relative;-webkit-appearance:none;appearance:none;display:block;width:100%;height:32px;margin:0;background:transparent;cursor:pointer}
+.ctl input::-webkit-slider-runnable-track{height:8px;background:transparent}
+.ctl input::-moz-range-track{height:8px;background:transparent}
+.ctl input::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;margin-top:-12px;border:0;background:var(--accent);transition:transform var(--d-press) var(--arrive)}
+.ctl input::-moz-range-thumb{width:32px;height:32px;border:0;border-radius:0;background:var(--accent);transition:transform var(--d-press) var(--arrive)}
 .ctl input:active::-webkit-slider-thumb{transform:scale(1.15)}
 .ctl input:active::-moz-range-thumb{transform:scale(1.15)}
-.stops{display:flex;justify-content:space-between;margin-top:12px}
-.stops button{background:none;border:0;padding:8px 0;font:600 var(--t-s)/1 var(--sans);color:var(--ink-2);cursor:pointer;transition:transform .15s var(--ease)}
-.stops button:hover{transform:translateY(-2px)}
+.stops{position:relative;display:flex;justify-content:space-between;margin-top:4px}
+.stops button{min-height:44px;background:none;border:0;padding:8px 0;font:600 var(--t-s)/1 var(--sans);color:var(--ink-2);cursor:pointer;transition:color var(--d-ui) var(--arrive)}
 .stops button[aria-pressed="true"]{color:var(--accent)}
+.stops .bar{position:absolute;left:0;bottom:4px;width:100px;height:2px;background:var(--accent);transform-origin:0 0;transform:scaleX(0);transition:transform var(--d-step) var(--move)}
 .steps{margin-top:40px;display:grid;gap:32px}
-.js .steps{display:block;margin-top:36px}
-.js .step:not(.on){display:none}
 .step h3{font:700 var(--t-h)/1.15 var(--serif);letter-spacing:-.01em}
 .step p{margin-top:12px;max-width:42ch}
-.js .step.on{animation:stepin .45s var(--ease)}
-@keyframes stepin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .shots{display:none}
+.motion .reveal:not(.in) .ln>span{transform:translateY(105%)}
+.motion .reveal.in .ln>span{animation:lnup 760ms var(--arrive) backwards}
+.motion .reveal.in .ln+.ln>span{animation-delay:90ms}
+.motion .how-head:not(.in) .lede{opacity:0}
+.motion .how-head.in .lede{animation:rise 500ms var(--arrive) 230ms backwards}
+.motion .ctl:not(.in)::before{transform:scaleX(0)}
+.motion .ctl.in::before{animation:grow 600ms var(--move) backwards}
+.motion .ctl:not(.in) .stops button,.motion .ctl:not(.in) input{opacity:0}
+.motion .ctl.in input{animation:fade var(--d-ui) var(--arrive) 450ms backwards}
+.motion .ctl.in .stops button{animation:pop var(--d-ui) var(--arrive) 600ms backwards}
+.motion .ctl.in .stops button:nth-child(2){animation-delay:650ms}
+.motion .ctl.in .stops button:nth-child(3){animation-delay:700ms}
+.motion .ctl.in .stops button:nth-child(4){animation-delay:750ms}
 
 /* features: the menu */
 .feat{min-height:100svh;padding:14svh var(--gut);display:flex;align-items:center;justify-content:center}
+.print{width:min(100%,600px)}
 .sheet{width:min(100%,600px);background:var(--paper);padding:64px clamp(20px,3.4vw,48px);
   clip-path:polygon(0.0% 10px,1.786% 0px,3.571% 10px,5.357% 0px,7.143% 10px,8.929% 0px,10.714% 10px,12.5% 0px,14.286% 10px,16.071% 0px,17.857% 10px,19.643% 0px,21.429% 10px,23.214% 0px,25.0% 10px,26.786% 0px,28.571% 10px,30.357% 0px,32.143% 10px,33.929% 0px,35.714% 10px,37.5% 0px,39.286% 10px,41.071% 0px,42.857% 10px,44.643% 0px,46.429% 10px,48.214% 0px,50.0% 10px,51.786% 0px,53.571% 10px,55.357% 0px,57.143% 10px,58.929% 0px,60.714% 10px,62.5% 0px,64.286% 10px,66.071% 0px,67.857% 10px,69.643% 0px,71.429% 10px,73.214% 0px,75.0% 10px,76.786% 0px,78.571% 10px,80.357% 0px,82.143% 10px,83.929% 0px,85.714% 10px,87.5% 0px,89.286% 10px,91.071% 0px,92.857% 10px,94.643% 0px,96.429% 10px,98.214% 0px,100.0% 10px,100.0% calc(100% - 10px),98.214% calc(100% - 0px),96.429% calc(100% - 10px),94.643% calc(100% - 0px),92.857% calc(100% - 10px),91.071% calc(100% - 0px),89.286% calc(100% - 10px),87.5% calc(100% - 0px),85.714% calc(100% - 10px),83.929% calc(100% - 0px),82.143% calc(100% - 10px),80.357% calc(100% - 0px),78.571% calc(100% - 10px),76.786% calc(100% - 0px),75.0% calc(100% - 10px),73.214% calc(100% - 0px),71.429% calc(100% - 10px),69.643% calc(100% - 0px),67.857% calc(100% - 10px),66.071% calc(100% - 0px),64.286% calc(100% - 10px),62.5% calc(100% - 0px),60.714% calc(100% - 10px),58.929% calc(100% - 0px),57.143% calc(100% - 10px),55.357% calc(100% - 0px),53.571% calc(100% - 10px),51.786% calc(100% - 0px),50.0% calc(100% - 10px),48.214% calc(100% - 0px),46.429% calc(100% - 10px),44.643% calc(100% - 0px),42.857% calc(100% - 10px),41.071% calc(100% - 0px),39.286% calc(100% - 10px),37.5% calc(100% - 0px),35.714% calc(100% - 10px),33.929% calc(100% - 0px),32.143% calc(100% - 10px),30.357% calc(100% - 0px),28.571% calc(100% - 10px),26.786% calc(100% - 0px),25.0% calc(100% - 10px),23.214% calc(100% - 0px),21.429% calc(100% - 10px),19.643% calc(100% - 0px),17.857% calc(100% - 10px),16.071% calc(100% - 0px),14.286% calc(100% - 10px),12.5% calc(100% - 0px),10.714% calc(100% - 10px),8.929% calc(100% - 0px),7.143% calc(100% - 10px),5.357% calc(100% - 0px),3.571% calc(100% - 10px),1.786% calc(100% - 0px),0.0% calc(100% - 10px))}
 .sheet h2{font:700 var(--t-d)/1.04 var(--serif);letter-spacing:-.02em;text-align:center}
@@ -181,70 +289,143 @@ a:hover{text-decoration-thickness:2px}
 .menu .grp th{padding:44px 0 4px;font:700 var(--t-b)/1.3 var(--sans);text-align:left}
 .menu tbody:first-of-type .grp th{padding-top:12px}
 .lead{display:flex;align-items:baseline;font-weight:600}
-.lead::after{content:"";flex:1;min-width:16px;margin:0 0 0 8px;border-bottom:2px dotted var(--line)}
+.lead::after{content:"";flex:1;min-width:16px;margin:0 0 0 8px;border-bottom:2px dotted var(--line);transform-origin:0 50%}
 .d{display:block;margin-top:2px;max-width:34ch;font-size:var(--t-s);line-height:1.45;color:var(--ink-2)}
 .sheet .foot-note{margin-top:32px;text-align:center;font-size:var(--t-s)}
+.motion.sda .print{animation:print linear both;animation-timeline:view();animation-range:entry 10% cover 35%}
+.motion:not(.sda) .print:not(.in){clip-path:inset(0 0 100% 0)}
+.motion:not(.sda) .print.in{animation:print 900ms var(--arrive) backwards}
+.motion tbody:not(.in) th,.motion tbody:not(.in) td{opacity:0}
+.motion tbody:not(.in) .lead::after{transform:scaleX(0)}
+.motion tbody.in th{--y:10px;animation:rise 300ms var(--arrive) var(--d,0ms) backwards}
+.motion tbody.in td{animation:fade 300ms var(--arrive) var(--d,0ms) backwards}
+.motion tbody.in .lead::after{animation:grow 380ms var(--move) calc(var(--d,0ms) + 60ms) backwards}
 
 /* pricing */
-.price{display:grid;grid-template-columns:1fr 1fr}
-.field{min-height:90svh;padding:var(--gut);display:flex;flex-direction:column;justify-content:flex-end;gap:24px}
+.price{display:grid;grid-template-columns:1fr 1fr;view-timeline:--price}
+.field{position:relative;min-height:90svh;padding:var(--gut);display:flex;flex-direction:column;justify-content:flex-end;gap:24px}
 .field.free{background:var(--ink);color:var(--paper)}
 .field.prem{background:var(--accent);color:#fff}
+.prem::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='56'%3E%3Crect width='10' height='28' fill='%23F7F6F3'/%3E%3C/svg%3E") 100% 0/10px 56px repeat-y}
 .field h3{margin-bottom:auto;font:700 var(--t-d)/1 var(--serif);letter-spacing:-.02em}
-.amt{font:700 var(--t-x)/.95 var(--serif);letter-spacing:-.03em}
+.amt{font:700 var(--t-x)/.95 var(--serif);letter-spacing:-.03em;transform-origin:0 100%}
 .inc{max-width:40ch}
-.field .btn{align-self:flex-start}
+.field .acts{justify-content:flex-start}
 .field :focus-visible{outline-color:var(--paper)}
+.motion .field:not(.in) .btn,.motion .field:not(.in) .store-soon{opacity:0}
+.motion .field.in .btn{--y:16px;animation:rise 480ms var(--arrive) 200ms backwards}
+.motion .field.in .store-soon{animation:soon var(--d-rise) var(--sp-rise) 290ms backwards}
+.motion .free:not(.in){opacity:0}
+.motion .free.in{animation:fade 400ms var(--arrive) backwards}
 
 /* faq */
 .faq{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;padding:18svh var(--gut)}
-.faq h2{grid-column:1/4;font:700 var(--t-h)/1.15 var(--serif);letter-spacing:-.01em}
+.faq h2{grid-column:1/4;align-self:start;font:700 var(--t-h)/1.15 var(--serif);letter-spacing:-.01em}
 .qa{grid-column:4/13;columns:2;column-gap:56px}
 .qa p{break-inside:avoid;margin:0 0 28px;line-height:1.55}
 .qa b{font-weight:600}
 
-/* closing call */
-.cta{padding:32svh var(--gut) 22svh;display:flex;flex-direction:column;align-items:center;text-align:center}
+/* closing call: the last card of the deck */
+.cta{padding:32svh var(--gut) 22svh;display:flex;flex-direction:column;align-items:center;text-align:center;view-timeline:--cta}
+.cta-deck{position:relative;isolation:isolate;width:min(100%,560px)}
+.cta-deck::before,.cta-deck::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:var(--r);background:var(--paper);outline:1px solid var(--line);outline-offset:-1px;transform-origin:50% 100%}
+.cta-deck::after{opacity:.92;transform:translateY(13px) scale(.962)}
+.cta-deck::before{opacity:.84;transform:translateY(26px) scale(.924)}
+.cta-card{position:relative;display:flex;flex-direction:column;align-items:center;padding:clamp(32px,5vw,56px) clamp(20px,4vw,48px);border-radius:var(--r);background:var(--paper)}
 .cta p{max-width:34ch;font-size:var(--t-b)}
-.cta .btn{margin-top:24px}
+.cta .acts{margin-top:24px}
+.motion .cta:not(.in) .cta-deck::before,.motion .cta:not(.in) .cta-deck::after,.motion .cta:not(.in) .cta-card{opacity:0}
+.motion .cta.in .cta-deck::before{animation:edge var(--d-rise) var(--sp-rise) backwards}
+.motion .cta.in .cta-deck::after{animation:edge var(--d-rise) var(--sp-rise) 110ms backwards}
+.motion .cta.in .cta-card{animation:edge var(--d-rise) var(--sp-rise) 220ms backwards}
+.motion.sda .cta-deck::after{animation:fan1 linear both;animation-timeline:--cta;animation-range:cover 30% cover 60%}
+.motion.sda .cta-deck::before{animation:fan2 linear both;animation-timeline:--cta;animation-range:cover 30% cover 60%}
+.motion.sda .cta.in .cta-deck::after{animation:edge var(--d-rise) var(--sp-rise) 110ms backwards,fan1 linear both;animation-timeline:auto,--cta;animation-range:normal,cover 30% cover 60%}
+.motion.sda .cta.in .cta-deck::before{animation:edge var(--d-rise) var(--sp-rise) backwards,fan2 linear both;animation-timeline:auto,--cta;animation-range:normal,cover 30% cover 60%}
 
 /* footer */
 .fband{height:8px;background:var(--paper) var(--stripe) 0 0/56px 100%}
-.foot{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;background:var(--paper)}
+.foot{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;background:var(--paper);view-timeline:--foot}
 .fphoto{position:relative;overflow:hidden}
-.fphoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fphoto img{position:absolute;left:0;top:0;width:100%;height:109%;object-fit:cover}
+.motion.sda .fphoto img{animation:curtain linear both;animation-timeline:--foot;animation-range:entry 0% entry 100%}
 .fmenu{padding:var(--gut);display:flex;flex-direction:column;gap:40px}
 .fmenu .wm{align-self:flex-start;font-size:var(--t-b)}
 .fmenu .wm img{width:36px;height:36px}
 .fnav ul{display:grid;gap:28px}
-.fnav a{display:inline-block;font:700 var(--t-h)/1.1 var(--sans);text-decoration:none;transition:transform .25s var(--ease)}
-.fnav a:hover,.fnav a:focus-visible{transform:translateX(12px);color:var(--accent)}
+.fnav a{display:inline-block;font:700 var(--t-h)/1.1 var(--sans);text-decoration:none;transition:transform 160ms var(--arrive)}
+@media (hover:hover){.fnav a:hover{transform:translateX(8px);color:var(--accent)}}
+.fnav a:focus-visible{transform:translateX(8px);color:var(--accent)}
+.fnav a:active{color:var(--accent)}
+.fnav .soon-note{font-size:var(--t-s);color:var(--ink-2)}
 .contact{font-size:var(--t-s);display:grid;gap:6px;margin-top:auto}
 .legal,.credits{font-size:var(--t-s);line-height:1.5;color:var(--ink-2)}
 .legal a,.credits a{color:var(--ink)}
 
-/* entrances (only when script and motion are on) */
-.motion .reveal .rise{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0) * 75ms)}
-.motion .reveal.in .rise{opacity:1;transform:none}
+/* hero load choreography (CSS only, end state = static) */
+.motion .band::before{animation:unroll 900ms var(--arrive) backwards}
+.motion .hero .wm{animation:rise 500ms var(--arrive) 60ms backwards}
+.motion .hero h1{animation:h1in 700ms var(--arrive) 120ms backwards}
+.motion .hero .lede{animation:rise 560ms var(--arrive) 380ms backwards}
+.motion .hero .btn{--y:16px;animation:rise 560ms var(--arrive) 460ms backwards}
+.motion .hero .store-soon{animation:soon var(--d-rise) var(--sp-rise) 550ms backwards}
+.motion .hero .note,.motion .hero-nav{animation:fade 400ms var(--arrive) 620ms backwards}
 
-@media (max-width:899px){
+/* DESK: split stage, sticky chapters, scroll-linked camera */
+@media (min-width:900px) and (min-aspect-ratio:1/1){
+  .split{timeline-scope:--story,--hero}
+  .read{view-timeline:--story}
+  .hero{view-timeline:--hero}
+  .motion.sda .ph{animation:push linear both;animation-timeline:--story;animation-range:cover 0% cover 100%}
+  .motion.sda .ph[data-s~="hero"]{animation:heroimg var(--d-settle) var(--arrive) backwards,push linear both;animation-timeline:auto,--story;animation-range:normal,cover 0% cover 100%}
+  .motion.sda .hero-mid{animation:heroout linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%}
+  .motion.sda .cap{animation:capout linear both;animation-timeline:--hero;animation-range:exit 0% exit 100%}
+  .ctl{position:sticky;top:24px;z-index:2;padding:8px 0;background:var(--ground)}
+  .steps{gap:0}
+  .js .step{min-height:100svh;color:var(--ink-2);transition:color var(--d-step) var(--move)} /* inactive stays readable (>=4.5:1); focus = colour + stop bar */
+  .js .step.on{color:var(--ink)}
+  .js .step.on h3{color:var(--accent)}
+  .js .step .pn{position:sticky;top:40svh}
+  .faq h2{position:sticky;top:18svh}
+  .motion.sda .prem{animation:wipeX linear both;animation-timeline:--price;animation-range:entry 15% cover 45%}
+  .motion.sda .prem::before{animation:edgeX linear both;animation-timeline:--price;animation-range:entry 15% cover 45%}
+  .motion.sda .prem .amt{animation:amt linear both;animation-timeline:--price;animation-range:entry 15% cover 45%}
+  .motion:not(.sda) .prem:not(.in){clip-path:inset(0 100% 0 0)}
+  .motion:not(.sda) .prem.in{animation:wipeX 900ms var(--move) backwards}
+  .motion:not(.sda) .prem.in::before{animation:edgeX 900ms var(--move) backwards}
+}
+
+/* PHONE + TAB: the stage becomes a full-bleed backdrop under the reading column */
+@media not all and (min-width:900px) and (min-aspect-ratio:1/1){
   :root{--t-d:clamp(32px,8vw,64px)}
   .split{display:flex;flex-direction:column;padding:0;gap:0}
-  .stage{order:-1;align-self:stretch;position:relative;top:0;height:48svh;border-radius:0}
-  .stage [data-s]:not([data-s~="hero"]){display:none}
-  .scr{height:74%;right:16px;bottom:40px;border-width:6px}
+  .stage{order:-1;align-self:stretch;position:relative;top:0;height:56svh;border-radius:0}
+  html:not(.js) .stage [data-s]:not([data-s~="hero"]){display:none}
+  .trip{display:none}
+  .scr{border-width:6px}
   .cap{left:16px;top:16px;max-width:170px;padding:10px 12px}
+  .read{position:relative;z-index:1}
   .hero{position:relative;z-index:1;margin:-24px 12px 0;min-height:0;padding-bottom:28px}
   .band{height:40px}
   .hero-mid{padding:40px 0 48px}
   .how{min-height:0;padding:96px 16px 72px}
-  .shots{display:grid;margin-top:40px;justify-items:center}
-  .shots img{grid-area:1/1;align-self:start;width:min(72%,300px);height:auto;border:6px solid var(--paper);border-radius:var(--r);transition:opacity .4s ease}
+  html:not(.js) .shots{display:grid;margin-top:40px;justify-items:center}
+  .shots img{grid-area:1/1;align-self:start;width:min(72%,300px);height:auto;border:6px solid var(--paper);border-radius:var(--r)}
   .shots img:not(.on){opacity:0}
-  .feat{min-height:0;padding:48px 16px 72px}
+  .feat{position:relative;min-height:0;padding:48px 16px 72px;background:var(--ground)}
   .menu td{width:76px}
   .price{grid-template-columns:1fr}
+  .prem{view-timeline:--prem}
+  .prem::before{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='10'%3E%3Crect width='28' height='10' fill='%23F7F6F3'/%3E%3C/svg%3E") 0 100%/56px 10px repeat-x}
+  .motion.sda .prem{animation:wipeY linear both;animation-timeline:--prem;animation-range:entry 0% entry 70%}
+  .motion.sda .prem::before{animation:edgeY linear both;animation-timeline:--prem;animation-range:entry 0% entry 70%}
+  .motion.sda .prem .amt{animation:amt linear both;animation-timeline:--prem;animation-range:entry 0% entry 70%}
+  .motion:not(.sda) .prem:not(.in){clip-path:inset(0 0 100% 0)}
+  .motion:not(.sda) .prem.in{animation:wipeY 900ms var(--move) backwards}
+  .motion:not(.sda) .prem.in::before{animation:edgeY 900ms var(--move) backwards}
   .field{min-height:70svh;padding:40px 16px}
+  .field.free{background:var(--paper);color:var(--ink)}
+  .field.free .store-soon{border-color:var(--line);color:var(--ink)}
   .faq{display:block;padding:96px 16px}
   .qa{columns:1;margin-top:32px}
   .qa p{margin-bottom:18px}
@@ -253,46 +434,83 @@ a:hover{text-decoration-thickness:2px}
   .fphoto{height:50svh}
   .fmenu{padding:48px 16px}
   .fnav a{font-size:8vw}
+
+  .js .stage{position:sticky;top:0;height:100lvh;margin-bottom:-100lvh;z-index:0}
+  .js .how{padding:48px 12px 0}
+  .js .how-head{padding:32px 20px 0;border-radius:var(--r) var(--r) 0 0;background:var(--paper)}
+  .js .ctl{margin-top:0;padding:24px 20px 12px;border-radius:0 0 var(--r) var(--r);background:var(--paper)}
+  .js .steps{display:block;margin-top:0}
+  .js .step{display:flex;align-items:flex-end;min-height:100svh}
+  .js .pn{max-width:34ch;margin-bottom:max(24px,env(safe-area-inset-bottom));padding:20px;border-radius:var(--r);background:var(--paper)}
+  .motion.sda .pn{--y:24px;animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 50%}
+  .motion:not(.sda) .step:not(.in) .pn{opacity:0}
+  .motion:not(.sda) .step.in .pn{--y:24px;animation:rise 500ms var(--arrive) backwards}
 }
+@media (max-width:599px){
+  .acts>*{flex:1 1 auto}
+  .store-soon{justify-content:center}
+  .js .hero{margin:42svh 12px 0}
+  .js .hero-mid{padding-top:16px}
+  .js .hero h1{margin-top:20px}
+  .js .hero .acts{margin-top:24px}
+  .motion .pn{transition:opacity 200ms var(--move)}
+  .js .pn.out{opacity:0} /* copy card fades before it reaches the pinned screen band (IO in the page script) */
+  .js .stage::after{content:"";position:absolute;left:0;right:0;bottom:0;z-index:4;height:30%;background:linear-gradient(to top,var(--paper),rgba(247,246,243,0));pointer-events:none} /* taste-skill-ignore: neutral scrim over the backdrop photo */
+  .js .cap{left:16px;top:calc(env(safe-area-inset-top) + 4svh);max-width:calc(100% - 32px);padding:6px 12px;font-size:13px} /* left-anchored: caption text swaps change its width, a centred box would shift (CLS) */
+  .js .cap b{display:none}
+  .js .scrs{left:0;right:0;top:calc(env(safe-area-inset-top) + 4svh + 36px);bottom:auto;height:30svh;margin:0 auto}
+}
+@media not all and (min-width:900px) and (min-aspect-ratio:1/1){@media (min-width:600px){
+  .js .hero{margin:46svh 0 0 4vw;max-width:52vw;padding:0 20px 28px}
+  .js .hero h1,.js .how h2{font-size:clamp(32px,4.8vw,56px)}
+  .js .how-head,.js .ctl,.js .pn{max-width:52vw;margin-left:4vw}
+  .js .scrs{right:6vw;top:50%;bottom:auto;height:min(60svh,calc(36vw / .567));transform:translateY(-50%)}
+}}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .ph{animation:none}
-  .ph,.scr,.shots img{transition:none}
-  .scr{transform:none}
-  .js .step.on{animation:none}
-  .btn,.btn::after,.fnav a,.stops button{transition:none}
+  .btn,.btn::after,.fnav a,.stops button,.stops .bar,.store-soon,.js .step,.trip-hint,.ctl input::-webkit-slider-thumb{transition:none}
 }
 </style>
+<link rel="stylesheet" href="demo.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <main id="main">
 <div class="split">
   <div class="read">
-    <header class="hero reveal" data-stage="hero">
+    <header class="hero" data-stage="hero">
       <div class="band"></div>
       <div class="hero-mid">
-        <a class="wm rise" href="/" aria-label="NomadSwipe home"><img src="static/icon-192.png" width="56" height="56" alt=""><span>NomadSwipe</span></a>
-        <h1 class="rise">Free trip planner for any city</h1>
-        <p class="lede rise">Swipe through real places in any city, save the ones you like, and see your whole trip on one map.</p>
-        <a class="btn rise" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=hero">Get it free on Google Play</a>
-        <p class="note rise">Free on Android. Premium is optional.</p>
+        <a class="wm" href="/" aria-label="NomadSwipe home"><img src="static/icon-192.png" width="56" height="56" alt=""><span>NomadSwipe</span></a>
+        <h1>Free trip planner for any city</h1>
+        <p class="lede">Swipe through real places in any city, save the ones you like, and see your whole trip on one map.</p>
+        <div class="acts">
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=hero">Get it free on Google Play</a>
+          <span class="store-soon" aria-disabled="true">
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
+  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
+</span>
+        </div>
+        <p class="note">Free on Android. Premium is optional.</p>
       </div>
-      <nav class="hero-nav rise" aria-label="Page sections">
-        <ul><li><a href="#how-it-works">How it works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">Questions</a></li></ul>
+      <nav class="hero-nav" aria-label="Page sections">
+        <ul><li><a href="#how-it-works">How it works</a></li><li><a href="#demo">Try it</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">Questions</a></li></ul>
       </nav>
     </header>
 
-    <section id="how-it-works" class="how reveal" data-stage="swipe" aria-labelledby="how-h">
-      <h2 id="how-h" class="rise">First you swipe. Then you go.</h2>
-      <p class="lede rise">NomadSwipe turns trip planning into a few minutes of swiping. The screens on this page come from a real trip planned that way: a long weekend in Lisbon, 16 places, every one of them swiped.</p>
-      <div class="ctl rise">
+    <section id="how-it-works" class="how" aria-labelledby="how-h">
+      <div class="how-head reveal">
+        <h2 id="how-h"><span class="ln"><span>First you swipe.</span></span> <span class="ln"><span>Then you go.</span></span></h2>
+        <p class="lede">NomadSwipe turns trip planning into a few minutes of swiping. The screens on this page come from a real trip planned that way: a long weekend in Lisbon, 16 places, every one of them swiped.</p>
+      </div>
+      <div class="ctl">
         <input id="step" type="range" min="0" max="3" step="1" value="0" aria-label="How NomadSwipe works, step" aria-valuetext="Swipe">
         <div class="stops" role="group" aria-label="Steps">
           <button type="button" data-i="0" aria-pressed="true">Swipe</button>
           <button type="button" data-i="1" aria-pressed="false">Save</button>
           <button type="button" data-i="2" aria-pressed="false">Map</button>
           <button type="button" data-i="3" aria-pressed="false">Go</button>
+          <i class="bar" aria-hidden="true"></i>
         </div>
       </div>
       <figure class="shots" aria-hidden="true">
@@ -301,17 +519,69 @@ a:hover{text-decoration-thickness:2px}
         <img src="static/app-trip-map.jpg" width="720" height="1399" alt="" loading="lazy" decoding="async">
         <img src="static/app-place-detail.jpg" width="720" height="1093" alt="" loading="lazy" decoding="async">
       </figure>
-      <ol class="steps rise">
-        <li class="step on" data-i="0"><h3>Swipe through real places</h3><p>Open NomadSwipe in any city and you get a deck of real places nearby: sights, food, museums, nights out. Swipe right or tap Save to keep one, swipe left or tap Skip to pass. Each card shows the category, rating, distance and whether it is open now.</p></li>
-        <li class="step" data-i="1"><h3>Keep what fits the trip</h3><p>Every place you save goes straight into your trip, so the shortlist builds itself while you browse. The card tells you enough to decide: the Oceanário de Lisboa, for example, is rated 4.5 and open until 7 PM.</p></li>
-        <li class="step" data-i="2"><h3>See the whole trip on a map</h3><p>Your trip opens as a map with every saved place pinned, so you can see what sits close together and plan each day by neighbourhood. Prefer a list? Sort it by rating, distance or A to Z.</p></li>
-        <li class="step" data-i="3"><h3>Go, with everything one tap away</h3><p>Tap any place for its photos, then get directions, open the website or call ahead. Your trips are kept on your phone, so the plan is still there when the signal is not.</p></li>
+      <ol class="steps">
+        <li class="step on" data-i="0" data-stage="swipe"><div class="pn"><h3>Swipe through real places</h3><p>Open NomadSwipe in any city and you get a deck of real places nearby: sights, food, museums, nights out. Swipe right or tap Save to keep one, swipe left or tap Skip to pass. Each card shows the category, rating, distance and whether it is open now.</p></div></li>
+        <li class="step" data-i="1" data-stage="save"><div class="pn"><h3>Keep what fits the trip</h3><p>Every place you save goes straight into your trip, so the shortlist builds itself while you browse. The card tells you enough to decide: the Oceanário de Lisboa, for example, is rated 4.5 and open until 7 PM.</p></div></li>
+        <li class="step" data-i="2" data-stage="map"><div class="pn"><h3>See the whole trip on a map</h3><p>Your trip opens as a map with every saved place pinned, so you can see what sits close together and plan each day by neighbourhood. Prefer a list? Sort it by rating, distance or A to Z.</p></div></li>
+        <li class="step" data-i="3" data-stage="go"><div class="pn"><h3>Go, with everything one tap away</h3><p>Tap any place for its photos, then get directions, open the website or call ahead. Your trips are kept on your phone, so the plan is still there when the signal is not.</p></div></li>
       </ol>
     </section>
-
-    <section id="features" class="feat reveal" data-stage="features" aria-labelledby="feat-h">
-      <div class="sheet rise">
-        <h2 id="feat-h">What's included</h2>
+<section id="demo" class="demo" data-stage="demo" aria-labelledby="demo-h">
+  <h2 id="demo-h"><span class="ln"><span>Your turn.</span></span> <span class="ln"><span>Swipe Lisbon.</span></span></h2>
+  <p class="demo-lede">A demo deck of six Lisbon places. Swipe right or tap Save to keep one, left or Skip to pass. Nothing here is saved to an account.</p>
+  <p class="deck-toast" aria-hidden="true"><span>Saved to your trip</span></p>
+  <div class="deck" data-deck role="group" tabindex="0" aria-roledescription="card deck" aria-label="Demo deck. Use Left and Right arrow keys, or the Skip and Save buttons.">
+    <article class="deck-card" data-id="se-de-lisboa">
+      <figure><img src="static/w960/lisbon-se-tram.jpg" srcset="static/w960/lisbon-se-tram.jpg 960w, static/lisbon-se-tram.jpg 1600w" sizes="(min-width: 900px) 360px, 86vw" alt="Lisbon Cathedral's two towers and rose window, with a red tram in the street" width="1311" height="1600" decoding="async" draggable="false"></figure>
+      <div class="deck-card__body"><p class="deck-card__meta"><span class="deck-card__cat">Attraction</span> <span class="deck-card__where">Alfama</span></p><h3>Sé de Lisboa</h3><p>Lisbon's cathedral, with two crenellated towers and a rose window over the street.</p></div>
+    </article>
+    <article class="deck-card" data-id="tram-28">
+      <figure><img src="static/w960/lisbon-tram-28.jpg" srcset="static/w960/lisbon-tram-28.jpg 960w, static/lisbon-tram-28.jpg 1600w" sizes="(min-width: 900px) 360px, 86vw" alt="A yellow tram on route 28 climbing a steep cobbled street past tiled walls" width="1600" height="1064" loading="lazy" decoding="async" draggable="false"></figure>
+      <div class="deck-card__body"><p class="deck-card__meta"><span class="deck-card__cat">Ride</span></p><h3>Tram 28</h3><p>A yellow tram 28 climbing a cobbled street past tiled walls and orange roofs.</p></div>
+    </article>
+    <article class="deck-card" data-id="sail-in-lisbon">
+      <div class="deck-card__type" aria-hidden="true"><b>Sail in Lisbon</b><span class="deck-card__rate"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>4.9</span></div>
+      <div class="deck-card__body"><p class="deck-card__meta"><span class="deck-card__cat">Trail</span><span class="visually-hidden">, rated 4.9 in the app</span></p><h3>Sail in Lisbon</h3><p>A boat trip on the Tagus, with the 25 de Abril bridge in the distance.</p></div>
+    </article>
+    <article class="deck-card" data-id="belem-tower">
+      <figure><img src="static/w960/lisbon-belem-tower.jpg" srcset="static/w960/lisbon-belem-tower.jpg 960w, static/lisbon-belem-tower.jpg 1600w" sizes="(min-width: 900px) 360px, 86vw" alt="Belém Tower's pale stone turrets on the Tagus shore, with visitors on the lawn" width="1600" height="1322" loading="lazy" decoding="async" draggable="false"></figure>
+      <div class="deck-card__body"><p class="deck-card__meta"><span class="deck-card__cat">Attraction</span> <span class="deck-card__where">Belém</span></p><h3>Belém Tower</h3><p>A pale stone tower with turrets standing on the Tagus shore.</p></div>
+    </article>
+    <article class="deck-card" data-id="oceanario-de-lisboa">
+      <div class="deck-card__type" aria-hidden="true"><b>Oceanário de Lisboa</b><span class="deck-card__rate"><svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>4.5</span></div>
+      <div class="deck-card__body"><p class="deck-card__meta"><span class="deck-card__cat">Aquarium</span> <span class="deck-card__where">Parque das Nações</span><span class="visually-hidden">, rated 4.5 in the app</span></p><h3>Oceanário de Lisboa</h3><p>A large aquarium with sharks, rays and shoals of fish behind glass.</p></div>
+    </article>
+    <article class="deck-card" data-id="alfama">
+      <figure><img src="static/w960/lisbon-alfama.jpg" srcset="static/w960/lisbon-alfama.jpg 960w, static/lisbon-alfama.jpg 1600w" sizes="(min-width: 900px) 360px, 86vw" alt="Terracotta rooftops stepping down to the river, with a white church tower among them" width="1600" height="900" loading="lazy" decoding="async" draggable="false"></figure>
+      <div class="deck-card__body"><p class="deck-card__meta"><span class="deck-card__cat">Neighbourhood</span></p><h3>Alfama</h3><p>Terracotta rooftops stepping down toward the river, with a white church among them.</p></div>
+    </article>
+    <article class="deck-end" hidden aria-labelledby="deck-end-h">
+      <div class="deck-end__band" aria-hidden="true"></div>
+      <h3 id="deck-end-h" tabindex="-1">Your Lisbon trip</h3>
+      <p class="deck-end__sub">0 places saved</p>
+      <ol class="deck-end__list"></ol>
+      <p class="deck-end__note">In the app, saved places go straight into your trip and onto its map.</p>
+      <div class="deck-end__cta">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=demo">Get it free on Google Play</a>
+        <span class="store-soon" aria-disabled="true">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
+          <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
+        </span>
+      </div>
+      <button type="button" class="deck-again">Swipe again</button>
+    </article>
+  </div>
+  <div class="deck-ctl">
+    <button type="button" class="deck-btn" data-deck-skip aria-label="Skip"><svg aria-hidden="true" viewBox="0 0 24 24" width="26" height="26"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg> <span>Skip</span></button>
+    <button type="button" class="deck-btn deck-btn--save" data-deck-save aria-label="Save"><svg aria-hidden="true" viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 20.6l-1.3-1.2C5.6 14.8 2.4 11.9 2.4 8.3 2.4 5.4 4.7 3.1 7.6 3.1c1.7 0 3.3.8 4.4 2 1.1-1.2 2.7-2 4.4-2 2.9 0 5.2 2.3 5.2 5.2 0 3.6-3.2 6.5-8.3 11.1z"/></svg> <span>Save</span></button>
+  </div>
+  <div class="deck-tray" aria-hidden="true"><b>Your trip</b> <span class="deck-count">0</span> <ol><li></li><li></li><li></li><li></li><li></li><li></li></ol></div>
+  <p class="deck-live visually-hidden" aria-live="polite"></p>
+</section>
+    <section id="features" class="feat" data-stage="features" aria-labelledby="feat-h">
+      <div class="print">
+      <div class="sheet">
+        <h2 id="feat-h">What the trip planner includes</h2>
         <p class="sub">Every feature, in the free plan and in Premium.</p>
         <table class="menu">
           <thead><tr><th scope="col"><span class="sr-only">Feature</span></th><th scope="col">Free</th><th scope="col">Premium</th></tr></thead>
@@ -327,76 +597,111 @@ a:hover{text-decoration-thickness:2px}
             <tr><th scope="row"><span class="lead">Trip map</span><span class="d">Every saved place pinned on one map.</span></th><td>Yes</td><td>Yes</td></tr>
             <tr><th scope="row"><span class="lead">Sorting</span><span class="d">By rating, distance or A to Z.</span></th><td>Yes</td><td>Yes</td></tr>
             <tr><th scope="row"><span class="lead">Custom pins</span><span class="d">Add a place that is not on the cards.</span></th><td>2 a month</td><td>Unlimited</td></tr>
-            <tr><th scope="row"><span class="lead">Plan with friends</span><span class="d">Invite friends and see who added each place.</span></th><td>No</td><td>Yes</td></tr>
-            <tr><th scope="row"><span class="lead">Trip chat</span><span class="d">Talk the plan over inside the trip.</span></th><td>No</td><td>Yes</td></tr>
           </tbody>
           <tbody>
             <tr class="grp"><th colspan="3" scope="colgroup">Go</th></tr>
             <tr><th scope="row"><span class="lead">Directions, website, call</span><span class="d">One tap from any saved place.</span></th><td>Yes</td><td>Yes</td></tr>
             <tr><th scope="row"><span class="lead">Offline trips</span><span class="d">Up to 20 recent trips kept on your phone.</span></th><td>Yes</td><td>Yes</td></tr>
-            <tr><th scope="row"><span class="lead">Priority support</span><span class="d">Faster answers when you need help.</span></th><td>No</td><td>Yes</td></tr>
           </tbody>
         </table>
         <p class="foot-note">Premium comes as Monthly or Lifetime. <a href="#pricing">Compare the plans</a></p>
+      </div>
       </div>
     </section>
   </div>
 
   <div class="stage" id="stage">
-    <img class="ph on" data-s="hero" src="static/lisbon-se-tram.jpg" width="1311" height="1600" alt="Yellow tram 28 passing Lisbon Cathedral" fetchpriority="high">
-    <img class="ph" data-s="swipe" src="static/lisbon-tram-28.jpg" width="1600" height="1064" alt="Vintage tram 28 on a Lisbon street" loading="lazy" decoding="async">
-    <img class="ph" data-s="save" src="static/lisbon-azulejo.jpg" width="1600" height="1200" alt="Azulejo-tiled façades in Alfama, Lisbon" loading="lazy" decoding="async">
-    <img class="ph" data-s="map features" src="static/lisbon-alfama.jpg" width="1600" height="900" alt="Alfama rooftops above the Tagus river in Lisbon" loading="lazy" decoding="async">
-    <img class="ph" data-s="go" src="static/lisbon-25-abril-bridge.jpg" width="1600" height="1200" alt="Lisbon and the 25 de Abril bridge from the Santo Amaro viewpoint" loading="lazy" decoding="async">
-    <img class="scr on" data-s="hero swipe" src="static/app-discover.jpg" width="720" height="1270" alt="NomadSwipe Discover card for Sail in Lisbon, rated 4.9, with Skip and Save buttons">
-    <img class="scr" data-s="save" src="static/app-discover-oceanario.jpg" width="720" height="1270" alt="Discover card for Oceanário de Lisboa, an aquarium rated 4.5 and open until 7 PM" loading="lazy" decoding="async">
-    <img class="scr" data-s="map" src="static/app-trip-map.jpg" width="720" height="1399" alt="Trip map of the Lisbon Long Weekend trip with every saved place pinned" loading="lazy" decoding="async">
-    <img class="scr" data-s="go" src="static/app-place-detail.jpg" width="720" height="1093" alt="Place detail screen with photos and Directions, Website and Call buttons" loading="lazy" decoding="async">
-    <img class="scr" data-s="features" src="static/app-trip-list.jpg" width="720" height="1399" alt="Saved places in the Lisbon Long Weekend trip, sorted by rating" loading="lazy" decoding="async">
-    <p class="cap" data-s="hero swipe save map go features"><b>Lisbon Long Weekend</b><span id="cap-line">16 places, planned by swiping</span></p>
+    <img class="ph on" data-s="hero" src="static/lisbon-se-tram.jpg" srcset="static/w960/lisbon-se-tram.jpg 960w, static/lisbon-se-tram.jpg 1311w" sizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" width="1311" height="1600" alt="Lisbon Cathedral with a red tram in the street" fetchpriority="high">
+    <img class="ph" data-s="swipe" src="static/lisbon-tram-28.jpg" srcset="static/w960/lisbon-tram-28.jpg 960w, static/lisbon-tram-28.jpg 1600w" sizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" width="1600" height="1064" alt="Vintage tram 28 on a Lisbon street" loading="lazy" decoding="async">
+    <img class="ph" data-s="save" src="static/lisbon-azulejo.jpg" srcset="static/w960/lisbon-azulejo.jpg 960w, static/lisbon-azulejo.jpg 1600w" sizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" width="1600" height="1200" alt="Azulejo-tiled façades in Alfama, Lisbon" loading="lazy" decoding="async">
+    <img class="ph" data-s="map demo done features" src="static/lisbon-alfama.jpg" srcset="static/w960/lisbon-alfama.jpg 960w, static/lisbon-alfama.jpg 1600w" sizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" width="1600" height="900" alt="Alfama rooftops above the Tagus river in Lisbon" loading="lazy" decoding="async">
+    <img class="ph" data-s="go" src="static/lisbon-25-abril-bridge.jpg" srcset="static/w960/lisbon-25-abril-bridge.jpg 960w, static/lisbon-25-abril-bridge.jpg 1600w" sizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" width="1600" height="1200" alt="Lisbon and the 25 de Abril bridge from the Santo Amaro viewpoint" loading="lazy" decoding="async">
+    <div class="scrs">
+      <img class="scr s0" data-s="hero swipe" src="static/app-discover.jpg" width="720" height="1270" alt="NomadSwipe Discover card for Sail in Lisbon, rated 4.9, with Skip and Save buttons">
+      <img class="scr s1" data-s="save" src="static/app-discover-oceanario.jpg" width="720" height="1270" alt="Discover card for Oceanário de Lisboa, an aquarium rated 4.5 and open until 7 PM" decoding="async">
+      <img class="scr s2" data-s="map done" src="static/app-trip-map.jpg" width="720" height="1399" alt="Trip map of a Lisbon trip with every saved place pinned" decoding="async">
+      <img class="scr" data-s="go" src="static/app-place-detail.jpg" width="720" height="1093" alt="Place detail screen with photos and Directions, Website and Call buttons" loading="lazy" decoding="async">
+      <div class="scr trip" data-s="demo" aria-hidden="true">
+        <div class="trip-band"></div>
+        <p class="trip-h">Your Lisbon trip</p>
+        <p class="trip-toast">Saved to your trip</p>
+        <ul>
+          <li><i></i><span><b></b><small></small></span></li>
+          <li><i></i><span><b></b><small></small></span></li>
+          <li><i></i><span><b></b><small></small></span></li>
+          <li><i></i><span><b></b><small></small></span></li>
+          <li><i></i><span><b></b><small></small></span></li>
+          <li><i></i><span><b></b><small></small></span></li>
+        </ul>
+        <p class="trip-hint">Saved places land here</p>
+      </div>
+      <img class="scr" data-s="features" src="static/app-trip-list.jpg" width="720" height="1399" alt="Saved places in a Lisbon trip, sorted by rating" loading="lazy" decoding="async">
+    </div>
+    <p class="cap"><b>A real Lisbon trip</b><span id="cap-line">16 places, planned by swiping</span></p>
   </div>
 </div>
 
-<section id="pricing" class="price reveal" aria-labelledby="price-h">
-  <h2 id="price-h" class="sr-only">NomadSwipe pricing</h2>
+<section id="pricing" class="price" aria-labelledby="price-h">
+  <h2 id="price-h" class="sr-only">NomadSwipe trip planner pricing</h2>
   <div class="field free">
-    <h3 class="rise">Free</h3>
-    <p class="amt rise">$0</p>
-    <p class="inc rise">Swipe real places in any city, keep up to 3 trips, see each one on a map, sort by rating or distance, and keep your recent trips offline. Includes 2 destination searches and 2 custom pins a month. Free to download, no card needed.</p>
-    <a class="btn rise" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing">Download free</a>
+    <h3>Free</h3>
+    <p class="amt">$0</p>
+    <p class="inc">Swipe real places in any city, keep up to 3 trips, see each one on a map, sort by rating or distance, and keep up to 20 recent trips on your phone. Includes 2 destination searches and 2 custom pins a month. Free to download, no card needed.</p>
+    <div class="acts">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing">Download free</a>
+      <span class="store-soon" aria-disabled="true">
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
+  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
+</span>
+    </div>
   </div>
   <div class="field prem">
-    <h3 class="rise">Premium</h3>
-    <p class="amt rise">Unlimited</p>
-    <p class="inc rise">Everything in Free, without the limits: unlimited swipes, trips, destination searches and custom pins. Invite friends to plan a trip together, see who added each place, and talk it over in trip chat, with priority support. Choose Monthly or Lifetime in the app; Google Play shows the price before you pay.</p>
-    <a class="btn light rise" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing-premium">Start free, upgrade in the app</a>
+    <h3>Premium</h3>
+    <p class="amt">Unlimited</p>
+    <p class="inc">Everything in Free, without the limits: unlimited swipes, trips, destination searches and custom pins. Choose Monthly or Lifetime in the app; Google Play shows the price before you pay.</p>
+    <div class="acts">
+      <a class="btn light" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing-premium">Start free, upgrade in the app</a>
+      <span class="store-soon" aria-disabled="true">
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
+  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
+</span>
+    </div>
   </div>
 </section>
 
-<section id="faq" class="faq reveal" aria-labelledby="faq-h">
-  <h2 id="faq-h" class="rise">Before you install</h2>
-  <div class="qa rise">
-    <p><b>Is NomadSwipe free?</b> Yes. NomadSwipe is free to download, and the free plan does not expire. It includes 3 trips, 2 destination searches and 2 custom pins a month, plus a limited number of swipes. Premium removes those limits.</p>
+<section id="faq" class="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h" class="reveal"><span class="ln"><span>Before you</span></span> <span class="ln"><span>install</span></span></h2>
+  <div class="qa">
+    <p><b>Is NomadSwipe free?</b> Yes. NomadSwipe is free to download. The free plan includes 3 trips, 2 destination searches and 2 custom pins a month, plus a limited number of swipes. Premium removes those limits.</p>
     <p><b>Is NomadSwipe on iPhone?</b> Not yet. NomadSwipe is available for Android phones on Google Play.</p>
-    <p><b>Does NomadSwipe work offline?</b> Yes. Your recent trips, up to 20, are kept on your phone, so their saved places still open without a connection.</p>
+    <p><b>Does NomadSwipe work offline?</b> Yes, for trip data. Up to 20 of your recent trips are saved on your phone, so you can open them without a connection.</p>
     <p><b>Which cities does it work in?</b> Any city. The cards show real places around you, or around a destination you search, each with its rating, opening hours and distance.</p>
-    <p><b>Can I plan a trip with friends?</b> Yes, with Premium. Invite friends to a trip, see who added each place, and talk the plan over in trip chat.</p>
     <p><b>Can I add places that aren't in the app?</b> Yes. Drop a custom pin for anything not on the cards, such as your hotel or a friend's flat. The free plan includes 2 custom pins a month, and Premium has no limit.</p>
     <p><b>How much does Premium cost?</b> Premium comes as a monthly plan or a one-time Lifetime purchase. Google Play shows the current price in your currency before you pay, and you can use the free plan for as long as you like first.</p>
     <p><b>How do I delete my account?</b> Follow the steps on the <a href="account-deletion.html">account deletion page</a>, or email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
-    <p><b>How do I get help?</b> Visit the <a href="support.html">support page</a> or email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>. Premium members get priority support.</p>
+    <p><b>How do I get help?</b> Visit the <a href="support.html">support page</a> or email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
   </div>
 </section>
 
-<section class="cta reveal" aria-label="Get the app">
-  <p class="rise">Planning a trip soon? Start swiping the city before you land.</p>
-  <a class="btn sm rise" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=cta">Get NomadSwipe free</a>
+<section class="cta" aria-label="Get the app">
+  <div class="cta-deck">
+    <div class="cta-card">
+      <p>Planning a trip soon? Start swiping the city before you land.</p>
+      <div class="acts">
+        <a class="btn sm" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=cta">Get NomadSwipe free</a>
+        <span class="store-soon" aria-disabled="true">
+  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
+  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
+</span>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
 
 <div class="fband"></div>
 <footer class="foot">
-  <div class="fphoto"><img src="static/lisbon-25-abril-bridge.jpg" width="1600" height="1200" alt="Lisbon rooftops and the 25 de Abril bridge over the Tagus" loading="lazy" decoding="async"></div>
+  <div class="fphoto"><img src="static/lisbon-azulejo.jpg" srcset="static/w960/lisbon-azulejo.jpg 960w, static/lisbon-azulejo.jpg 1600w" sizes="(min-width: 900px) and (min-aspect-ratio: 1/1) 50vw, 100vw" width="1600" height="1200" alt="Azulejo-tiled façades in Alfama, Lisbon" loading="lazy" decoding="async"></div>
   <div class="fmenu">
     <a class="wm" href="/" aria-label="NomadSwipe home"><img src="static/icon-192.png" width="36" height="36" alt="" loading="lazy"><span>NomadSwipe</span></a>
     <nav class="fnav" aria-label="Footer">
@@ -407,6 +712,7 @@ a:hover{text-decoration-thickness:2px}
         <li><a href="#faq">Questions</a></li>
         <li><a href="support.html">Support</a></li>
         <li><a href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=footer">Get the app</a></li>
+        <li class="soon-note">iPhone: coming soon</li>
       </ul>
     </nav>
     <div class="contact">
@@ -416,7 +722,8 @@ a:hover{text-decoration-thickness:2px}
         <a href="https://commons.wikimedia.org/w/index.php?curid=73559190">Tram 28 passing Sé de Lisboa</a> by Vernaccia, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>;
         <a href="https://commons.wikimedia.org/w/index.php?curid=191808829">Tram 28 with vintage charm</a> by Michael Gaylard, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>;
         <a href="https://commons.wikimedia.org/w/index.php?curid=176043213">Azulejo-tiled façades in Alfama</a> and <a href="https://commons.wikimedia.org/w/index.php?curid=176043191">Alfama rooftops and Tagus river view</a> by Dale Cruse, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>;
-        <a href="https://commons.wikimedia.org/w/index.php?curid=15712797">Lisboa e ponte 25 de Abril</a> by Jose Manuel, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+        <a href="https://commons.wikimedia.org/w/index.php?curid=15712797">Lisboa e ponte 25 de Abril</a> by Jose Manuel, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>;
+        Belém Tower: Szilas, Wikimedia Commons, CC0.</p>
     </div>
   </div>
 </footer>
@@ -424,76 +731,353 @@ a:hover{text-decoration-thickness:2px}
 <script>
 (function () {
   var d = document, root = d.documentElement;
-  root.classList.add('js');
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var wide = matchMedia('(min-width: 900px)');
+  var rm = matchMedia('(prefers-reduced-motion: reduce)');
+  var desk = matchMedia('(min-width: 900px) and (min-aspect-ratio: 1/1)');
+  var canAnim = 'animate' in Element.prototype;
+  function on() { return root.classList.contains('motion'); }
+  rm.addEventListener('change', function () { root.classList.toggle('motion', !rm.matches && canAnim); });
+
+  var ARRIVE = 'cubic-bezier(.16,1,.3,1)', LEAVE = 'cubic-bezier(.7,0,.84,0)', MOVE = 'cubic-bezier(.65,0,.35,1)';
+  var cs = getComputedStyle(root);
+  function spring(name, fb) { var v = cs.getPropertyValue(name).trim(); return v && CSS.supports('animation-timing-function', v) ? v : fb; }
+  var RISE = spring('--sp-rise', ARRIVE), SNAP = spring('--sp-snap', 'cubic-bezier(.25,.9,.4,1)');
+
+  /* ---------- iOS "coming soon" badge ---------- */
+  var soon = [].filter.call(d.querySelectorAll('.store-soon'), function (b) { return !b.closest('#demo'); });
+  soon.forEach(function (b) {
+    var sm = b.querySelector('small'), a = d.createElement('span'), z = d.createElement('span');
+    a.textContent = sm.textContent; z.className = 'alt'; z.setAttribute('aria-hidden', 'true'); z.textContent = 'iPhone version on the way';
+    sm.textContent = ''; sm.appendChild(a); sm.appendChild(z); b._t = 0;
+  });
+  function swap(x, y, m) {
+    if (m) {
+      x.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateY(-100%)', opacity: 1 }], { duration: 140, easing: LEAVE, fill: 'forwards' });
+      return y.animate([{ transform: 'translateY(100%)', opacity: 1 }, { transform: 'none', opacity: 1 }], { duration: 260, easing: ARRIVE, fill: 'forwards' });
+    }
+    x.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 120, fill: 'forwards' });
+    return y.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120, fill: 'forwards' });
+  }
+  function roll(b) {
+    var now = Date.now();
+    if (!canAnim || b._busy || now - b._t < 1200) return;
+    var sm = b.querySelector('small'), a = sm.children[0], z = sm.children[1], m = on();
+    b._busy = true; b._t = now; b.classList.add('up');
+    swap(a, z, m).onfinish = function () {
+      setTimeout(function () {
+        swap(z, a, m).onfinish = function () {
+          sm.getAnimations({ subtree: true }).forEach(function (x) { x.cancel(); });
+          b.classList.remove('up'); b._busy = false; b._t = Date.now();
+        };
+      }, 1800);
+    };
+  }
+  function soonFrom(e) { var b = e.target.closest && e.target.closest('.store-soon'); if (b && soon.indexOf(b) > -1) roll(b); }
+  d.addEventListener('pointerup', soonFrom);
+  if (matchMedia('(hover: hover)').matches) d.addEventListener('mouseover', soonFrom);
+
+  /* ---------- stage: THE DEAL ---------- */
   var stage = d.getElementById('stage'), capLine = d.getElementById('cap-line');
-  var layers = stage.querySelectorAll('[data-s]');
+  var scrsBox = stage.querySelector('.scrs');
+  var PH = [].slice.call(stage.querySelectorAll('.ph')), SCR = [].slice.call(stage.querySelectorAll('.scr'));
+  var trip = stage.querySelector('.trip'), toastEl = trip.querySelector('.trip-toast');
+  var ORDER = ['hero', 'swipe', 'save', 'map', 'go', 'demo', 'done', 'features'];
   var CAP = {
     hero: '16 places, planned by swiping',
     swipe: 'Sail in Lisbon, rated 4.9, on the Discover deck',
-    save: 'Oceanário de Lisboa, rated 4.5, open until 7 PM',
+    save: 'Oceanário de Lisboa, rated 4.5',
     map: 'Every saved place pinned on the trip map',
     go: 'Photos, directions, website and call',
+    demo: 'Swipe the deck. Your picks land here',
     features: 'Saved places sorted by rating'
   };
-  var STEP = ['swipe', 'save', 'map', 'go'];
-  var cur = 'hero', active = null;
+  var hasDemo = !!d.getElementById('demo');
+  var cur = 'hero', gen = 0, running = [], pushAnim = null, W = 0, first = true, nudged = false;
+  var doneFlag = false, savedN = 0, capAnim = null, capTarget = '';
 
-  function setState(s) {
-    if (!wide.matches) s = 'hero';
-    if (s === cur) return;
-    cur = s;
-    layers.forEach(function (el) { el.classList.toggle('on', el.getAttribute('data-s').split(' ').indexOf(s) > -1); });
-    capLine.textContent = CAP[s];
+  function has(el, s) { return el.getAttribute('data-s').split(' ').indexOf(s) > -1; }
+  function scrFor(s) { for (var i = 0; i < SCR.length; i++) if (has(SCR[i], s)) return SCR[i]; return null; }
+  function phFor(s) { for (var i = 0; i < PH.length; i++) if (has(PH[i], s)) return PH[i]; return PH[0]; }
+  function inSeq(s) { return s !== 'done' && !(s === 'demo' && (!desk.matches || !hasDemo)); }
+  function stackFor(s) {
+    var out = [], el = scrFor(s), i = ORDER.indexOf(s);
+    if (el) out.push(el);
+    for (var j = i + 1; j < ORDER.length && out.length < 3; j++) {
+      if (!inSeq(ORDER[j])) continue;
+      el = scrFor(ORDER[j]);
+      if (el && out.indexOf(el) < 0) out.push(el);
+    }
+    return out;
+  }
+  function pose(k) { return k ? 'translateY(' + (k * 13) + 'px) scale(' + (1 - k * 0.038) + ')' : 'none'; }
+  function place(s) {
+    var B = stackFor(s);
+    SCR.forEach(function (el) {
+      var k = B.indexOf(el), st = el.style;
+      if (k < 0) { st.visibility = 'hidden'; st.opacity = 0; st.transform = ''; st.zIndex = ''; }
+      else { st.visibility = 'visible'; st.opacity = 1 - k * 0.08; st.transform = pose(k); st.zIndex = 3 - k; }
+    });
+    var i = ORDER.indexOf(s);
+    ORDER.slice(i + 1, i + 3).forEach(function (n) {
+      [scrFor(n), phFor(n)].forEach(function (el) {
+        if (el && el.loading === 'lazy') { el.loading = 'eager'; if (el.decode) el.decode().catch(function () {}); }
+      });
+    });
+  }
+  function syncPh(s) { var p = phFor(s); PH.forEach(function (el) { el.classList.toggle('on', el === p); el.style.zIndex = ''; }); }
+  function capText(s) {
+    if (s === 'done') return savedN ? 'In the app, saved places land on your trip map' : 'The app deals a whole city like this';
+    return CAP[s];
+  }
+  function setCap(t) {
+    if (t === capTarget) return;
+    capTarget = t;
+    if (capAnim) { capAnim.cancel(); capAnim = null; }
+    if (!on()) { capLine.textContent = t; return; }
+    var a = capAnim = capLine.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateY(-8px)', opacity: 0 }], { duration: 140, delay: 160, easing: LEAVE, fill: 'forwards' });
+    a.onfinish = function () {
+      if (capAnim !== a) return;
+      capLine.textContent = t; a.cancel(); capAnim = null;
+      capLine.animate([{ transform: 'translateY(8px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 260, easing: ARRIVE });
+    };
+  }
+  capTarget = capLine.textContent;
+  function track(a) { running.push(a); return a; }
+  function nudge(el) {
+    var deg = (28 * 14 / (W || 300)).toFixed(2);
+    track(el.animate([
+      { transform: 'none', easing: MOVE },
+      { transform: 'translateX(28px) rotate(' + deg + 'deg)', offset: 0.537, easing: SNAP },
+      { transform: 'none' }
+    ], { duration: 484 }));
   }
 
+  function deal(to) {
+    if (to === cur) return;
+    var from = cur, dir = ORDER.indexOf(to) > ORDER.indexOf(from) ? 1 : -1;
+    var A = stackFor(from), B = stackFor(to), g = ++gen;
+    running.forEach(function (a) { a.finish(); }); running = [];
+    if (pushAnim) { pushAnim.cancel(); pushAnim = null; }
+    syncPh(from);
+    cur = to;
+    root.classList.add('dealt');
+    setCap(capText(to));
+    place(to);
+    var m = on(), oldPh = phFor(from), newPh = phFor(to);
+    if (newPh !== oldPh) {
+      newPh.classList.add('on'); newPh.style.zIndex = 2;
+      var pa = m
+        ? newPh.animate([
+            { clipPath: dir > 0 ? 'inset(0 0 0 100%)' : 'inset(0 100% 0 0)', transform: 'scale(1.04)' },
+            { clipPath: 'inset(0 0 0 0)', transform: 'none' }
+          ], { duration: 720, delay: 120, easing: MOVE, fill: 'backwards' })
+        : newPh.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200 });
+      pa.onfinish = function () { if (g === gen) syncPh(cur); };
+      track(pa);
+    }
+    if (!m) {
+      if (B[0] && B[0] !== A[0]) track(B[0].animate([{ opacity: 0 }, { opacity: 1 }], { duration: 200 }));
+      return;
+    }
+    if (A[0] === B[0]) {
+      if (!nudged && B[0]) { nudged = true; nudge(B[0]); }
+      return;
+    }
+    var fly = [
+      { transform: 'none', visibility: 'visible', zIndex: 4, offset: 0, easing: MOVE },
+      { transform: 'translateX(-10px) rotate(-.6deg)', visibility: 'visible', zIndex: 4, offset: 0.25, easing: LEAVE },
+      { transform: 'translateX(' + (1.35 * (W || 300)).toFixed(1) + 'px) rotate(18.9deg)', visibility: 'visible', zIndex: 4 }
+    ];
+    var fade = [{ opacity: 1, offset: 0 }, { opacity: 1, offset: 0.7 }, { opacity: 0 }];
+    var all = A.concat(B.filter(function (el) { return A.indexOf(el) < 0; }));
+    all.forEach(function (el) {
+      var j = A.indexOf(el), k = B.indexOf(el);
+      el.style.willChange = 'transform, opacity';
+      if (dir > 0 && j === 0 && k < 0) {
+        track(el.animate(fly, { duration: 320 }));
+        track(el.animate(fade, { duration: 320 }));
+      } else if (dir < 0 && k === 0 && j < 0) {
+        track(el.animate(fly, { duration: 320, easing: ARRIVE, direction: 'reverse' }));
+        track(el.animate(fade, { duration: 320, easing: ARRIVE, direction: 'reverse' }));
+      } else if (j > -1 && k > -1) {
+        if (j !== k) track(el.animate([
+          { transform: pose(j), opacity: 1 - j * 0.08, zIndex: 3 - Math.min(j, k) },
+          { transform: pose(k), opacity: 1 - k * 0.08, zIndex: 3 - Math.min(j, k) }
+        ], { duration: 820, delay: k === 0 ? 120 : 160, easing: RISE, fill: 'backwards' }));
+      } else if (k > -1) {
+        track(el.animate([{ opacity: 0 }, { opacity: 1 - k * 0.08 }], { duration: 200, delay: 160, easing: ARRIVE, fill: 'backwards' }));
+      } else {
+        track(el.animate([
+          { transform: pose(j), opacity: 1 - j * 0.08, visibility: 'visible', zIndex: 3 - j },
+          { transform: pose(j), opacity: 0, visibility: 'visible', zIndex: 3 - j }
+        ], { duration: 200, easing: LEAVE }));
+      }
+    });
+    setTimeout(function () { if (g === gen) all.forEach(function (el) { el.style.willChange = ''; }); }, 1000);
+    if (to === 'done') {
+      var mapScr = scrFor('done');
+      setTimeout(function () {
+        if (g !== gen || !on()) return;
+        pushAnim = mapScr.animate([{ scale: '1' }, { scale: '1.03' }], { duration: 320, easing: MOVE, fill: 'forwards' });
+      }, 820);
+    }
+  }
+  function go(s) {
+    if (s === 'demo' && !inSeq('demo')) return;
+    if (s === 'demo' && doneFlag) s = 'done';
+    if (first) {
+      first = false; cur = s;
+      if (s !== 'hero') { root.classList.add('dealt'); place(s); syncPh(s); }
+      capLine.textContent = capTarget = capText(s);
+      return;
+    }
+    deal(s);
+  }
+
+  if ('ResizeObserver' in window) new ResizeObserver(function (es) { W = es[0].contentRect.width; }).observe(scrsBox);
+  desk.addEventListener('change', function () { if (!first) { place(cur); syncPh(cur); } });
+
+  /* ---------- How it works: slider is a readout + jump links ---------- */
   var range = d.getElementById('step');
-  var stops = d.querySelectorAll('.stops button');
-  var steps = d.querySelectorAll('.step');
-  var shots = d.querySelectorAll('.shots img');
+  var stops = [].slice.call(d.querySelectorAll('.stops button'));
+  var bar = d.querySelector('.stops .bar');
+  var steps = [].slice.call(d.querySelectorAll('.step'));
+  var stepI = 0;
+  function moveBar() {
+    var b = stops[stepI];
+    bar.style.transform = 'translateX(' + b.offsetLeft + 'px) scaleX(' + (b.offsetWidth / 100) + ')';
+  }
   function setStep(i) {
-    i = +i;
+    stepI = i;
     range.value = i;
     range.setAttribute('aria-valuetext', stops[i].textContent);
     stops.forEach(function (b, j) { b.setAttribute('aria-pressed', String(j === i)); });
     steps.forEach(function (el, j) { el.classList.toggle('on', j === i); });
-    shots.forEach(function (el, j) { el.classList.toggle('on', j === i); });
-    if (active && active.id === 'how-it-works') setState(STEP[i]);
+    moveBar();
   }
-  range.addEventListener('input', function () { setStep(range.value); });
-  stops.forEach(function (b) { b.addEventListener('click', function () { setStep(b.getAttribute('data-i')); }); });
+  function jump(i) { setStep(i); steps[i].scrollIntoView({ block: 'center', behavior: on() ? 'smooth' : 'auto' }); }
+  range.addEventListener('input', function () { jump(+range.value); });
+  stops.forEach(function (b) { b.addEventListener('click', function () { jump(+b.getAttribute('data-i')); }); });
+  if ('ResizeObserver' in window) new ResizeObserver(moveBar).observe(bar.parentNode);
+  moveBar();
 
-  if (!('IntersectionObserver' in window)) return;
+  /* ---------- section entrances (IO adds .in; CSS owns the motion) ---------- */
+  var ins = d.querySelectorAll('.reveal, .ctl, .field, .menu tbody, .print, .cta, .step');
+  [].forEach.call(d.querySelectorAll('.menu tbody'), function (tb) {
+    [].forEach.call(tb.rows, function (tr, i) { tr._i = i; });
+  });
+  function enter(el, g) {
+    if (el.tagName === 'TBODY') [].forEach.call(el.rows, function (tr) { tr.style.setProperty('--d', Math.min(g * 120 + tr._i * 45, 600) + 'ms'); });
+    el.classList.add('in');
+  }
 
-  // The stage follows whichever reading section crosses the middle of the screen.
-  var follow = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
+  if (!('IntersectionObserver' in window)) { [].forEach.call(ins, function (el) { enter(el, 0); }); return; }
+  var proxy = new Map();
+  var io = new IntersectionObserver(function (es) {
+    var g = 0;
+    es.forEach(function (e) {
       if (!e.isIntersecting) return;
-      active = e.target;
-      var s = e.target.getAttribute('data-stage');
-      setState(s === 'swipe' ? STEP[+range.value] : s);
+      proxy.get(e.target).forEach(function (t) { enter(t, t.tagName === 'TBODY' ? g++ : 0); });
+      io.unobserve(e.target);
     });
-  }, { rootMargin: '-50% 0px -50% 0px' });
-  d.querySelectorAll('[data-stage]').forEach(function (el) { follow.observe(el); });
-  wide.addEventListener('change', function () { setState(active ? active.getAttribute('data-stage') : 'hero'); });
+  }, { threshold: 0.15 });
+  [].forEach.call(ins, function (el) {
+    var o = el.matches('.print, .prem') ? el.parentNode : el; // a target clipped to inset(100%) never intersects, so watch its parent
+    if (!proxy.has(o)) { proxy.set(o, []); io.observe(o); }
+    proxy.get(o).push(el);
+  });
 
-  d.addEventListener('visibilitychange', function () { root.classList.toggle('paused', d.hidden); });
-
-  if (reduce) return;
-  root.classList.add('motion');
-  var enter = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
+  var follow = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
       if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      enter.unobserve(e.target);
+      var el = e.target;
+      if (el.classList.contains('step')) setStep(+el.getAttribute('data-i'));
+      go(el.getAttribute('data-stage'));
     });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  d.querySelectorAll('.reveal').forEach(function (sec) {
-    sec.querySelectorAll('.rise').forEach(function (el, i) { el.style.setProperty('--i', i); });
-    enter.observe(sec);
+  }, { rootMargin: '-45% 0px -55% 0px' });
+  [].forEach.call(d.querySelectorAll('[data-stage]'), function (el) { follow.observe(el); });
+  var lane = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.target.classList.toggle('out', e.intersectionRatio < 1 && e.boundingClientRect.top < e.rootBounds.top); });
+  }, { rootMargin: '-44% 0px 0px 0px', threshold: [0, 1] });
+  [].forEach.call(d.querySelectorAll('.pn'), function (el) { lane.observe(el); });
+  var demoSec = d.getElementById('demo');
+  if (demoSec) { demoSec.setAttribute('data-stage', 'demo'); follow.observe(demoSec); }
+
+  /* load nudge: once per session, only if the reader is still at the top */
+  setTimeout(function () {
+    var k = 'ns-nudge';
+    try { if (sessionStorage.getItem(k)) return; } catch (x) { return; }
+    if (!on() || d.hidden || scrollY > 40 || cur !== 'hero' || nudged) return;
+    try { sessionStorage.setItem(k, '1'); } catch (x) {}
+    nudged = true; nudge(scrFor('hero'));
+  }, 1600);
+
+  /* ---------- reacting to the demo deck (DESK only) ---------- */
+  var rows = [].slice.call(trip.querySelectorAll('li')), toastAnim = null;
+  function resetTrip() {
+    rows.forEach(function (li) {
+      li.className = ''; li.querySelector('i').textContent = '';
+      li.querySelector('b').textContent = ''; li.querySelector('small').textContent = '';
+    });
+    trip.classList.remove('has');
+  }
+  function toast() {
+    if (toastAnim) toastAnim.cancel();
+    toastAnim = toastEl.animate([
+      { opacity: 0, transform: 'translateY(-6px)' },
+      { opacity: 1, transform: 'none', offset: 0.083 },
+      { opacity: 1, transform: 'none', offset: 0.917 },
+      { opacity: 0, transform: 'none' }
+    ], { duration: 2160 });
+  }
+  function riseRow(li) {
+    li.classList.remove('pending');
+    if (on()) li.querySelector('span').animate([{ transform: 'translateY(8px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 220, easing: ARRIVE });
+    toast();
+  }
+  function flySave(id, saved, noFlight) {
+    var li = rows.filter(function (r) { return !/full/.test(r.className); })[0];
+    if (!li) return;
+    var card = d.querySelector('.deck-card[data-id="' + (window.CSS && CSS.escape ? CSS.escape(String(id)) : id) + '"]');
+    var img = card && card.querySelector('img'), type = card && card.querySelector('.deck-card__type');
+    var name = (card && card.querySelector('h3') || {}).textContent || String(id || '');
+    var cat = (card && card.querySelector('.deck-card__cat') || {}).textContent || '';
+    var thumb = li.querySelector('i');
+    thumb.textContent = '';
+    if (img) { var t = new Image(); t.src = img.currentSrc || img.src; t.alt = ''; thumb.appendChild(t); } else thumb.textContent = name.charAt(0);
+    li.querySelector('b').textContent = name; li.querySelector('small').textContent = cat;
+    li.className = 'full pending'; trip.classList.add('has');
+    if (saved) setCap(saved + (saved === 1 ? ' place saved' : ' places saved'));
+    var src = card && (img || type || card).getBoundingClientRect();
+    if (!on() || noFlight || !src || cur !== 'demo' || !src.width) { riseRow(li); return; }
+    var dst = thumb.getBoundingClientRect(), side = Math.min(src.width, src.height);
+    var x0 = src.left + (src.width - side) / 2, y0 = src.top + (src.height - side) / 2;
+    var f = d.createElement('div');
+    f.className = 'flyer';
+    f.style.cssText = 'left:' + x0 + 'px;top:' + y0 + 'px;width:' + side + 'px;height:' + side + 'px';
+    if (img) { var c = new Image(); c.src = img.currentSrc || img.src; c.alt = ''; f.appendChild(c); } else f.textContent = name.charAt(0);
+    d.body.appendChild(f);
+    var s = dst.width / side, dx = dst.left - x0, dy = dst.top - y0;
+    f.animate([
+      { transform: 'none', borderRadius: '16px' },
+      { transform: 'translate(' + dx / 2 + 'px,' + (dy / 2 - 24) + 'px) scale(' + (1 + s) / 2 + ')' },
+      { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(' + s + ')', borderRadius: 12 / s + 'px' } // radius lands at the thumb's 12px after scale
+    ], { duration: 520, easing: MOVE }).onfinish = function () { f.remove(); riseRow(li); };
+  }
+  d.addEventListener('deck:swipe', function (e) {
+    var x = e.detail || {}, redealt = false;
+    if (doneFlag) { doneFlag = false; resetTrip(); redealt = true; }
+    if (!desk.matches) return;
+    if (redealt && cur === 'done') deal('demo');
+    if (x.dir === 'save') flySave(x.id, x.saved, redealt);
+  });
+  d.addEventListener('deck:done', function (e) {
+    var x = e.detail || {};
+    savedN = (x.saved || []).length; doneFlag = true;
+    if (!desk.matches) return;
+    setTimeout(function () { if (doneFlag && cur === 'demo') deal('done'); }, 200);
   });
 })();
 </script>
+<script src="demo.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+/* Swipe demo (section#demo). Tokens come from the page; every var() carries a fallback. */
+#demo{position:relative;z-index:1;overflow-x:clip;min-height:100svh;display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:clamp(56px,10svh,96px) 16px max(16px,env(safe-area-inset-bottom));background:var(--ground,#E8E6E2);color:var(--ink,#20201E)}
+#demo h2{font:700 var(--t-d,clamp(32px,4.4vw,68px))/1.04 var(--serif,Georgia,serif);letter-spacing:-.02em;max-width:14ch}
+#demo .ln{display:inline-block;overflow:clip;padding-bottom:.12em;vertical-align:top}
+#demo .ln>span{display:inline-block}
+#demo .demo-lede{margin-top:14px;max-width:40ch;color:var(--ink-2,#55534E);font-size:var(--t-s,15px);line-height:1.5}
+#demo .visually-hidden{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* No-JS: a crawlable scroll-snap row of the six real cards */
+.deck{position:relative;display:flex;gap:16px;width:100%;margin-top:28px;padding:4px 16px 12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;outline-offset:6px}
+.deck-card{flex:0 0 min(78vw,300px);aspect-ratio:.68;scroll-snap-align:center;display:flex;flex-direction:column;text-align:left;overflow:hidden;
+  background:var(--paper,#F7F6F3);border-radius:calc(var(--r,16px) + 8px)}
+.deck-ctl,.deck-tray,.deck-end,.deck-toast{display:none}
+
+/* JS: the stacked deck. Height drives, width follows the ratio, so the box is reserved (CLS 0). */
+.wa .deck{display:block;flex:none;width:auto;height:max(340px,min(calc(min(86vw,360px) / .68),52svh,540px));aspect-ratio:.68;padding:0;overflow:visible;touch-action:pan-y}
+.wa .deck-card,.wa .deck-end{position:absolute;inset:0;transform-origin:50% 100%;will-change:transform}
+.wa .deck-card{touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:grab}
+.wa .deck-card.is-drag{cursor:grabbing}
+/* Back cards sit under the top card: hide their text (inspect's covered-text gate), except the rising next card and the one flying out */
+.wa .deck-card[inert]:not(.is-next):not(.is-exiting) .deck-card__body,.wa .deck-card[inert]:not(.is-next):not(.is-exiting) .deck-card__type,.wa .deck-end[inert]:not(.is-next)>*{visibility:hidden}
+.deck-card figure,.deck-card__type{position:relative;flex:0 0 62%;min-height:0;overflow:hidden}
+.deck-card figure img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;pointer-events:none}
+.deck-card__type{display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:20px;background:var(--paper,#F7F6F3)}
+.deck-card__type::before{content:"";position:absolute;left:0;right:0;top:0;height:18px;background:var(--stripe) 0 0/56px 100%}
+.deck-card__type b{font:700 clamp(30px,8.4vw,40px)/1.02 var(--serif,Georgia,serif);letter-spacing:-.02em}
+.deck-card__rate{display:inline-flex;align-items:center;gap:6px;color:var(--accent,#B82845);font:700 22px/1 var(--sans,system-ui,sans-serif)}
+.deck-card__body{flex:1;min-height:0;padding:14px 18px 16px;overflow:hidden}
+.deck-card__meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:14px;line-height:1.2}
+.deck-card__cat{display:inline-flex;align-items:center;gap:7px;color:var(--accent,#B82845);font-weight:600;font-variant-caps:all-small-caps;letter-spacing:.04em;font-size:16px}
+.deck-card__cat::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.deck-card__where{color:var(--ink-2,#55534E)}
+.deck-card h3{margin-top:4px;font:700 clamp(22px,6vw,26px)/1.1 var(--serif,Georgia,serif);letter-spacing:-.01em}
+.deck-card__body>p:last-child{margin-top:6px;color:var(--ink-2,#55534E);font-size:clamp(15px,4.2vw,17px);line-height:1.42;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.deck-tint{position:absolute;inset:0;pointer-events:none;opacity:0;background:var(--accent,#B82845)}
+.deck-tint{visibility:hidden}
+.is-drag>.deck-tint,.deck-card[inert]>.deck-tint{visibility:visible} /* only a dragged or exiting card can show its wash */
+.deck-tint.is-skip{background:var(--ink,#20201E)}
+.deck-stamp{position:absolute;top:22px;padding:6px 12px;border:2px solid currentColor;border-radius:10px;background:var(--paper,#F7F6F3);
+  font:700 20px/1 var(--sans,system-ui,sans-serif);letter-spacing:.06em;opacity:0;pointer-events:none}
+.deck-stamp--save{left:18px;color:var(--accent,#B82845);transform:rotate(-12deg)}
+.deck-stamp--skip{right:18px;color:var(--ink-2,#55534E);transform:rotate(12deg)}
+
+/* End card: the trip you just built */
+.wa .deck-end{display:flex;flex-direction:column;align-items:flex-start;gap:10px;padding:34px 20px 16px;text-align:left;overflow-y:auto;overscroll-behavior:contain;
+  background:var(--paper,#F7F6F3);border-radius:calc(var(--r,16px) + 8px)}
+.wa .deck-end[hidden]{display:none}
+.deck-end__band{position:absolute;left:0;right:0;top:0;height:14px;background:var(--stripe) 0 0/56px 100%}
+.deck-end h3{font:700 clamp(26px,7vw,32px)/1.08 var(--serif,Georgia,serif);letter-spacing:-.02em;outline-offset:4px}
+.deck-end__sub,.deck-end__note{color:var(--ink-2,#55534E);font-size:15px;line-height:1.45}
+.deck-end__list{display:grid;gap:8px 12px;width:100%}
+.deck-end__list.is-two{grid-template-columns:1fr 1fr}
+.deck-end__list li{display:flex;align-items:center;gap:10px;min-width:0}
+.deck-end__list .deck-thumb{flex:none}
+.deck-end__list b{display:block;font-size:15px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.deck-end__list small{display:block;color:var(--ink-2,#55534E);font-size:13px}
+.deck-end__list li>span:last-child{min-width:0}
+.deck-end__cta{display:flex;flex-wrap:wrap;gap:10px;width:100%;margin-top:auto}
+.deck-end .btn{display:inline-flex;align-items:center;justify-content:center;flex:1 1 auto;min-height:52px;margin:0;padding:0 20px;border-radius:var(--r,16px);
+  background:var(--accent,#B82845);color:#fff;font:600 16px/1.2 var(--sans,system-ui,sans-serif);text-decoration:none}
+.deck-end .store-soon{display:inline-flex;align-items:center;gap:10px;flex:1 1 auto;height:44px;padding:0 18px;border-radius:var(--r,16px);border:1.5px solid var(--line,#D3CBBF);
+  background:transparent;color:var(--ink-2,#55534E)}
+.deck-end .store-soon svg{opacity:.7}
+.deck-end .store-soon__txt{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.deck-end .store-soon small{display:block;overflow:clip;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.deck-end .store-soon__txt>span{font-size:16px;font-weight:600}
+@media (pointer:fine){.deck-end .store-soon{cursor:not-allowed}}
+.deck-again{align-self:center;min-height:44px;padding:0 16px;border:0;background:none;color:var(--ink,#20201E);font:600 15px/1 var(--sans,system-ui,sans-serif);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Thumbnails (tray, end rows, flight) */
+.deck-thumb{display:grid;place-items:center;width:40px;height:40px;object-fit:cover;border-radius:calc(var(--r,16px) / 2);background:var(--accent,#B82845);color:#fff;font:700 18px/1 var(--serif,Georgia,serif)}
+.deck-fly{position:fixed;z-index:60;left:0;top:0;width:56px;height:56px;border-radius:calc(var(--r,16px) / 2);object-fit:cover;pointer-events:none;will-change:transform;
+  display:grid;place-items:center;background:var(--accent,#B82845);color:#fff;font:700 24px/1 var(--serif,Georgia,serif)}
+
+/* Controls: thumb reach, 64px targets, visible labels */
+.wa .deck-ctl{display:flex;justify-content:center;gap:24px;margin-top:20px;position:relative;z-index:61;transition:opacity var(--d-ui,240ms) var(--move,cubic-bezier(.65,0,.35,1))}
+.wa .deck-ctl[inert]{opacity:0}
+.deck-btn{display:flex;flex-direction:column;align-items:center;gap:6px;padding:0;border:0;background:none;color:var(--ink,#20201E);font:600 14px/1 var(--sans,system-ui,sans-serif);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.deck-btn svg{box-sizing:content-box;width:26px;height:26px;padding:19px;border-radius:50%;background:var(--paper,#F7F6F3);border:1.5px solid var(--line,#D3CBBF);
+  transition:transform var(--d-spring-press,520ms) var(--sp-release,cubic-bezier(.16,1,.3,1))}
+.deck-btn:active svg{transform:scale(.92);transition-timing-function:var(--sp-press,cubic-bezier(.16,1,.3,1))}
+.deck-btn--save svg{background:var(--accent,#B82845);border-color:var(--accent,#B82845);color:var(--paper,#F7F6F3)}
+.deck-btn:focus-visible{outline:none}
+.deck-btn:focus-visible svg{outline:3px solid var(--accent,#B82845);outline-offset:3px}
+
+/* Toast and tray (below DESK; the stage carries both on DESK) */
+.wa .deck-toast{display:block;position:relative;z-index:30;height:0;margin:0;overflow:visible;opacity:0;pointer-events:none}
+.wa .deck-toast span{position:absolute;left:50%;top:6px;transform:translateX(-50%);white-space:nowrap;padding:10px 16px;border-radius:999px;background:var(--ink,#20201E);color:var(--paper,#F7F6F3);font:600 14px/1 var(--sans,system-ui,sans-serif)}
+.wa .deck-tray{display:flex;align-items:center;gap:10px;margin-top:20px;min-height:44px;font-size:15px}
+.deck-count{display:inline-block;min-width:1.2em;overflow:clip;color:var(--accent,#B82845);font-weight:700}
+.deck-count>span{display:inline-block}
+.deck-tray ol{display:flex;margin-left:4px}
+.deck-tray li{width:40px;height:40px;border-radius:calc(var(--r,16px) / 2);border:2px solid var(--ground,#E8E6E2);background:var(--line,#D3CBBF)}
+.deck-tray li+li{margin-left:-10px}
+.deck-tray li.is-full{overflow:hidden}
+.deck-tray li .deck-thumb{width:100%;height:100%;border-radius:0}
+
+@media (min-width:600px) and (not ((min-width:900px) and (min-aspect-ratio:1/1))){
+  .wa .deck{height:max(340px,min(calc(min(60vw,400px) / .68),60svh,540px))} /* floor: a short landscape phone keeps a readable card */
+}
+@media (min-width:900px) and (min-aspect-ratio:1/1){
+  .wa .deck-tray,.wa .deck-toast{display:none}
+}
+
+/* Heading entrance, owned by demo.js (data-ready guards a failed script) */
+@media (prefers-reduced-motion:no-preference){
+  .motion #demo[data-ready] .ln>span{transform:translateY(105%);opacity:0} /* opacity snaps (0s) on entry: the mask reveal is unchanged, and the parked line is not read as text under the lede */
+  .motion #demo[data-ready] .demo-lede{opacity:0;transform:translateY(12px)}
+  .motion #demo.is-in .ln>span{transform:none;opacity:1;transition:transform 760ms var(--arrive,cubic-bezier(.16,1,.3,1))}
+  .motion #demo.is-in .ln+.ln>span{transition-delay:90ms}
+  .motion #demo.is-in .demo-lede{opacity:1;transform:none;transition:opacity 500ms var(--arrive,cubic-bezier(.16,1,.3,1)) 230ms,transform 500ms var(--arrive,cubic-bezier(.16,1,.3,1)) 230ms}
+}
