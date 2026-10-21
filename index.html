@@ -73,6 +73,7 @@
         { "@type": "Question", "name": "Does NomadSwipe work offline?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, for trip data. Up to 20 of your recent trips are saved on your phone, so you can open them without a connection." } },
         { "@type": "Question", "name": "Which cities does it work in?", "acceptedAnswer": { "@type": "Answer", "text": "Any city. The cards show real places around you, or around a destination you search, each with its rating, opening hours and distance." } },
         { "@type": "Question", "name": "Can I add places that aren't in the app?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drop a custom pin for anything not on the cards, such as your hotel or a friend's flat. The free plan includes 2 custom pins a month, and Premium has no limit." } },
+        { "@type": "Question", "name": "Can I plan a trip with friends?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Inviting a friend to view a trip is free. To plan the trip together, you and the friend you invite both need Premium: collaborators can edit the trip's destinations, and trip chat with friends is part of Premium." } },
         { "@type": "Question", "name": "How much does Premium cost?", "acceptedAnswer": { "@type": "Answer", "text": "Premium comes as a monthly plan or a one-time Lifetime purchase. Google Play shows the current price in your currency before you pay, and you can use the free plan for as long as you like first." } },
         { "@type": "Question", "name": "How do I delete my account?", "acceptedAnswer": { "@type": "Answer", "text": "Follow the steps on the account deletion page, or email privacy@nomadswipe.com." } },
         { "@type": "Question", "name": "How do I get help?", "acceptedAnswer": { "@type": "Answer", "text": "Visit the support page or email privacy@nomadswipe.com." } }
@@ -292,6 +293,9 @@ a:hover{text-decoration-thickness:2px}
 .lead::after{content:"";flex:1;min-width:16px;margin:0 0 0 8px;border-bottom:2px dotted var(--line);transform-origin:0 50%}
 .d{display:block;margin-top:2px;max-width:34ch;font-size:var(--t-s);line-height:1.45;color:var(--ink-2)}
 .sheet .foot-note{margin-top:32px;text-align:center;font-size:var(--t-s)}
+.group-list li+li{margin-top:28px}
+.group-list .lead::after{display:none}
+.group-list .d{max-width:none}
 .motion.sda .print{animation:print linear both;animation-timeline:view();animation-range:entry 10% cover 35%}
 .motion:not(.sda) .print:not(.in){clip-path:inset(0 0 100% 0)}
 .motion:not(.sda) .print.in{animation:print 900ms var(--arrive) backwards}
@@ -483,7 +487,7 @@ a:hover{text-decoration-thickness:2px}
       <div class="hero-mid">
         <a class="wm" href="/" aria-label="NomadSwipe home"><img src="static/icon-192.png" width="56" height="56" alt=""><span>NomadSwipe</span></a>
         <h1>Free trip planner for any city</h1>
-        <p class="lede">Swipe through real places in any city, save the ones you like, and see your whole trip on one map.</p>
+        <p class="lede">Swipe through real places in any city, save the ones you like, and see your whole trip on one map. Invite friends to view a trip for free.</p>
         <div class="acts">
           <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=hero">Get it free on Google Play</a>
           <span class="store-soon" aria-disabled="true">
@@ -603,7 +607,26 @@ a:hover{text-decoration-thickness:2px}
             <tr><th scope="row"><span class="lead">Directions, website, call</span><span class="d">One tap from any saved place.</span></th><td>Yes</td><td>Yes</td></tr>
             <tr><th scope="row"><span class="lead">Offline trips</span><span class="d">Up to 20 recent trips kept on your phone.</span></th><td>Yes</td><td>Yes</td></tr>
           </tbody>
+          <tbody>
+            <tr class="grp"><th colspan="3" scope="colgroup">Friends</th></tr>
+            <tr><th scope="row"><span class="lead">Group trips</span><span class="d">Invite friends to view a trip. Planning together and trip chat need Premium.</span></th><td>Invite to view</td><td>Plan and chat</td></tr>
+          </tbody>
         </table>
+        <p class="foot-note">Premium comes as Monthly or Lifetime. <a href="#pricing">Compare the plans</a></p>
+      </div>
+      </div>
+    </section>
+    <section id="group" class="feat" aria-labelledby="group-h">
+      <div class="print">
+      <div class="sheet">
+        <h2 id="group-h">Trips with friends</h2>
+        <p class="sub">Inviting is free. Premium lets you plan together.</p>
+        <ul class="group-list">
+          <li><span class="lead">Invite to view</span><span class="d">Inviting a friend to view a trip is free. No Premium needed.</span></li>
+          <li><span class="lead">Plan together</span><span class="d">Collaborators can edit a shared trip's destinations. You and the friend you invite both need Premium.</span></li>
+          <li><span class="lead">Chat on shared trips</span><span class="d">Trip chat with friends is part of Premium, on trips you share.</span></li>
+        </ul>
+        <p class="sub">Example: you share a Lisbon trip with two friends. If you all have Premium, you can edit the destinations together and talk in the trip chat.</p>
         <p class="foot-note">Premium comes as Monthly or Lifetime. <a href="#pricing">Compare the plans</a></p>
       </div>
       </div>
@@ -677,6 +700,7 @@ a:hover{text-decoration-thickness:2px}
     <p><b>Does NomadSwipe work offline?</b> Yes, for trip data. Up to 20 of your recent trips are saved on your phone, so you can open them without a connection.</p>
     <p><b>Which cities does it work in?</b> Any city. The cards show real places around you, or around a destination you search, each with its rating, opening hours and distance.</p>
     <p><b>Can I add places that aren't in the app?</b> Yes. Drop a custom pin for anything not on the cards, such as your hotel or a friend's flat. The free plan includes 2 custom pins a month, and Premium has no limit.</p>
+    <p><b>Can I plan a trip with friends?</b> Yes. Inviting a friend to view a trip is free. To plan the trip together, you and the friend you invite both need Premium: collaborators can edit the trip's destinations, and trip chat with friends is part of Premium.</p>
     <p><b>How much does Premium cost?</b> Premium comes as a monthly plan or a one-time Lifetime purchase. Google Play shows the current price in your currency before you pay, and you can use the free plan for as long as you like first.</p>
     <p><b>How do I delete my account?</b> Follow the steps on the <a href="account-deletion.html">account deletion page</a>, or email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
     <p><b>How do I get help?</b> Visit the <a href="support.html">support page</a> or email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
