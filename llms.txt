@@ -1,0 +1,14 @@
+# NomadSwipe
+
+> NomadSwipe is a free trip planner app for Android. You swipe through real places in a city, save the ones you like, and see your whole trip on one map. iOS is not available yet.
+
+Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&referrer=utm_source%3Dllms-txt%26utm_medium%3Dgeo%26utm_campaign%3Dllms
+
+## Pages
+- [Home](https://nomadswipe.com/): what the app does, screenshots, FAQ
+- [Alternatives hub](https://nomadswipe.com/alternatives/): honest comparisons with other trip planners
+- [Wanderlog alternatives](https://nomadswipe.com/alternatives/wanderlog-alternatives.html)
+- [TripIt alternatives](https://nomadswipe.com/alternatives/tripit-alternatives.html)
+- [Support](https://nomadswipe.com/support.html)
+- [Privacy policy](https://nomadswipe.com/privacypolicy.html)
+- [Terms](https://nomadswipe.com/terms.html)
