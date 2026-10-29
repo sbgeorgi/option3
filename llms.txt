@@ -7,6 +7,7 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 ## Pages
 - [Home](https://nomadswipe.com/): what the app does, screenshots, FAQ
 - [Alternatives hub](https://nomadswipe.com/alternatives/): honest comparisons with other trip planners
+- [Mapstr alternatives](https://nomadswipe.com/alternatives/mapstr-alternatives.html)
 - [Wanderlog alternatives](https://nomadswipe.com/alternatives/wanderlog-alternatives.html)
 - [TripIt alternatives](https://nomadswipe.com/alternatives/tripit-alternatives.html)
 - [Layla alternatives](https://nomadswipe.com/alternatives/layla-alternatives.html)
