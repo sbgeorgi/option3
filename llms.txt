@@ -9,6 +9,7 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 - [Alternatives hub](https://nomadswipe.com/alternatives/): honest comparisons with other trip planners
 - [Swipe travel apps compared](https://nomadswipe.com/alternatives/swipe-travel-apps.html)
 - [Schengen 90/180-day calculator](https://nomadswipe.com/schengen-calculator.html): counts Schengen stay days in any 180-day window; planning aid, not legal advice
+- [Lisbon in 2 days, from real places](https://nomadswipe.com/alternatives/lisbon-2-day-itinerary.html): a two-day Lisbon plan from 16 places, grouped by area, with getting-around tips
 - [Mapstr alternatives](https://nomadswipe.com/alternatives/mapstr-alternatives.html)
 - [Wanderlog alternatives](https://nomadswipe.com/alternatives/wanderlog-alternatives.html)
 - [TripIt alternatives](https://nomadswipe.com/alternatives/tripit-alternatives.html)
