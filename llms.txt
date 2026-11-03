@@ -10,6 +10,8 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 - [Alternatives hub](https://nomadswipe.com/alternatives/): honest comparisons with other trip planners
 - [Swipe travel apps compared](https://nomadswipe.com/alternatives/swipe-travel-apps.html)
 - [Schengen 90/180-day calculator](https://nomadswipe.com/schengen-calculator.html): counts Schengen stay days in any 180-day window; planning aid, not legal advice
+- [Athens in 2 Days: a Place-by-Place Itinerary](https://nomadswipe.com/alternatives/athens-2-day-itinerary.html): two-day Athens plan built from 16 places in the NomadSwipe app's Athens data, with a table per day (stored ratings, review counts, addresses) and a method and sample section. Disclosure: I built NomadSwipe (Android).
+- [How to Plan a Trip on a Map: 8 Steps for Any App](https://nomadswipe.com/alternatives/plan-a-trip-on-a-map.html): step-by-step guide to saving places, mapping them and grouping them by day, with a Google Maps / Wanderlog / Mapstr / NomadSwipe comparison table and a 16-place Lisbon worked example.
 - [Lisbon in 2 days, from real places](https://nomadswipe.com/alternatives/lisbon-2-day-itinerary.html): a two-day Lisbon plan from 16 places, grouped by area, with getting-around tips
 - [Best trip planner apps in 2026](https://nomadswipe.com/alternatives/best-trip-planner-apps-2026.html)
 - [Mapstr alternatives](https://nomadswipe.com/alternatives/mapstr-alternatives.html)
@@ -17,9 +19,9 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 - [TripIt alternatives](https://nomadswipe.com/alternatives/tripit-alternatives.html)
 - [Layla alternatives](https://nomadswipe.com/alternatives/layla-alternatives.html)
 - [Mindtrip alternatives](https://nomadswipe.com/alternatives/mindtrip-alternatives.html)
-- [Roadtrippers alternatives](https://nomadswipe.com/alternatives/roadtrippers-alternatives.html)
+- [Roadtrippers alternatives: 6 compared by situation](https://nomadswipe.com/alternatives/roadtrippers-alternatives.html): who should leave Roadtrippers and what to use instead (Furkot, Google Maps, Tripomatic, Wanderlog, Polarsteps, NomadSwipe), with a decision table and Roadtrippers cost-per-stop figures, revised 3 November 2026.
 - [Polarsteps alternatives](https://nomadswipe.com/alternatives/polarsteps-alternatives.html)
-- [Google Trips alternatives](https://nomadswipe.com/alternatives/google-trips-alternatives.html)
+- [Google Trips alternatives and what replaced it](https://nomadswipe.com/alternatives/google-trips-alternatives.html): Google Trips ended 5 Aug 2019; what Google Maps and Search cover today and a need-based table (Gmail reservations, saved places, offline maps) across NomadSwipe, Google Maps, Wanderlog, Tripomatic, Roadtrippers and Polarsteps. Updated 2026-11-03.
 - [Furkot alternatives](https://nomadswipe.com/alternatives/furkot-alternatives.html)
 - [Sygic Travel alternatives](https://nomadswipe.com/alternatives/sygic-travel-alternatives.html)
 - [Tripsy alternatives](https://nomadswipe.com/alternatives/tripsy-alternatives.html)
