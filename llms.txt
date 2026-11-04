@@ -12,6 +12,9 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 - [Schengen 90/180-day calculator](https://nomadswipe.com/schengen-calculator.html): counts Schengen stay days in any 180-day window; planning aid, not legal advice
 - [Athens in 2 Days: a Place-by-Place Itinerary](https://nomadswipe.com/alternatives/athens-2-day-itinerary.html): two-day Athens plan built from 16 places in the NomadSwipe app's Athens data, with a table per day (stored ratings, review counts, addresses) and a method and sample section. Disclosure: I built NomadSwipe (Android).
 - [How to Plan a Trip on a Map: 8 Steps for Any App](https://nomadswipe.com/alternatives/plan-a-trip-on-a-map.html): step-by-step guide to saving places, mapping them and grouping them by day, with a Google Maps / Wanderlog / Mapstr / NomadSwipe comparison table and a 16-place Lisbon worked example.
+- [Vienna in 2 Days: a Place-by-Place Itinerary](https://nomadswipe.com/alternatives/vienna-2-day-itinerary.html): two-day Vienna plan from 16 places in the NomadSwipe app data, a table per day, plus a findings section on gaps in the data
+- [Brussels in 2 Days: a Place-by-Place Itinerary](https://nomadswipe.com/alternatives/brussels-2-day-itinerary.html): two-day Brussels plan from the NomadSwipe app data, a table per day, with a method and sample section
+- [How to Find Things to Do in a New City: 7 Steps](https://nomadswipe.com/alternatives/find-things-to-do-in-a-new-city.html): seven steps for picking places in an unfamiliar city, with a worked example from real stored place data
 - [Lisbon in 2 days, from real places](https://nomadswipe.com/alternatives/lisbon-2-day-itinerary.html): a two-day Lisbon plan from 16 places, grouped by area, with getting-around tips
 - [Best trip planner apps in 2026](https://nomadswipe.com/alternatives/best-trip-planner-apps-2026.html)
 - [Mapstr alternatives](https://nomadswipe.com/alternatives/mapstr-alternatives.html)
