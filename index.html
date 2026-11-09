@@ -475,6 +475,15 @@ a:hover{text-decoration-thickness:2px}
   html{scroll-behavior:auto}
   .btn,.btn::after,.fnav a,.stops button,.stops .bar,.store-soon,.js .step,.trip-hint,.ctl input::-webkit-slider-thumb{transition:none}
 }
+
+.watch{position:relative;z-index:60;padding:72px var(--gut);background:var(--ground);text-align:center}
+.watch h2{font:700 clamp(28px,4.4vw,48px)/1.1 var(--serif);letter-spacing:-.02em}
+.watch-lede{margin:16px auto 0;max-width:42ch;color:var(--ink-2)}
+.watch-row{display:flex;gap:20px;margin:36px auto 0;padding:0 0 12px;max-width:1100px;overflow-x:auto;scroll-snap-type:x mandatory;justify-content:safe center}
+.watch figure{flex:0 0 min(62vw,260px);margin:0;scroll-snap-align:center}
+.watch video{display:block;width:100%;height:auto;aspect-ratio:9/16;border-radius:var(--r);background:var(--ink);object-fit:cover}
+.watch figcaption{margin-top:10px;font:600 15px/1.3 var(--sans);color:var(--ink-2)}
+@media(min-width:900px){.watch-row{overflow:visible}.watch figure{flex:1 1 0;min-width:0;max-width:220px}}
 </style>
 <link rel="stylesheet" href="demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H8B30WDTWF"></script>
@@ -584,6 +593,15 @@ a:hover{text-decoration-thickness:2px}
   </div>
   <div class="deck-tray" aria-hidden="true"><b>Your trip</b> <span class="deck-count">0</span> <ol><li></li><li></li><li></li><li></li><li></li><li></li></ol></div>
   <p class="deck-live visually-hidden" aria-live="polite"></p>
+</section>
+<section id="watch" class="watch" data-stage="features" aria-labelledby="watch-h">
+  <h2 id="watch-h">See it in 15 seconds</h2>
+  <p class="watch-lede">Three short films of the app: swipe real places, save the ones you like, see them on a trip map.</p>
+  <div class="watch-row">
+    <figure><video controls playsinline preload="none" poster="static/video/ns-departures.jpg" width="720" height="1280" aria-label="Phone screens show swiping place cards for Lisbon, Kyoto and Copenhagen, saving some, and viewing the saved places on a map."><source src="static/video/ns-departures.mp4" type="video/mp4"></video><figcaption>No plan, just thumbs</figcaption></figure>
+    <figure><video controls playsinline preload="none" poster="static/video/ns-dear-you.jpg" width="720" height="1280" aria-label="A 15-second film of the NomadSwipe app: swiping place cards in Discover, adjusting category filters and saving places to a trip map."><source src="static/video/ns-dear-you.mp4" type="video/mp4"></video><figcaption>Your taste has a passport</figcaption></figure>
+    <figure><video controls playsinline preload="none" poster="static/video/ns-fling.jpg" width="720" height="1280" aria-label="A stack of place cards is flung aside, then the app shows a swipe-to-save and a Lisbon trip map filling with saved pins and a route."><source src="static/video/ns-fling.mp4" type="video/mp4"></video><figcaption>Swipe, save, go</figcaption></figure>
+  </div>
 </section>
     <section id="features" class="feat" data-stage="features" aria-labelledby="feat-h">
       <div class="print">
