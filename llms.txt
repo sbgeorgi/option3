@@ -65,3 +65,8 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 - [Support](https://nomadswipe.com/support.html)
 - [Privacy policy](https://nomadswipe.com/privacypolicy.html)
 - [Terms](https://nomadswipe.com/terms.html)
+- [How to Use Wanderlog: Step-by-Step Guide for 2026](https://nomadswipe.com/alternatives/how-to-use-wanderlog.html): Nine steps from new trip to map, itinerary and offline, and what needs Pro, from Wanderlog help pages read 9 Nov 2026
+- [How to Use TripIt in 5 Steps (Checked Nov 2026)](https://nomadswipe.com/alternatives/how-to-use-tripit.html): Forward bookings to plans@tripit.com, fix failed imports, sync a calendar and see what Pro adds, from TripIt help pages read 9 Nov 2026
+- [How Many Days Do You Need in Lisbon? 39 Sights Counted](https://nomadswipe.com/alternatives/how-many-days-do-you-need-in-lisbon.html): 23 well-rated sights at 5 a day point to 4 days; Monday and Tuesday closures change the order
+- [How Many Days Do You Need in Porto? 48 Sights Counted](https://nomadswipe.com/alternatives/how-many-days-do-you-need-in-porto.html): 19 well-rated sights at 5 a day point to 4 days, or 3 for the centre, counted from 844 stored places
+- [How Many Days Do You Need in Athens? 57 Sights Counted](https://nomadswipe.com/alternatives/how-many-days-do-you-need-in-athens.html): 15 well-rated sights at 4 a day point to 4 days; the Acropolis is not in the data
