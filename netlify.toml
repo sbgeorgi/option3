@@ -1,0 +1,4 @@
+# Pretty URLs rewrote every internal .html link to its extension-less form while the canonical tags and sitemap.xml
+# say .html, so Google indexed both forms of the same page. Serve links as written; _redirects 301s the other form.
+[build.processing.html]
+  pretty_urls = false
