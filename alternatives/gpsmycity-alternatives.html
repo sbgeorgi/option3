@@ -170,8 +170,14 @@ footer{border-top:1px solid var(--line);margin-top:48px;padding:24px 0 40px;colo
 
 <!-- ns-cta:start -->
 <style>
-.ns-early{margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early{display:flex;align-items:flex-start;gap:14px;margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early__shot{flex:none;width:72px;height:auto;border-radius:10px;margin:0}
+.ns-early__body{flex:1;min-width:0}
 .ns-early p{margin:0 0 12px;font-size:17px;line-height:1.5}
+.ns-early p.ns-early__sub,.ns-early p.ns-ios{margin:10px 0 0;font-size:16px}
+.ns-early__demo,.ns-early .ns-ios a{display:inline-flex;align-items:center;min-height:44px;color:#8C1932;text-decoration:underline}
+.ns-ios{display:none;margin:8px 0 0;font-size:16px;line-height:1.45}
+@supports (-webkit-touch-callout:none){a.btn[href*="com.gchertkov.SwipeNomad"],.ns-early__btn,.ns-sticky{display:none!important}.ns-ios{display:block!important}}
 .ns-early__btn,.ns-sticky__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;font:700 16px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none;box-sizing:border-box}
 .ns-early__btn{background:#8C1932;color:#fff}
 .ns-early__btn:hover{background:#6F1327}
@@ -209,8 +215,13 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
   <p class="lead">GPSmyCity is built around self-guided walking tours with offline maps, and its Google Play listing cites 1,800+ cities. If you want narrated audio, a day-by-day itinerary with reservations, or a way to choose places yourself by swiping, this page compares five options and says where each one fits. For ticketed tours and day trips instead, see <a href="apps-like-getyourguide.html">apps like GetYourGuide</a>, or the <a href="apps-like-viator.html">GetYourGuide alternatives</a> that sell tours and tickets.</p>
 <!-- ns-cta:start -->
 <aside class="ns-early" aria-label="NomadSwipe on Google Play">
-  <p><strong>I built NomadSwipe (Android):</strong> swipe real places in any city, save the ones you like and see your whole trip on one map.</p>
-  <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dgpsmycity-alternatives"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it on Google Play</a>
+  <img class="ns-early__shot" src="/static/w240/app-discover.jpg" width="240" height="423" decoding="async" alt="NomadSwipe card for a real place in Lisbon with Skip and Save buttons">
+  <div class="ns-early__body">
+    <p><strong>I built NomadSwipe (Android).</strong> You choose places by swiping, not by searching and adding: swipe real places in any city, save the ones you like, see them on a map.</p>
+    <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dgpsmycity-alternatives"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it free on Google Play</a>
+    <p class="ns-early__sub">Android. Premium is optional. <a class="ns-early__demo" href="/?from=gpsmycity-alternatives#demo">Or swipe 6 Lisbon places here first</a></p>
+    <p class="ns-ios">NomadSwipe is Android only today, not on iPhone yet. <a href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20iPhone%20launch">Email me the day the iPhone version is live</a>.</p>
+  </div>
 </aside>
 <!-- ns-cta:end -->
 
@@ -251,7 +262,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
     <li>Limit: Android only today; iPhone coming soon.</li>
   </ul>
   <p>The free plan includes 3 trips, 2 searched places saved to a trip a month, 2 custom pins a month and a daily limit on saves. Premium comes as Monthly or Lifetime. Up to 20 saved trips are available offline after you open them online, per NomadSwipe's Play listing (Offline section); offline copies expire.</p>
-  <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dgpsmycity-alternatives">Get NomadSwipe on Google Play</a></p>
+  <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dgpsmycity-alternatives">Get NomadSwipe on Google Play</a><span class="ns-ios">Android only today; iPhone is coming soon.</span></p>
 
   <h2 id="head-to-head">GPSmyCity against NomadSwipe</h2>
   <div class="tablewrap">
@@ -331,7 +342,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
   <div class="cta">
     <p><strong>Want to choose places in a city by swiping?</strong> Try NomadSwipe on Android.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dgpsmycity-alternatives">Get NomadSwipe on Google Play</a>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dgpsmycity-alternatives">Get NomadSwipe on Google Play</a><span class="ns-ios">Android only today; iPhone is coming soon.</span>
   </div>
   <p>See also: <a href="mapstr-alternatives.html">Apps like Mapstr</a> &middot; <a href="wanderlog-alternatives.html">Wanderlog alternative</a> &middot; <a href="sygic-travel-alternatives.html">Sygic Travel vs Wanderlog</a> &middot; <a href="/">NomadSwipe home</a> &middot; <a href="/alternatives/">All comparisons</a> &middot; <a href="is-gpsmycity-free.html">GPSmyCity pricing</a> &middot; <a href="lonely-planet-alternatives.html">Lonely Planet alternatives</a></p>
   <p class="meta">Newer guide: <a href="/alternatives/visit-a-city-alternatives.html">apps like Visit A City</a>.</p>
@@ -356,15 +367,16 @@ Screenshots: seo-articles/site/static/app-discover.jpg and app-trip-map.jpg (fil
 
 <!-- ns-cta:start -->
 <div class="ns-sticky" id="ns-sticky" role="region" aria-label="Get NomadSwipe on Google Play">
-  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dgpsmycity-alternatives"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get NomadSwipe on Google Play</span></a>
+  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=gpsmycity-alternatives&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dgpsmycity-alternatives"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get it free on Google Play</span></a>
   <button type="button" class="ns-sticky__x" aria-label="Close">&times;</button>
 </div>
 <script>
 (function(){
 var S="gpsmycity-alternatives",d=document,b=d.getElementById("ns-sticky");
-d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"]');if(!a||typeof gtag!=="function")return;
-var m=/[?&]utm_medium=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
-gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",page_slug:S,transport_type:"beacon"})},true);
+d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"],a.ns-early__demo');if(!a||typeof gtag!=="function")return;
+if(a.className.indexOf("ns-early__demo")>-1){gtag("event","demo_click",{page_slug:S,transport_type:"beacon"});return}
+var m=/[?&]utm_medium=([^&]+)/.exec(a.href),c=/[?&]utm_campaign=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
+gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",campaign:own&&c?decodeURIComponent(c[1]):"",page_slug:S,transport_type:"beacon"})},true);
 if(!b)return;
 var mq=matchMedia("(max-width:768px)"),on=false,hid=false,gone=false,base=null,t=d.querySelectorAll('.cta,.ns-early,footer');
 try{gone=sessionStorage.getItem("ns-sticky-x")==="1"}catch(x){}

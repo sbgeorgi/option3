@@ -131,8 +131,14 @@ ul.check li:before{content:"";position:absolute;left:2px;top:6px;width:14px;heig
 
 <!-- ns-cta:start -->
 <style>
-.ns-early{margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early{display:flex;align-items:flex-start;gap:14px;margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early__shot{flex:none;width:72px;height:auto;border-radius:10px;margin:0}
+.ns-early__body{flex:1;min-width:0}
 .ns-early p{margin:0 0 12px;font-size:17px;line-height:1.5}
+.ns-early p.ns-early__sub,.ns-early p.ns-ios{margin:10px 0 0;font-size:16px}
+.ns-early__demo,.ns-early .ns-ios a{display:inline-flex;align-items:center;min-height:44px;color:#8C1932;text-decoration:underline}
+.ns-ios{display:none;margin:8px 0 0;font-size:16px;line-height:1.45}
+@supports (-webkit-touch-callout:none){a.btn[href*="com.gchertkov.SwipeNomad"],.ns-early__btn,.ns-sticky{display:none!important}.ns-ios{display:block!important}}
 .ns-early__btn,.ns-sticky__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;font:700 16px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none;box-sizing:border-box}
 .ns-early__btn{background:#8C1932;color:#fff}
 .ns-early__btn:hover{background:#6F1327}
@@ -168,13 +174,6 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
   <h1>How to write an itinerary for a trip, step by step</h1>
   <p class="lead">To write an itinerary for a trip, fix your dates and daily pace, list the places you want and group them by area, then give each day a morning, afternoon and evening block with one main stop in each. Add travel and meal buffers, check opening days, and write a backup. A two-day Edinburgh plan below shows it.</p>
-<!-- ns-cta:start -->
-<aside class="ns-early" aria-label="NomadSwipe on Google Play">
-  <p><strong>I built NomadSwipe (Android):</strong> swipe real places in any city, save the ones you like and see your whole trip on one map.</p>
-  <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=how-to-write-an-itinerary-for-a-trip&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dhow-to-write-an-itinerary-for-a-trip"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it on Google Play</a>
-</aside>
-<!-- ns-cta:end -->
-
   <p class="meta">Updated 20 November 2026. Facts checked on 20 November 2026. Disclosure: I built NomadSwipe (Android), and I wrote this page. The method and the example plan are my own judgment unless a source is named. Outside facts come from the pages listed under Sources.</p>
 
   <h2 id="steps">The seven steps</h2>
@@ -188,7 +187,19 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
     <li><h3>Write a backup for bad weather and tired legs.</h3> <p>Pick one indoor option for each outdoor must-see, close to it, and one stop per day you are happy to cut. Then the plan bends instead of breaking.</p></li>
   </ol>
 
-  <h2 id="example">Worked example: two days in Edinburgh</h2>
+  
+<!-- ns-cta:start -->
+<aside class="ns-early" aria-label="NomadSwipe on Google Play">
+  <img class="ns-early__shot" src="/static/w240/app-discover.jpg" width="240" height="423" decoding="async" alt="NomadSwipe card for a real place in Lisbon with Skip and Save buttons">
+  <div class="ns-early__body">
+    <p><strong>I built NomadSwipe (Android)</strong> for the step before this one: choosing the places. Swipe real places in any city, save the ones you like, see them on a map.</p>
+    <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=how-to-write-an-itinerary-for-a-trip&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dhow-to-write-an-itinerary-for-a-trip"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it free on Google Play</a>
+    <p class="ns-early__sub">Android. Premium is optional. <a class="ns-early__demo" href="/?from=how-to-write-an-itinerary-for-a-trip#demo">Or swipe 6 Lisbon places here first</a></p>
+    <p class="ns-ios">NomadSwipe is Android only today, not on iPhone yet. <a href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20iPhone%20launch">Email me the day the iPhone version is live</a>.</p>
+  </div>
+</aside>
+<!-- ns-cta:end -->
+<h2 id="example">Worked example: two days in Edinburgh</h2>
   <p>This is an example plan I built to show the steps, not a trip I took. I picked Edinburgh because its main sights sit along one street. Wikipedia describes the Royal Mile as running between Edinburgh Castle and Holyrood Palace, almost exactly one mile long and downhill from west to east. That settles the clustering for me: Day 1 follows the street downhill, and Day 2 goes to the park at the east end and then the city centre.</p>
   <p>The walking logic is my own arithmetic. One mile is about 1.6 km, so the Castle to the Palace is roughly 20 minutes of straight walking at an ordinary 5 km/h. In practice every stop on the street takes longer than the walk, so the buffers below are for stopping, not for walking. Wikipedia places Holyrood Park about 1 mile east of the Castle, which is why the park gets a morning of its own on Day 2.</p>
   <div class="tablewrap">
@@ -242,7 +253,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
   <div class="cta">
     <h2>Get the shortlist before you write the itinerary</h2>
     <p>I built NomadSwipe to swipe real places in a city, save the ones you like and see them on a map. It is Android only for now, and iPhone is coming soon.</p>
-    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=how-to-write-an-itinerary-for-a-trip&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dhow-to-write-an-itinerary-for-a-trip">Get NomadSwipe on Google Play</a></p>
+    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=how-to-write-an-itinerary-for-a-trip&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dhow-to-write-an-itinerary-for-a-trip">Get NomadSwipe on Google Play</a><span class="ns-ios">Android only today; iPhone is coming soon.</span></p>
   </div>
 
   <h2>In short</h2>
@@ -268,15 +279,16 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
 <!-- ns-cta:start -->
 <div class="ns-sticky" id="ns-sticky" role="region" aria-label="Get NomadSwipe on Google Play">
-  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=how-to-write-an-itinerary-for-a-trip&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dhow-to-write-an-itinerary-for-a-trip"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get NomadSwipe on Google Play</span></a>
+  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=how-to-write-an-itinerary-for-a-trip&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dhow-to-write-an-itinerary-for-a-trip"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get it free on Google Play</span></a>
   <button type="button" class="ns-sticky__x" aria-label="Close">&times;</button>
 </div>
 <script>
 (function(){
 var S="how-to-write-an-itinerary-for-a-trip",d=document,b=d.getElementById("ns-sticky");
-d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"]');if(!a||typeof gtag!=="function")return;
-var m=/[?&]utm_medium=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
-gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",page_slug:S,transport_type:"beacon"})},true);
+d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"],a.ns-early__demo');if(!a||typeof gtag!=="function")return;
+if(a.className.indexOf("ns-early__demo")>-1){gtag("event","demo_click",{page_slug:S,transport_type:"beacon"});return}
+var m=/[?&]utm_medium=([^&]+)/.exec(a.href),c=/[?&]utm_campaign=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
+gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",campaign:own&&c?decodeURIComponent(c[1]):"",page_slug:S,transport_type:"beacon"})},true);
 if(!b)return;
 var mq=matchMedia("(max-width:768px)"),on=false,hid=false,gone=false,base=null,t=d.querySelectorAll('.cta,.ns-early,footer');
 try{gone=sessionStorage.getItem("ns-sticky-x")==="1"}catch(x){}

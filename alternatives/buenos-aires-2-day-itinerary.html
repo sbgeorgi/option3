@@ -127,8 +127,14 @@ ul.sources{font-size:14px;color:var(--muted)}
 
 <!-- ns-cta:start -->
 <style>
-.ns-early{margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early{display:flex;align-items:flex-start;gap:14px;margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early__shot{flex:none;width:72px;height:auto;border-radius:10px;margin:0}
+.ns-early__body{flex:1;min-width:0}
 .ns-early p{margin:0 0 12px;font-size:17px;line-height:1.5}
+.ns-early p.ns-early__sub,.ns-early p.ns-ios{margin:10px 0 0;font-size:16px}
+.ns-early__demo,.ns-early .ns-ios a{display:inline-flex;align-items:center;min-height:44px;color:#8C1932;text-decoration:underline}
+.ns-ios{display:none;margin:8px 0 0;font-size:16px;line-height:1.45}
+@supports (-webkit-touch-callout:none){a.btn[href*="com.gchertkov.SwipeNomad"],.ns-early__btn,.ns-sticky{display:none!important}.ns-ios{display:block!important}}
 .ns-early__btn,.ns-sticky__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;font:700 16px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none;box-sizing:border-box}
 .ns-early__btn{background:#8C1932;color:#fff}
 .ns-early__btn:hover{background:#6F1327}
@@ -166,8 +172,13 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
   <p class="lead">A 2-day Buenos Aires itinerary of 16 stops from the NomadSwipe app's 684 distinct Buenos Aires places, with every start time checked against stored opening hours. Any two consecutive days from Thursday to Sunday work as written. Monday is the weak day: four day-two stops are stored as closed.</p>
 <!-- ns-cta:start -->
 <aside class="ns-early" aria-label="NomadSwipe on Google Play">
-  <p><strong>I built NomadSwipe (Android):</strong> swipe real places in any city, save the ones you like and see your whole trip on one map.</p>
-  <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=buenos-aires-2-day-itinerary&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dbuenos-aires-2-day-itinerary"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it on Google Play</a>
+  <img class="ns-early__shot" src="/static/w240/app-discover.jpg" width="240" height="423" decoding="async" alt="NomadSwipe card for a real place in Lisbon with Skip and Save buttons">
+  <div class="ns-early__body">
+    <p><strong>I built NomadSwipe (Android).</strong> Pick the places for this trip by swiping: real places with rating, distance and opening status, saved onto one map.</p>
+    <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=buenos-aires-2-day-itinerary&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dbuenos-aires-2-day-itinerary"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it free on Google Play</a>
+    <p class="ns-early__sub">Android. Premium is optional. <a class="ns-early__demo" href="/?from=buenos-aires-2-day-itinerary#demo">Or swipe 6 Lisbon places here first</a></p>
+    <p class="ns-ios">NomadSwipe is Android only today, not on iPhone yet. <a href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20iPhone%20launch">Email me the day the iPhone version is live</a>.</p>
+  </div>
 </aside>
 <!-- ns-cta:end -->
 
@@ -317,7 +328,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
   <div class="cta">
     <h2>Build your own two days</h2>
     <p>I built NomadSwipe to turn a city into a mapped shortlist: swipe real places, save the ones you like, and see them on one map. It is Android only.</p>
-    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=buenos-aires-2-day-itinerary&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dbuenos-aires-2-day-itinerary">Get NomadSwipe on Google Play</a></p>
+    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=buenos-aires-2-day-itinerary&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dbuenos-aires-2-day-itinerary">Get NomadSwipe on Google Play</a><span class="ns-ios">Android only today; iPhone is coming soon.</span></p>
   </div>
 
   <h2>Findings, method and sample</h2>
@@ -347,15 +358,16 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
 <!-- ns-cta:start -->
 <div class="ns-sticky" id="ns-sticky" role="region" aria-label="Get NomadSwipe on Google Play">
-  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=buenos-aires-2-day-itinerary&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dbuenos-aires-2-day-itinerary"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get NomadSwipe on Google Play</span></a>
+  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=buenos-aires-2-day-itinerary&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dbuenos-aires-2-day-itinerary"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get it free on Google Play</span></a>
   <button type="button" class="ns-sticky__x" aria-label="Close">&times;</button>
 </div>
 <script>
 (function(){
 var S="buenos-aires-2-day-itinerary",d=document,b=d.getElementById("ns-sticky");
-d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"]');if(!a||typeof gtag!=="function")return;
-var m=/[?&]utm_medium=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
-gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",page_slug:S,transport_type:"beacon"})},true);
+d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"],a.ns-early__demo');if(!a||typeof gtag!=="function")return;
+if(a.className.indexOf("ns-early__demo")>-1){gtag("event","demo_click",{page_slug:S,transport_type:"beacon"});return}
+var m=/[?&]utm_medium=([^&]+)/.exec(a.href),c=/[?&]utm_campaign=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
+gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",campaign:own&&c?decodeURIComponent(c[1]):"",page_slug:S,transport_type:"beacon"})},true);
 if(!b)return;
 var mq=matchMedia("(max-width:768px)"),on=false,hid=false,gone=false,base=null,t=d.querySelectorAll('.cta,.ns-early,footer');
 try{gone=sessionStorage.getItem("ns-sticky-x")==="1"}catch(x){}

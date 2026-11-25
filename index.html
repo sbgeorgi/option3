@@ -491,8 +491,14 @@ a:hover{text-decoration-thickness:2px}
 
 <!-- ns-cta:start -->
 <style>
-.ns-early{margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early{display:flex;align-items:flex-start;gap:14px;margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early__shot{flex:none;width:72px;height:auto;border-radius:10px;margin:0}
+.ns-early__body{flex:1;min-width:0}
 .ns-early p{margin:0 0 12px;font-size:17px;line-height:1.5}
+.ns-early p.ns-early__sub,.ns-early p.ns-ios{margin:10px 0 0;font-size:16px}
+.ns-early__demo,.ns-early .ns-ios a{display:inline-flex;align-items:center;min-height:44px;color:#8C1932;text-decoration:underline}
+.ns-ios{display:none;margin:8px 0 0;font-size:16px;line-height:1.45}
+@supports (-webkit-touch-callout:none){a.btn[href*="com.gchertkov.SwipeNomad"],.ns-early__btn,.ns-sticky{display:none!important}.ns-ios{display:block!important}}
 .ns-early__btn,.ns-sticky__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;font:700 16px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none;box-sizing:border-box}
 .ns-early__btn{background:#8C1932;color:#fff}
 .ns-early__btn:hover{background:#6F1327}
@@ -530,13 +536,9 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
         <h1>A simple itinerary app for Android</h1>
         <p class="lede">An Android trip planner for any city. Swipe real places, save the ones you like, and plan your trip on one map. Trips you open online stay viewable offline.</p>
         <div class="acts">
-          <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=hero&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dhero">Get it free on Google Play</a>
-          <span class="store-soon" aria-disabled="true">
-  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
-  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
-</span>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=hero&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dhero">Get it free on Google Play</a><p class="ns-ios">NomadSwipe is Android only today, not on iPhone yet. Email <a href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20iPhone%20launch">privacy@nomadswipe.com</a> to hear the day the iPhone version is live, or <a href="#demo">swipe 6 Lisbon places right here</a>.</p>
         </div>
-        <p class="note">Free on Android. Premium is optional.</p>
+        <p class="note">Free on Android. Premium is optional. iPhone is coming soon.</p>
       </div>
       <nav class="hero-nav" aria-label="Page sections">
         <ul><li><a href="#how-it-works">How it works</a></li><li><a href="#demo">Try it</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">Questions</a></li></ul>
@@ -607,11 +609,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
       <ol class="deck-end__list"></ol>
       <p class="deck-end__note">In the app, saved places go straight into your trip and onto its map.</p>
       <div class="deck-end__cta">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=demo&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Ddemo">Get it free on Google Play</a>
-        <span class="store-soon" aria-disabled="true">
-          <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
-          <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
-        </span>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=demo&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Ddemo">Get it free on Google Play</a><span class="ns-ios">Android only today; iPhone is coming soon.</span>
       </div>
       <button type="button" class="deck-again">Swipe again</button>
     </article>
@@ -721,23 +719,15 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
     <p class="amt">$0</p>
     <p class="inc">Swipe real places in any city, keep up to 3 trips, see each one on a map, sort by rating or distance, and keep up to 20 saved trips available offline after you open them online. Includes 2 destination searches and 2 custom pins a month. Free to download, no card needed.</p>
     <div class="acts">
-      <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dpricing">Download free</a>
-      <span class="store-soon" aria-disabled="true">
-  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
-  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
-</span>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dpricing">Download free</a><span class="ns-ios">Android only today; iPhone is coming soon.</span>
     </div>
   </div>
   <div class="field prem">
     <h3>Premium</h3>
     <p class="amt">Unlimited</p>
-    <p class="inc">Everything in Free, without the limits: unlimited swipes, trips, destination searches and custom pins. Choose Monthly or Lifetime in the app; Google Play shows the price before you pay.</p>
+    <p class="inc">Everything in Free, without the limits: unlimited swipes, trips, destination searches and custom pins. $4.99 monthly or $49.99 lifetime; Google Play shows your local price before you pay.</p>
     <div class="acts">
-      <a class="btn light" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing-premium&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dpricing-premium">Start free, upgrade in the app</a>
-      <span class="store-soon" aria-disabled="true">
-  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
-  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
-</span>
+      <a class="btn light" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=pricing-premium&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dpricing-premium">Start free, upgrade in the app</a><span class="ns-ios">Android only today; iPhone is coming soon.</span>
     </div>
   </div>
 </section>
@@ -765,11 +755,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
     <div class="cta-card">
       <p>Planning a trip soon? Start swiping the city before you land.</p>
       <div class="acts">
-        <a class="btn sm" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=cta&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dcta">Get NomadSwipe on Google Play</a>
-        <span class="store-soon" aria-disabled="true">
-  <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8C7 7.4 5.5 8.3 4.7 9.8c-1.7 2.9-.4 7.2 1.2 9.6.8 1.2 1.7 2.4 3 2.4 1.2 0 1.6-.8 3.1-.8s1.8.8 3.1.8 2.1-1.2 2.9-2.3c.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.5-3.9zM14.1 5.6c.6-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.6 2.8-1.3z"/></svg>
-  <span class="store-soon__txt"><small>Coming soon</small><span>App Store</span></span>
-</span>
+        <a class="btn sm" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=landing&amp;utm_campaign=cta&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dlanding%26utm_campaign%3Dcta">Get it free on Google Play</a><p class="ns-ios">NomadSwipe is Android only today, not on iPhone yet. Email <a href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20iPhone%20launch">privacy@nomadswipe.com</a> to hear the day the iPhone version is live, or <a href="#demo">swipe 6 Lisbon places right here</a>.</p>
       </div>
     </div>
   </div>
@@ -1161,15 +1147,16 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
 <!-- ns-cta:start -->
 <div class="ns-sticky" id="ns-sticky" role="region" aria-label="Get NomadSwipe on Google Play">
-  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=home&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dhome"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get NomadSwipe on Google Play</span></a>
+  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=home&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dhome"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get it free on Google Play</span></a>
   <button type="button" class="ns-sticky__x" aria-label="Close">&times;</button>
 </div>
 <script>
 (function(){
 var S="home",d=document,b=d.getElementById("ns-sticky");
-d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"]');if(!a||typeof gtag!=="function")return;
-var m=/[?&]utm_medium=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
-gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",page_slug:S,transport_type:"beacon"})},true);
+d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"],a.ns-early__demo');if(!a||typeof gtag!=="function")return;
+if(a.className.indexOf("ns-early__demo")>-1){gtag("event","demo_click",{page_slug:S,transport_type:"beacon"});return}
+var m=/[?&]utm_medium=([^&]+)/.exec(a.href),c=/[?&]utm_campaign=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
+gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",campaign:own&&c?decodeURIComponent(c[1]):"",page_slug:S,transport_type:"beacon"})},true);
 if(!b)return;
 var mq=matchMedia("(max-width:768px)"),on=false,hid=false,gone=false,base=null,t=d.querySelectorAll('.cta,.ns-early,footer');
 try{gone=sessionStorage.getItem("ns-sticky-x")==="1"}catch(x){}

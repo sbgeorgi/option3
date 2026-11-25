@@ -163,8 +163,14 @@ ul.sources{font-size:14px;color:var(--muted);word-break:break-word}
 
 <!-- ns-cta:start -->
 <style>
-.ns-early{margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early{display:flex;align-items:flex-start;gap:14px;margin:20px 0;padding:16px 18px;background:#F9EDEF;border:1px solid #B82845;border-left-width:5px;border-radius:12px;color:#1d1a1b}
+.ns-early__shot{flex:none;width:72px;height:auto;border-radius:10px;margin:0}
+.ns-early__body{flex:1;min-width:0}
 .ns-early p{margin:0 0 12px;font-size:17px;line-height:1.5}
+.ns-early p.ns-early__sub,.ns-early p.ns-ios{margin:10px 0 0;font-size:16px}
+.ns-early__demo,.ns-early .ns-ios a{display:inline-flex;align-items:center;min-height:44px;color:#8C1932;text-decoration:underline}
+.ns-ios{display:none;margin:8px 0 0;font-size:16px;line-height:1.45}
+@supports (-webkit-touch-callout:none){a.btn[href*="com.gchertkov.SwipeNomad"],.ns-early__btn,.ns-sticky{display:none!important}.ns-ios{display:block!important}}
 .ns-early__btn,.ns-sticky__btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;font:700 16px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none;box-sizing:border-box}
 .ns-early__btn{background:#8C1932;color:#fff}
 .ns-early__btn:hover{background:#6F1327}
@@ -200,19 +206,24 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
   <h1>How to use Wanderlog: a step-by-step guide</h1>
   <p class="lead">How does Wanderlog work? You start a trip, add places to lists or days, and Wanderlog pins them on a map, works out travel time between stops and keeps your times, notes, bookings and budget in one plan. Its help center marks route optimization and offline downloads as Pro; the other steps carry no Pro label. The nine steps below follow that order.</p>
-<!-- ns-cta:start -->
-<aside class="ns-early" aria-label="NomadSwipe on Google Play">
-  <p><strong>I built NomadSwipe (Android):</strong> swipe real places in any city, save the ones you like and see your whole trip on one map.</p>
-  <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=how-to-use-wanderlog&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dhow-to-use-wanderlog"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it on Google Play</a>
-</aside>
-<!-- ns-cta:end -->
-
-  <p class="meta">Disclosure: I built NomadSwipe (Android), and I mention it in one section right after the steps, so read that section with that in mind. I did not test Wanderlog hands-on for this page: every Wanderlog fact comes from its own pages, read on 9 November 2026 and listed under Sources.</p>
+  <p class="meta">Disclosure: I built NomadSwipe (Android), and I mention it in a short card before the steps and in one section right after them, so read that section with that in mind. I did not test Wanderlog hands-on for this page: every Wanderlog fact comes from its own pages, read on 9 November 2026 and listed under Sources.</p>
 
   <h2>How Wanderlog works in one view</h2>
   <p>Wanderlog is a trip planner with an app and a browser planner. Per its <a href="https://wanderlog.com/plan-a-trip">plan a trip page</a>, you start planning, get place recommendations ranked using Tripadvisor and Google traveler reviews, build an itinerary by day or category, see it on a map with distance and time between stops, then invite trip mates and track spending. Its <a href="https://help.wanderlog.com/hc/en-us/articles/13356415853467-Download-the-app">help center</a> says the app is available on iOS and Android and the plan works in a browser too. Two checks before you start: <a href="#pro">what needs Pro</a> and <a href="#offline">the offline wording</a>, because the sources do not agree. New to writing an itinerary? See <a href="how-to-write-an-itinerary-for-a-trip.html">how to write an itinerary for a trip</a>. Looking for something other than a review site? See <a href="tripadvisor-alternatives.html">apps like Tripadvisor</a>. Weighing it against Lambus? See this <a href="lambus-alternatives.html">Lambus app alternative</a> guide, or <a href="lambus-vs-wanderlog.html">Wanderlog vs Lambus</a> head to head.</p>
 
-  <h2>Nine steps to plan a trip in Wanderlog</h2>
+  
+<!-- ns-cta:start -->
+<aside class="ns-early" aria-label="NomadSwipe on Google Play">
+  <img class="ns-early__shot" src="/static/w240/app-discover.jpg" width="240" height="423" decoding="async" alt="NomadSwipe card for a real place in Lisbon with Skip and Save buttons">
+  <div class="ns-early__body">
+    <p><strong>I built NomadSwipe (Android)</strong> for the step before this one: choosing the places. Swipe real places in any city, save the ones you like, see them on a map.</p>
+    <a class="ns-early__btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=early&amp;utm_campaign=how-to-use-wanderlog&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dearly%26utm_campaign%3Dhow-to-use-wanderlog"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>Get it free on Google Play</a>
+    <p class="ns-early__sub">Android. Premium is optional. <a class="ns-early__demo" href="/?from=how-to-use-wanderlog#demo">Or swipe 6 Lisbon places here first</a></p>
+    <p class="ns-ios">NomadSwipe is Android only today, not on iPhone yet. <a href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20iPhone%20launch">Email me the day the iPhone version is live</a>.</p>
+  </div>
+</aside>
+<!-- ns-cta:end -->
+<h2>Nine steps to plan a trip in Wanderlog</h2>
   <p>The help articles I read are all dated March 2023, so a button name may have moved. The order of the steps is what matters.</p>
   <ol class="steps">
     <li><h3>1. Start a trip and set the dates.</h3>
@@ -294,7 +305,7 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
   <div class="cta">
     <h2>Try the swipe-first way to pick places</h2>
     <p>I built NomadSwipe to swipe real places in a city, save the ones you like and see them on a map. It is Android only for now, and iPhone is coming soon.</p>
-    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=how-to-use-wanderlog&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dhow-to-use-wanderlog">Get NomadSwipe on Google Play</a></p>
+    <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=inline&amp;utm_campaign=how-to-use-wanderlog&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dinline%26utm_campaign%3Dhow-to-use-wanderlog">Get NomadSwipe on Google Play</a><span class="ns-ios">Android only today; iPhone is coming soon.</span></p>
   </div>
 
   <h2>Questions about using Wanderlog</h2>
@@ -340,15 +351,16 @@ main>p:first-child>a:only-child{display:inline-flex;align-items:center;min-heigh
 
 <!-- ns-cta:start -->
 <div class="ns-sticky" id="ns-sticky" role="region" aria-label="Get NomadSwipe on Google Play">
-  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=how-to-use-wanderlog&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dhow-to-use-wanderlog"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get NomadSwipe on Google Play</span></a>
+  <a class="ns-sticky__go" href="https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNomad&amp;utm_source=nomadswipe.com&amp;utm_medium=sticky&amp;utm_campaign=how-to-use-wanderlog&amp;referrer=utm_source%3Dnomadswipe.com%26utm_medium%3Dsticky%26utm_campaign%3Dhow-to-use-wanderlog"><span class="ns-sticky__txt">Swipe real places for your trip</span><span class="ns-sticky__btn">Get it free on Google Play</span></a>
   <button type="button" class="ns-sticky__x" aria-label="Close">&times;</button>
 </div>
 <script>
 (function(){
 var S="how-to-use-wanderlog",d=document,b=d.getElementById("ns-sticky");
-d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"]');if(!a||typeof gtag!=="function")return;
-var m=/[?&]utm_medium=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
-gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",page_slug:S,transport_type:"beacon"})},true);
+d.addEventListener("click",function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href*="play.google.com"],a.ns-early__demo');if(!a||typeof gtag!=="function")return;
+if(a.className.indexOf("ns-early__demo")>-1){gtag("event","demo_click",{page_slug:S,transport_type:"beacon"});return}
+var m=/[?&]utm_medium=([^&]+)/.exec(a.href),c=/[?&]utm_campaign=([^&]+)/.exec(a.href),own=a.href.indexOf("com.gchertkov.SwipeNomad")>-1;
+gtag("event","play_click",{placement:own&&m?decodeURIComponent(m[1]):own?"inline":"competitor",campaign:own&&c?decodeURIComponent(c[1]):"",page_slug:S,transport_type:"beacon"})},true);
 if(!b)return;
 var mq=matchMedia("(max-width:768px)"),on=false,hid=false,gone=false,base=null,t=d.querySelectorAll('.cta,.ns-early,footer');
 try{gone=sessionStorage.getItem("ns-sticky-x")==="1"}catch(x){}
