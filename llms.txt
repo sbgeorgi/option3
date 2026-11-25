@@ -94,6 +94,7 @@ Get the app: https://play.google.com/store/apps/details?id=com.gchertkov.SwipeNo
 - [Chiang Mai Itinerary 3 Days: 23 Real Places, Day by Day](https://nomadswipe.com/alternatives/chiang-mai-3-day-itinerary.html): a 3-day Chiang Mai itinerary from 23 places in the NomadSwipe app, with stored ratings, review counts and a table per day.
 - [Lisbon Itinerary for 2 Days: 16 Real Places on a Map](https://nomadswipe.com/alternatives/lisbon-2-day-itinerary.html): two-day Lisbon itinerary of 16 real places you can map, grouped by area, plus how to stretch it to 3 or 4 days
 - [Best trip planner apps in 2026](https://nomadswipe.com/alternatives/best-trip-planner-apps-2026.html)
+- [App Similar to Klook: 7 Booking Apps and a Planner (2026)](https://nomadswipe.com/alternatives/klook-alternatives.html): Apps like Klook compared from their Google Play listings read 25 Nov 2026; NomadSwipe (I built it) is a different need, planning not booking.
 - [Mapstr alternatives](https://nomadswipe.com/alternatives/mapstr-alternatives.html)
 - [Wanderlog Alternatives: 5 Apps Compared, Pro Price Checked](https://nomadswipe.com/alternatives/wanderlog-alternatives.html): Wanderlog Pro annual plans run $31.99 to $59.99 on the US App Store (checked 4 Nov 2026); five apps compared by price and offline access
 - [TripIt alternatives](https://nomadswipe.com/alternatives/tripit-alternatives.html)
