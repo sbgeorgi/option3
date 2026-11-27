@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Support &amp; FAQ for the NomadSwipe Trip Planner</title>
-  <meta name="description" content="Answers about the NomadSwipe trip planner: Android today, iPhone coming soon, free plan limits, Premium, offline trips, sorting saved places." />
+  <meta name="description" content="Answers about the NomadSwipe trip planner: Android today, iPhone coming soon, free plan limits, Premium, cancelling and refunds, reporting content, offline trips, sorting saved places." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://nomadswipe.com/support.html" />
   <meta name="theme-color" content="#1D1D1F" />
@@ -74,10 +74,13 @@
     footer a:hover { color: #fff; opacity: 1; text-decoration: none; }
     .footer-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .card ul, .card ol { padding-left: 1.3rem; margin-top: 0.6rem; color: var(--muted); max-width: 68ch; }
+    .card li { margin-top: 0.3rem; }
+    .card p + p { margin-top: 0.7rem; }
+    .hero p + p { margin-top: 0.7rem; }
     @media (max-width: 760px) { .nav { height: auto; padding: 1rem 0; align-items: flex-start; flex-direction: column; } .nav-links { flex-wrap: wrap; } .grid { grid-template-columns: 1fr; } }
   </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H8B30WDTWF"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-H8B30WDTWF");</script>
+<script src="/static/consent.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -94,17 +97,17 @@
     <section class="hero">
       <span class="pill">Help</span>
       <h1>NomadSwipe support and trip planner help</h1>
-      <p>NomadSwipe support starts here: quick answers about the trip planner app are below, and anything else goes to privacy@nomadswipe.com. NomadSwipe runs on Android today, and iPhone is coming soon; you swipe real places in a city, save the ones you like into a trip and see them on a map.</p>
-      <a class="button" href="mailto:privacy@nomadswipe.com?subject=NomadSwipe%20Support%20Request">Email support</a>
+      <p>NomadSwipe support starts here: quick answers about the trip planner app are below, and anything else goes to support@nomadswipe.com. NomadSwipe runs on Android today, and iPhone is coming soon; you swipe real places in a city, save the ones you like into a trip and see them on a map.</p>
+      <a class="button" href="mailto:support@nomadswipe.com?subject=NomadSwipe%20Support%20Request">Email support</a>
     </section>
     <section class="grid" aria-label="Support options">
       <article class="card">
         <strong>Contact</strong>
-        <p>Email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a> with the device type, app version if known, and a short description of the issue.</p>
+        <p>Email <a href="mailto:support@nomadswipe.com">support@nomadswipe.com</a> with the device type, app version if known, and a short description of the issue.</p>
       </article>
       <article class="card">
         <strong>Privacy questions</strong>
-        <p>Review the <a href="privacypolicy.html">Privacy Policy</a> for information about collection, processing, sharing, retention, and privacy rights.</p>
+        <p>Review the <a href="privacypolicy.html">Privacy Policy</a> for information about collection, processing, sharing, retention, and privacy rights, or email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
       </article>
       <article class="card">
         <strong>Account deletion</strong>
@@ -125,7 +128,7 @@
       </article>
       <article class="card">
         <h3>What do I get without paying?</h3>
-        <p>The free plan gives you 3 trips, 2 destination searches a month and 2 custom pins a month.</p>
+        <p>The free plan lets you plan trips with limits on trips, destination searches and custom pins. The current limits are shown in the app.</p>
       </article>
       <article class="card">
         <h3>What are the Premium options?</h3>
@@ -149,8 +152,43 @@
       </article>
       <article class="card">
         <h3>How do I report or block a user or content?</h3>
-        <!-- TODO(owner): confirm any response-time commitment before publishing; none is stated in code. -->
-        <p>In the app, you can report a chat message, a direct or trip conversation, or a place listing or its photo. You can also block a user, which hides their messages in shared trip chats. We review reports and may remove content or suspend accounts. For anything else, email privacy@nomadswipe.com.</p>
+        <p>In the app, you can report a chat message, a direct or trip conversation, or a place listing or its photo. You can also block a user, which hides their messages in shared trip chats. We review reports and may remove content or suspend accounts. For anything else, email support@nomadswipe.com.</p>
+      </article>
+      <article class="card" id="cancel-premium">
+        <h3>How do I cancel Premium?</h3>
+        <p>You cancel in the store you bought from. Cancelling stops future renewals, and you keep Premium until the end of the period you paid for.</p>
+        <ul>
+          <li><strong>Android:</strong> open the Play Store, tap your profile picture, then Payments &amp; subscriptions, then Subscriptions. Choose NomadSwipe and tap Cancel subscription.</li>
+          <li><strong>iPhone:</strong> open Settings, tap your name, then Subscriptions. Choose NomadSwipe and tap Cancel Subscription.</li>
+        </ul>
+        <p>Deleting the app or your NomadSwipe account does not cancel a subscription. A Lifetime purchase does not renew, so there is nothing to cancel.</p>
+      </article>
+      <article class="card" id="refund">
+        <h3>How do I get a refund?</h3>
+        <p>Google and Apple handle refunds for purchases made in their stores. Request one here: Google Play at <a href="https://support.google.com/googleplay/answer/2479637" rel="noopener noreferrer">support.google.com/googleplay/answer/2479637</a>, Apple at <a href="https://reportaproblem.apple.com" rel="noopener noreferrer">reportaproblem.apple.com</a>. We cannot refund store purchases ourselves. See the <a href="terms.html#premium">Terms of Use</a> for EU and UK withdrawal rights.</p>
+      </article>
+      <article class="card" id="report-illegal">
+        <h3>How do I report illegal content?</h3>
+        <p>Email <a href="mailto:support@nomadswipe.com?subject=Illegal%20content%20report">support@nomadswipe.com</a> with:</p>
+        <ul>
+          <li>what is illegal and why;</li>
+          <li>the exact place name, trip, user or message;</li>
+          <li>your name and email address; and</li>
+          <li>this statement: "I believe in good faith that the information in this notice is accurate and complete."</li>
+        </ul>
+        <p>We confirm that we received your report and tell you our decision. A person reviews every report.</p>
+      </article>
+      <article class="card" id="safety-report">
+        <h3>Sexual or child-safety content, and intimate images shared without consent</h3>
+        <p>Report it in the app, and also email <a href="mailto:support@nomadswipe.com?subject=URGENT%20safety%20report">support@nomadswipe.com</a> with the subject "URGENT safety report". We act within 48 hours. We report child sexual abuse material to the National Center for Missing &amp; Exploited Children (NCMEC). Do not send us the image. Tell us where you saw it (the place name, trip, user or message) and we will find it.</p>
+      </article>
+      <article class="card" id="complaints">
+        <h3>Complaints and appeals</h3>
+        <p>If we removed your content or restricted your account, we tell you why. To appeal, reply to that message or email <a href="mailto:support@nomadswipe.com">support@nomadswipe.com</a> within 6 months. If you live in the EU, you can also use an out-of-court dispute settlement body under the Digital Services Act. See the <a href="terms.html#moderation">Terms of Use</a>. For complaints about your personal data, email <a href="mailto:privacy@nomadswipe.com">privacy@nomadswipe.com</a>.</p>
+      </article>
+      <article class="card" id="copyright">
+        <h3>Copyright</h3>
+        <p>If you believe something in NomadSwipe infringes your copyright, follow the steps in <a href="terms.html#copyright">Copyright complaints (DMCA)</a> in our Terms of Use.</p>
       </article>
     </section>
   </main>
@@ -161,6 +199,9 @@
         <a href="index.html">Home</a>
         <a href="privacypolicy.html">Privacy</a>
         <a href="terms.html">Terms</a>
+        <a href="accessibility.html">Accessibility</a>
+        <a href="/licenses.html">Open-source licenses</a>
+        <a href="#" onclick="window.nsConsent&&nsConsent.open();return false">Cookie settings</a>
       </div>
     </div>
   </footer>

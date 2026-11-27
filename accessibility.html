@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Accessibility at NomadSwipe</title>
+  <meta name="description" content="How NomadSwipe works toward WCAG 2.2 AA accessibility, known limits, and how to report an accessibility barrier." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://nomadswipe.com/accessibility.html" />
+  <meta name="theme-color" content="#1D1D1F" />
+  <link rel="icon" type="image/png" href="static/adaptive-icon.png" />
+  <link rel="apple-touch-icon" href="static/adaptive-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Unified NomadSwipe palette — Apple/Airbnb aesthetic */
+      --bg: #FFFFFF;
+      --surface: #FFFFFF;
+      --surface-alt: #F5F5F7;
+      --ink: #1D1D1F;
+      --muted: #6E6E73;
+      --tertiary: #86868B;
+      --line: #D2D2D7;
+      --brand: #1D1D1F;
+      --deep: #1D1D1F;
+      --white: #FFFFFF;
+      --radius: 18px;
+      --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
+      --shadow-soft: 0 1px 2px rgba(0,0,0,0.05), 0 8px 24px rgba(0,0,0,0.05);
+      --transition: 200ms ease;
+
+      /* Typography — Apple system stack first */
+      --font-heading: 'SF Pro Display', -apple-system, 'Space Grotesk', 'Inter', sans-serif;
+      --font-body: 'SF Pro Text', -apple-system, 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: light; scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    a { color: inherit; text-decoration: underline; text-decoration-color: rgba(29,29,31,0.25); text-underline-offset: 3px; transition: color var(--transition), text-decoration-color var(--transition); }
+    a:hover { text-decoration-color: var(--ink); }
+    :focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; border-radius: 10px; }
+    .shell { width: min(1080px, calc(100% - 2rem)); margin: 0 auto; }
+    /* Frosted glass header */
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .logo { display: inline-flex; align-items: center; gap: 0.7rem; font-family: var(--font-heading); font-weight: 700; font-size: 1.18rem; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+    .logo:hover { text-decoration: none; }
+    /* Monochrome logo mark — solid ink rounded square, white route glyph implied */
+    .logo-mark { width: 34px; height: 34px; border-radius: 11px; background: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04); }
+    .nav-links { display: flex; align-items: center; gap: 1.1rem; color: var(--ink); font-weight: 500; font-size: 0.95rem; }
+    .nav-links a { opacity: 0.7; text-decoration: none; transition: opacity var(--transition); }
+    .nav-links a:hover { opacity: 1; text-decoration: none; }
+    /* Restrained pill — hairline border, off-white surface, muted ink, subtle tracking */
+    .pill { display: inline-flex; align-items: center; border: 1px solid var(--line); color: var(--muted); background: var(--surface-alt); border-radius: 999px; padding: 0.42rem 0.8rem; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    main { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+    .hero { max-width: 760px; margin-bottom: 3rem; }
+    h1, h2 { font-family: var(--font-heading); line-height: 1.1; letter-spacing: -0.03em; }
+    h1 { font-size: clamp(2.4rem, 7vw, 4.6rem); margin: 1rem 0 1.2rem; font-weight: 700; }
+    h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.8rem; font-weight: 700; letter-spacing: -0.02em; }
+    h3 { font-family: var(--font-heading); font-size: 1.1rem; line-height: 1.25; margin: 0 0 0.4rem; font-weight: 700; }
+    p { color: var(--muted); max-width: 68ch; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.35rem; box-shadow: var(--shadow); }
+    .card strong { display: block; margin-bottom: 0.35rem; font-weight: 600; color: var(--ink); }
+    .section { margin-top: 2.5rem; display: grid; gap: 1rem; }
+    /* Primary button — solid ink, pill, weight 500, no shadow */
+    .button { display: inline-flex; width: fit-content; align-items: center; justify-content: center; margin-top: 1rem; padding: 0.7rem 1.4rem; border-radius: 980px; background: var(--ink); color: #fff; font-weight: 500; text-decoration: none; transition: background-color var(--transition); }
+    .button:hover { background: #000000; color: #fff; text-decoration: none; }
+    /* Deep ink footer with white text — unified across all pages */
+    footer { background: var(--deep); padding: 2rem 0; color: rgba(255, 255, 255, 0.8); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    footer a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color var(--transition), opacity var(--transition); }
+    footer a:hover { color: #fff; opacity: 1; text-decoration: none; }
+    .footer-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .card ul, .card ol { padding-left: 1.3rem; margin-top: 0.6rem; color: var(--muted); max-width: 68ch; }
+    .card li { margin-top: 0.3rem; }
+    .card p + p { margin-top: 0.7rem; }
+    .hero p + p { margin-top: 0.7rem; }
+    @media (max-width: 760px) { .nav { height: auto; padding: 1rem 0; align-items: flex-start; flex-direction: column; } .nav-links { flex-wrap: wrap; } .grid { grid-template-columns: 1fr; } }
+  </style>
+<script src="/static/consent.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="logo" href="index.html" aria-label="NomadSwipe home"><span class="logo-mark" aria-hidden="true"></span>NomadSwipe</a>
+      <nav class="nav-links" aria-label="Accessibility navigation">
+        <a href="support.html">Support</a>
+        <a href="privacypolicy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="account-deletion.html">Account deletion</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <span class="pill">Accessibility</span>
+      <h1>Accessibility at NomadSwipe</h1>
+      <p>We want everyone to be able to plan trips with NomadSwipe, including people who use screen readers, larger text, keyboards or other assistive tools.</p>
+      <p>Last updated: November 27, 2026</p>
+    </section>
+    <section class="stack">
+      <article class="card" id="commitment">
+        <h2>Our commitment</h2>
+        <p>We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA on this website and in our mobile apps. We work toward this goal and we fix problems as we find them.</p>
+      </article>
+      <article class="card" id="limits">
+        <h2>Known limits</h2>
+        <ul>
+          <li>Map views are drawn by the phone's map service (Google Maps on Android, Apple Maps on iPhone), and some map controls may not work as well with screen readers as the rest of the app.</li>
+          <li>Places, opening hours and photos come from public sources and from users. Some photos may not have a text description.</li>
+          <li>We have not yet had an independent accessibility audit.</li>
+        </ul>
+      </article>
+      <article class="card" id="report">
+        <h2>Report a barrier</h2>
+        <p>If something in NomadSwipe is hard or impossible for you to use, tell us. Email <a href="mailto:privacy@nomadswipe.com?subject=Accessibility%20feedback">privacy@nomadswipe.com</a> or <a href="mailto:support@nomadswipe.com?subject=Accessibility%20feedback">support@nomadswipe.com</a>. Say what you were trying to do, which page or screen it was, and what device or assistive tool you use. We reply within 5 business days.</p>
+      </article>
+      <article class="card">
+        <h2>Contact</h2>
+        <p>NomadSwipe LLC<br>75 E 3rd St, Ste 7<br>Sheridan, WY 82801<br>United States</p>
+      </article>
+    </section>
+  </main>
+  <footer>
+    <div class="shell footer-row">
+      <span>&copy; <span id="year">2026</span> NomadSwipe.</span>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="support.html">Support</a>
+        <a href="privacypolicy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="accessibility.html">Accessibility</a>
+        <a href="/licenses.html">Open-source licenses</a>
+        <a href="#" onclick="window.nsConsent&&nsConsent.open();return false">Cookie settings</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
